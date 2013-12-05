@@ -16,4 +16,6 @@ package grupp9_uppgift1;
  */
 public class Controller {
     
+    String s = "funkar";
+    
 }
