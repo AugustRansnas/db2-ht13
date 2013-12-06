@@ -4,6 +4,11 @@
  */
 package grupp9_labb1;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author svalan
@@ -76,6 +81,8 @@ public class GUI extends javax.swing.JFrame {
 
         btnNameDisease.setText("8) Skriv ut namn och sjukdom av varje patient. För kärlekssjuka ska ”svårt fall !”  skrivas  ut ");
 
+        txtResult.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,49 +90,61 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInsomnia)
-                    .addComponent(btnInsomniaHosta)
-                    .addComponent(btnNoCar)
-                    .addComponent(btnNoOwner)
                     .addComponent(btnTotalWages)
                     .addComponent(btnIncreasedWage)
                     .addComponent(btnFirstLetter)
-                    .addComponent(btnNameDisease))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnNameDisease)
+                    .addComponent(btnInsomniaHosta)
+                    .addComponent(btnNoCar)
+                    .addComponent(btnNoOwner)
+                    .addComponent(btnInsomnia))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnInsomnia)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInsomniaHosta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNoCar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNoOwner)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTotalWages)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnIncreasedWage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnFirstLetter)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNameDisease)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(txtResult, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 51, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(txtResult))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnInsomnia)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnInsomniaHosta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNoCar)
+                        .addGap(7, 7, 7)
+                        .addComponent(btnNoOwner)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTotalWages)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIncreasedWage)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFirstLetter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNameDisease)))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInsomniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsomniaActionPerformed
-       String resultString = controller.getInsomnia();
+       
+        String resultString = null;
+        
+        try {
+            resultString = controller.getInsomnia();
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         this.txtResult.setText(resultString);
+        
     }//GEN-LAST:event_btnInsomniaActionPerformed
 
     private void btnInsomniaHostaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsomniaHostaActionPerformed
