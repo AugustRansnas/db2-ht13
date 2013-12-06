@@ -34,6 +34,12 @@ public class Main {
         DatabaseMetaData md = con.getMetaData();
         
         System.out.println(md.getDatabaseProductName());
+        
+        Controller controller = new Controller(con);
+        
+        GUI myGUI = new GUI(controller);
+        
+        myGUI.setVisible(true);
 
 
 
