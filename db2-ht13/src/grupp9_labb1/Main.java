@@ -19,13 +19,14 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
     public static void main(String[] args) throws SQLException {
 
         try {
             DriverManager.registerDriver(new sun.jdbc.odbc.JdbcOdbcDriver());
 //Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); // också ok
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Kan inte hitta database driver class: " + e);
         }
 

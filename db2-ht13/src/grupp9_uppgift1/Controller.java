@@ -6,6 +6,8 @@
 
 package grupp9_uppgift1;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Viktor Voigt
@@ -14,8 +16,15 @@ package grupp9_uppgift1;
  * @author August Ransnäs
  * 
  */
+
 public class Controller {
     
-    String s = "funkar";
+    Connection connection;
+
+    Controller(Connection con) {
+        
+       this.connection = connection;
+        
+    }
     
 }
