@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -45,11 +49,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="panelManageStudent">
+        <Container class="javax.swing.JPanel" name="panelFindStudent">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Hantera student">
-                <Property name="tabTitle" type="java.lang.String" value="Hantera student"/>
+              <JTabbedPaneConstraints tabName="S&#xf6;k student">
+                <Property name="tabTitle" type="java.lang.String" value="S&#xf6;k student"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -58,390 +62,372 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="39" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblFindStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtFindStudentFirstName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFindStudentLastName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFindStudentPnr" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFindStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtFindStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblFirstName" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblLastName" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSsn2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPhoneNbr" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblEmail" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentAdress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentPostCode" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentCity" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtFirstName" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" max="32767" attributes="0"/>
-                                  <Component id="txtSsn2" max="32767" attributes="0"/>
-                                  <Component id="txtPhoneNbr" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblAdress" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblPostCode" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblCity" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtAdress" max="32767" attributes="0"/>
-                                          <Component id="txtPostCode" max="32767" attributes="0"/>
-                                          <Component id="txtCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="BtnUpdateStudent" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteStudent" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtFindStudentAdress" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFindStudentPostCode" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtFindStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblSsn" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblSearchStudent" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStudentName" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtSsn" pref="150" max="32767" attributes="0"/>
-                                  <Component id="txtStudentName" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnSearchStudent" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tabCourseInformation" pref="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="comboBoxAddCourse" alignment="0" min="-2" pref="506" max="-2" attributes="0"/>
-                                  <Component id="lblAddCourse" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="btnFindStudent" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="86" max="32767" attributes="0"/>
+                      <EmptySpace pref="142" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="lblSearchStudent" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtStudentName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblStudentName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnSearchStudent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblSsn" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtSsn" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentPnr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtSsn2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCity" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSsn2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnFindStudent" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="txtFindStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFindStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnUpdateStudent" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnDeleteStudent" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="tabCourseInformation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblAddCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="comboBoxAddCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="138" max="32767" attributes="0"/>
+                      <EmptySpace pref="421" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblSearchStudent">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf6;k student"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtStudentName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblStudentName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Namn:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblSsn">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Personnummer:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtSsn">
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator1">
-            </Component>
-            <Component class="javax.swing.JButton" name="btnSearchStudent">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtFirstName">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFirstNameActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtLastName">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtSsn2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPhoneNbr">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtEmail">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtAdress">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPostCode">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCity">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblFirstName">
+            <Component class="javax.swing.JLabel" name="lblFindStudentFirstName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblLastName">
+            <Component class="javax.swing.JLabel" name="lblFindStudentLastName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Efternamn:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblSsn2">
+            <Component class="javax.swing.JLabel" name="lblFindStudentPersonNbr">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Personnummer:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblPhoneNbr">
+            <Component class="javax.swing.JLabel" name="lblFindStudentPhoneNbr">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Telefonnummer:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblEmail">
+            <Component class="javax.swing.JLabel" name="lblFindStudentEmail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="E-post:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblAdress">
+            <Component class="javax.swing.JTextField" name="txtFindStudentEmail">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentPhoneNbr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentPnr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentLastName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentFirstName">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFindStudentFirstNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentAdress">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentPostCode">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindStudentCity">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnFindStudent">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Adress"/>
+                <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblPostCode">
+            <Component class="javax.swing.JLabel" name="lblFindStudentAdress">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adress:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblFindStudentPostCode">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Postnummer:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCity">
+            <Component class="javax.swing.JLabel" name="lblFindStudentCity">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ort:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnUpdateStudent">
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelViewStudent">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Visa student">
+                <Property name="tabTitle" type="java.lang.String" value="Visa student"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="lblViewStudentFirstName" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentLastName" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentPersonNbr" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentPhoneNbr" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentEmail" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtViewStudentFirstName" max="32767" attributes="0"/>
+                                      <Component id="txtViewStudentLastName" max="32767" attributes="0"/>
+                                      <Component id="txtViewStudentPersonNbr" max="32767" attributes="0"/>
+                                      <Component id="txtViewStudentPhoneNbr" max="32767" attributes="0"/>
+                                      <Component id="txtViewStudentEmail" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="lblViewStudentAdress" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblViewStudentPostCode" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblViewStudentCity" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtViewStudentAdress" max="32767" attributes="0"/>
+                                              <Component id="txtViewStudentPostCode" max="32767" attributes="0"/>
+                                              <Component id="txtViewStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnViewStudentUpdateStudent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnViewStudentDeleteStudent" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="separatorViewStudent" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="scrollPaneViewStudentPassedCourses" alignment="0" min="-2" pref="275" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentPassedCourses" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblViewStudentNonPassedCourses" min="-2" max="-2" attributes="0"/>
+                                      <Component id="scrollPaneViewStudentNonPassedCourses" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="comboBoxViewStudentAddCourse" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnViewStudentUpdateStudent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnViewStudentDeleteStudent" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="txtViewStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblViewStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="separatorViewStudent" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblViewStudentPassedCourses" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentNonPassedCourses" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="scrollPaneViewStudentNonPassedCourses" pref="246" max="32767" attributes="0"/>
+                          <Component id="scrollPaneViewStudentPassedCourses" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="comboBoxViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="txtViewStudentFirstName">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtViewStudentFirstNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentLastName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentPersonNbr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentPhoneNbr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentEmail">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentAdress">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentPostCode">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewStudentCity">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentFirstName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentLastName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Efternamn:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentPersonNbr">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Personnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentPhoneNbr">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefonnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E-post:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentAdress">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adress:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentPostCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Postnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewStudentCity">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ort:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnViewStudentUpdateStudent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uppdatera"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btnDeleteStudent">
+            <Component class="javax.swing.JButton" name="btnViewStudentDeleteStudent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Radera"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator2">
+            <Component class="javax.swing.JSeparator" name="separatorViewStudent">
             </Component>
-            <Container class="javax.swing.JTabbedPane" name="tabCourseInformation">
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-              <SubComponents>
-                <Container class="javax.swing.JPanel" name="panelResults">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Resultat">
-                        <Property name="tabTitle" type="java.lang.String" value="Resultat"/>
-                      </JTabbedPaneConstraints>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblPassedCourses" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblNonPassedCourses" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollPaneNonPassedCourses" alignment="0" pref="505" max="32767" attributes="0"/>
-                                  <Component id="scrollPanePassedCourses" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="155" pref="33" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="lblPassedCourses" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scrollPanePassedCourses" min="-2" pref="75" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="lblNonPassedCourses" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scrollPaneNonPassedCourses" min="-2" pref="73" max="-2" attributes="0"/>
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblPassedCourses">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Godk&#xe4;nda kurser"/>
-                      </Properties>
-                    </Component>
-                    <Container class="javax.swing.JScrollPane" name="scrollPanePassedCourses">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="txtAreaPassedCourses">
-                          <Properties>
-                            <Property name="columns" type="int" value="20"/>
-                            <Property name="rows" type="int" value="5"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                    <Component class="javax.swing.JLabel" name="lblNonPassedCourses">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Ej avslutade kurser"/>
-                      </Properties>
-                    </Component>
-                    <Container class="javax.swing.JScrollPane" name="scrollPaneNonPassedCourses">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="txtNonAreaPassedCourses">
-                          <Properties>
-                            <Property name="columns" type="int" value="20"/>
-                            <Property name="rows" type="int" value="5"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                  </SubComponents>
-                </Container>
-                <Container class="javax.swing.JPanel" name="panelRegistrations">
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Registreringar">
-                        <Property name="tabTitle" type="java.lang.String" value="Registreringar"/>
-                      </JTabbedPaneConstraints>
-                    </Constraint>
-                  </Constraints>
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCourseRegistrations" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollPaneCourseRegistrations" min="-2" pref="505" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="23" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblCourseRegistrations" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="scrollPaneCourseRegistrations" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="102" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                  <SubComponents>
-                    <Component class="javax.swing.JLabel" name="lblCourseRegistrations">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Kursregistreringar"/>
-                      </Properties>
-                    </Component>
-                    <Container class="javax.swing.JScrollPane" name="scrollPaneCourseRegistrations">
-                      <AuxValues>
-                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                      </AuxValues>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                      <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="txtAreaCourseRegistrations">
-                          <Properties>
-                            <Property name="columns" type="int" value="20"/>
-                            <Property name="rows" type="int" value="5"/>
-                          </Properties>
-                        </Component>
-                      </SubComponents>
-                    </Container>
-                  </SubComponents>
-                </Container>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JLabel" name="lblAddCourse">
+            <Component class="javax.swing.JLabel" name="lblViewStudentAddCourse">
               <Properties>
                 <Property name="text" type="java.lang.String" value="L&#xe4;gg till kurs"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="comboBoxAddCourse">
+            <Component class="javax.swing.JComboBox" name="comboBoxViewStudentAddCourse">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -453,229 +439,19 @@
                 </Property>
               </Properties>
             </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="panelManageCourse">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Hantera kurs">
-                <Property name="tabTitle" type="java.lang.String" value="Hantera kurs"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblSearchCourse" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblCourseCode" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblCourseName" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtCourseCode" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtCourseName" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblHighestPassedCourses" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblStudentsWithA" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtStudentsWithA" min="-2" pref="35" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblCourseName2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblCourseCode2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblCredits" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="btnUpdateCourse" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="btnDeleteCourse" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtCourseName2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtCourseCode2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                      <Component id="lblPassedStudents" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblNonPassedStudents" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="scrollPaneNonPassedStudentsPane1" alignment="0" pref="555" max="32767" attributes="0"/>
-                                          <Component id="scrollPanePassedStudents" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="scrollPaneHighestPassedCourses" alignment="0" min="-2" pref="555" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jSeparator3" min="-2" pref="597" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jSeparator4" alignment="0" pref="597" max="32767" attributes="0"/>
-                                      <Component id="jSeparator5" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="lblSearchCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jSeparator3" min="-2" pref="2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCourseName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseName2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCourseCode2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseCode2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnUpdateCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnDeleteCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblPassedStudents" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="scrollPanePassedStudents" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lblNonPassedStudents" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="scrollPaneNonPassedStudentsPane1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="lblHighestPassedCourses" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="scrollPaneHighestPassedCourses" min="-2" pref="66" max="-2" attributes="0"/>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblSearchCourse">
+            <Component class="javax.swing.JLabel" name="lblViewStudentPassedCourses">
               <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf6;k kurs"/>
+                <Property name="text" type="java.lang.String" value="Godk&#xe4;nda kurser:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseName">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ben&#xe4;mning:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseCode">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseCode">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kurskod:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator3">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseName2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCourseCode2">
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtCredits">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseName2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseCode2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kurskod"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblCredits">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="HP"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnUpdateCourse">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Uppdatera"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnDeleteCourse">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Radera"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPassedStudents">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Studenter med avslutad kurs"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="scrollPanePassedStudents">
+            <Container class="javax.swing.JScrollPane" name="scrollPaneViewStudentPassedCourses">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtAreaPassedStudents">
+                <Component class="javax.swing.JTextArea" name="txtViewStudentPassedCourses">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -683,21 +459,19 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JSeparator" name="jSeparator4">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblNonPassedStudents">
+            <Component class="javax.swing.JLabel" name="lblViewStudentNonPassedCourses">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Studenter med ej avslutad kurs"/>
+                <Property name="text" type="java.lang.String" value="Ej avslutade kurser:"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JScrollPane" name="scrollPaneNonPassedStudentsPane1">
+            <Container class="javax.swing.JScrollPane" name="scrollPaneViewStudentNonPassedCourses">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtAreaNonPassedStudents">
+                <Component class="javax.swing.JTextArea" name="txtViewStudentNonAreaPassedCourses">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -705,35 +479,11 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="lblStudentsWithA">
+            <Component class="javax.swing.JButton" name="btnViewStudentAddCourse">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Andel studenter med betyg A (kan beh&#xf6;va d&#xf6;pa om variabel namnet h&#xe4;r en aning):"/>
+                <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtStudentsWithA">
-            </Component>
-            <Component class="javax.swing.JSeparator" name="jSeparator5">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblHighestPassedCourses">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kurser med h&#xf6;gst genomstr&#xf6;mning"/>
-              </Properties>
-            </Component>
-            <Container class="javax.swing.JScrollPane" name="scrollPaneHighestPassedCourses">
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtAreaHighestPassedCourses">
-                  <Properties>
-                    <Property name="columns" type="int" value="20"/>
-                    <Property name="rows" type="int" value="5"/>
-                  </Properties>
-                </Component>
-              </SubComponents>
-            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelRegisterStudent">
@@ -748,166 +498,485 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="panelManageStudent1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblRegisterStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtRegisterStudentFirstName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentLastName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentPersonNbr" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="lblRegisterStudentAdress" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentCity" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtRegisterStudentAdress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentPostCode" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="142" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="panelManageStudent1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="424" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="panelManageStudent1">
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentFirstName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentLastName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Efternamn:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentPersonNbr">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Personnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentPhoneNbr">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Telefonnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentEmail">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="E-post:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentEmail">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentPhoneNbr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentPersonNbr">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentLastName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentFirstName">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegisterStudentFirstNameActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentAdress">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Adress:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentPostCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Postnummer:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRegisterStudentCity">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ort:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentCity">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentPostCode">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtRegisterStudentAdress">
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelFindCourse">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="S&#xf6;k kurs">
+                <Property name="tabTitle" type="java.lang.String" value="S&#xf6;k kurs"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblRegisterNewStudent" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewLastName" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewSsn" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblFindCourseCourseName" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFindCourseCredits" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblFindCourseCourseCode" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnFindCourse" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtFindCourseCourseName" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtFindCourseCourseCode" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtFindCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                                      <Component id="scrollPaneFindCourse" min="-2" pref="579" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNewFirstName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewLastName" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewSsn" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewPhoneNbr" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                              <Component id="separatorFindCourse" min="-2" pref="577" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblNewAdress" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewCity" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNewAdress" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewPostCode" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNewCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="100" max="32767" attributes="0"/>
                       </Group>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
                   </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Component id="lblRegisterNewStudent" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNewFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNewAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNewLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNewPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNewSsn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNewCity" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewSsn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewCity" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNewPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtNewEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblNewEmail" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="498" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFindCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFindCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFindCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnFindCourse" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="separatorFindCourse" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scrollPaneFindCourse" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="269" max="32767" attributes="0"/>
                   </Group>
-                </DimensionLayout>
-              </Layout>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblFindCourseCourseName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindCourseCourseName">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblFindCourseCourseCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kurskod"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindCourseCourseCode">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnFindCourse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S&#xf6;k"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindCourseActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFindCourseCredits">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblFindCourseCredits">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="HP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="separatorFindCourse">
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="scrollPaneFindCourse">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="txtNewFirstName">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewFirstNameActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewLastName">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewSsn">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewPhoneNbr">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewEmail">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewAdress">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewPostCode">
-                </Component>
-                <Component class="javax.swing.JTextField" name="txtNewCity">
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblNewFirstName">
+                <Component class="javax.swing.JList" name="listFindCourse">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="F&#xf6;rnamn:"/>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="5">
+                        <StringItem index="0" value="Item 1"/>
+                        <StringItem index="1" value="Item 2"/>
+                        <StringItem index="2" value="Item 3"/>
+                        <StringItem index="3" value="Item 4"/>
+                        <StringItem index="4" value="Item 5"/>
+                      </StringArray>
+                    </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblNewLastName">
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="panelViewCourse">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Visa kurs">
+                <Property name="tabTitle" type="java.lang.String" value="Visa kurs"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblViewCourseHighestPassedCourses" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="lblViewCourseStudentsWithA" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtViewCourseStudentsWithA" min="-2" pref="35" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lblViewCourseCourseName" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblViewCourseCourseCode" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblViewCourseCredits" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="btnViewCourseUpdateCourse" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="btnViewCourseDeleteCourse" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtViewCourseCourseName" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtViewCourseCourseCode" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtViewCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="lblViewCoursePassedStudents" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblViewCourseNonPassedStudents" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="scrollPaneViewCourseNonPassedStudents" alignment="0" pref="555" max="32767" attributes="0"/>
+                                      <Component id="scrollPaneViewCoursePassedStudents" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="scrollPaneViewCourseHighestPassedCourses" alignment="0" min="-2" pref="555" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="separatorViewCourse1" alignment="0" pref="597" max="32767" attributes="0"/>
+                                  <Component id="separatorViewCourse2" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btnViewCourseUpdateCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnViewCourseDeleteCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="separatorViewCourse1" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblViewCoursePassedStudents" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scrollPaneViewCoursePassedStudents" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lblViewCourseNonPassedStudents" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="scrollPaneViewCourseNonPassedStudents" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblViewCourseStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewCourseStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="separatorViewCourse2" min="-2" pref="10" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Component id="lblViewCourseHighestPassedCourses" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="scrollPaneViewCourseHighestPassedCourses" min="-2" pref="66" max="-2" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="txtViewCourseCourseName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewCourseCourseCode">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewCourseCredits">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCourseCourseName">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCourseCourseCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kurskod"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCourseCredits">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="HP"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnViewCourseUpdateCourse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Uppdatera"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnViewCourseDeleteCourse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Radera"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCoursePassedStudents">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Studenter med avslutad kurs"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="scrollPaneViewCoursePassedStudents">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtAreaViewCoursePassedStudents">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Efternamn:"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblNewSsn">
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JSeparator" name="separatorViewCourse1">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCourseNonPassedStudents">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Studenter med ej avslutad kurs"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="scrollPaneViewCourseNonPassedStudents">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtAreaViewCourseNonPassedStudents">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Personnummer:"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="lblNewPhoneNbr">
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblViewCourseStudentsWithA">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Andel studenter med betyg A (kan beh&#xf6;va d&#xf6;pa om variabel namnet h&#xe4;r en aning):"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtViewCourseStudentsWithA">
+            </Component>
+            <Component class="javax.swing.JSeparator" name="separatorViewCourse2">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblViewCourseHighestPassedCourses">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Kurser med h&#xf6;gst genomstr&#xf6;mning"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="scrollPaneViewCourseHighestPassedCourses">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtViewCourseHighestPassedCourses">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Telefonnummer:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblNewEmail">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="E-post:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblNewAdress">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Adress"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblNewPostCode">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Postnummer:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblNewCity">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Ort:"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblRegisterNewStudent">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Registrera ny student"/>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -917,8 +986,8 @@
         <Container class="javax.swing.JPanel" name="panelRegisterCourse">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Registera kurs">
-                <Property name="tabTitle" type="java.lang.String" value="Registera kurs"/>
+              <JTabbedPaneConstraints tabName="Registrera kurs">
+                <Property name="tabTitle" type="java.lang.String" value="Registrera kurs"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -927,74 +996,66 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblRegisterNewCourse" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNewCourseName" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseCode3" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNewCredits" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseName" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseCode" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseCredits" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtNewCourseName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNewCourseCode" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNewCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="txtRegisterCourseName" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterCourseCode" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRegisterCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="379" max="32767" attributes="0"/>
+                      <EmptySpace pref="491" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Component id="lblRegisterNewCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNewCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNewCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNewCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblCourseCode3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNewCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblNewCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="594" max="32767" attributes="0"/>
+                      <EmptySpace pref="476" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblNewCourseName">
+            <Component class="javax.swing.JLabel" name="lblRegisterCourseName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblCourseCode3">
+            <Component class="javax.swing.JLabel" name="lblRegisterCourseCode">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kurskod"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblNewCredits">
+            <Component class="javax.swing.JLabel" name="lblRegisterCourseCredits">
               <Properties>
                 <Property name="text" type="java.lang.String" value="HP"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNewCredits">
+            <Component class="javax.swing.JTextField" name="txtRegisterCourseCredits">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNewCourseCode">
+            <Component class="javax.swing.JTextField" name="txtRegisterCourseCode">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNewCourseName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblRegisterNewCourse">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registrera ny kurs"/>
-              </Properties>
+            <Component class="javax.swing.JTextField" name="txtRegisterCourseName">
             </Component>
           </SubComponents>
         </Container>

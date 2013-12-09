@@ -36,639 +36,682 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSpinner1 = new javax.swing.JSpinner();
         tabMain = new javax.swing.JTabbedPane();
-        panelManageStudent = new javax.swing.JPanel();
-        lblSearchStudent = new javax.swing.JLabel();
-        txtStudentName = new javax.swing.JTextField();
-        lblStudentName = new javax.swing.JLabel();
-        lblSsn = new javax.swing.JLabel();
-        txtSsn = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        btnSearchStudent = new javax.swing.JButton();
-        txtFirstName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtSsn2 = new javax.swing.JTextField();
-        txtPhoneNbr = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        txtAdress = new javax.swing.JTextField();
-        txtPostCode = new javax.swing.JTextField();
-        txtCity = new javax.swing.JTextField();
-        lblFirstName = new javax.swing.JLabel();
-        lblLastName = new javax.swing.JLabel();
-        lblSsn2 = new javax.swing.JLabel();
-        lblPhoneNbr = new javax.swing.JLabel();
-        lblEmail = new javax.swing.JLabel();
-        lblAdress = new javax.swing.JLabel();
-        lblPostCode = new javax.swing.JLabel();
-        lblCity = new javax.swing.JLabel();
-        BtnUpdateStudent = new javax.swing.JButton();
-        btnDeleteStudent = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
-        tabCourseInformation = new javax.swing.JTabbedPane();
-        panelResults = new javax.swing.JPanel();
-        lblPassedCourses = new javax.swing.JLabel();
-        scrollPanePassedCourses = new javax.swing.JScrollPane();
-        txtAreaPassedCourses = new javax.swing.JTextArea();
-        lblNonPassedCourses = new javax.swing.JLabel();
-        scrollPaneNonPassedCourses = new javax.swing.JScrollPane();
-        txtNonAreaPassedCourses = new javax.swing.JTextArea();
-        panelRegistrations = new javax.swing.JPanel();
-        lblCourseRegistrations = new javax.swing.JLabel();
-        scrollPaneCourseRegistrations = new javax.swing.JScrollPane();
-        txtAreaCourseRegistrations = new javax.swing.JTextArea();
-        lblAddCourse = new javax.swing.JLabel();
-        comboBoxAddCourse = new javax.swing.JComboBox();
-        panelManageCourse = new javax.swing.JPanel();
-        lblSearchCourse = new javax.swing.JLabel();
-        txtCourseName = new javax.swing.JTextField();
-        lblCourseName = new javax.swing.JLabel();
-        txtCourseCode = new javax.swing.JTextField();
-        lblCourseCode = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
-        txtCourseName2 = new javax.swing.JTextField();
-        txtCourseCode2 = new javax.swing.JTextField();
-        txtCredits = new javax.swing.JTextField();
-        lblCourseName2 = new javax.swing.JLabel();
-        lblCourseCode2 = new javax.swing.JLabel();
-        lblCredits = new javax.swing.JLabel();
-        btnUpdateCourse = new javax.swing.JButton();
-        btnDeleteCourse = new javax.swing.JButton();
-        lblPassedStudents = new javax.swing.JLabel();
-        scrollPanePassedStudents = new javax.swing.JScrollPane();
-        txtAreaPassedStudents = new javax.swing.JTextArea();
-        jSeparator4 = new javax.swing.JSeparator();
-        lblNonPassedStudents = new javax.swing.JLabel();
-        scrollPaneNonPassedStudentsPane1 = new javax.swing.JScrollPane();
-        txtAreaNonPassedStudents = new javax.swing.JTextArea();
-        lblStudentsWithA = new javax.swing.JLabel();
-        txtStudentsWithA = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        lblHighestPassedCourses = new javax.swing.JLabel();
-        scrollPaneHighestPassedCourses = new javax.swing.JScrollPane();
-        txtAreaHighestPassedCourses = new javax.swing.JTextArea();
+        panelFindStudent = new javax.swing.JPanel();
+        lblFindStudentFirstName = new javax.swing.JLabel();
+        lblFindStudentLastName = new javax.swing.JLabel();
+        lblFindStudentPersonNbr = new javax.swing.JLabel();
+        lblFindStudentPhoneNbr = new javax.swing.JLabel();
+        lblFindStudentEmail = new javax.swing.JLabel();
+        txtFindStudentEmail = new javax.swing.JTextField();
+        txtFindStudentPhoneNbr = new javax.swing.JTextField();
+        txtFindStudentPnr = new javax.swing.JTextField();
+        txtFindStudentLastName = new javax.swing.JTextField();
+        txtFindStudentFirstName = new javax.swing.JTextField();
+        txtFindStudentAdress = new javax.swing.JTextField();
+        txtFindStudentPostCode = new javax.swing.JTextField();
+        txtFindStudentCity = new javax.swing.JTextField();
+        btnFindStudent = new javax.swing.JButton();
+        lblFindStudentAdress = new javax.swing.JLabel();
+        lblFindStudentPostCode = new javax.swing.JLabel();
+        lblFindStudentCity = new javax.swing.JLabel();
+        panelViewStudent = new javax.swing.JPanel();
+        txtViewStudentFirstName = new javax.swing.JTextField();
+        txtViewStudentLastName = new javax.swing.JTextField();
+        txtViewStudentPersonNbr = new javax.swing.JTextField();
+        txtViewStudentPhoneNbr = new javax.swing.JTextField();
+        txtViewStudentEmail = new javax.swing.JTextField();
+        txtViewStudentAdress = new javax.swing.JTextField();
+        txtViewStudentPostCode = new javax.swing.JTextField();
+        txtViewStudentCity = new javax.swing.JTextField();
+        lblViewStudentFirstName = new javax.swing.JLabel();
+        lblViewStudentLastName = new javax.swing.JLabel();
+        lblViewStudentPersonNbr = new javax.swing.JLabel();
+        lblViewStudentPhoneNbr = new javax.swing.JLabel();
+        lblViewStudentEmail = new javax.swing.JLabel();
+        lblViewStudentAdress = new javax.swing.JLabel();
+        lblViewStudentPostCode = new javax.swing.JLabel();
+        lblViewStudentCity = new javax.swing.JLabel();
+        btnViewStudentUpdateStudent = new javax.swing.JButton();
+        btnViewStudentDeleteStudent = new javax.swing.JButton();
+        separatorViewStudent = new javax.swing.JSeparator();
+        lblViewStudentAddCourse = new javax.swing.JLabel();
+        comboBoxViewStudentAddCourse = new javax.swing.JComboBox();
+        lblViewStudentPassedCourses = new javax.swing.JLabel();
+        scrollPaneViewStudentPassedCourses = new javax.swing.JScrollPane();
+        txtViewStudentPassedCourses = new javax.swing.JTextArea();
+        lblViewStudentNonPassedCourses = new javax.swing.JLabel();
+        scrollPaneViewStudentNonPassedCourses = new javax.swing.JScrollPane();
+        txtViewStudentNonAreaPassedCourses = new javax.swing.JTextArea();
+        btnViewStudentAddCourse = new javax.swing.JButton();
         panelRegisterStudent = new javax.swing.JPanel();
-        panelManageStudent1 = new javax.swing.JPanel();
-        txtNewFirstName = new javax.swing.JTextField();
-        txtNewLastName = new javax.swing.JTextField();
-        txtNewSsn = new javax.swing.JTextField();
-        txtNewPhoneNbr = new javax.swing.JTextField();
-        txtNewEmail = new javax.swing.JTextField();
-        txtNewAdress = new javax.swing.JTextField();
-        txtNewPostCode = new javax.swing.JTextField();
-        txtNewCity = new javax.swing.JTextField();
-        lblNewFirstName = new javax.swing.JLabel();
-        lblNewLastName = new javax.swing.JLabel();
-        lblNewSsn = new javax.swing.JLabel();
-        lblNewPhoneNbr = new javax.swing.JLabel();
-        lblNewEmail = new javax.swing.JLabel();
-        lblNewAdress = new javax.swing.JLabel();
-        lblNewPostCode = new javax.swing.JLabel();
-        lblNewCity = new javax.swing.JLabel();
-        lblRegisterNewStudent = new javax.swing.JLabel();
+        lblRegisterStudentFirstName = new javax.swing.JLabel();
+        lblRegisterStudentLastName = new javax.swing.JLabel();
+        lblRegisterStudentPersonNbr = new javax.swing.JLabel();
+        lblRegisterStudentPhoneNbr = new javax.swing.JLabel();
+        lblRegisterStudentEmail = new javax.swing.JLabel();
+        txtRegisterStudentEmail = new javax.swing.JTextField();
+        txtRegisterStudentPhoneNbr = new javax.swing.JTextField();
+        txtRegisterStudentPersonNbr = new javax.swing.JTextField();
+        txtRegisterStudentLastName = new javax.swing.JTextField();
+        txtRegisterStudentFirstName = new javax.swing.JTextField();
+        lblRegisterStudentAdress = new javax.swing.JLabel();
+        lblRegisterStudentPostCode = new javax.swing.JLabel();
+        lblRegisterStudentCity = new javax.swing.JLabel();
+        txtRegisterStudentCity = new javax.swing.JTextField();
+        txtRegisterStudentPostCode = new javax.swing.JTextField();
+        txtRegisterStudentAdress = new javax.swing.JTextField();
+        panelFindCourse = new javax.swing.JPanel();
+        lblFindCourseCourseName = new javax.swing.JLabel();
+        txtFindCourseCourseName = new javax.swing.JTextField();
+        lblFindCourseCourseCode = new javax.swing.JLabel();
+        txtFindCourseCourseCode = new javax.swing.JTextField();
+        btnFindCourse = new javax.swing.JButton();
+        txtFindCourseCredits = new javax.swing.JTextField();
+        lblFindCourseCredits = new javax.swing.JLabel();
+        separatorFindCourse = new javax.swing.JSeparator();
+        scrollPaneFindCourse = new javax.swing.JScrollPane();
+        listFindCourse = new javax.swing.JList();
+        panelViewCourse = new javax.swing.JPanel();
+        txtViewCourseCourseName = new javax.swing.JTextField();
+        txtViewCourseCourseCode = new javax.swing.JTextField();
+        txtViewCourseCredits = new javax.swing.JTextField();
+        lblViewCourseCourseName = new javax.swing.JLabel();
+        lblViewCourseCourseCode = new javax.swing.JLabel();
+        lblViewCourseCredits = new javax.swing.JLabel();
+        btnViewCourseUpdateCourse = new javax.swing.JButton();
+        btnViewCourseDeleteCourse = new javax.swing.JButton();
+        lblViewCoursePassedStudents = new javax.swing.JLabel();
+        scrollPaneViewCoursePassedStudents = new javax.swing.JScrollPane();
+        txtAreaViewCoursePassedStudents = new javax.swing.JTextArea();
+        separatorViewCourse1 = new javax.swing.JSeparator();
+        lblViewCourseNonPassedStudents = new javax.swing.JLabel();
+        scrollPaneViewCourseNonPassedStudents = new javax.swing.JScrollPane();
+        txtAreaViewCourseNonPassedStudents = new javax.swing.JTextArea();
+        lblViewCourseStudentsWithA = new javax.swing.JLabel();
+        txtViewCourseStudentsWithA = new javax.swing.JTextField();
+        separatorViewCourse2 = new javax.swing.JSeparator();
+        lblViewCourseHighestPassedCourses = new javax.swing.JLabel();
+        scrollPaneViewCourseHighestPassedCourses = new javax.swing.JScrollPane();
+        txtViewCourseHighestPassedCourses = new javax.swing.JTextArea();
         panelRegisterCourse = new javax.swing.JPanel();
-        lblNewCourseName = new javax.swing.JLabel();
-        lblCourseCode3 = new javax.swing.JLabel();
-        lblNewCredits = new javax.swing.JLabel();
-        txtNewCredits = new javax.swing.JTextField();
-        txtNewCourseCode = new javax.swing.JTextField();
-        txtNewCourseName = new javax.swing.JTextField();
-        lblRegisterNewCourse = new javax.swing.JLabel();
+        lblRegisterCourseName = new javax.swing.JLabel();
+        lblRegisterCourseCode = new javax.swing.JLabel();
+        lblRegisterCourseCredits = new javax.swing.JLabel();
+        txtRegisterCourseCredits = new javax.swing.JTextField();
+        txtRegisterCourseCode = new javax.swing.JTextField();
+        txtRegisterCourseName = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblSearchStudent.setText("Sök student");
+        lblFindStudentFirstName.setText("Förnamn:");
 
-        lblStudentName.setText("Namn:");
+        lblFindStudentLastName.setText("Efternamn:");
 
-        lblSsn.setText("Personnummer:");
+        lblFindStudentPersonNbr.setText("Personnummer:");
 
-        btnSearchStudent.setText("Sök");
+        lblFindStudentPhoneNbr.setText("Telefonnummer:");
 
-        txtFirstName.addActionListener(new java.awt.event.ActionListener() {
+        lblFindStudentEmail.setText("E-post:");
+
+        txtFindStudentFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstNameActionPerformed(evt);
+                txtFindStudentFirstNameActionPerformed(evt);
             }
         });
 
-        lblFirstName.setText("Förnamn:");
+        btnFindStudent.setText("Sök");
 
-        lblLastName.setText("Efternamn:");
+        lblFindStudentAdress.setText("Adress:");
 
-        lblSsn2.setText("Personnummer:");
+        lblFindStudentPostCode.setText("Postnummer:");
 
-        lblPhoneNbr.setText("Telefonnummer:");
+        lblFindStudentCity.setText("Ort:");
 
-        lblEmail.setText("E-post:");
-
-        lblAdress.setText("Adress");
-
-        lblPostCode.setText("Postnummer:");
-
-        lblCity.setText("Ort:");
-
-        BtnUpdateStudent.setText("Uppdatera");
-
-        btnDeleteStudent.setText("Radera");
-
-        lblPassedCourses.setText("Godkända kurser");
-
-        txtAreaPassedCourses.setColumns(20);
-        txtAreaPassedCourses.setRows(5);
-        scrollPanePassedCourses.setViewportView(txtAreaPassedCourses);
-
-        lblNonPassedCourses.setText("Ej avslutade kurser");
-
-        txtNonAreaPassedCourses.setColumns(20);
-        txtNonAreaPassedCourses.setRows(5);
-        scrollPaneNonPassedCourses.setViewportView(txtNonAreaPassedCourses);
-
-        javax.swing.GroupLayout panelResultsLayout = new javax.swing.GroupLayout(panelResults);
-        panelResults.setLayout(panelResultsLayout);
-        panelResultsLayout.setHorizontalGroup(
-            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResultsLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblPassedCourses)
-                    .addComponent(lblNonPassedCourses)
-                    .addComponent(scrollPaneNonPassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
-                    .addComponent(scrollPanePassedCourses))
-                .addGap(33, 33, Short.MAX_VALUE))
-        );
-        panelResultsLayout.setVerticalGroup(
-            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResultsLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(lblPassedCourses)
+        javax.swing.GroupLayout panelFindStudentLayout = new javax.swing.GroupLayout(panelFindStudent);
+        panelFindStudent.setLayout(panelFindStudentLayout);
+        panelFindStudentLayout.setHorizontalGroup(
+            panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFindStudentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFindStudentFirstName)
+                    .addComponent(lblFindStudentLastName)
+                    .addComponent(lblFindStudentPersonNbr)
+                    .addComponent(lblFindStudentPhoneNbr)
+                    .addComponent(lblFindStudentEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNonPassedCourses)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneNonPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-
-        tabCourseInformation.addTab("Resultat", panelResults);
-
-        lblCourseRegistrations.setText("Kursregistreringar");
-
-        txtAreaCourseRegistrations.setColumns(20);
-        txtAreaCourseRegistrations.setRows(5);
-        scrollPaneCourseRegistrations.setViewportView(txtAreaCourseRegistrations);
-
-        javax.swing.GroupLayout panelRegistrationsLayout = new javax.swing.GroupLayout(panelRegistrations);
-        panelRegistrations.setLayout(panelRegistrationsLayout);
-        panelRegistrationsLayout.setHorizontalGroup(
-            panelRegistrationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationsLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(panelRegistrationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCourseRegistrations)
-                    .addComponent(scrollPaneCourseRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        panelRegistrationsLayout.setVerticalGroup(
-            panelRegistrationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRegistrationsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCourseRegistrations)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneCourseRegistrations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-
-        tabCourseInformation.addTab("Registreringar", panelRegistrations);
-
-        lblAddCourse.setText("Lägg till kurs");
-
-        comboBoxAddCourse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout panelManageStudentLayout = new javax.swing.GroupLayout(panelManageStudent);
-        panelManageStudent.setLayout(panelManageStudentLayout);
-        panelManageStudentLayout.setHorizontalGroup(
-            panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageStudentLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelManageStudentLayout.createSequentialGroup()
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName)
-                            .addComponent(lblSsn2)
-                            .addComponent(lblPhoneNbr)
-                            .addComponent(lblEmail))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtFindStudentFirstName)
+                    .addComponent(txtFindStudentLastName)
+                    .addComponent(txtFindStudentPnr)
+                    .addComponent(txtFindStudentPhoneNbr)
+                    .addComponent(txtFindStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelFindStudentLayout.createSequentialGroup()
+                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFindStudentAdress)
+                            .addComponent(lblFindStudentPostCode)
+                            .addComponent(lblFindStudentCity))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFirstName)
-                            .addComponent(txtLastName)
-                            .addComponent(txtSsn2)
-                            .addComponent(txtPhoneNbr)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelManageStudentLayout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblAdress)
-                                    .addComponent(lblPostCode)
-                                    .addComponent(lblCity))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAdress)
-                                    .addComponent(txtPostCode)
-                                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelManageStudentLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtnUpdateStudent)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDeleteStudent))))
-                    .addGroup(panelManageStudentLayout.createSequentialGroup()
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSsn)
-                            .addComponent(lblSearchStudent)
-                            .addComponent(lblStudentName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtSsn, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                            .addComponent(txtStudentName))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearchStudent))
-                    .addComponent(jSeparator1)
-                    .addComponent(jSeparator2)
-                    .addComponent(tabCourseInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(panelManageStudentLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(comboBoxAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAddCourse))))
-                .addContainerGap(86, Short.MAX_VALUE))
+                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFindStudentAdress)
+                            .addComponent(txtFindStudentPostCode)
+                            .addComponent(txtFindStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFindStudentLayout.createSequentialGroup()
+                        .addGap(211, 211, 211)
+                        .addComponent(btnFindStudent)
+                        .addGap(61, 61, 61)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
-        panelManageStudentLayout.setVerticalGroup(
-            panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageStudentLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblSearchStudent)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtStudentName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentName)
-                    .addComponent(btnSearchStudent))
+        panelFindStudentLayout.setVerticalGroup(
+            panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFindStudentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFindStudentAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindStudentFirstName)
+                    .addComponent(lblFindStudentAdress))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSsn)
-                    .addComponent(txtSsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFirstName)
-                    .addComponent(lblAdress))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFindStudentPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindStudentLastName)
+                    .addComponent(lblFindStudentPostCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblLastName)
-                    .addComponent(lblPostCode))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindStudentPnr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFindStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindStudentPersonNbr)
+                    .addComponent(lblFindStudentCity))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSsn2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSsn2)
-                    .addComponent(lblCity))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindStudentPhoneNbr))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPhoneNbr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail)
-                    .addComponent(BtnUpdateStudent)
-                    .addComponent(btnDeleteStudent))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabCourseInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblAddCourse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnFindStudent)
+                    .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFindStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFindStudentEmail)))
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
-        tabMain.addTab("Hantera student", panelManageStudent);
+        tabMain.addTab("Sök student", panelFindStudent);
 
-        lblSearchCourse.setText("Sök kurs");
+        txtViewStudentFirstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtViewStudentFirstNameActionPerformed(evt);
+            }
+        });
 
-        lblCourseName.setText("Benämning:");
+        lblViewStudentFirstName.setText("Förnamn:");
 
-        lblCourseCode.setText("Kurskod:");
+        lblViewStudentLastName.setText("Efternamn:");
 
-        jButton1.setText("Sök");
+        lblViewStudentPersonNbr.setText("Personnummer:");
 
-        lblCourseName2.setText("Benämning");
+        lblViewStudentPhoneNbr.setText("Telefonnummer:");
 
-        lblCourseCode2.setText("Kurskod");
+        lblViewStudentEmail.setText("E-post:");
 
-        lblCredits.setText("HP");
+        lblViewStudentAdress.setText("Adress:");
 
-        btnUpdateCourse.setText("Uppdatera");
+        lblViewStudentPostCode.setText("Postnummer:");
 
-        btnDeleteCourse.setText("Radera");
+        lblViewStudentCity.setText("Ort:");
 
-        lblPassedStudents.setText("Studenter med avslutad kurs");
+        btnViewStudentUpdateStudent.setText("Uppdatera");
 
-        txtAreaPassedStudents.setColumns(20);
-        txtAreaPassedStudents.setRows(5);
-        scrollPanePassedStudents.setViewportView(txtAreaPassedStudents);
+        btnViewStudentDeleteStudent.setText("Radera");
 
-        lblNonPassedStudents.setText("Studenter med ej avslutad kurs");
+        lblViewStudentAddCourse.setText("Lägg till kurs");
 
-        txtAreaNonPassedStudents.setColumns(20);
-        txtAreaNonPassedStudents.setRows(5);
-        scrollPaneNonPassedStudentsPane1.setViewportView(txtAreaNonPassedStudents);
+        comboBoxViewStudentAddCourse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        lblStudentsWithA.setText("Andel studenter med betyg A (kan behöva döpa om variabel namnet här en aning):");
+        lblViewStudentPassedCourses.setText("Godkända kurser:");
 
-        lblHighestPassedCourses.setText("Kurser med högst genomströmning");
+        txtViewStudentPassedCourses.setColumns(20);
+        txtViewStudentPassedCourses.setRows(5);
+        scrollPaneViewStudentPassedCourses.setViewportView(txtViewStudentPassedCourses);
 
-        txtAreaHighestPassedCourses.setColumns(20);
-        txtAreaHighestPassedCourses.setRows(5);
-        scrollPaneHighestPassedCourses.setViewportView(txtAreaHighestPassedCourses);
+        lblViewStudentNonPassedCourses.setText("Ej avslutade kurser:");
 
-        javax.swing.GroupLayout panelManageCourseLayout = new javax.swing.GroupLayout(panelManageCourse);
-        panelManageCourse.setLayout(panelManageCourseLayout);
-        panelManageCourseLayout.setHorizontalGroup(
-            panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageCourseLayout.createSequentialGroup()
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelManageCourseLayout.createSequentialGroup()
-                            .addGap(53, 53, 53)
-                            .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblSearchCourse)
-                                .addComponent(lblCourseCode)
-                                .addComponent(lblCourseName))
+        txtViewStudentNonAreaPassedCourses.setColumns(20);
+        txtViewStudentNonAreaPassedCourses.setRows(5);
+        scrollPaneViewStudentNonPassedCourses.setViewportView(txtViewStudentNonAreaPassedCourses);
+
+        btnViewStudentAddCourse.setText("Lägg till");
+
+        javax.swing.GroupLayout panelViewStudentLayout = new javax.swing.GroupLayout(panelViewStudent);
+        panelViewStudent.setLayout(panelViewStudentLayout);
+        panelViewStudentLayout.setHorizontalGroup(
+            panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewStudentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnViewStudentAddCourse)
+                    .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblViewStudentAddCourse)
+                        .addGroup(panelViewStudentLayout.createSequentialGroup()
+                            .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblViewStudentFirstName)
+                                .addComponent(lblViewStudentLastName)
+                                .addComponent(lblViewStudentPersonNbr)
+                                .addComponent(lblViewStudentPhoneNbr)
+                                .addComponent(lblViewStudentEmail))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panelManageCourseLayout.createSequentialGroup()
-                                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtViewStudentFirstName)
+                                .addComponent(txtViewStudentLastName)
+                                .addComponent(txtViewStudentPersonNbr)
+                                .addComponent(txtViewStudentPhoneNbr)
+                                .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(panelViewStudentLayout.createSequentialGroup()
+                                    .addGap(106, 106, 106)
+                                    .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblViewStudentAdress)
+                                        .addComponent(lblViewStudentPostCode)
+                                        .addComponent(lblViewStudentCity))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtViewStudentAdress)
+                                        .addComponent(txtViewStudentPostCode)
+                                        .addComponent(txtViewStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewStudentLayout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnViewStudentUpdateStudent)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jButton1))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelManageCourseLayout.createSequentialGroup()
-                            .addGap(55, 55, 55)
-                            .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblHighestPassedCourses)
-                                .addGroup(panelManageCourseLayout.createSequentialGroup()
-                                    .addComponent(lblStudentsWithA)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelManageCourseLayout.createSequentialGroup()
-                                    .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(lblCourseName2)
-                                        .addComponent(lblCourseCode2)
-                                        .addComponent(lblCredits))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(panelManageCourseLayout.createSequentialGroup()
-                                            .addComponent(btnUpdateCourse)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(btnDeleteCourse))
-                                        .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtCourseName2)
-                                            .addComponent(txtCourseCode2)
-                                            .addComponent(txtCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(lblPassedStudents)
-                                .addComponent(lblNonPassedStudents)
-                                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(scrollPaneNonPassedStudentsPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-                                    .addComponent(scrollPanePassedStudents, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addComponent(scrollPaneHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelManageCourseLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 597, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING)))))
+                                    .addComponent(btnViewStudentDeleteStudent))))
+                        .addComponent(separatorViewStudent)
+                        .addGroup(panelViewStudentLayout.createSequentialGroup()
+                            .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(scrollPaneViewStudentPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblViewStudentPassedCourses))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblViewStudentNonPassedCourses)
+                                .addComponent(scrollPaneViewStudentNonPassedCourses)))
+                        .addComponent(comboBoxViewStudentAddCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        panelViewStudentLayout.setVerticalGroup(
+            panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewStudentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtViewStudentAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewStudentFirstName)
+                    .addComponent(lblViewStudentAdress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtViewStudentPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewStudentLastName)
+                    .addComponent(lblViewStudentPostCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtViewStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewStudentPersonNbr)
+                    .addComponent(lblViewStudentCity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewStudentPhoneNbr))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnViewStudentUpdateStudent)
+                        .addComponent(btnViewStudentDeleteStudent))
+                    .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblViewStudentEmail)))
+                .addGap(18, 18, 18)
+                .addComponent(separatorViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblViewStudentPassedCourses)
+                    .addComponent(lblViewStudentNonPassedCourses))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(scrollPaneViewStudentNonPassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                    .addComponent(scrollPaneViewStudentPassedCourses))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblViewStudentAddCourse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxViewStudentAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnViewStudentAddCourse)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
-        panelManageCourseLayout.setVerticalGroup(
-            panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageCourseLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblSearchCourse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseName)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseName2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseName2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCourseCode2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCredits))
-                .addGap(18, 18, 18)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnUpdateCourse)
-                    .addComponent(btnDeleteCourse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPassedStudents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPanePassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNonPassedStudents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneNonPassedStudentsPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelManageCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStudentsWithA)
-                    .addComponent(txtStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(lblHighestPassedCourses)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPaneHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
 
-        tabMain.addTab("Hantera kurs", panelManageCourse);
+        tabMain.addTab("Visa student", panelViewStudent);
 
-        txtNewFirstName.addActionListener(new java.awt.event.ActionListener() {
+        lblRegisterStudentFirstName.setText("Förnamn:");
+
+        lblRegisterStudentLastName.setText("Efternamn:");
+
+        lblRegisterStudentPersonNbr.setText("Personnummer:");
+
+        lblRegisterStudentPhoneNbr.setText("Telefonnummer:");
+
+        lblRegisterStudentEmail.setText("E-post:");
+
+        txtRegisterStudentFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewFirstNameActionPerformed(evt);
+                txtRegisterStudentFirstNameActionPerformed(evt);
             }
         });
 
-        lblNewFirstName.setText("Förnamn:");
+        lblRegisterStudentAdress.setText("Adress:");
 
-        lblNewLastName.setText("Efternamn:");
+        lblRegisterStudentPostCode.setText("Postnummer:");
 
-        lblNewSsn.setText("Personnummer:");
-
-        lblNewPhoneNbr.setText("Telefonnummer:");
-
-        lblNewEmail.setText("E-post:");
-
-        lblNewAdress.setText("Adress");
-
-        lblNewPostCode.setText("Postnummer:");
-
-        lblNewCity.setText("Ort:");
-
-        lblRegisterNewStudent.setText("Registrera ny student");
-
-        javax.swing.GroupLayout panelManageStudent1Layout = new javax.swing.GroupLayout(panelManageStudent1);
-        panelManageStudent1.setLayout(panelManageStudent1Layout);
-        panelManageStudent1Layout.setHorizontalGroup(
-            panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageStudent1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblRegisterNewStudent)
-                    .addComponent(lblNewFirstName)
-                    .addComponent(lblNewLastName)
-                    .addComponent(lblNewSsn)
-                    .addComponent(lblNewPhoneNbr)
-                    .addComponent(lblNewEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNewFirstName)
-                    .addComponent(txtNewLastName)
-                    .addComponent(txtNewSsn)
-                    .addComponent(txtNewPhoneNbr)
-                    .addComponent(txtNewEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(106, 106, 106)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNewAdress)
-                    .addComponent(lblNewPostCode)
-                    .addComponent(lblNewCity))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNewAdress)
-                    .addComponent(txtNewPostCode)
-                    .addComponent(txtNewCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
-        panelManageStudent1Layout.setVerticalGroup(
-            panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelManageStudent1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(lblRegisterNewStudent)
-                .addGap(18, 18, 18)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewFirstName)
-                    .addComponent(lblNewAdress))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewLastName)
-                    .addComponent(lblNewPostCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewSsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNewCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewSsn)
-                    .addComponent(lblNewCity))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewPhoneNbr))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelManageStudent1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewEmail))
-                .addContainerGap(498, Short.MAX_VALUE))
-        );
+        lblRegisterStudentCity.setText("Ort:");
 
         javax.swing.GroupLayout panelRegisterStudentLayout = new javax.swing.GroupLayout(panelRegisterStudent);
         panelRegisterStudent.setLayout(panelRegisterStudentLayout);
         panelRegisterStudentLayout.setHorizontalGroup(
             panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterStudentLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelManageStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(panelRegisterStudentLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblRegisterStudentFirstName)
+                    .addComponent(lblRegisterStudentLastName)
+                    .addComponent(lblRegisterStudentPersonNbr)
+                    .addComponent(lblRegisterStudentPhoneNbr)
+                    .addComponent(lblRegisterStudentEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRegisterStudentFirstName)
+                    .addComponent(txtRegisterStudentLastName)
+                    .addComponent(txtRegisterStudentPersonNbr)
+                    .addComponent(txtRegisterStudentPhoneNbr)
+                    .addComponent(txtRegisterStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(106, 106, 106)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblRegisterStudentAdress)
+                    .addComponent(lblRegisterStudentPostCode)
+                    .addComponent(lblRegisterStudentCity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtRegisterStudentAdress)
+                    .addComponent(txtRegisterStudentPostCode)
+                    .addComponent(txtRegisterStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         panelRegisterStudentLayout.setVerticalGroup(
             panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterStudentLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelManageStudent1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRegisterStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRegisterStudentAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterStudentFirstName)
+                    .addComponent(lblRegisterStudentAdress))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRegisterStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRegisterStudentPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterStudentLastName)
+                    .addComponent(lblRegisterStudentPostCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRegisterStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRegisterStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterStudentPersonNbr)
+                    .addComponent(lblRegisterStudentCity))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRegisterStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterStudentPhoneNbr))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtRegisterStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterStudentEmail))
+                .addContainerGap(424, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Registrera student", panelRegisterStudent);
 
-        lblNewCourseName.setText("Benämning");
+        lblFindCourseCourseName.setText("Benämning");
 
-        lblCourseCode3.setText("Kurskod");
+        lblFindCourseCourseCode.setText("Kurskod");
 
-        lblNewCredits.setText("HP");
+        btnFindCourse.setText("Sök");
+        btnFindCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFindCourseActionPerformed(evt);
+            }
+        });
 
-        lblRegisterNewCourse.setText("Registrera ny kurs");
+        lblFindCourseCredits.setText("HP");
+
+        listFindCourse.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        scrollPaneFindCourse.setViewportView(listFindCourse);
+
+        javax.swing.GroupLayout panelFindCourseLayout = new javax.swing.GroupLayout(panelFindCourse);
+        panelFindCourse.setLayout(panelFindCourseLayout);
+        panelFindCourseLayout.setHorizontalGroup(
+            panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFindCourseLayout.createSequentialGroup()
+                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFindCourseLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFindCourseLayout.createSequentialGroup()
+                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFindCourseCourseName)
+                                    .addComponent(lblFindCourseCredits)
+                                    .addComponent(lblFindCourseCourseCode))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnFindCourse)
+                                    .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtFindCourseCourseName)
+                                        .addComponent(txtFindCourseCourseCode)
+                                        .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(panelFindCourseLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panelFindCourseLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
+        panelFindCourseLayout.setVerticalGroup(
+            panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFindCourseLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindCourseCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindCourseCourseName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindCourseCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindCourseCourseCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindCourseCredits))
+                .addGap(18, 18, 18)
+                .addComponent(btnFindCourse)
+                .addGap(18, 18, 18)
+                .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(269, Short.MAX_VALUE))
+        );
+
+        tabMain.addTab("Sök kurs", panelFindCourse);
+
+        lblViewCourseCourseName.setText("Benämning");
+
+        lblViewCourseCourseCode.setText("Kurskod");
+
+        lblViewCourseCredits.setText("HP");
+
+        btnViewCourseUpdateCourse.setText("Uppdatera");
+
+        btnViewCourseDeleteCourse.setText("Radera");
+
+        lblViewCoursePassedStudents.setText("Studenter med avslutad kurs");
+
+        txtAreaViewCoursePassedStudents.setColumns(20);
+        txtAreaViewCoursePassedStudents.setRows(5);
+        scrollPaneViewCoursePassedStudents.setViewportView(txtAreaViewCoursePassedStudents);
+
+        lblViewCourseNonPassedStudents.setText("Studenter med ej avslutad kurs");
+
+        txtAreaViewCourseNonPassedStudents.setColumns(20);
+        txtAreaViewCourseNonPassedStudents.setRows(5);
+        scrollPaneViewCourseNonPassedStudents.setViewportView(txtAreaViewCourseNonPassedStudents);
+
+        lblViewCourseStudentsWithA.setText("Andel studenter med betyg A (kan behöva döpa om variabel namnet här en aning):");
+
+        lblViewCourseHighestPassedCourses.setText("Kurser med högst genomströmning");
+
+        txtViewCourseHighestPassedCourses.setColumns(20);
+        txtViewCourseHighestPassedCourses.setRows(5);
+        scrollPaneViewCourseHighestPassedCourses.setViewportView(txtViewCourseHighestPassedCourses);
+
+        javax.swing.GroupLayout panelViewCourseLayout = new javax.swing.GroupLayout(panelViewCourse);
+        panelViewCourse.setLayout(panelViewCourseLayout);
+        panelViewCourseLayout.setHorizontalGroup(
+            panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewCourseLayout.createSequentialGroup()
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewCourseLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblViewCourseHighestPassedCourses)
+                            .addGroup(panelViewCourseLayout.createSequentialGroup()
+                                .addComponent(lblViewCourseStudentsWithA)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelViewCourseLayout.createSequentialGroup()
+                                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblViewCourseCourseName)
+                                    .addComponent(lblViewCourseCourseCode)
+                                    .addComponent(lblViewCourseCredits))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelViewCourseLayout.createSequentialGroup()
+                                        .addComponent(btnViewCourseUpdateCourse)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnViewCourseDeleteCourse))
+                                    .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtViewCourseCourseName)
+                                        .addComponent(txtViewCourseCourseCode)
+                                        .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblViewCoursePassedStudents)
+                            .addComponent(lblViewCourseNonPassedStudents)
+                            .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(scrollPaneViewCourseNonPassedStudents, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                                .addComponent(scrollPaneViewCoursePassedStudents, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewCourseLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(separatorViewCourse1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                            .addComponent(separatorViewCourse2, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(81, Short.MAX_VALUE))
+        );
+        panelViewCourseLayout.setVerticalGroup(
+            panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelViewCourseLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewCourseCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseCourseName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewCourseCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseCourseCode))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseCredits))
+                .addGap(18, 18, 18)
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnViewCourseUpdateCourse)
+                    .addComponent(btnViewCourseDeleteCourse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(separatorViewCourse1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblViewCoursePassedStudents)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneViewCoursePassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblViewCourseNonPassedStudents)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPaneViewCourseNonPassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblViewCourseStudentsWithA)
+                    .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(separatorViewCourse2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(lblViewCourseHighestPassedCourses)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+
+        tabMain.addTab("Visa kurs", panelViewCourse);
+
+        lblRegisterCourseName.setText("Benämning");
+
+        lblRegisterCourseCode.setText("Kurskod");
+
+        lblRegisterCourseCredits.setText("HP");
 
         javax.swing.GroupLayout panelRegisterCourseLayout = new javax.swing.GroupLayout(panelRegisterCourse);
         panelRegisterCourse.setLayout(panelRegisterCourseLayout);
         panelRegisterCourseLayout.setHorizontalGroup(
             panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegisterCourseLayout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(20, 20, 20)
                 .addGroup(panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblRegisterNewCourse)
-                    .addComponent(lblNewCourseName)
-                    .addComponent(lblCourseCode3)
-                    .addComponent(lblNewCredits))
+                    .addComponent(lblRegisterCourseName)
+                    .addComponent(lblRegisterCourseCode)
+                    .addComponent(lblRegisterCourseCredits))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNewCourseName)
-                    .addComponent(txtNewCourseCode)
-                    .addComponent(txtNewCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(379, Short.MAX_VALUE))
+                    .addComponent(txtRegisterCourseName)
+                    .addComponent(txtRegisterCourseCode)
+                    .addComponent(txtRegisterCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(491, Short.MAX_VALUE))
         );
         panelRegisterCourseLayout.setVerticalGroup(
             panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRegisterCourseLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lblRegisterNewCourse)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewCourseName))
+                    .addComponent(txtRegisterCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterCourseName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourseCode3))
+                    .addComponent(txtRegisterCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterCourseCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNewCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNewCredits))
-                .addContainerGap(594, Short.MAX_VALUE))
+                    .addComponent(txtRegisterCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegisterCourseCredits))
+                .addContainerGap(476, Short.MAX_VALUE))
         );
 
-        tabMain.addTab("Registera kurs", panelRegisterCourse);
+        tabMain.addTab("Registrera kurs", panelRegisterCourse);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -690,13 +733,21 @@ public class MainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
+    private void txtViewStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewStudentFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameActionPerformed
+    }//GEN-LAST:event_txtViewStudentFirstNameActionPerformed
 
-    private void txtNewFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewFirstNameActionPerformed
+    private void txtRegisterStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegisterStudentFirstNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewFirstNameActionPerformed
+    }//GEN-LAST:event_txtRegisterStudentFirstNameActionPerformed
+
+    private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFindCourseActionPerformed
+
+    private void txtFindStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindStudentFirstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindStudentFirstNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -704,103 +755,111 @@ public class MainView extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnUpdateStudent;
-    private javax.swing.JButton btnDeleteCourse;
-    private javax.swing.JButton btnDeleteStudent;
-    private javax.swing.JButton btnSearchStudent;
-    private javax.swing.JButton btnUpdateCourse;
-    private javax.swing.JComboBox comboBoxAddCourse;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JLabel lblAddCourse;
-    private javax.swing.JLabel lblAdress;
-    private javax.swing.JLabel lblCity;
-    private javax.swing.JLabel lblCourseCode;
-    private javax.swing.JLabel lblCourseCode2;
-    private javax.swing.JLabel lblCourseCode3;
-    private javax.swing.JLabel lblCourseName;
-    private javax.swing.JLabel lblCourseName2;
-    private javax.swing.JLabel lblCourseRegistrations;
-    private javax.swing.JLabel lblCredits;
-    private javax.swing.JLabel lblEmail;
-    private javax.swing.JLabel lblFirstName;
-    private javax.swing.JLabel lblHighestPassedCourses;
-    private javax.swing.JLabel lblLastName;
-    private javax.swing.JLabel lblNewAdress;
-    private javax.swing.JLabel lblNewCity;
-    private javax.swing.JLabel lblNewCourseName;
-    private javax.swing.JLabel lblNewCredits;
-    private javax.swing.JLabel lblNewEmail;
-    private javax.swing.JLabel lblNewFirstName;
-    private javax.swing.JLabel lblNewLastName;
-    private javax.swing.JLabel lblNewPhoneNbr;
-    private javax.swing.JLabel lblNewPostCode;
-    private javax.swing.JLabel lblNewSsn;
-    private javax.swing.JLabel lblNonPassedCourses;
-    private javax.swing.JLabel lblNonPassedStudents;
-    private javax.swing.JLabel lblPassedCourses;
-    private javax.swing.JLabel lblPassedStudents;
-    private javax.swing.JLabel lblPhoneNbr;
-    private javax.swing.JLabel lblPostCode;
-    private javax.swing.JLabel lblRegisterNewCourse;
-    private javax.swing.JLabel lblRegisterNewStudent;
-    private javax.swing.JLabel lblSearchCourse;
-    private javax.swing.JLabel lblSearchStudent;
-    private javax.swing.JLabel lblSsn;
-    private javax.swing.JLabel lblSsn2;
-    private javax.swing.JLabel lblStudentName;
-    private javax.swing.JLabel lblStudentsWithA;
-    private javax.swing.JPanel panelManageCourse;
-    private javax.swing.JPanel panelManageStudent;
-    private javax.swing.JPanel panelManageStudent1;
+    private javax.swing.JButton btnFindCourse;
+    private javax.swing.JButton btnFindStudent;
+    private javax.swing.JButton btnViewCourseDeleteCourse;
+    private javax.swing.JButton btnViewCourseUpdateCourse;
+    private javax.swing.JButton btnViewStudentAddCourse;
+    private javax.swing.JButton btnViewStudentDeleteStudent;
+    private javax.swing.JButton btnViewStudentUpdateStudent;
+    private javax.swing.JComboBox comboBoxViewStudentAddCourse;
+    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lblFindCourseCourseCode;
+    private javax.swing.JLabel lblFindCourseCourseName;
+    private javax.swing.JLabel lblFindCourseCredits;
+    private javax.swing.JLabel lblFindStudentAdress;
+    private javax.swing.JLabel lblFindStudentCity;
+    private javax.swing.JLabel lblFindStudentEmail;
+    private javax.swing.JLabel lblFindStudentFirstName;
+    private javax.swing.JLabel lblFindStudentLastName;
+    private javax.swing.JLabel lblFindStudentPersonNbr;
+    private javax.swing.JLabel lblFindStudentPhoneNbr;
+    private javax.swing.JLabel lblFindStudentPostCode;
+    private javax.swing.JLabel lblRegisterCourseCode;
+    private javax.swing.JLabel lblRegisterCourseCredits;
+    private javax.swing.JLabel lblRegisterCourseName;
+    private javax.swing.JLabel lblRegisterStudentAdress;
+    private javax.swing.JLabel lblRegisterStudentCity;
+    private javax.swing.JLabel lblRegisterStudentEmail;
+    private javax.swing.JLabel lblRegisterStudentFirstName;
+    private javax.swing.JLabel lblRegisterStudentLastName;
+    private javax.swing.JLabel lblRegisterStudentPersonNbr;
+    private javax.swing.JLabel lblRegisterStudentPhoneNbr;
+    private javax.swing.JLabel lblRegisterStudentPostCode;
+    private javax.swing.JLabel lblViewCourseCourseCode;
+    private javax.swing.JLabel lblViewCourseCourseName;
+    private javax.swing.JLabel lblViewCourseCredits;
+    private javax.swing.JLabel lblViewCourseHighestPassedCourses;
+    private javax.swing.JLabel lblViewCourseNonPassedStudents;
+    private javax.swing.JLabel lblViewCoursePassedStudents;
+    private javax.swing.JLabel lblViewCourseStudentsWithA;
+    private javax.swing.JLabel lblViewStudentAddCourse;
+    private javax.swing.JLabel lblViewStudentAdress;
+    private javax.swing.JLabel lblViewStudentCity;
+    private javax.swing.JLabel lblViewStudentEmail;
+    private javax.swing.JLabel lblViewStudentFirstName;
+    private javax.swing.JLabel lblViewStudentLastName;
+    private javax.swing.JLabel lblViewStudentNonPassedCourses;
+    private javax.swing.JLabel lblViewStudentPassedCourses;
+    private javax.swing.JLabel lblViewStudentPersonNbr;
+    private javax.swing.JLabel lblViewStudentPhoneNbr;
+    private javax.swing.JLabel lblViewStudentPostCode;
+    private javax.swing.JList listFindCourse;
+    private javax.swing.JPanel panelFindCourse;
+    private javax.swing.JPanel panelFindStudent;
     private javax.swing.JPanel panelRegisterCourse;
     private javax.swing.JPanel panelRegisterStudent;
-    private javax.swing.JPanel panelRegistrations;
-    private javax.swing.JPanel panelResults;
-    private javax.swing.JScrollPane scrollPaneCourseRegistrations;
-    private javax.swing.JScrollPane scrollPaneHighestPassedCourses;
-    private javax.swing.JScrollPane scrollPaneNonPassedCourses;
-    private javax.swing.JScrollPane scrollPaneNonPassedStudentsPane1;
-    private javax.swing.JScrollPane scrollPanePassedCourses;
-    private javax.swing.JScrollPane scrollPanePassedStudents;
-    private javax.swing.JTabbedPane tabCourseInformation;
+    private javax.swing.JPanel panelViewCourse;
+    private javax.swing.JPanel panelViewStudent;
+    private javax.swing.JScrollPane scrollPaneFindCourse;
+    private javax.swing.JScrollPane scrollPaneViewCourseHighestPassedCourses;
+    private javax.swing.JScrollPane scrollPaneViewCourseNonPassedStudents;
+    private javax.swing.JScrollPane scrollPaneViewCoursePassedStudents;
+    private javax.swing.JScrollPane scrollPaneViewStudentNonPassedCourses;
+    private javax.swing.JScrollPane scrollPaneViewStudentPassedCourses;
+    private javax.swing.JSeparator separatorFindCourse;
+    private javax.swing.JSeparator separatorViewCourse1;
+    private javax.swing.JSeparator separatorViewCourse2;
+    private javax.swing.JSeparator separatorViewStudent;
     private javax.swing.JTabbedPane tabMain;
-    private javax.swing.JTextField txtAdress;
-    private javax.swing.JTextArea txtAreaCourseRegistrations;
-    private javax.swing.JTextArea txtAreaHighestPassedCourses;
-    private javax.swing.JTextArea txtAreaNonPassedStudents;
-    private javax.swing.JTextArea txtAreaPassedCourses;
-    private javax.swing.JTextArea txtAreaPassedStudents;
-    private javax.swing.JTextField txtCity;
-    private javax.swing.JTextField txtCourseCode;
-    private javax.swing.JTextField txtCourseCode2;
-    private javax.swing.JTextField txtCourseName;
-    private javax.swing.JTextField txtCourseName2;
-    private javax.swing.JTextField txtCredits;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtNewAdress;
-    private javax.swing.JTextField txtNewCity;
-    private javax.swing.JTextField txtNewCourseCode;
-    private javax.swing.JTextField txtNewCourseName;
-    private javax.swing.JTextField txtNewCredits;
-    private javax.swing.JTextField txtNewEmail;
-    private javax.swing.JTextField txtNewFirstName;
-    private javax.swing.JTextField txtNewLastName;
-    private javax.swing.JTextField txtNewPhoneNbr;
-    private javax.swing.JTextField txtNewPostCode;
-    private javax.swing.JTextField txtNewSsn;
-    private javax.swing.JTextArea txtNonAreaPassedCourses;
-    private javax.swing.JTextField txtPhoneNbr;
-    private javax.swing.JTextField txtPostCode;
-    private javax.swing.JTextField txtSsn;
-    private javax.swing.JTextField txtSsn2;
-    private javax.swing.JTextField txtStudentName;
-    private javax.swing.JTextField txtStudentsWithA;
+    private javax.swing.JTextArea txtAreaViewCourseNonPassedStudents;
+    private javax.swing.JTextArea txtAreaViewCoursePassedStudents;
+    private javax.swing.JTextField txtFindCourseCourseCode;
+    private javax.swing.JTextField txtFindCourseCourseName;
+    private javax.swing.JTextField txtFindCourseCredits;
+    private javax.swing.JTextField txtFindStudentAdress;
+    private javax.swing.JTextField txtFindStudentCity;
+    private javax.swing.JTextField txtFindStudentEmail;
+    private javax.swing.JTextField txtFindStudentFirstName;
+    private javax.swing.JTextField txtFindStudentLastName;
+    private javax.swing.JTextField txtFindStudentPhoneNbr;
+    private javax.swing.JTextField txtFindStudentPnr;
+    private javax.swing.JTextField txtFindStudentPostCode;
+    private javax.swing.JTextField txtRegisterCourseCode;
+    private javax.swing.JTextField txtRegisterCourseCredits;
+    private javax.swing.JTextField txtRegisterCourseName;
+    private javax.swing.JTextField txtRegisterStudentAdress;
+    private javax.swing.JTextField txtRegisterStudentCity;
+    private javax.swing.JTextField txtRegisterStudentEmail;
+    private javax.swing.JTextField txtRegisterStudentFirstName;
+    private javax.swing.JTextField txtRegisterStudentLastName;
+    private javax.swing.JTextField txtRegisterStudentPersonNbr;
+    private javax.swing.JTextField txtRegisterStudentPhoneNbr;
+    private javax.swing.JTextField txtRegisterStudentPostCode;
+    private javax.swing.JTextField txtViewCourseCourseCode;
+    private javax.swing.JTextField txtViewCourseCourseName;
+    private javax.swing.JTextField txtViewCourseCredits;
+    private javax.swing.JTextArea txtViewCourseHighestPassedCourses;
+    private javax.swing.JTextField txtViewCourseStudentsWithA;
+    private javax.swing.JTextField txtViewStudentAdress;
+    private javax.swing.JTextField txtViewStudentCity;
+    private javax.swing.JTextField txtViewStudentEmail;
+    private javax.swing.JTextField txtViewStudentFirstName;
+    private javax.swing.JTextField txtViewStudentLastName;
+    private javax.swing.JTextArea txtViewStudentNonAreaPassedCourses;
+    private javax.swing.JTextArea txtViewStudentPassedCourses;
+    private javax.swing.JTextField txtViewStudentPersonNbr;
+    private javax.swing.JTextField txtViewStudentPhoneNbr;
+    private javax.swing.JTextField txtViewStudentPostCode;
     // End of variables declaration//GEN-END:variables
 }
