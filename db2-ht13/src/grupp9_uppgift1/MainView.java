@@ -965,8 +965,11 @@ public class MainView extends javax.swing.JFrame {
 
 
         if (controller.checkIfStudentExists(studentData[0]) == true) {
-
-            this.controller.updateStudent(studentData);
+            try {
+                this.controller.updateStudent(studentData);
+            } catch (SQLException ex) {
+                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         } else {
 
