@@ -44,7 +44,7 @@ public class DataAccessLayer {
     }
 
     void updateStudent(String[] studentData) throws SQLException {
-        String sqlStringUpdate = "UPDATE student SET";
+        String sqlString = "UPDATE student SET";
         sqlString += "pnr =" + studentData[0];
         sqlString += "firstname =" + studentData[1];
         sqlString += "lastname =" + studentData[2];
