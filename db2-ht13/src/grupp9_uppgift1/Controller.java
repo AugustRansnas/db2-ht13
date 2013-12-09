@@ -28,10 +28,38 @@ public class Controller {
 
     protected void registerNewStudent(String[] studentData) throws SQLException {
 
-        System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " " +
-        studentData[2]);
-        
+        System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " "
+                + studentData[2]);
+
         this.dataAccessLayer.registerNewStudent(studentData);
 
+    }
+
+    void updateStudent(String[] studentData) {
+        
+        this.dataAccessLayer.updateStudent(studentData);
+        
+    }
+
+    void deleteStudent(String personNbr) {
+        
+        this.dataAccessLayer.deleteStudent(personNbr);
+        
+    }
+
+    void registerNewCourse(String[] courseData) {     
+        
+        this.dataAccessLayer.registerNewCourse(courseData);
+    }
+
+    void updateCourse(String[] courseData) {
+        
+        this.dataAccessLayer.updateCourse(courseData);
+        
+    }
+
+    void deleteCourse(String courseCode) {
+        
+        this.dataAccessLayer.deleteCourse(courseCode);
     }
 }
