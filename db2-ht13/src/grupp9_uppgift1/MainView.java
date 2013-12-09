@@ -8,6 +8,7 @@ package grupp9_uppgift1;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -840,6 +841,8 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
 
+
+
         String[] studentData = new String[8];
 
         studentData[0] = this.txtRegisterStudentPersonNbr.getText();
@@ -850,14 +853,28 @@ public class MainView extends javax.swing.JFrame {
         studentData[5] = this.txtRegisterStudentAdress.getText();
         studentData[6] = this.txtRegisterStudentPostCode.getText();
         studentData[7] = this.txtRegisterStudentCity.getText();
-        
-        try {
-            this.controller.registerNewStudent(studentData);
-        } catch (SQLException ex) {
-            
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-            
+
+        if (controller.checkIfStudentExists(studentData[0]) == true) {
+
+            try {
+
+                this.controller.registerNewStudent(studentData);
+
+            } catch (SQLException ex) {
+
+                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                    "Kan inte registrera student",
+                    JOptionPane.ERROR_MESSAGE);
+
+
         }
+
 
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
 
@@ -872,9 +889,20 @@ public class MainView extends javax.swing.JFrame {
         courseData[0] = this.txtRegisterCourseCode.getText();
         courseData[1] = this.txtRegisterCourseName.getText();
         courseData[2] = this.txtRegisterCourseCredits.getText();
-        
-        this.controller.registerNewCourse(courseData);
-        
+
+        if (controller.checkIfCourseExists(courseData[0]) == false) {
+
+            this.controller.registerNewCourse(courseData);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                    "Kan inte skapa kurs.",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
 
     private void btnViewCourseUpdateCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseUpdateCourseActionPerformed
@@ -884,17 +912,41 @@ public class MainView extends javax.swing.JFrame {
         courseData[0] = this.txtViewCourseCode.getText();
         courseData[1] = this.txtViewCourseName.getText();
         courseData[2] = this.txtViewCourseCredits.getText();
-        
-        this.controller.updateCourse(courseData);
-        
+
+        if (controller.checkIfCourseExists(courseData[0]) == true) {
+
+            this.controller.updateCourse(courseData);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Kurs existerar inte. Kurskod " + courseData[0] + " finns inte i databasen.",
+                    "Kan inte updatera kurs.",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_btnViewCourseUpdateCourseActionPerformed
 
     private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
 
         String courseCode = this.txtViewCourseCode.getText();
         
-        this.controller.deleteCourse(courseCode);
-        
+       if (controller.checkIfCourseExists(courseCode) == true) {
+
+                 this.controller.deleteCourse(courseCode);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                    "Kan inte radera kurs.",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
+     
+
     }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
 
     private void btnViewStudentUpdateStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentUpdateStudentActionPerformed
@@ -903,16 +955,29 @@ public class MainView extends javax.swing.JFrame {
 
         studentData[0] = this.txtViewStudentPersonNbr.getText();
         studentData[1] = this.txtViewStudentFirstName.getText();
-        studentData[2] = this.txtViewStudentLastName .getText();
-        studentData[3] = this.txtViewStudentPhoneNbr .getText();
+        studentData[2] = this.txtViewStudentLastName.getText();
+        studentData[3] = this.txtViewStudentPhoneNbr.getText();
         studentData[4] = this.txtViewStudentEmail.getText();
         studentData[5] = this.txtViewStudentAdress.getText();
         studentData[6] = this.txtViewStudentPostCode.getText();
         studentData[7] = this.txtViewStudentCity.getText();
-        
-        this.controller.updateStudent(studentData);
-        
-        
+
+
+
+        if (controller.checkIfStudentExists(studentData[0]) == true) {
+
+            this.controller.updateStudent(studentData);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
+                    "Kan inte updatera student.",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnViewStudentUpdateStudentActionPerformed
 
@@ -920,8 +985,21 @@ public class MainView extends javax.swing.JFrame {
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
         
-        this.controller.deleteStudent(personNbr);
-        
+        if (controller.checkIfStudentExists(personNbr) == true) {
+
+                 this.controller.deleteStudent(personNbr);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
+                    "Kan inte radera student.",
+                    JOptionPane.ERROR_MESSAGE);
+
+        }
+
+
+
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
     /**
      * @param args the command line arguments

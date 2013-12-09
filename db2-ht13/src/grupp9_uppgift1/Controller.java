@@ -61,4 +61,16 @@ public class Controller {
         
         this.dataAccessLayer.deleteCourse(courseCode);
     }
+
+    boolean checkIfStudentExists(String string) {
+        
+        return true;
+        
+    }
+
+    boolean checkIfCourseExists(String string) {
+ 
+        return true;
+        
+    }
 }
