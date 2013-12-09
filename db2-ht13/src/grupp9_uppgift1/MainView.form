@@ -405,6 +405,9 @@
             <Component class="javax.swing.JTextField" name="txtViewStudentLastName">
             </Component>
             <Component class="javax.swing.JTextField" name="txtViewStudentPersonNbr">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtViewStudentPhoneNbr">
             </Component>
@@ -460,11 +463,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uppdatera"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewStudentUpdateStudentActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewStudentDeleteStudent">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Radera"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewStudentDeleteStudentActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="separatorViewStudent">
             </Component>
@@ -865,9 +874,9 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblViewCourseCourseName" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblViewCourseCourseCode" min="-2" max="-2" attributes="0"/>
                                           <Component id="lblViewCourseCredits" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblViewCourseCourseName" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -877,10 +886,10 @@
                                               <Component id="btnViewCourseDeleteCourse" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtViewCourseCourseName" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtViewCourseCourseCode" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtViewCourseName" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtViewCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="txtViewCourseCode" min="-2" pref="150" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="lblViewCoursePassedStudents" min="-2" max="-2" attributes="0"/>
@@ -909,13 +918,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtViewCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtViewCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -954,9 +963,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="txtViewCourseCourseName">
+            <Component class="javax.swing.JTextField" name="txtViewCourseName">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtViewCourseCourseCode">
+            <Component class="javax.swing.JTextField" name="txtViewCourseCode">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtViewCourseCredits">
             </Component>
@@ -979,11 +991,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Uppdatera"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewCourseUpdateCourseActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewCourseDeleteCourse">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Radera"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewCourseDeleteCourseActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblViewCoursePassedStudents">
               <Properties>
@@ -1141,6 +1159,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Spara"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterCourseSaveActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

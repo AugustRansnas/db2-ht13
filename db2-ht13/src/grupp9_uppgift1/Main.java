@@ -33,11 +33,11 @@ public class Main {
             
         }
 
-        Connection connection = DriverManager.getConnection("JDBC:ODBC:grupp9;database=StudentSystem;");
+        Connection connection = DriverManager.getConnection("JDBC:ODBC:grupp9;database=studentsystem;");
         
-        DatabaseMetaData md = connection.getMetaData();
+        DatabaseMetaData dbmd = connection.getMetaData();
         
-        System.out.println(md.getDatabaseProductName());
+        System.out.println("Connected to: " + dbmd.getDatabaseProductName());
         
         DataAccessLayer dataAccessLayer = new DataAccessLayer(connection);
         
