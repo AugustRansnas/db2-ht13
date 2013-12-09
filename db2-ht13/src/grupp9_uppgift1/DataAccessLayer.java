@@ -7,6 +7,8 @@
 
 package grupp9_uppgift1;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Joel
@@ -42,6 +44,32 @@ public class DataAccessLayer {
         sqlString += ")";
         executeUpdate(sqlString);
     }
+    
+    public boolean checkIfStudentExists(String pnr){
+        
+        Boolean resultBoolean;
+        try {
+            
+            String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
+            Statement stmt = connection.createStatement();
+            ResultSet rset = stmt.executeQuery(sqlString);
+            
+            if(rset.next()){
+            resultBoolean = true;
+            System.out.println("studenten " + pnr + " finns redan");
+            }else{
+            resultBoolean = false;
+            System.out.println("Studenten " + pnr + " finns ej");
+            }
+        
+        return resultBoolean;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return false;
+    }
+    
+            
 
     void updateStudent(String[] studentData) throws SQLException {
         String sqlString = "UPDATE student SET";
