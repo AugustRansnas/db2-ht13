@@ -4,12 +4,20 @@
  * and open the template in the editor.
  */
 
-package grupp9_uppgift1;
 
+package grupp9_uppgift1;
+import java.sql.*;
 /**
  *
  * @author Joel
  */
 public class DataAccessLayer {
+    
+    Connection connection;
+    
+    DataAccessLayer(Connection connection){
+        this.connection = connection;
+    }
+    
     
 }
