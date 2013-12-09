@@ -6,9 +6,10 @@
 package grupp9_uppgift1;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**/
 /**
  *
  * @author Viktor Voigt
@@ -32,7 +33,11 @@ public class Main {
             
         }
 
-        Connection connection = DriverManager.getConnection("JDBC:ODBC:grupp9;database=patientsystem;");
+        Connection connection = DriverManager.getConnection("JDBC:ODBC:grupp9;database=StudentSystem;");
+        
+        DatabaseMetaData md = connection.getMetaData();
+        
+        System.out.println(md.getDatabaseProductName());
         
         DataAccessLayer dataAccessLayer = new DataAccessLayer(connection);
         

@@ -6,6 +6,7 @@
 package grupp9_uppgift1;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Controller {
 
     }
 
-    protected void registerNewStudent(String[] studentData) {
+    protected void registerNewStudent(String[] studentData) throws SQLException {
 
         System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " " +
         studentData[2]);

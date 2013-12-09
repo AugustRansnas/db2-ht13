@@ -5,6 +5,10 @@
  */
 package grupp9_uppgift1;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Viktor Voigt
@@ -817,8 +821,11 @@ public class MainView extends javax.swing.JFrame {
         studentData[5] = this.txtRegisterStudentAdress.getText();
         studentData[6] = this.txtRegisterStudentPostCode.getText();
         studentData[7] = this.txtRegisterStudentCity.getText();
-        
-        this.controller.registerNewStudent(studentData);
+        try {
+            this.controller.registerNewStudent(studentData);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
 

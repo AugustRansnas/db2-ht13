@@ -19,9 +19,14 @@ public class DataAccessLayer {
         this.connection = connection;
     }
 
-    void registerNewStudent(String[] studentData) {
-        
+    void registerNewStudent(String[] studentData) throws SQLException{
+        String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
+        for(int i=1;i<studentData.length;i++){
+            sqlString += ",'" + studentData[i] +"'";
+            System.out.println(sqlString);
+        }
+        sqlString += ")";
+        Statement stmt = connection.createStatement();
+        stmt.executeQuery(sqlString);
     }
-    
-    
 }
