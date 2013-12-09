@@ -67,26 +67,29 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="lblFindStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFindStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFindStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblFindStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblFindStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentPersonNbr" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentLastName" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtFindStudentFirstName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFindStudentLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFindStudentPnr" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFindStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFindStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtFindStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtFindStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="txtFindStudentPnr" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtFindStudentFirstName" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="txtFindStudentLastName" min="-2" pref="150" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblFindStudentAdress" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFindStudentPostCode" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFindStudentCity" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Component id="lblFindStudentAdress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentPostCode" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFindStudentCity" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="txtFindStudentAdress" alignment="0" max="32767" attributes="0"/>
@@ -95,7 +98,7 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                       <Component id="btnFindStudent" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                                   </Group>
@@ -116,24 +119,24 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtFindStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFindStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtFindStudentPnr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFindStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFindStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtFindStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFindStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -268,27 +271,39 @@
                               <Component id="lblViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblViewStudentFirstName" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblViewStudentLastName" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblViewStudentPersonNbr" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblViewStudentPhoneNbr" min="-2" max="-2" attributes="0"/>
                                       <Component id="lblViewStudentEmail" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentFirstName" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentLastName" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtViewStudentFirstName" max="32767" attributes="0"/>
-                                      <Component id="txtViewStudentLastName" max="32767" attributes="0"/>
-                                      <Component id="txtViewStudentPersonNbr" max="32767" attributes="0"/>
-                                      <Component id="txtViewStudentPhoneNbr" max="32767" attributes="0"/>
-                                      <Component id="txtViewStudentEmail" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtViewStudentFirstName" max="32767" attributes="0"/>
+                                          <Component id="txtViewStudentPhoneNbr" max="32767" attributes="0"/>
+                                          <Component id="txtViewStudentEmail" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="txtViewStudentPersonNbr" min="-2" pref="150" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtViewStudentLastName" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btnViewStudentUpdateStudent" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="btnViewStudentDeleteStudent" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="lblViewStudentAdress" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblViewStudentPostCode" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblViewStudentCity" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="1" attributes="0">
+                                                      <Component id="lblViewStudentAdress" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblViewStudentCity" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="lblViewStudentPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -296,12 +311,6 @@
                                               <Component id="txtViewStudentPostCode" max="32767" attributes="0"/>
                                               <Component id="txtViewStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnViewStudentUpdateStudent" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnViewStudentDeleteStudent" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -320,7 +329,7 @@
                               <Component id="comboBoxViewStudentAddCourse" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                      <EmptySpace pref="174" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -329,29 +338,29 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtViewStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblViewStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtViewStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblViewStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtViewStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblViewStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblViewStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtViewStudentPhoneNbr" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -540,25 +549,33 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblRegisterStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblRegisterStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblRegisterStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblRegisterStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblRegisterStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentFirstName" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtRegisterStudentFirstName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtRegisterStudentLastName" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtRegisterStudentPersonNbr" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtRegisterStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtRegisterStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblRegisterStudentAdress" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRegisterStudentPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblRegisterStudentCity" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="256" max="-2" attributes="0"/>
+                                      <Component id="lblRegisterStudentAdress" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="txtRegisterStudentPersonNbr" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtRegisterStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtRegisterStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="txtRegisterStudentFirstName" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+                                      <Component id="lblRegisterStudentPostCode" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="txtRegisterStudentLastName" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="lblRegisterStudentCity" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -572,7 +589,7 @@
                               <Component id="btnRegisterStudentSave" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="142" max="32767" attributes="0"/>
+                      <EmptySpace pref="155" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -581,24 +598,24 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtRegisterStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterStudentAdress" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtRegisterStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtRegisterStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterStudentPersonNbr" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentPostCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterStudentFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtRegisterStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterStudentCity" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterStudentLastName" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -610,9 +627,9 @@
                           <Component id="txtRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="btnRegisterStudentSave" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="383" max="32767" attributes="0"/>
+                      <EmptySpace pref="348" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

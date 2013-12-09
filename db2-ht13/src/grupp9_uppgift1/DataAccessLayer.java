@@ -18,6 +18,10 @@ public class DataAccessLayer {
     DataAccessLayer(Connection connection){
         this.connection = connection;
     }
+
+    void registerNewStudent(String[] studentData) {
+        
+    }
     
     
 }
