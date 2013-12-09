@@ -27,7 +27,9 @@ public class DataAccessLayer {
         }
         sqlString += ")";
         Statement stmt = connection.createStatement();
-        stmt.executeQuery(sqlString);
+        stmt.executeUpdate(sqlString);
+        connection.commit();
+        connection.close();
     }
 
     void updateStudent(String[] studentData) {
