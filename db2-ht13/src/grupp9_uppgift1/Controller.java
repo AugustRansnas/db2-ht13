@@ -34,7 +34,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) {
+    void updateStudent(String[] studentData) throws SQLException {
         
         this.dataAccessLayer.updateStudent(studentData);
         
