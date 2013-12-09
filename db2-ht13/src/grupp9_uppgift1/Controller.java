@@ -5,9 +5,6 @@
  */
 package grupp9_uppgift1;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
 /**
  *
  * @author Viktor Voigt
