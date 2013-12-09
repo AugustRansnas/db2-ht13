@@ -14,27 +14,47 @@ import java.sql.*;
 public class DataAccessLayer {
     
     Connection connection;
+    String sqlString = "";
     
     DataAccessLayer(Connection connection){
         this.connection = connection;
     }
+    
+    private void executeUpdate(String sqlString) throws SQLException{
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate(sqlString);
+        connection.close();    
+    }
+    
+    private ResultSet executeQuery(String sqlString) throws SQLException{
+        Statement stmt = connection.createStatement();
+        ResultSet rst = stmt.executeQuery(sqlString);
+        connection.close();
+        return rst;
+    }
 
     void registerNewStudent(String[] studentData) throws SQLException{
-        String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
+        sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for(int i=1;i<studentData.length;i++){
             sqlString += ",'" + studentData[i] +"'";
             System.out.println(sqlString);
         }
         sqlString += ")";
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate(sqlString);
-        connection.commit();
-        connection.close();
+        executeUpdate(sqlString);
     }
 
-    void updateStudent(String[] studentData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    void updateStudent(String[] studentData) throws SQLException {
+        String sqlStringUpdate = "UPDATE student SET";
+        sqlString += "pnr =" + studentData[0];
+        sqlString += "firstname =" + studentData[1];
+        sqlString += "lastname =" + studentData[2];
+        sqlString += "phonenr =" + studentData[3];
+        sqlString += "email =" + studentData[4];
+        sqlString += "address =" + studentData[5];
+        sqlString += "postcode =" + studentData[6];
+        sqlString += "city =" + studentData[7];
+        executeUpdate(sqlString);
+        }
 
     void deleteStudent(String personNbr) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
