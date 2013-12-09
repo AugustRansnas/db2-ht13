@@ -850,10 +850,13 @@ public class MainView extends javax.swing.JFrame {
         studentData[5] = this.txtRegisterStudentAdress.getText();
         studentData[6] = this.txtRegisterStudentPostCode.getText();
         studentData[7] = this.txtRegisterStudentCity.getText();
+        
         try {
             this.controller.registerNewStudent(studentData);
         } catch (SQLException ex) {
+            
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
