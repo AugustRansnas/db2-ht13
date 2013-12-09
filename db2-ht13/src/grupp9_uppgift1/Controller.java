@@ -19,11 +19,11 @@ import java.sql.Connection;
 
 public class Controller {
     
-    Connection connection;
+    DataAccessLayer dataAccessLayer;
 
-    Controller(Connection con) {
+    Controller(DataAccessLayer dataAccessLayer) {
         
-       this.connection = connection;
+       this.dataAccessLayer = dataAccessLayer;
         
     }
     

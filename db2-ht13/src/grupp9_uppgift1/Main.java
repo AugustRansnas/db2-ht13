@@ -33,8 +33,10 @@ public class Main {
         }
 
         Connection connection = DriverManager.getConnection("JDBC:ODBC:grupp9;database=patientsystem;");
-
-        Controller controller = new Controller(connection);
+        
+        DataAccessLayer dataAccessLayer = new DataAccessLayer(connection);
+        
+        Controller controller = new Controller(dataAccessLayer);
 
         MainView mainView = new MainView(controller);
 
