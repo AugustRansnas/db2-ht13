@@ -56,10 +56,10 @@ public class DataAccessLayer {
             
             if(rset.next()){
             resultBoolean = true;
-            System.out.println("studenten " + pnr + " finns redan");
+            System.out.println("studenten " + pnr + " är redan registrerad i databasen");
             }else{
             resultBoolean = false;
-            System.out.println("Studenten " + pnr + " finns ej");
+            System.out.println("Det finns ingen student med följande personnr: " + pnr);
             }
         
         return resultBoolean;

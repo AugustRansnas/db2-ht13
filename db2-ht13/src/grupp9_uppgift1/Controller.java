@@ -64,8 +64,11 @@ public class Controller {
 
     boolean checkIfStudentExists(String string) {
         
-        return true;
-        
+        if (this.dataAccessLayer.checkIfStudentExists(string)) {
+            return true;
+        } else {
+            return false;
+        }        
     }
 
     boolean checkIfCourseExists(String string) {
