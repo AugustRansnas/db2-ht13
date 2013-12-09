@@ -535,34 +535,42 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblRegisterStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtRegisterStudentFirstName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentLastName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentPersonNbr" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="lblRegisterStudentAdress" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblRegisterStudentCity" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtRegisterStudentAdress" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentPostCode" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblRegisterStudentFirstName" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentLastName" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentPersonNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentPhoneNbr" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtRegisterStudentFirstName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentLastName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentPersonNbr" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentPhoneNbr" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="lblRegisterStudentAdress" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentPostCode" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRegisterStudentCity" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtRegisterStudentAdress" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentPostCode" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtRegisterStudentCity" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="btnRegisterStudentSave" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="142" max="32767" attributes="0"/>
                   </Group>
@@ -602,7 +610,9 @@
                           <Component id="txtRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="424" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnRegisterStudentSave" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="383" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -666,6 +676,17 @@
             <Component class="javax.swing.JTextField" name="txtRegisterStudentPostCode">
             </Component>
             <Component class="javax.swing.JTextField" name="txtRegisterStudentAdress">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegisterStudentAdressActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRegisterStudentSave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spara"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterStudentSaveActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -1040,10 +1061,13 @@
                           <Component id="lblRegisterCourseCredits" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtRegisterCourseName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterCourseCode" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtRegisterCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnRegisterCourseSave" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtRegisterCourseName" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtRegisterCourseCode" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtRegisterCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="491" max="32767" attributes="0"/>
                   </Group>
@@ -1067,7 +1091,9 @@
                           <Component id="txtRegisterCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRegisterCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="476" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Component id="btnRegisterCourseSave" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="427" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1093,6 +1119,11 @@
             <Component class="javax.swing.JTextField" name="txtRegisterCourseCode">
             </Component>
             <Component class="javax.swing.JTextField" name="txtRegisterCourseName">
+            </Component>
+            <Component class="javax.swing.JButton" name="btnRegisterCourseSave">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Spara"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
