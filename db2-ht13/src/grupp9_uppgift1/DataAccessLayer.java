@@ -41,7 +41,7 @@ public class DataAccessLayer {
         return rst;       
     }
 
-    void registerNewStudent(String[] studentData) throws SQLException{
+    void registerNewStudent(String[] studentData) {
         sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for(int i=1;i<studentData.length;i++){
             sqlString += ",'" + studentData[i] +"'";
@@ -104,7 +104,7 @@ public class DataAccessLayer {
         return numberOfStudentsWithGrade;
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
-    void updateStudent(String[] studentData) throws SQLException {
+    void updateStudent(String[] studentData) {
         sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
         sqlString += "firstname = '" + studentData[1] + "'";
@@ -199,8 +199,5 @@ public class DataAccessLayer {
         return null;
         
         
-
-
-
     }
 }
