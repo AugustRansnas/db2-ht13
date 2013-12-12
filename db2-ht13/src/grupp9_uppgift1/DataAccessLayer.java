@@ -104,7 +104,7 @@ public class DataAccessLayer {
 
     public int getNumberOfStudents(String courseCode) throws SQLException {
 
-        int nos = 0;
+        int numberOfStudents = 0;
 
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
 
@@ -112,16 +112,16 @@ public class DataAccessLayer {
 
         while (rs.next()) {
 
-            nos = rs.getInt(1);
+            numberOfStudents = rs.getInt(1);
 
         }
 
-        return nos;
+        return numberOfStudents;
     }
 
     public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
 
-        int nos = 0;
+        int numberOfStudentsWithGrade = 0;
 
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
 
@@ -129,11 +129,11 @@ public class DataAccessLayer {
 
         while (rs.next()) {
 
-            nos = rs.getInt(1);
+            numberOfStudentsWithGrade = rs.getInt(1);
 
         }
 
-        return nos;
+        return numberOfStudentsWithGrade;
 
 
     }
