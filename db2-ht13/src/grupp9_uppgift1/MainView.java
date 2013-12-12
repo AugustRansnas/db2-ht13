@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -27,6 +32,8 @@ public class MainView extends javax.swing.JFrame {
         this.controller = controller;
 
         initComponents();
+
+        this.populateCourseTable();
 
     }
 
@@ -119,7 +126,7 @@ public class MainView extends javax.swing.JFrame {
         lblFindCourseCredits = new javax.swing.JLabel();
         separatorFindCourse = new javax.swing.JSeparator();
         scrollPaneFindCourse = new javax.swing.JScrollPane();
-        listFindCourse = new javax.swing.JList();
+        tableFindCourse = new javax.swing.JTable();
         panelViewCourse = new javax.swing.JPanel();
         txtViewCourseName = new javax.swing.JTextField();
         txtViewCourseCode = new javax.swing.JTextField();
@@ -226,7 +233,7 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(panelFindStudentLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         panelFindStudentLayout.setVerticalGroup(
             panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +270,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(separatorFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(238, Short.MAX_VALUE))
+                .addContainerGap(423, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Sök student", panelFindStudent);
@@ -349,7 +356,6 @@ public class MainView extends javax.swing.JFrame {
                                     .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(txtViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelViewStudentLayout.createSequentialGroup()
                                     .addComponent(btnViewStudentUpdateStudent)
@@ -378,7 +384,7 @@ public class MainView extends javax.swing.JFrame {
                                 .addComponent(lblViewStudentNonPassedCourses)
                                 .addComponent(scrollPaneViewStudentNonPassedCourses)))
                         .addComponent(comboBoxViewStudentAddCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(174, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         panelViewStudentLayout.setVerticalGroup(
             panelViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -429,7 +435,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(comboBoxViewStudentAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnViewStudentAddCourse)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Visa student", panelViewStudent);
@@ -485,20 +491,20 @@ public class MainView extends javax.swing.JFrame {
                             .addComponent(lblRegisterStudentFirstName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelRegisterStudentLayout.createSequentialGroup()
-                                .addGap(256, 256, 256)
-                                .addComponent(lblRegisterStudentAdress))
-                            .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtRegisterStudentPersonNbr)
-                                .addComponent(txtRegisterStudentPhoneNbr)
-                                .addComponent(txtRegisterStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtRegisterStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterStudentLayout.createSequentialGroup()
-                                .addComponent(txtRegisterStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtRegisterStudentPersonNbr)
+                                    .addComponent(txtRegisterStudentFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                                 .addGap(93, 93, 93)
-                                .addComponent(lblRegisterStudentPostCode))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRegisterStudentLayout.createSequentialGroup()
-                                .addComponent(txtRegisterStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblRegisterStudentPostCode, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblRegisterStudentAdress, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(panelRegisterStudentLayout.createSequentialGroup()
+                                .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtRegisterStudentPhoneNbr, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtRegisterStudentLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                                 .addComponent(lblRegisterStudentCity)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -508,7 +514,7 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(panelRegisterStudentLayout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(btnRegisterStudentSave)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         panelRegisterStudentLayout.setVerticalGroup(
             panelRegisterStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +547,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(lblRegisterStudentEmail))
                 .addGap(53, 53, 53)
                 .addComponent(btnRegisterStudentSave)
-                .addContainerGap(348, Short.MAX_VALUE))
+                .addContainerGap(533, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Registrera student", panelRegisterStudent);
@@ -559,12 +565,15 @@ public class MainView extends javax.swing.JFrame {
 
         lblFindCourseCredits.setText("HP");
 
-        listFindCourse.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        scrollPaneFindCourse.setViewportView(listFindCourse);
+        tableFindCourse.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        scrollPaneFindCourse.setViewportView(tableFindCourse);
 
         javax.swing.GroupLayout panelFindCourseLayout = new javax.swing.GroupLayout(panelFindCourse);
         panelFindCourse.setLayout(panelFindCourseLayout);
@@ -573,8 +582,12 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(panelFindCourseLayout.createSequentialGroup()
                 .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFindCourseLayout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFindCourseLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelFindCourseLayout.createSequentialGroup()
                                 .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lblFindCourseCourseName)
@@ -586,14 +599,8 @@ public class MainView extends javax.swing.JFrame {
                                     .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtFindCourseCourseName)
                                         .addComponent(txtFindCourseCourseCode)
-                                        .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelFindCourseLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                                        .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         panelFindCourseLayout.setVerticalGroup(
             panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -615,8 +622,8 @@ public class MainView extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(421, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Sök kurs", panelFindCourse);
@@ -703,7 +710,7 @@ public class MainView extends javax.swing.JFrame {
                         .addGroup(panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(separatorViewCourse1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                             .addComponent(separatorViewCourse2, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         panelViewCourseLayout.setVerticalGroup(
             panelViewCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -744,7 +751,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(lblViewCourseHighestPassedCourses)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Visa kurs", panelViewCourse);
@@ -779,7 +786,7 @@ public class MainView extends javax.swing.JFrame {
                         .addComponent(txtRegisterCourseName)
                         .addComponent(txtRegisterCourseCode)
                         .addComponent(txtRegisterCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(491, Short.MAX_VALUE))
+                .addContainerGap(454, Short.MAX_VALUE))
         );
         panelRegisterCourseLayout.setVerticalGroup(
             panelRegisterCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -798,7 +805,7 @@ public class MainView extends javax.swing.JFrame {
                     .addComponent(lblRegisterCourseCredits))
                 .addGap(26, 26, 26)
                 .addComponent(btnRegisterCourseSave)
-                .addContainerGap(427, Short.MAX_VALUE))
+                .addContainerGap(612, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Registrera kurs", panelRegisterCourse);
@@ -842,7 +849,7 @@ public class MainView extends javax.swing.JFrame {
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
         try {
             String[] studentData = new String[8];
-            
+
             studentData[0] = this.txtRegisterStudentPersonNbr.getText();
             studentData[1] = this.txtRegisterStudentFirstName.getText();
             studentData[2] = this.txtRegisterStudentLastName.getText();
@@ -851,26 +858,26 @@ public class MainView extends javax.swing.JFrame {
             studentData[5] = this.txtRegisterStudentAdress.getText();
             studentData[6] = this.txtRegisterStudentPostCode.getText();
             studentData[7] = this.txtRegisterStudentCity.getText();
-            
+
             if (controller.checkIfStudentExists(studentData[0]) == true) {
-                
+
                 try {
-                    
+
                     this.controller.registerNewStudent(studentData);
-                    
+
                 } catch (SQLException ex) {
-                    
+
                     Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-                    
+
                 }
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
                         "Kan inte registrera student",
                         JOptionPane.ERROR_MESSAGE);
-                
-                
+
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -890,17 +897,21 @@ public class MainView extends javax.swing.JFrame {
         courseData[0] = this.txtRegisterCourseCode.getText();
         courseData[1] = this.txtRegisterCourseName.getText();
         courseData[2] = this.txtRegisterCourseCredits.getText();
+        try {
+            if (controller.checkIfCourseExists(courseData[0]) == false) {
 
-        if (controller.checkIfCourseExists(courseData[0]) == false) {
+                this.controller.registerNewCourse(courseData);
 
-            this.controller.registerNewCourse(courseData);
+            } else {
 
-        } else {
+                JOptionPane.showMessageDialog(this,
+                        "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                        "Kan inte skapa kurs.",
+                        JOptionPane.ERROR_MESSAGE);
 
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                    "Kan inte skapa kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -914,16 +925,22 @@ public class MainView extends javax.swing.JFrame {
         courseData[1] = this.txtViewCourseName.getText();
         courseData[2] = this.txtViewCourseCredits.getText();
 
-        if (controller.checkIfCourseExists(courseData[0]) == true) {
+        try {
+            if (controller.checkIfCourseExists(courseData[0]) == true) {
 
-            this.controller.updateCourse(courseData);
+                this.controller.updateCourse(courseData);
 
-        } else {
+            } else {
 
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar inte. Kurskod " + courseData[0] + " finns inte i databasen.",
-                    "Kan inte updatera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "Kurs existerar inte. Kurskod " + courseData[0] + " finns inte i databasen.",
+                        "Kan inte updatera kurs.",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -932,21 +949,25 @@ public class MainView extends javax.swing.JFrame {
     private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
 
         String courseCode = this.txtViewCourseCode.getText();
-        
-       if (controller.checkIfCourseExists(courseCode) == true) {
+        try {
+            if (controller.checkIfCourseExists(courseCode) == true) {
 
-                 this.controller.deleteCourse(courseCode);
+                this.controller.deleteCourse(courseCode);
 
-        } else {
+            } else {
 
-            JOptionPane.showMessageDialog(this,
-                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                    "Kan inte radera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                        "Kan inte radera kurs.",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
-     
+
 
     }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
 
@@ -969,17 +990,17 @@ public class MainView extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
                         "Kan inte updatera student.",
                         JOptionPane.ERROR_MESSAGE);
-                
+
             }
-            
-            
+
+
             // TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -991,16 +1012,16 @@ public class MainView extends javax.swing.JFrame {
         String personNbr = this.txtViewStudentPersonNbr.getText();
         try {
             if (controller.checkIfStudentExists(personNbr) == true) {
-                
+
                 this.controller.deleteStudent(personNbr);
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
                         "Kan inte radera student.",
                         JOptionPane.ERROR_MESSAGE);
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -1065,7 +1086,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lblViewStudentPersonNbr;
     private javax.swing.JLabel lblViewStudentPhoneNbr;
     private javax.swing.JLabel lblViewStudentPostCode;
-    private javax.swing.JList listFindCourse;
     private javax.swing.JList listFindStudent;
     private javax.swing.JPanel panelFindCourse;
     private javax.swing.JPanel panelFindStudent;
@@ -1085,6 +1105,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JSeparator separatorViewCourse2;
     private javax.swing.JSeparator separatorViewStudent;
     private javax.swing.JTabbedPane tabMain;
+    private javax.swing.JTable tableFindCourse;
     private javax.swing.JTextArea txtAreaViewCourseNonPassedStudents;
     private javax.swing.JTextArea txtAreaViewCoursePassedStudents;
     private javax.swing.JTextField txtFindCourseCourseCode;
@@ -1125,4 +1146,26 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JTextField txtViewStudentPhoneNbr;
     private javax.swing.JTextField txtViewStudentPostCode;
     // End of variables declaration//GEN-END:variables
+
+    private void populateCourseTable() {
+
+        DefaultTableModel dtm;
+
+        try {
+
+            dtm = controller.getAllCourses();
+
+            System.out.println(dtm.getColumnCount());
+
+            this.tableFindCourse.setModel(dtm);
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+
+
+    }
 }

@@ -6,6 +6,11 @@
 package grupp9_uppgift1;
 
 import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -87,6 +92,17 @@ public class Controller {
         System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
         return percentageOfStudentsWithGrade;
                 
+    }
+    
+
+    DefaultTableModel getAllCourses() throws SQLException {
+        
+       DefaultTableModel dtm;
+       
+       dtm = this.dataAccessLayer.getAllCourses();
+       
+       return dtm;
+               
     }
             
 }
