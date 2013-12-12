@@ -6,6 +6,7 @@
 package grupp9_uppgift1;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -222,6 +223,21 @@ public class DataAccessLayer {
         return dtm;
 
     }
+    protected int getNumberOfStudents(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Student";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int studentCount = Integer.parseInt(rs.getString(1));
+            return studentCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
 
     //</editor-fold>
     //<editor-fold desc="Course queries" defaultstate="collapsed">
@@ -284,6 +300,21 @@ public class DataAccessLayer {
         return dtm;
 
     }
+    protected int getNumberOfCourses(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Course";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int courseCount = Integer.parseInt(rs.getString(1));
+            return courseCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
@@ -327,6 +358,44 @@ public class DataAccessLayer {
         percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
         System.out.println("dataAccessLayer: " + percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
         return percentageOfStudentsWithGrade;
+    }
+    public DefaultTableModel courseFlow() {
+        try {
+
+            String sqlQuery = "SELECT ccode FROM course";
+            ArrayList<String> courseNames = new ArrayList<String>(); 
+            
+            int courseCount = getNumberOfCourses();
+            
+
+            DefaultTableModel returnTable = new DefaultTableModel();
+            returnTable.addColumn("CourseCode");
+            returnTable.addColumn("Flow");
+            returnTable.setRowCount(courseCount);
+            ResultSet rset = executeQuery(sqlQuery);
+
+            for (int i = 0; i < courseCount; i++) {
+                rset.next();
+                String courseCode = rset.getString(1);
+                courseNames.add(courseCode);
+                returnTable.setValueAt(courseCode, i, 0);
+                System.out.println(courseCode + " inlagt i returnTable på row: " + i + " och kolumn: 0");               
+            }
+            for (int i = 0; i < courseCount; i++){
+                rset.next();
+                String courseCode = courseNames.get(i);
+                float courseFlow = percentagePassingCourse(courseCode);
+                returnTable.setValueAt(courseFlow, i, 1);
+                System.out.println(courseFlow + "% inlagt i returnTable på row: " + i + " och kolumn: 1");  
+                        
+            }
+
+            return returnTable;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     //</editor-fold>
 }
