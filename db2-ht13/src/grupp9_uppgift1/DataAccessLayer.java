@@ -34,21 +34,21 @@ public class DataAccessLayer {
     }
 
     private ResultSet executeQuery(String sqlString) {
-        
+
         ResultSet rst = null;
-        
+
         try {
-            
+
             Statement stmt = connection.createStatement();
-            
-            rst = stmt.executeQuery(sqlString);       
-            
+
+            rst = stmt.executeQuery(sqlString);
+
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-        
+
         return rst;
     }
 
@@ -124,7 +124,8 @@ public class DataAccessLayer {
         }
         return numberOfStudentsWithGrade;
     }
-       public String getStudentGradeAtCourse(String pnr, String courseCode) {
+
+    public String getStudentGradeAtCourse(String pnr, String courseCode) {
         String grade = null;
         String sqlString = "SELECT h.grade ";
         sqlString += "FROM student c, hasstudied h ";
@@ -160,6 +161,7 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 // ska ta in en selectad student som inparameter också när den metoden finns
+
     void deleteStudent(String personNbr) {
         String sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
@@ -173,37 +175,39 @@ public class DataAccessLayer {
 
     //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
-        sqlString = "UPDATE course SET";
+
+        String sqlString = "UPDATE course SET";
         sqlString += "ccode = '" + courseData[0] + "'";
         sqlString += "cname = '" + courseData[1] + "'";
         sqlString += "points = '" + courseData[2] + "'";
         executeUpdate(sqlString);
     }
 // ska ta in en selectad kurs
+
     void deleteCourse(String courseCode) {
-    sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
         executeUpdate(sqlString);
 
     }
-    
-    protected DefaultTableModel findCourses (String searchString) {
-        
+
+    protected DefaultTableModel findCourses(String searchString) {
+
         String sqlString = "SELECT * FROM Course "
-                        + "WHERE ccode LIKE '%" + searchString + "%' "
-                        + "OR cname LIKE '%" + searchString + "%'";
-        
+                + "WHERE ccode LIKE '%" + searchString + "%' "
+                + "OR cname LIKE '%" + searchString + "%'";
+
         ResultSet rs = this.executeQuery(sqlString);
-        
+
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
-        
+
         return dtm;
-        
+
     }
 
     protected DefaultTableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
- 
+
         ResultSet rs = this.executeQuery(sqlString);
 
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
@@ -261,16 +265,16 @@ public class DataAccessLayer {
     }
 
     DefaultTableModel getAllStudents() {
-        
+
         String sqlString = "SELECT * FROM Student";
-        
+
         ResultSet rs = this.executeQuery(sqlString);
 
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
         return dtm;
-        
-       
-        
+
+
+
     }
 }
