@@ -65,18 +65,14 @@ public class DataAccessLayer {
     public boolean checkIfStudentExists(String pnr) throws SQLException {
 
         Boolean studentExists;
-
         String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
         ResultSet rset = executeQuery(sqlString);
-
         studentExists = rset.next();
-
         if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
         } else {
             System.out.println("Det finns ingen student med följande personnr: " + pnr);
         }
-
         return studentExists;
 
     }
@@ -84,27 +80,21 @@ public class DataAccessLayer {
     public boolean checkIfCourseExists(String courseCode) throws SQLException {
 
         Boolean courseExists;
-
         String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
         ResultSet rset = executeQuery(sqlString);
-
         courseExists = rset.next();
-
         if (courseExists) {
             System.out.println("Kursen " + courseCode + " existerar redan");
         } else {
             System.out.println("Det finns ingen kurs med följande kurskod: " + courseCode);
         }
-
         return courseExists;
     }
 
     public int getNumberOfStudents(String courseCode) throws SQLException {
 
         int numberOfStudents = 0;
-
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
-
         ResultSet rs = executeQuery(sqlString);
         while (rs.next()) {
             numberOfStudents = rs.getInt(1);
@@ -115,9 +105,7 @@ public class DataAccessLayer {
     public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
 
         int numberOfStudentsWithGrade = 0;
-
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
-
         ResultSet rs = executeQuery(sqlString);
         while (rs.next()) {
             numberOfStudentsWithGrade = rs.getInt(1);
@@ -135,7 +123,6 @@ public class DataAccessLayer {
 
         try {
             ResultSet rset = executeQuery(sqlString);
-
             while (rset.next()) {
                 grade = rset.getString(1);
             }
@@ -144,7 +131,6 @@ public class DataAccessLayer {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
 
