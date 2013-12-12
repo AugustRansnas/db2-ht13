@@ -62,7 +62,7 @@ public class Controller {
         this.dataAccessLayer.deleteCourse(courseCode);
     }
 
-    boolean checkIfStudentExists(String string) {
+    boolean checkIfStudentExists(String string) throws SQLException{
         
         if (this.dataAccessLayer.checkIfStudentExists(string)) {
             return true;
