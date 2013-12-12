@@ -105,36 +105,43 @@ public class DataAccessLayer {
     public int getNumberOfStudents(String courseCode) throws SQLException {
 
         int numberOfStudents = 0;
-
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
-
         ResultSet rs = executeQuery(sqlString);
-
         while (rs.next()) {
-
             numberOfStudents = rs.getInt(1);
-
         }
-
         return numberOfStudents;
     }
 
     public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
 
         int numberOfStudentsWithGrade = 0;
-
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
-
         ResultSet rs = executeQuery(sqlString);
-
         while (rs.next()) {
-
             numberOfStudentsWithGrade = rs.getInt(1);
-
         }
-
         return numberOfStudentsWithGrade;
+    }
+       public String getStudentGradeAtCourse(String pnr, String courseCode) {
+        String grade = null;
+        String sqlString = "SELECT h.grade ";
+        sqlString += "FROM student c, hasstudied h ";
+        sqlString += "WHERE c.pnr = h.pnr ";
+        sqlString += "AND h.pnr = '" + pnr + "' ";
+        sqlString += "AND h.ccode = '" + courseCode + "'";
 
+        try {
+            ResultSet rset = executeQuery(sqlString);
+
+            while (rset.next()) {
+                grade = rset.getString(1);
+            }
+            return grade;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
 
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
