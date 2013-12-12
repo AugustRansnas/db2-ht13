@@ -55,7 +55,7 @@ public class DataAccessLayer {
         return rst;
     }
 
-    void registerNewStudent(String[] studentData) throws SQLException {
+    void registerNewStudent(String[] studentData) {
         sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
@@ -144,9 +144,8 @@ public class DataAccessLayer {
         return null;
 
     }
-    // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
-
-    void updateStudent(String[] studentData) throws SQLException {
+    // ska ta in en selectad student som inparameter också när den metoden finns
+    void updateStudent(String[] studentData) {
         sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
         sqlString += "firstname = '" + studentData[1] + "'";
@@ -158,7 +157,7 @@ public class DataAccessLayer {
         sqlString += "city = '" + studentData[7] + "'";
         executeUpdate(sqlString);
     }
-
+// ska ta in en selectad student som inparameter också när den metoden finns
     void deleteStudent(String personNbr) {
         sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
@@ -170,13 +169,18 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
+    //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sqlString = "UPDATE course SET";
+        sqlString += "ccode = '" + courseData[0] + "'";
+        sqlString += "cname = '" + courseData[1] + "'";
+        sqlString += "points = '" + courseData[2] + "'";
+        executeUpdate(sqlString);
     }
-
+// ska ta in en selectad kurs
     void deleteCourse(String courseCode) {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        executeUpdate(sqlString);
 
     }
 
