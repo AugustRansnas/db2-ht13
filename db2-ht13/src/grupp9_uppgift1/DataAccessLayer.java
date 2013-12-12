@@ -22,17 +22,35 @@ public class DataAccessLayer {
         this.connection = connection;
     }
     
-    private void executeUpdate(String sqlString) throws SQLException{
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate(sqlString);
-        connection.close();    
+    private void executeUpdate(String sqlString) {
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sqlString);    
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    private ResultSet executeQuery(String sqlString) throws SQLException{
-        Statement stmt = connection.createStatement();
-        ResultSet rst = stmt.executeQuery(sqlString);
-        connection.close();
-        return rst;
+    private ResultSet executeQuery(String sqlString){
+        Statement stmt = null;
+        try {
+            stmt = connection.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ResultSet rst = null;
+        try {
+            rst = stmt.executeQuery(sqlString);
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rst;   
     }
 
     void registerNewStudent(String[] studentData) throws SQLException{
@@ -50,7 +68,7 @@ public class DataAccessLayer {
         Boolean resultBoolean;
         try {
             
-            String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
+            sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(sqlString);
             
@@ -70,26 +88,29 @@ public class DataAccessLayer {
     }
     
             
-
+    // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     void updateStudent(String[] studentData) throws SQLException {
-        String sqlString = "UPDATE student SET";
-        sqlString += "pnr =" + studentData[0];
-        sqlString += "firstname =" + studentData[1];
-        sqlString += "lastname =" + studentData[2];
-        sqlString += "phonenr =" + studentData[3];
-        sqlString += "email =" + studentData[4];
-        sqlString += "address =" + studentData[5];
-        sqlString += "postcode =" + studentData[6];
-        sqlString += "city =" + studentData[7];
+        sqlString = "UPDATE student SET";
+        sqlString += "pnr = '" + studentData[0] + "'";
+        sqlString += "firstname = '" + studentData[1] + "'";
+        sqlString += "lastname = '" + studentData[2] + "'";
+        sqlString += "phonenr = '" + studentData[3] + "'";
+        sqlString += "email = '" + studentData[4] + "'";
+        sqlString += "address = '" + studentData[5] + "'";
+        sqlString += "postcode = '" + studentData[6] + "'";
+        sqlString += "city = '" + studentData[7] + "'";
         executeUpdate(sqlString);
         }
 
-    void deleteStudent(String personNbr) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void deleteStudent(String personNbr){
+        sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
+        executeUpdate(sqlString);     
     }
 
     void registerNewCourse(String[] courseData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sqlString = "INSERT INTO course ('" + courseData[0] + "','" 
+                    + courseData[1] + "','" + courseData[2] + "')";
+        executeUpdate(sqlString);    
     }
 
     void updateCourse(String[] courseData) {
