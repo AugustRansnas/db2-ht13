@@ -652,7 +652,7 @@
                       <Component id="separatorFindCourse" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="scrollPaneFindCourse" min="-2" pref="165" max="-2" attributes="0"/>
-                      <EmptySpace pref="519" max="32767" attributes="0"/>
+                      <EmptySpace pref="516" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -697,6 +697,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableFindCourseMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -822,6 +825,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtViewCourseCodeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtViewCourseCredits">
             </Component>

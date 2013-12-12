@@ -5,12 +5,10 @@
  */
 package grupp9_uppgift1;
 
-import java.awt.Component;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -499,6 +497,11 @@ public class MainView extends javax.swing.JFrame {
 
             }
         ));
+        tableFindCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableFindCourseMouseClicked(evt);
+            }
+        });
         scrollPaneFindCourse.setViewportView(tableFindCourse);
 
         javax.swing.GroupLayout panelFindCourseLayout = new javax.swing.GroupLayout(panelFindCourse);
@@ -534,12 +537,17 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(519, Short.MAX_VALUE))
+                .addContainerGap(516, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Sök kurs", panelFindCourse);
 
         txtViewCourseCode.setEditable(false);
+        txtViewCourseCode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtViewCourseCodeActionPerformed(evt);
+            }
+        });
 
         lblViewCourseCourseName.setText("Benämning");
 
@@ -950,6 +958,23 @@ public class MainView extends javax.swing.JFrame {
         this.tblFindStudent.setModel(dtm);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFindStudentActionPerformed
+
+    //denna ska tas bort . Får nog göras i designen / August
+    private void txtViewCourseCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewCourseCodeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtViewCourseCodeActionPerformed
+
+    private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
+        // TODO add your handling code here:
+        int row = tableFindCourse.getSelectedRow();
+        String ccode =(tableFindCourse.getModel().getValueAt(row, 0).toString());
+        String cname =(tableFindCourse.getModel().getValueAt(row, 1).toString());
+        String points =(tableFindCourse.getModel().getValueAt(row, 2).toString());
+        txtViewCourseCode.setText(ccode);
+        txtViewCourseName.setText(cname);
+        txtViewCourseCredits.setText(points);
+        
+    }//GEN-LAST:event_tableFindCourseMouseClicked
     /**
      * @param args the command line arguments
      */
