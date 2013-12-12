@@ -34,9 +34,24 @@ public class DataAccessLayer {
         }
     }
 
-    private ResultSet executeQuery(String sqlString) throws SQLException {
-        Statement stmt = connection.createStatement();
-        ResultSet rst = stmt.executeQuery(sqlString);
+    private ResultSet executeQuery(String sqlString) {
+        
+        ResultSet rst = null;
+        
+        try {
+            
+            Statement stmt = connection.createStatement();
+            
+            rst = stmt.executeQuery(sqlString);
+            
+            
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
         return rst;
     }
 
@@ -122,7 +137,7 @@ public class DataAccessLayer {
 
 
     }
-    // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
+    // ska ta in en selectad student som inparameter också när den metoden finns
     void updateStudent(String[] studentData) {
         sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
@@ -135,7 +150,7 @@ public class DataAccessLayer {
         sqlString += "city = '" + studentData[7] + "'";
         executeUpdate(sqlString);
     }
-
+// ska ta in en selectad student som inparameter också när den metoden finns
     void deleteStudent(String personNbr) {
         sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
@@ -147,23 +162,26 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
+    //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sqlString = "UPDATE course SET";
+        sqlString += "ccode = '" + courseData[0] + "'";
+        sqlString += "cname = '" + courseData[1] + "'";
+        sqlString += "points = '" + courseData[2] + "'";
+        executeUpdate(sqlString);
     }
-
+// ska ta in en selectad kurs
     void deleteCourse(String courseCode) {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        executeUpdate(sqlString);
 
     }
 
-    protected DefaultTableModel getAllCourses() throws SQLException {
+    protected DefaultTableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
-
-        Statement stmt = connection.createStatement();
-
-        ResultSet rs = stmt.executeQuery(sqlString);
+ 
+        ResultSet rs = this.executeQuery(sqlString);
 
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
@@ -216,7 +234,20 @@ public class DataAccessLayer {
         }
 
         return null;
+
+    }
+
+    DefaultTableModel getAllStudents() {
         
+        String sqlString = "SELECT * FROM Student";
+        
+        ResultSet rs = this.executeQuery(sqlString);
+
+        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+
+        return dtm;
+        
+       
         
     }
 }
