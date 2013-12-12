@@ -849,7 +849,7 @@ public class MainView extends javax.swing.JFrame {
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
         try {
             String[] studentData = new String[8];
-            
+
             studentData[0] = this.txtRegisterStudentPersonNbr.getText();
             studentData[1] = this.txtRegisterStudentFirstName.getText();
             studentData[2] = this.txtRegisterStudentLastName.getText();
@@ -858,26 +858,26 @@ public class MainView extends javax.swing.JFrame {
             studentData[5] = this.txtRegisterStudentAdress.getText();
             studentData[6] = this.txtRegisterStudentPostCode.getText();
             studentData[7] = this.txtRegisterStudentCity.getText();
-            
+
             if (controller.checkIfStudentExists(studentData[0]) == true) {
-                
+
                 try {
-                    
+
                     this.controller.registerNewStudent(studentData);
-                    
+
                 } catch (SQLException ex) {
-                    
+
                     Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-                    
+
                 }
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
                         "Kan inte registrera student",
                         JOptionPane.ERROR_MESSAGE);
-                
-                
+
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -897,17 +897,21 @@ public class MainView extends javax.swing.JFrame {
         courseData[0] = this.txtRegisterCourseCode.getText();
         courseData[1] = this.txtRegisterCourseName.getText();
         courseData[2] = this.txtRegisterCourseCredits.getText();
+        try {
+            if (controller.checkIfCourseExists(courseData[0]) == false) {
 
-        if (controller.checkIfCourseExists(courseData[0]) == false) {
+                this.controller.registerNewCourse(courseData);
 
-            this.controller.registerNewCourse(courseData);
+            } else {
 
-        } else {
+                JOptionPane.showMessageDialog(this,
+                        "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                        "Kan inte skapa kurs.",
+                        JOptionPane.ERROR_MESSAGE);
 
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                    "Kan inte skapa kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -921,16 +925,22 @@ public class MainView extends javax.swing.JFrame {
         courseData[1] = this.txtViewCourseName.getText();
         courseData[2] = this.txtViewCourseCredits.getText();
 
-        if (controller.checkIfCourseExists(courseData[0]) == true) {
+        try {
+            if (controller.checkIfCourseExists(courseData[0]) == true) {
 
-            this.controller.updateCourse(courseData);
+                this.controller.updateCourse(courseData);
 
-        } else {
+            } else {
 
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar inte. Kurskod " + courseData[0] + " finns inte i databasen.",
-                    "Kan inte updatera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "Kurs existerar inte. Kurskod " + courseData[0] + " finns inte i databasen.",
+                        "Kan inte updatera kurs.",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -939,17 +949,21 @@ public class MainView extends javax.swing.JFrame {
     private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
 
         String courseCode = this.txtViewCourseCode.getText();
+        try {
+            if (controller.checkIfCourseExists(courseCode) == true) {
 
-        if (controller.checkIfCourseExists(courseCode) == true) {
+                this.controller.deleteCourse(courseCode);
 
-            this.controller.deleteCourse(courseCode);
+            } else {
 
-        } else {
+                JOptionPane.showMessageDialog(this,
+                        "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                        "Kan inte radera kurs.",
+                        JOptionPane.ERROR_MESSAGE);
 
-            JOptionPane.showMessageDialog(this,
-                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                    "Kan inte radera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -976,17 +990,17 @@ public class MainView extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
                         "Kan inte updatera student.",
                         JOptionPane.ERROR_MESSAGE);
-                
+
             }
-            
-            
+
+
             // TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -998,16 +1012,16 @@ public class MainView extends javax.swing.JFrame {
         String personNbr = this.txtViewStudentPersonNbr.getText();
         try {
             if (controller.checkIfStudentExists(personNbr) == true) {
-                
+
                 this.controller.deleteStudent(personNbr);
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(this,
                         "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
                         "Kan inte radera student.",
                         JOptionPane.ERROR_MESSAGE);
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
@@ -1134,12 +1148,24 @@ public class MainView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void populateCourseTable() {
- 
-        DefaultTableModel dtm = controller.getCourseTableModel();
-        
-        System.out.println(dtm.getColumnCount());
 
-        this.tableFindCourse.setModel(dtm);
+        DefaultTableModel dtm;
+
+        try {
+
+            dtm = controller.getAllCourses();
+
+            System.out.println(dtm.getColumnCount());
+
+            this.tableFindCourse.setModel(dtm);
+
+        } catch (SQLException ex) {
+
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+
 
     }
 }

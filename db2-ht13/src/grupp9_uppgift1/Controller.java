@@ -93,5 +93,16 @@ public class Controller {
         return percentageOfStudentsWithGrade;
                 
     }
+    
+
+    DefaultTableModel getAllCourses() throws SQLException {
+        
+       DefaultTableModel dtm;
+       
+       dtm = this.dataAccessLayer.getAllCourses();
+       
+       return dtm;
+               
+    }
             
 }
