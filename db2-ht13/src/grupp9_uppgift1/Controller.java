@@ -5,12 +5,7 @@
  */
 package grupp9_uppgift1;
 
-import java.sql.SQLException;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -76,7 +71,7 @@ public class Controller {
         }        
     }
 
-    boolean checkIfCourseExists(String courseCode) throws SQLException{
+    boolean checkIfCourseExists(String courseCode) {
  
         if (this.dataAccessLayer.checkIfCourseExists(courseCode)){
             return true;
@@ -85,7 +80,7 @@ public class Controller {
         }
         
     }
-    public float percentageOfStudentsWithGrade(String courseCode, String grade) throws SQLException{
+    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
         int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
         int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
         float percentageOfStudentsWithGrade;
