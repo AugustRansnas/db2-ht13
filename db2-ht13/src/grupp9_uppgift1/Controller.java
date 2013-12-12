@@ -129,6 +129,13 @@ public class Controller {
         
         return dtm;
     }
+
+    protected DefaultTableModel findStudents(String searchString) {
+
+        DefaultTableModel dtm = this.dataAccessLayer.findStudents(searchString);
+        
+        return dtm;
+    }
             
             
             
