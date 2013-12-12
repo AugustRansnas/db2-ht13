@@ -50,6 +50,7 @@ public class Main {
         float percent = controller.percentageOfStudentsWithGrade("HIS333", "A");
         
         System.out.println(percent);
+        
 
     }
 
