@@ -30,7 +30,7 @@ public class Controller {
 
     }
 
-    protected void registerNewStudent(String[] studentData) throws SQLException {
+    protected void registerNewStudent(String[] studentData) {
 
         System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " "
                 + studentData[2]);
@@ -39,7 +39,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) throws SQLException {
+    void updateStudent(String[] studentData) {
         
         this.dataAccessLayer.updateStudent(studentData);
         
@@ -67,7 +67,7 @@ public class Controller {
         this.dataAccessLayer.deleteCourse(courseCode);
     }
 
-    boolean checkIfStudentExists(String string) throws SQLException{
+    boolean checkIfStudentExists(String string) {
         
         if (this.dataAccessLayer.checkIfStudentExists(string)) {
             return true;

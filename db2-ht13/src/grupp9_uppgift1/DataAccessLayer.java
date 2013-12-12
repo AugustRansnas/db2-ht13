@@ -56,7 +56,7 @@ public class DataAccessLayer {
         return rst;
     }
 
-    void registerNewStudent(String[] studentData) throws SQLException {
+    void registerNewStudent(String[] studentData) {
         String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
@@ -66,12 +66,22 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    public boolean checkIfStudentExists(String pnr) throws SQLException {
+    public boolean checkIfStudentExists(String pnr) {
 
-        Boolean studentExists;
+        Boolean studentExists = false;
+        
         String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
         ResultSet rset = executeQuery(sqlString);
-        studentExists = rset.next();
+        try {
+            
+            studentExists = rset.next();
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+
         if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
         } else {
@@ -146,7 +156,7 @@ public class DataAccessLayer {
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
 
-    void updateStudent(String[] studentData) throws SQLException {
+    void updateStudent(String[] studentData) {
         String sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
         sqlString += "firstname = '" + studentData[1] + "'";
@@ -156,7 +166,9 @@ public class DataAccessLayer {
         sqlString += "address = '" + studentData[5] + "'";
         sqlString += "postcode = '" + studentData[6] + "'";
         sqlString += "city = '" + studentData[7] + "'";
+        
         executeUpdate(sqlString);
+        
     }
 // ska ta in en selectad student som inparameter också när den metoden finns
 

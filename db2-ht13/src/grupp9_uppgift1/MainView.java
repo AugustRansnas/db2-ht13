@@ -750,56 +750,47 @@ public class MainView extends javax.swing.JFrame {
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
 
         String searchString = this.txtFindCourseInput.getText();
-        
+
         DefaultTableModel dtm = controller.findCourses(searchString);
 
         this.tableFindCourse.setModel(dtm);
-        
-        
-        
+
+
+
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
-        try {
-            String[] studentData = new String[8];
 
-            studentData[0] = this.txtRegisterStudentPersonNbr.getText();
-            studentData[1] = this.txtRegisterStudentFirstName.getText();
-            studentData[2] = this.txtRegisterStudentLastName.getText();
-            studentData[3] = this.txtRegisterStudentPhoneNbr.getText();
-            studentData[4] = this.txtRegisterStudentEmail.getText();
-            studentData[5] = this.txtRegisterStudentAdress.getText();
-            studentData[6] = this.txtRegisterStudentPostCode.getText();
-            studentData[7] = this.txtRegisterStudentCity.getText();
+        String[] studentData = new String[8];
 
-            if (controller.checkIfStudentExists(studentData[0]) == true) {
+        studentData[0] = this.txtRegisterStudentPersonNbr.getText();
+        studentData[1] = this.txtRegisterStudentFirstName.getText();
+        studentData[2] = this.txtRegisterStudentLastName.getText();
+        studentData[3] = this.txtRegisterStudentPhoneNbr.getText();
+        studentData[4] = this.txtRegisterStudentEmail.getText();
+        studentData[5] = this.txtRegisterStudentAdress.getText();
+        studentData[6] = this.txtRegisterStudentPostCode.getText();
+        studentData[7] = this.txtRegisterStudentCity.getText();
 
-                try {
-
-                    this.controller.registerNewStudent(studentData);
-
-                } catch (SQLException ex) {
-
-                    Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-
-                }
-            } else {
-
-                JOptionPane.showMessageDialog(this,
-                        "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
-                        "Kan inte registrera student",
-                        JOptionPane.ERROR_MESSAGE);
+        if (controller.checkIfStudentExists(studentData[0]) == false) {
 
 
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+
+            this.controller.registerNewStudent(studentData);
+
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                    "Kan inte registrera student",
+                    JOptionPane.ERROR_MESSAGE);
+
+
         }
 
-
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
-
     private void txtRegisterStudentAdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegisterStudentAdressActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRegisterStudentAdressActionPerformed
@@ -823,9 +814,12 @@ public class MainView extends javax.swing.JFrame {
                         "Kan inte skapa kurs.",
                         JOptionPane.ERROR_MESSAGE);
 
+
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainView.class
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -851,10 +845,13 @@ public class MainView extends javax.swing.JFrame {
                         "Kan inte updatera kurs.",
                         JOptionPane.ERROR_MESSAGE);
 
+
+
             }
         } catch (SQLException ex) {
 
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainView.class
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -875,9 +872,12 @@ public class MainView extends javax.swing.JFrame {
                         "Kan inte radera kurs.",
                         JOptionPane.ERROR_MESSAGE);
 
+
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MainView.class
+                    .getName()).log(Level.SEVERE, null, ex);
 
         }
 
@@ -897,51 +897,41 @@ public class MainView extends javax.swing.JFrame {
         studentData[5] = this.txtViewStudentAdress.getText();
         studentData[6] = this.txtViewStudentPostCode.getText();
         studentData[7] = this.txtViewStudentCity.getText();
-        try {
-            if (controller.checkIfStudentExists(studentData[0]) == true) {
-                try {
-                    this.controller.updateStudent(studentData);
-                } catch (SQLException ex) {
-                    Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-                }
 
-            } else {
-
-                JOptionPane.showMessageDialog(this,
-                        "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
-                        "Kan inte updatera student.",
-                        JOptionPane.ERROR_MESSAGE);
-
-            }
+        if (controller.checkIfStudentExists(studentData[0]) == true) {
 
 
-            // TODO add your handling code here:
-        } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            this.controller.updateStudent(studentData);
+
+
+
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                    "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
+                    "Kan inte updatera student.",
+                    JOptionPane.ERROR_MESSAGE);
+
         }
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnViewStudentUpdateStudentActionPerformed
-
     private void btnViewStudentDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentDeleteStudentActionPerformed
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
-        try {
-            if (controller.checkIfStudentExists(personNbr) == true) {
 
-                this.controller.deleteStudent(personNbr);
+        if (controller.checkIfStudentExists(personNbr) == true) {
 
-            } else {
+            this.controller.deleteStudent(personNbr);
 
-                JOptionPane.showMessageDialog(this,
-                        "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
-                        "Kan inte radera student.",
-                        JOptionPane.ERROR_MESSAGE);
+        } else {
 
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,
+                    "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
+                    "Kan inte radera student.",
+                    JOptionPane.ERROR_MESSAGE);
+
         }
-
-
 
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
@@ -952,7 +942,7 @@ public class MainView extends javax.swing.JFrame {
     private void btnFindStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindStudentActionPerformed
 
         String searchString = this.txtFindStudentQuery.getText();
-        
+
         DefaultTableModel dtm = controller.findStudents(searchString);
 
         this.tblFindStudent.setModel(dtm);
@@ -1080,5 +1070,4 @@ public class MainView extends javax.swing.JFrame {
         this.tblFindStudent.setModel(dtm);
 
     }
-
 }
