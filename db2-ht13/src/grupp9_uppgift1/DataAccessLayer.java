@@ -18,34 +18,114 @@ import javax.swing.table.DefaultTableModel;
 public class DataAccessLayer {
 
     Connection connection;
-
-    DataAccessLayer(Connection connection) {
+    String sqlString = "";
+    
+    DataAccessLayer(Connection connection){
         this.connection = connection;
     }
+    
+    private void executeUpdate(String sqlString) {
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sqlString);    
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private ResultSet executeQuery(String sqlString) throws SQLException{
+        Statement stmt = connection.createStatement();
+        ResultSet rst = stmt.executeQuery(sqlString);
+        connection.close();
+        return rst;       
+    }
 
-    void registerNewStudent(String[] studentData) throws SQLException {
-        String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
-        for (int i = 1; i < studentData.length; i++) {
-            sqlString += ",'" + studentData[i] + "'";
+    void registerNewStudent(String[] studentData) throws SQLException{
+        sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
+        for(int i=1;i<studentData.length;i++){
+            sqlString += ",'" + studentData[i] +"'";
             System.out.println(sqlString);
         }
-        sqlString += ")";
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate(sqlString);
-        connection.commit();
-        connection.close();
+        sqlString += ")"; 
+        executeUpdate(sqlString);
+    }
+    
+    public boolean checkIfStudentExists(String pnr) throws SQLException {
+
+        Boolean studentExists;
+
+        sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
+        ResultSet rset = executeQuery(sqlString);
+
+        studentExists = rset.next();
+
+        if (studentExists) {
+            System.out.println("studenten " + pnr + " är redan registrerad i databasen");
+        } else {
+            System.out.println("Det finns ingen student med följande personnr: " + pnr);
+        }
+
+        return studentExists;
+
     }
 
-    void updateStudent(String[] studentData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean checkIfCourseExists(String courseCode) throws SQLException {
+
+        Boolean courseExists;
+
+        sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
+        ResultSet rset = executeQuery(sqlString);
+
+        courseExists = rset.next();
+
+        if (courseExists) {
+            System.out.println("Kursen " + courseCode + " existerar redan");
+        } else {
+            System.out.println("Det finns ingen kurs med följande kurskod: " + courseCode);
+        }
+
+        return courseExists;
+    }
+    
+    public int getNumberOfStudents(String courseCode)throws SQLException {
+        int numberOfStudents;
+        sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
+        ResultSet rset = executeQuery(sqlString);
+        numberOfStudents = rset.getInt(1);
+        return numberOfStudents;
     }
 
-    void deleteStudent(String personNbr) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
+        int numberOfStudentsWithGrade;
+        sqlString = "SElECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = " + grade + "'";
+        ResultSet rset = executeQuery(sqlString);
+        numberOfStudentsWithGrade = rset.getInt(1);
+        return numberOfStudentsWithGrade;
+    }
+    // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
+    void updateStudent(String[] studentData) throws SQLException {
+        sqlString = "UPDATE student SET";
+        sqlString += "pnr = '" + studentData[0] + "'";
+        sqlString += "firstname = '" + studentData[1] + "'";
+        sqlString += "lastname = '" + studentData[2] + "'";
+        sqlString += "phonenr = '" + studentData[3] + "'";
+        sqlString += "email = '" + studentData[4] + "'";
+        sqlString += "address = '" + studentData[5] + "'";
+        sqlString += "postcode = '" + studentData[6] + "'";
+        sqlString += "city = '" + studentData[7] + "'";
+        executeUpdate(sqlString);
+        }
+
+    void deleteStudent(String personNbr){
+        sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
+        executeUpdate(sqlString);     
     }
 
     void registerNewCourse(String[] courseData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sqlString = "INSERT INTO course ('" + courseData[0] + "','" 
+                    + courseData[1] + "','" + courseData[2] + "')";
+        executeUpdate(sqlString);    
     }
 
     void updateCourse(String[] courseData) {

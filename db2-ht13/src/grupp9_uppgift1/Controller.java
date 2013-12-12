@@ -39,7 +39,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) {
+    void updateStudent(String[] studentData) throws SQLException {
         
         this.dataAccessLayer.updateStudent(studentData);
         
@@ -67,32 +67,31 @@ public class Controller {
         this.dataAccessLayer.deleteCourse(courseCode);
     }
 
-    boolean checkIfStudentExists(String string) {
+    boolean checkIfStudentExists(String string) throws SQLException{
         
-        return true;
-        
+        if (this.dataAccessLayer.checkIfStudentExists(string)) {
+            return true;
+        } else {
+            return false;
+        }        
     }
 
-    boolean checkIfCourseExists(String string) {
+    boolean checkIfCourseExists(String courseCode) throws SQLException{
  
-        return true;
-        
-    }
-
-    protected DefaultTableModel getCourseTableModel() {
-        
-        DefaultTableModel dtm = null;
-        
-        try {
-            
-            dtm = this.dataAccessLayer.getAllCourses();
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        if (this.dataAccessLayer.checkIfCourseExists(courseCode)){
+            return true;
+        } else {
+            return false;
         }
         
-        return dtm;
-        
     }
+    public float percentageOfStudentsWithGrade(String courseCode, String grade) throws SQLException{
+        int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
+        int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
+        float percentageOfStudentsWithGrade = ((numberOfStudentsWithGrade/numberOfStudents) * 100);
+        System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        return percentageOfStudentsWithGrade;
+                
+    }
+            
 }
