@@ -35,6 +35,8 @@ public class MainView extends javax.swing.JFrame {
 
         this.populateCourseTable();
 
+        //this.populateStudentTable();
+
     }
 
     /**
@@ -67,8 +69,8 @@ public class MainView extends javax.swing.JFrame {
         lblFindStudentPostCode = new javax.swing.JLabel();
         lblFindStudentCity = new javax.swing.JLabel();
         separatorFindStudent = new javax.swing.JSeparator();
-        jScrollPaneFindStudent = new javax.swing.JScrollPane();
-        listFindStudent = new javax.swing.JList();
+        scrollPaneFindStudent = new javax.swing.JScrollPane();
+        tblFindStudent = new javax.swing.JTable();
         panelViewStudent = new javax.swing.JPanel();
         txtViewStudentFirstName = new javax.swing.JTextField();
         txtViewStudentLastName = new javax.swing.JTextField();
@@ -184,55 +186,63 @@ public class MainView extends javax.swing.JFrame {
 
         lblFindStudentCity.setText("Ort:");
 
-        listFindStudent.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPaneFindStudent.setViewportView(listFindStudent);
+        tblFindStudent.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        scrollPaneFindStudent.setViewportView(tblFindStudent);
 
         javax.swing.GroupLayout panelFindStudentLayout = new javax.swing.GroupLayout(panelFindStudent);
         panelFindStudent.setLayout(panelFindStudentLayout);
         panelFindStudentLayout.setHorizontalGroup(
             panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFindStudentLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelFindStudentLayout.createSequentialGroup()
-                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFindStudentFirstName)
-                            .addComponent(lblFindStudentPhoneNbr)
-                            .addComponent(lblFindStudentEmail)
-                            .addComponent(lblFindStudentPersonNbr)
-                            .addComponent(lblFindStudentLastName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap()
+                        .addComponent(scrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFindStudentLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtFindStudentPhoneNbr)
-                                .addComponent(txtFindStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtFindStudentPnr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtFindStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFindStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106)
-                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFindStudentAdress)
-                            .addComponent(lblFindStudentPostCode)
-                            .addComponent(lblFindStudentCity))
-                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFindStudentLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtFindStudentAdress)
-                                    .addComponent(txtFindStudentPostCode)
-                                    .addComponent(txtFindStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelFindStudentLayout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(btnFindStudent)
-                                .addGap(61, 61, 61))))
-                    .addComponent(separatorFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFindStudentLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFindStudentFirstName)
+                                    .addComponent(lblFindStudentPhoneNbr)
+                                    .addComponent(lblFindStudentEmail)
+                                    .addComponent(lblFindStudentPersonNbr)
+                                    .addComponent(lblFindStudentLastName))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtFindStudentPhoneNbr)
+                                        .addComponent(txtFindStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtFindStudentPnr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtFindStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFindStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(106, 106, 106)
+                                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblFindStudentAdress)
+                                    .addComponent(lblFindStudentPostCode)
+                                    .addComponent(lblFindStudentCity))
+                                .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFindStudentLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtFindStudentAdress)
+                                            .addComponent(txtFindStudentPostCode)
+                                            .addComponent(txtFindStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(panelFindStudentLayout.createSequentialGroup()
+                                        .addGap(42, 42, 42)
+                                        .addComponent(btnFindStudent)
+                                        .addGap(61, 61, 61))))
+                            .addComponent(separatorFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         panelFindStudentLayout.setVerticalGroup(
@@ -269,8 +279,8 @@ public class MainView extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(separatorFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addComponent(scrollPaneFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(360, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Sök student", panelFindStudent);
@@ -1044,7 +1054,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton btnViewStudentDeleteStudent;
     private javax.swing.JButton btnViewStudentUpdateStudent;
     private javax.swing.JComboBox comboBoxViewStudentAddCourse;
-    private javax.swing.JScrollPane jScrollPaneFindStudent;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblFindCourseCourseCode;
     private javax.swing.JLabel lblFindCourseCourseName;
@@ -1086,7 +1095,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lblViewStudentPersonNbr;
     private javax.swing.JLabel lblViewStudentPhoneNbr;
     private javax.swing.JLabel lblViewStudentPostCode;
-    private javax.swing.JList listFindStudent;
     private javax.swing.JPanel panelFindCourse;
     private javax.swing.JPanel panelFindStudent;
     private javax.swing.JPanel panelRegisterCourse;
@@ -1094,6 +1102,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel panelViewCourse;
     private javax.swing.JPanel panelViewStudent;
     private javax.swing.JScrollPane scrollPaneFindCourse;
+    private javax.swing.JScrollPane scrollPaneFindStudent;
     private javax.swing.JScrollPane scrollPaneViewCourseHighestPassedCourses;
     private javax.swing.JScrollPane scrollPaneViewCourseNonPassedStudents;
     private javax.swing.JScrollPane scrollPaneViewCoursePassedStudents;
@@ -1106,6 +1115,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JSeparator separatorViewStudent;
     private javax.swing.JTabbedPane tabMain;
     private javax.swing.JTable tableFindCourse;
+    private javax.swing.JTable tblFindStudent;
     private javax.swing.JTextArea txtAreaViewCourseNonPassedStudents;
     private javax.swing.JTextArea txtAreaViewCoursePassedStudents;
     private javax.swing.JTextField txtFindCourseCourseCode;
@@ -1165,7 +1175,18 @@ public class MainView extends javax.swing.JFrame {
 
         }
 
+    }
 
+    private void populateStudentTable() {
+
+        DefaultTableModel dtm = null;
+        
+
+        //dtm = controller.getAllCourses();
+
+        System.out.println(dtm.getColumnCount());
+
+        this.tableFindCourse.setModel(dtm);
 
     }
 }

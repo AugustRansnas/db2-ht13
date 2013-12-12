@@ -19,38 +19,37 @@ public class DataAccessLayer {
 
     Connection connection;
     String sqlString = "";
-    
-    DataAccessLayer(Connection connection){
+
+    DataAccessLayer(Connection connection) {
         this.connection = connection;
     }
-    
+
     private void executeUpdate(String sqlString) {
         try {
             Statement stmt = connection.createStatement();
-            stmt.executeUpdate(sqlString);    
+            stmt.executeUpdate(sqlString);
             connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private ResultSet executeQuery(String sqlString) throws SQLException{
+
+    private ResultSet executeQuery(String sqlString) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rst = stmt.executeQuery(sqlString);
-        connection.close();
-        return rst;       
+        return rst;
     }
 
-    void registerNewStudent(String[] studentData) throws SQLException{
+    void registerNewStudent(String[] studentData) throws SQLException {
         sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
-        for(int i=1;i<studentData.length;i++){
-            sqlString += ",'" + studentData[i] +"'";
+        for (int i = 1; i < studentData.length; i++) {
+            sqlString += ",'" + studentData[i] + "'";
             System.out.println(sqlString);
         }
-        sqlString += ")"; 
+        sqlString += ")";
         executeUpdate(sqlString);
     }
-    
+
     public boolean checkIfStudentExists(String pnr) throws SQLException {
 
         Boolean studentExists;
@@ -87,23 +86,44 @@ public class DataAccessLayer {
 
         return courseExists;
     }
-    
-    public int getNumberOfStudents(String courseCode)throws SQLException {
-        int numberOfStudents;
+
+    public int getNumberOfStudents(String courseCode) throws SQLException {
+
+        int nos = 0;
+
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
-        ResultSet rset = executeQuery(sqlString);
-        numberOfStudents = rset.getInt(1);
-        return numberOfStudents;
+
+        ResultSet rs = executeQuery(sqlString);
+
+        while (rs.next()) {
+
+            nos = rs.getInt(1);
+
+        }
+
+        return nos;
     }
 
     public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
-        int numberOfStudentsWithGrade;
-        sqlString = "SElECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = " + grade + "'";
-        ResultSet rset = executeQuery(sqlString);
-        numberOfStudentsWithGrade = rset.getInt(1);
-        return numberOfStudentsWithGrade;
+
+        int nos = 0;
+
+        sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
+
+        ResultSet rs = executeQuery(sqlString);
+
+        while (rs.next()) {
+
+            nos = rs.getInt(1);
+
+        }
+
+        return nos;
+
+
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
+
     void updateStudent(String[] studentData) throws SQLException {
         sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
@@ -115,17 +135,17 @@ public class DataAccessLayer {
         sqlString += "postcode = '" + studentData[6] + "'";
         sqlString += "city = '" + studentData[7] + "'";
         executeUpdate(sqlString);
-        }
+    }
 
-    void deleteStudent(String personNbr){
+    void deleteStudent(String personNbr) {
         sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
-        executeUpdate(sqlString);     
+        executeUpdate(sqlString);
     }
 
     void registerNewCourse(String[] courseData) {
-        sqlString = "INSERT INTO course ('" + courseData[0] + "','" 
-                    + courseData[1] + "','" + courseData[2] + "')";
-        executeUpdate(sqlString);    
+        sqlString = "INSERT INTO course ('" + courseData[0] + "','"
+                + courseData[1] + "','" + courseData[2] + "')";
+        executeUpdate(sqlString);
     }
 
     void updateCourse(String[] courseData) {
@@ -137,19 +157,19 @@ public class DataAccessLayer {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
     }
-    
-    protected DefaultTableModel getAllCourses() throws SQLException{
-        
+
+    protected DefaultTableModel getAllCourses() throws SQLException {
+
         String sqlString = "SELECT * FROM Course";
-        
+
         Statement stmt = connection.createStatement();
-  
+
         ResultSet rs = stmt.executeQuery(sqlString);
-        
+
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
-                
+
         return dtm;
-        
+
     }
 
     private DefaultTableModel getResultSetAsDefaultTableModel(ResultSet rs) {
@@ -165,17 +185,17 @@ public class DataAccessLayer {
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
-                
+
                 String columnName = md.getColumnName(i);
 
                 columnNames.addElement(columnName);
-                
+
                 System.out.println("Adding column name: " + columnName);
 
             }
 
             while (rs.next()) {
-                
+
                 Vector row = new Vector(columnCount);
 
                 for (int i = 1; i <= columnCount; i++) {
@@ -188,17 +208,17 @@ public class DataAccessLayer {
             }
 
             DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
-            
+
             return dtm;
 
         } catch (SQLException ex) {
-            
+
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return null;
-        
-        
+
+
 
 
 
