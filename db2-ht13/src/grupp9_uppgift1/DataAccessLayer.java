@@ -93,7 +93,11 @@ public class DataAccessLayer {
                 data.addElement(row);
             }
 
-            DefaultTableModel dtm = new DefaultTableModel(data, columnNames);
+            DefaultTableModel dtm = new DefaultTableModel(data, columnNames) {
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
 
             return dtm;
 
@@ -107,7 +111,7 @@ public class DataAccessLayer {
     }
 
     private boolean checkIfResultSetHasContent(ResultSet rset) {
-        
+
         try {
             return rset.next();
         } catch (SQLException ex) {
@@ -138,7 +142,7 @@ public class DataAccessLayer {
 
         ResultSet rset = executeQuery(sqlString);
 
-         boolean studentExists = this.checkIfResultSetHasContent(rset);
+        boolean studentExists = this.checkIfResultSetHasContent(rset);
 
 
         if (studentExists) {
@@ -235,7 +239,6 @@ public class DataAccessLayer {
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Course queries" defaultstate="collapsed">
     public boolean checkIfCourseExists(String courseCode) {
 

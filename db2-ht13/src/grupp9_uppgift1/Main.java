@@ -46,8 +46,7 @@ public class Main {
         MainView mainView = new MainView(controller);
 
         mainView.setVisible(true);
-       
-
+ 
     }
 
 }
