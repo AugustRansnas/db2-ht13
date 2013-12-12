@@ -105,6 +105,17 @@ public class DataAccessLayer {
         return null;
 
     }
+
+    private boolean checkIfResultSetHasContent(ResultSet rset) {
+        
+        try {
+            return rset.next();
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student queries" defaultstate="collapsed">
@@ -123,17 +134,12 @@ public class DataAccessLayer {
 
     protected boolean checkIfStudentExists(String pnr) {
 
-        boolean studentExists = false;
-
         String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
 
         ResultSet rset = executeQuery(sqlString);
 
-        try {
-            studentExists = rset.next();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+         boolean studentExists = this.checkIfResultSetHasContent(rset);
+
 
         if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
@@ -231,12 +237,12 @@ public class DataAccessLayer {
     //</editor-fold>
     
     //<editor-fold desc="Course queries" defaultstate="collapsed">
-    public boolean checkIfCourseExists(String courseCode) throws SQLException {
+    public boolean checkIfCourseExists(String courseCode) {
 
-        Boolean courseExists;
         String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
         ResultSet rset = executeQuery(sqlString);
-        courseExists = rset.next();
+
+        boolean courseExists = this.checkIfResultSetHasContent(rset);
 
         if (courseExists) {
             System.out.println("Kursen " + courseCode + " existerar redan");
@@ -303,7 +309,7 @@ public class DataAccessLayer {
 
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
     protected String getStudentGradeAtCourse(String pnr, String courseCode) {
-        
+
         String grade = null;
         String sqlString = "SELECT h.grade ";
         sqlString += "FROM student c, hasstudied h ";
@@ -324,5 +330,5 @@ public class DataAccessLayer {
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
-     //</editor-fold>
+    //</editor-fold>
 }
