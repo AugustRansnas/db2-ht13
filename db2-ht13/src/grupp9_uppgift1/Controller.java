@@ -62,7 +62,7 @@ public class Controller {
         this.dataAccessLayer.deleteCourse(courseCode);
     }
 
-    boolean checkIfStudentExists(String string) {
+    boolean checkIfStudentExists(String string) throws SQLException{
         
         if (this.dataAccessLayer.checkIfStudentExists(string)) {
             return true;
@@ -71,9 +71,18 @@ public class Controller {
         }        
     }
 
-    boolean checkIfCourseExists(String string) {
+    boolean checkIfCourseExists(String courseCode) {
  
         return true;
         
     }
+    public float percentageOfStudentsWithGrade(String courseCode, String grade) throws SQLException{
+        int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
+        int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
+        float percentageOfStudentsWithGrade = ((numberOfStudentsWithGrade/numberOfStudents) * 100);
+        System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        return percentageOfStudentsWithGrade;
+                
+    }
+            
 }

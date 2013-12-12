@@ -63,28 +63,59 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
     
-    public boolean checkIfStudentExists(String pnr){
-        
-        Boolean resultBoolean;
-        try {
-            
-            sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
-            Statement stmt = connection.createStatement();
-            ResultSet rset = stmt.executeQuery(sqlString);
-            
-            if(rset.next()){
-            resultBoolean = true;
+    public boolean checkIfStudentExists(String pnr) throws SQLException {
+
+        Boolean studentExists;
+
+        String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
+        ResultSet rset = executeQuery(sqlString);
+
+        studentExists = rset.next();
+
+        if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
-            }else{
-            resultBoolean = false;
+        } else {
             System.out.println("Det finns ingen student med följande personnr: " + pnr);
-            }
-        
-        return resultBoolean;
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return studentExists;
+
     }
-    return false;
+
+    public boolean checkIfCourseExists(String courseCode) throws SQLException {
+
+        Boolean courseExists;
+
+        String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
+        ResultSet rset = executeQuery(sqlString);
+
+        courseExists = rset.next();
+
+        if (courseExists) {
+            System.out.println("Kursen " + courseCode + " existerar redan");
+        } else {
+            System.out.println("Det finns ingen kurs med följande kurskod: " + courseCode);
+        }
+
+        return courseExists;
+    }
+    
+    public int getNumberOfStudents(String courseCode) throws SQLException {
+        int numberOfStudents;
+        String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
+        ResultSet rset = executeQuery(sqlString);
+        numberOfStudents = rset.getInt(0);
+
+        return numberOfStudents;
+    }
+
+    public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
+        int numberOfStudentsWithGrade;
+        String sqlString = "SElECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = " + grade + "'";
+        ResultSet rset = executeQuery(sqlString);
+        numberOfStudentsWithGrade = rset.getInt(0);
+
+        return numberOfStudentsWithGrade;
     }
     
             
