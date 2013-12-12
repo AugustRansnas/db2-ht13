@@ -94,6 +94,13 @@ public class Controller {
         return percentageOfStudentsWithGrade;
                 
     }
+    public float percentagePassingCourse(String courseCode){
+        int nbrOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
+        int nbrOfFails = dataAccessLayer.getNumberOfStudents("U");
+        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentagePassingCourse = (float)nbrOfSuccesses/(float)nbrOfStudents * (float)100;
+        return percentagePassingCourse;
+    }
     
 
     DefaultTableModel getAllCourses() {
