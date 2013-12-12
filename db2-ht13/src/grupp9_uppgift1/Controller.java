@@ -73,19 +73,12 @@ public class Controller {
         
     }
     public float percentageOfStudentsWithGrade(String courseCode, String grade) {
-        int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
-        float percentageOfStudentsWithGrade;
-        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
-        System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
-        return percentageOfStudentsWithGrade;
+        float percentageWithGrade = this.dataAccessLayer.percentageOfStudentsWithGrade(courseCode, grade);
+        return percentageWithGrade;
                 
     }
     public float percentagePassingCourse(String courseCode){
-        int nbrOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int nbrOfFails = dataAccessLayer.getNumberOfStudents("U");
-        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
-        float percentagePassingCourse = (float)nbrOfSuccesses/(float)nbrOfStudents * (float)100;
+        float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
     }
     

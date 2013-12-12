@@ -309,5 +309,24 @@ public class DataAccessLayer {
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
+    public float percentagePassingCourse(String courseCode) {
+        
+        int nbrOfStudents = getNumberOfStudents(courseCode);
+        int nbrOfFails = getNumberOfStudents("U");
+        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
+        System.out.println("dataAccessLayer: " + percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
+        return percentagePassingCourse;
+    }
+    
+    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
+        
+        int numberOfStudents = getNumberOfStudents(courseCode);
+        int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
+        float percentageOfStudentsWithGrade;
+        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
+        System.out.println("dataAccessLayer: " + percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        return percentageOfStudentsWithGrade;
+    }
     //</editor-fold>
 }
