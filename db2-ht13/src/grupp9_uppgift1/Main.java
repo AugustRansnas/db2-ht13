@@ -46,6 +46,10 @@ public class Main {
         MainView mainView = new MainView(controller);
 
         mainView.setVisible(true);
+        
+        float percent = controller.percentageOfStudentsWithGrade("HIS333", "A");
+        
+        System.out.println(percent);
 
     }
 
