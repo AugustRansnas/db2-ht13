@@ -95,11 +95,21 @@ public class Controller {
     }
     
 
-    DefaultTableModel getAllCourses() throws SQLException {
+    DefaultTableModel getAllCourses() {
         
        DefaultTableModel dtm;
        
        dtm = this.dataAccessLayer.getAllCourses();
+       
+       return dtm;
+               
+    }
+    
+    DefaultTableModel getAllStudents() {
+        
+       DefaultTableModel dtm;
+       
+       dtm = this.dataAccessLayer.getAllStudents();
        
        return dtm;
                

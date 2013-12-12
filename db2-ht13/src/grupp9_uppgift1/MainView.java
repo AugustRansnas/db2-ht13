@@ -9,11 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -35,7 +31,7 @@ public class MainView extends javax.swing.JFrame {
 
         this.populateCourseTable();
 
-        //this.populateStudentTable();
+        this.populateStudentTable();
 
     }
 
@@ -1161,32 +1157,23 @@ public class MainView extends javax.swing.JFrame {
 
         DefaultTableModel dtm;
 
-        try {
+        dtm = controller.getAllCourses();
 
-            dtm = controller.getAllCourses();
+        System.out.println(dtm.getColumnCount());
 
-            System.out.println(dtm.getColumnCount());
-
-            this.tableFindCourse.setModel(dtm);
-
-        } catch (SQLException ex) {
-
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-
-        }
+        this.tableFindCourse.setModel(dtm);
 
     }
 
     private void populateStudentTable() {
 
-        DefaultTableModel dtm = null;
-        
+        DefaultTableModel dtm;
 
-        //dtm = controller.getAllCourses();
+        dtm = controller.getAllStudents();
 
         System.out.println(dtm.getColumnCount());
 
-        this.tableFindCourse.setModel(dtm);
+        this.tblFindStudent.setModel(dtm);
 
     }
 }

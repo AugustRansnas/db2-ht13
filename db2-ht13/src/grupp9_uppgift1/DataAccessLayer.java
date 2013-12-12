@@ -34,9 +34,24 @@ public class DataAccessLayer {
         }
     }
 
-    private ResultSet executeQuery(String sqlString) throws SQLException {
-        Statement stmt = connection.createStatement();
-        ResultSet rst = stmt.executeQuery(sqlString);
+    private ResultSet executeQuery(String sqlString) {
+        
+        ResultSet rst = null;
+        
+        try {
+            
+            Statement stmt = connection.createStatement();
+            
+            rst = stmt.executeQuery(sqlString);
+            
+            
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
         return rst;
     }
 
@@ -158,13 +173,11 @@ public class DataAccessLayer {
 
     }
 
-    protected DefaultTableModel getAllCourses() throws SQLException {
+    protected DefaultTableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
-
-        Statement stmt = connection.createStatement();
-
-        ResultSet rs = stmt.executeQuery(sqlString);
+ 
+        ResultSet rs = this.executeQuery(sqlString);
 
         DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
@@ -218,9 +231,19 @@ public class DataAccessLayer {
 
         return null;
 
+    }
 
+    DefaultTableModel getAllStudents() {
+        
+        String sqlString = "SELECT * FROM Student";
+        
+        ResultSet rs = this.executeQuery(sqlString);
 
+        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
-
+        return dtm;
+        
+       
+        
     }
 }
