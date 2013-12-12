@@ -309,7 +309,7 @@ public class DataAccessLayer {
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
-    public float percentagePassingCourse(String courseCode) {
+    protected float percentagePassingCourse(String courseCode) {
         
         int nbrOfStudents = getNumberOfStudents(courseCode);
         int nbrOfFails = getNumberOfStudents("U");
@@ -319,7 +319,7 @@ public class DataAccessLayer {
         return percentagePassingCourse;
     }
     
-    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
         
         int numberOfStudents = getNumberOfStudents(courseCode);
         int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
