@@ -840,39 +840,40 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindStudentFirstNameActionPerformed
 
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
-
-
-
-        String[] studentData = new String[8];
-
-        studentData[0] = this.txtRegisterStudentPersonNbr.getText();
-        studentData[1] = this.txtRegisterStudentFirstName.getText();
-        studentData[2] = this.txtRegisterStudentLastName.getText();
-        studentData[3] = this.txtRegisterStudentPhoneNbr.getText();
-        studentData[4] = this.txtRegisterStudentEmail.getText();
-        studentData[5] = this.txtRegisterStudentAdress.getText();
-        studentData[6] = this.txtRegisterStudentPostCode.getText();
-        studentData[7] = this.txtRegisterStudentCity.getText();
-
-        if (controller.checkIfStudentExists(studentData[0]) == true) {
-
-            try {
-
-                this.controller.registerNewStudent(studentData);
-
-            } catch (SQLException ex) {
-
-                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
-
+        try {
+            String[] studentData = new String[8];
+            
+            studentData[0] = this.txtRegisterStudentPersonNbr.getText();
+            studentData[1] = this.txtRegisterStudentFirstName.getText();
+            studentData[2] = this.txtRegisterStudentLastName.getText();
+            studentData[3] = this.txtRegisterStudentPhoneNbr.getText();
+            studentData[4] = this.txtRegisterStudentEmail.getText();
+            studentData[5] = this.txtRegisterStudentAdress.getText();
+            studentData[6] = this.txtRegisterStudentPostCode.getText();
+            studentData[7] = this.txtRegisterStudentCity.getText();
+            
+            if (controller.checkIfStudentExists(studentData[0]) == true) {
+                
+                try {
+                    
+                    this.controller.registerNewStudent(studentData);
+                    
+                } catch (SQLException ex) {
+                    
+                    Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+                    
+                }
+            } else {
+                
+                JOptionPane.showMessageDialog(this,
+                        "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                        "Kan inte registrera student",
+                        JOptionPane.ERROR_MESSAGE);
+                
+                
             }
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
-                    "Kan inte registrera student",
-                    JOptionPane.ERROR_MESSAGE);
-
-
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -961,44 +962,48 @@ public class MainView extends javax.swing.JFrame {
         studentData[5] = this.txtViewStudentAdress.getText();
         studentData[6] = this.txtViewStudentPostCode.getText();
         studentData[7] = this.txtViewStudentCity.getText();
-
-
-
-        if (controller.checkIfStudentExists(studentData[0]) == true) {
-            try {
-                this.controller.updateStudent(studentData);
-            } catch (SQLException ex) {
-                Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            if (controller.checkIfStudentExists(studentData[0]) == true) {
+                try {
+                    this.controller.updateStudent(studentData);
+                } catch (SQLException ex) {
+                    Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            } else {
+                
+                JOptionPane.showMessageDialog(this,
+                        "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
+                        "Kan inte updatera student.",
+                        JOptionPane.ERROR_MESSAGE);
+                
             }
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Student existerar inte. Personummer " + studentData[0] + " finns inte i databasen.",
-                    "Kan inte updatera student.",
-                    JOptionPane.ERROR_MESSAGE);
-
+            
+            
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnViewStudentUpdateStudentActionPerformed
 
     private void btnViewStudentDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentDeleteStudentActionPerformed
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
-        
-        if (controller.checkIfStudentExists(personNbr) == true) {
-
-                 this.controller.deleteStudent(personNbr);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
-                    "Kan inte radera student.",
-                    JOptionPane.ERROR_MESSAGE);
-
+        try {
+            if (controller.checkIfStudentExists(personNbr) == true) {
+                
+                this.controller.deleteStudent(personNbr);
+                
+            } else {
+                
+                JOptionPane.showMessageDialog(this,
+                        "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
+                        "Kan inte radera student.",
+                        JOptionPane.ERROR_MESSAGE);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
