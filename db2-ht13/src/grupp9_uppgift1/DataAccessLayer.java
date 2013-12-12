@@ -277,4 +277,26 @@ public class DataAccessLayer {
 
 
     }
+
+    protected DefaultTableModel findStudents(String searchString) {
+
+        String sqlString = "SELECT * FROM Student "
+                + "WHERE pnr LIKE '%" + searchString + "%' "
+                + "OR firstname LIKE '%" + searchString + "%' "
+                + "OR lastname LIKE '%" + searchString + "%' "
+                + "OR phonenr LIKE '%" + searchString + "%' "
+                + "OR email LIKE '%" + searchString + "%' "
+                + "OR adress LIKE '%" + searchString + "%' "
+                + "OR postcode LIKE '%" + searchString + "%' "
+                + "OR city LIKE '%" + searchString + "%'";
+
+        ResultSet rs = this.executeQuery(sqlString);
+
+        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+
+        return dtm;
+
+
+
+    }
 }
