@@ -52,7 +52,7 @@ public class DataAccessLayer {
         return rst;
     }
 
-    void registerNewStudent(String[] studentData) throws SQLException {
+    void registerNewStudent(String[] studentData) {
         String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
@@ -133,8 +133,8 @@ public class DataAccessLayer {
         return null;
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
-
-    void updateStudent(String[] studentData) throws SQLException {
+    //behövs en selected student
+    void updateStudent(String[] studentData)  {
         String sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
         sqlString += "firstname = '" + studentData[1] + "'";
