@@ -34,11 +34,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) {
-        
-        this.dataAccessLayer.updateStudent(studentData);
-        
-    }
+
 
     void deleteStudent(String personNbr) {
         
@@ -51,11 +47,7 @@ public class Controller {
         this.dataAccessLayer.registerNewCourse(courseData);
     }
 
-    void updateCourse(String[] courseData) {
-        
-        this.dataAccessLayer.updateCourse(courseData);
-        
-    }
+
 
     void deleteCourse(String courseCode) {
         

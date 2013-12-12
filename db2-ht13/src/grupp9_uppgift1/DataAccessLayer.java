@@ -200,22 +200,7 @@ public class DataAccessLayer {
         return numberOfStudentsWithGrade;
     }
 
-    protected void updateStudent(String[] studentData) {
 
-        String sqlString = "UPDATE student SET";
-        sqlString += "pnr = '" + studentData[0] + "'";
-        sqlString += "firstname = '" + studentData[1] + "'";
-        sqlString += "lastname = '" + studentData[2] + "'";
-        sqlString += "phonenr = '" + studentData[3] + "'";
-        sqlString += "email = '" + studentData[4] + "'";
-        sqlString += "address = '" + studentData[5] + "'";
-        sqlString += "postcode = '" + studentData[6] + "'";
-        sqlString += "city = '" + studentData[7] + "'";
-
-        executeUpdate(sqlString);
-
-        // TODO: ska ta in en selectad student som inparameter också när den metoden finns
-    }
 
     protected void deleteStudent(String personNbr) {
         String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
@@ -263,16 +248,7 @@ public class DataAccessLayer {
         // TODO: ska ta in en selectad kurs
     }
 
-    protected void updateCourse(String[] courseData) {
 
-        String sqlString = "UPDATE Course SET";
-        sqlString += "ccode = '" + courseData[0] + "'";
-        sqlString += "cname = '" + courseData[1] + "'";
-        sqlString += "points = '" + courseData[2] + "'";
-        executeUpdate(sqlString);
-
-        // TODO: ska ta in en selectad kurs
-    }
 
     protected void deleteCourse(String courseCode) {
         String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
