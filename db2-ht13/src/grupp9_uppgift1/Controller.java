@@ -71,9 +71,13 @@ public class Controller {
         }        
     }
 
-    boolean checkIfCourseExists(String courseCode) {
+    boolean checkIfCourseExists(String courseCode) throws SQLException{
  
-        return true;
+        if (this.dataAccessLayer.checkIfCourseExists(courseCode)){
+            return true;
+        } else {
+            return false;
+        }
         
     }
     public float percentageOfStudentsWithGrade(String courseCode, String grade) throws SQLException{
