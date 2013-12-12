@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 public class DataAccessLayer {
 
     Connection connection;
-    String sqlString = "";
 
     DataAccessLayer(Connection connection) {
         this.connection = connection;
@@ -42,9 +41,7 @@ public class DataAccessLayer {
             
             Statement stmt = connection.createStatement();
             
-            rst = stmt.executeQuery(sqlString);
-            
-            
+            rst = stmt.executeQuery(sqlString);       
             
         } catch (SQLException ex) {
             
@@ -56,7 +53,7 @@ public class DataAccessLayer {
     }
 
     void registerNewStudent(String[] studentData) throws SQLException {
-        sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
+        String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
             System.out.println(sqlString);
@@ -69,7 +66,7 @@ public class DataAccessLayer {
 
         Boolean studentExists;
 
-        sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
+        String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
         ResultSet rset = executeQuery(sqlString);
 
         studentExists = rset.next();
@@ -88,7 +85,7 @@ public class DataAccessLayer {
 
         Boolean courseExists;
 
-        sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
+        String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
         ResultSet rset = executeQuery(sqlString);
 
         courseExists = rset.next();
@@ -106,7 +103,7 @@ public class DataAccessLayer {
 
         int numberOfStudents = 0;
 
-        sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
+        String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
 
         ResultSet rs = executeQuery(sqlString);
 
@@ -123,7 +120,7 @@ public class DataAccessLayer {
 
         int numberOfStudentsWithGrade = 0;
 
-        sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
+        String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
 
         ResultSet rs = executeQuery(sqlString);
 
@@ -140,7 +137,7 @@ public class DataAccessLayer {
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
 
     void updateStudent(String[] studentData) throws SQLException {
-        sqlString = "UPDATE student SET";
+        String sqlString = "UPDATE student SET";
         sqlString += "pnr = '" + studentData[0] + "'";
         sqlString += "firstname = '" + studentData[1] + "'";
         sqlString += "lastname = '" + studentData[2] + "'";
@@ -153,12 +150,12 @@ public class DataAccessLayer {
     }
 
     void deleteStudent(String personNbr) {
-        sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
+        String sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
     }
 
     void registerNewCourse(String[] courseData) {
-        sqlString = "INSERT INTO course ('" + courseData[0] + "','"
+        String sqlString = "INSERT INTO course ('" + courseData[0] + "','"
                 + courseData[1] + "','" + courseData[2] + "')";
         executeUpdate(sqlString);
     }
@@ -171,6 +168,20 @@ public class DataAccessLayer {
 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
+    }
+    
+    protected DefaultTableModel findCourses (String searchString) {
+        
+        String sqlString = "SELECT * FROM Course "
+                        + "WHERE ccode LIKE '%" + searchString + "%' "
+                        + "OR cname LIKE '%" + searchString + "%'";
+        
+        ResultSet rs = this.executeQuery(sqlString);
+        
+        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        
+        return dtm;
+        
     }
 
     protected DefaultTableModel getAllCourses() {

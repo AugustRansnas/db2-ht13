@@ -742,20 +742,11 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="scrollPaneFindCourse" alignment="0" min="-2" pref="615" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblFindCourseCourseName" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFindCourseCredits" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblFindCourseCourseCode" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lblFindCourseInput" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="btnFindCourse" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtFindCourseCourseName" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtFindCourseCourseCode" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtFindCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                      <Component id="txtFindCourseInput" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnFindCourse" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -767,46 +758,31 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindCourseCourseName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFindCourseInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFindCourseInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFindCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindCourseCourseCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btnFindCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="separatorFindCourse" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="scrollPaneFindCourse" min="-2" pref="165" max="-2" attributes="0"/>
-                      <EmptySpace pref="421" max="32767" attributes="0"/>
+                      <EmptySpace pref="519" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblFindCourseCourseName">
+            <Component class="javax.swing.JLabel" name="lblFindCourseInput">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ben&#xe4;mning"/>
+                <Property name="text" type="java.lang.String" value="Kursnamn/Kurskod:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtFindCourseCourseName">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblFindCourseCourseCode">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Kurskod"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtFindCourseCourseCode">
+            <Component class="javax.swing.JTextField" name="txtFindCourseInput">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFindCourseInputActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnFindCourse">
               <Properties>
@@ -815,13 +791,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFindCourseActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtFindCourseCredits">
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblFindCourseCredits">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="HP"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="separatorFindCourse">
             </Component>

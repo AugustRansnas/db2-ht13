@@ -115,13 +115,9 @@ public class MainView extends javax.swing.JFrame {
         txtRegisterStudentAdress = new javax.swing.JTextField();
         btnRegisterStudentSave = new javax.swing.JButton();
         panelFindCourse = new javax.swing.JPanel();
-        lblFindCourseCourseName = new javax.swing.JLabel();
-        txtFindCourseCourseName = new javax.swing.JTextField();
-        lblFindCourseCourseCode = new javax.swing.JLabel();
-        txtFindCourseCourseCode = new javax.swing.JTextField();
+        lblFindCourseInput = new javax.swing.JLabel();
+        txtFindCourseInput = new javax.swing.JTextField();
         btnFindCourse = new javax.swing.JButton();
-        txtFindCourseCredits = new javax.swing.JTextField();
-        lblFindCourseCredits = new javax.swing.JLabel();
         separatorFindCourse = new javax.swing.JSeparator();
         scrollPaneFindCourse = new javax.swing.JScrollPane();
         tableFindCourse = new javax.swing.JTable();
@@ -558,9 +554,13 @@ public class MainView extends javax.swing.JFrame {
 
         tabMain.addTab("Registrera student", panelRegisterStudent);
 
-        lblFindCourseCourseName.setText("Benämning");
+        lblFindCourseInput.setText("Kursnamn/Kurskod:");
 
-        lblFindCourseCourseCode.setText("Kurskod");
+        txtFindCourseInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFindCourseInputActionPerformed(evt);
+            }
+        });
 
         btnFindCourse.setText("Sök");
         btnFindCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -568,8 +568,6 @@ public class MainView extends javax.swing.JFrame {
                 btnFindCourseActionPerformed(evt);
             }
         });
-
-        lblFindCourseCredits.setText("HP");
 
         tableFindCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -595,41 +593,26 @@ public class MainView extends javax.swing.JFrame {
                         .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelFindCourseLayout.createSequentialGroup()
-                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblFindCourseCourseName)
-                                    .addComponent(lblFindCourseCredits)
-                                    .addComponent(lblFindCourseCourseCode))
+                                .addComponent(lblFindCourseInput)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnFindCourse)
-                                    .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtFindCourseCourseName)
-                                        .addComponent(txtFindCourseCourseCode)
-                                        .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnFindCourse)))))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         panelFindCourseLayout.setVerticalGroup(
             panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFindCourseLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(19, 19, 19)
                 .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFindCourseCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFindCourseCourseName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFindCourseCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFindCourseCourseCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFindCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFindCourseCredits))
-                .addGap(18, 18, 18)
-                .addComponent(btnFindCourse)
-                .addGap(18, 18, 18)
+                    .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFindCourseInput)
+                    .addComponent(btnFindCourse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addContainerGap(519, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Sök kurs", panelFindCourse);
@@ -845,6 +828,15 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRegisterStudentFirstNameActionPerformed
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
+
+        String searchString = this.txtFindCourseInput.getText();
+        
+        DefaultTableModel dtm = controller.findCourses(searchString);
+
+        this.tableFindCourse.setModel(dtm);
+        
+        
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
@@ -1036,6 +1028,10 @@ public class MainView extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
+
+    private void txtFindCourseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindCourseInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindCourseInputActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -1051,9 +1047,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JButton btnViewStudentUpdateStudent;
     private javax.swing.JComboBox comboBoxViewStudentAddCourse;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JLabel lblFindCourseCourseCode;
-    private javax.swing.JLabel lblFindCourseCourseName;
-    private javax.swing.JLabel lblFindCourseCredits;
+    private javax.swing.JLabel lblFindCourseInput;
     private javax.swing.JLabel lblFindStudentAdress;
     private javax.swing.JLabel lblFindStudentCity;
     private javax.swing.JLabel lblFindStudentEmail;
@@ -1114,9 +1108,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JTable tblFindStudent;
     private javax.swing.JTextArea txtAreaViewCourseNonPassedStudents;
     private javax.swing.JTextArea txtAreaViewCoursePassedStudents;
-    private javax.swing.JTextField txtFindCourseCourseCode;
-    private javax.swing.JTextField txtFindCourseCourseName;
-    private javax.swing.JTextField txtFindCourseCredits;
+    private javax.swing.JTextField txtFindCourseInput;
     private javax.swing.JTextField txtFindStudentAdress;
     private javax.swing.JTextField txtFindStudentCity;
     private javax.swing.JTextField txtFindStudentEmail;
@@ -1176,4 +1168,5 @@ public class MainView extends javax.swing.JFrame {
         this.tblFindStudent.setModel(dtm);
 
     }
+
 }

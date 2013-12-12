@@ -115,5 +115,14 @@ public class Controller {
        return dtm;
                
     }
+    
+    protected DefaultTableModel findCourses(String searchString){
+        
+        DefaultTableModel dtm = this.dataAccessLayer.findCourses(searchString);
+        
+        return dtm;
+    }
+            
+            
             
 }
