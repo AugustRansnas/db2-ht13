@@ -30,7 +30,7 @@ public class Controller {
 
     }
 
-    protected void registerNewStudent(String[] studentData) throws SQLException {
+    protected void registerNewStudent(String[] studentData) {
 
         System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " "
                 + studentData[2]);
@@ -39,7 +39,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) throws SQLException {
+    void updateStudent(String[] studentData) {
         
         this.dataAccessLayer.updateStudent(studentData);
         
@@ -67,7 +67,7 @@ public class Controller {
         this.dataAccessLayer.deleteCourse(courseCode);
     }
 
-    boolean checkIfStudentExists(String string) throws SQLException{
+    boolean checkIfStudentExists(String string) {
         
         if (this.dataAccessLayer.checkIfStudentExists(string)) {
             return true;
@@ -94,6 +94,13 @@ public class Controller {
         return percentageOfStudentsWithGrade;
                 
     }
+    public float percentagePassingCourse(String courseCode){
+        int nbrOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
+        int nbrOfFails = dataAccessLayer.getNumberOfStudents("U");
+        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentagePassingCourse = (float)nbrOfSuccesses/(float)nbrOfStudents * (float)100;
+        return percentagePassingCourse;
+    }
     
 
     DefaultTableModel getAllCourses() {
@@ -119,6 +126,13 @@ public class Controller {
     protected DefaultTableModel findCourses(String searchString){
         
         DefaultTableModel dtm = this.dataAccessLayer.findCourses(searchString);
+        
+        return dtm;
+    }
+
+    protected DefaultTableModel findStudents(String searchString) {
+
+        DefaultTableModel dtm = this.dataAccessLayer.findStudents(searchString);
         
         return dtm;
     }

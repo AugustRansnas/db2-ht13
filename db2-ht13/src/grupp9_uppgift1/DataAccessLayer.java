@@ -24,12 +24,16 @@ public class DataAccessLayer {
     }
 
     private void executeUpdate(String sqlString) {
+        
         try {
+            
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
-            connection.close();
+            
         } catch (SQLException ex) {
+            
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
@@ -62,12 +66,22 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    public boolean checkIfStudentExists(String pnr) throws SQLException {
+    public boolean checkIfStudentExists(String pnr) {
 
-        Boolean studentExists;
+        Boolean studentExists = false;
+        
         String sqlString = "SELECT s.pnr FROM Student s WHERE (s.pnr = '" + pnr + "')";
         ResultSet rset = executeQuery(sqlString);
-        studentExists = rset.next();
+        try {
+            
+            studentExists = rset.next();
+            
+        } catch (SQLException ex) {
+            
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+
         if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
         } else {
@@ -91,24 +105,32 @@ public class DataAccessLayer {
         return courseExists;
     }
 
-    public int getNumberOfStudents(String courseCode) throws SQLException {
+    public int getNumberOfStudents(String courseCode){
 
         int numberOfStudents = 0;
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
         ResultSet rs = executeQuery(sqlString);
-        while (rs.next()) {
-            numberOfStudents = rs.getInt(1);
+        try {
+            while (rs.next()) {
+                numberOfStudents = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numberOfStudents;
     }
 
-    public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
+    public int getNumberOfStudentsWithGrade(String courseCode, String grade){
 
         int numberOfStudentsWithGrade = 0;
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
         ResultSet rs = executeQuery(sqlString);
-        while (rs.next()) {
-            numberOfStudentsWithGrade = rs.getInt(1);
+        try {
+            while (rs.next()) {
+                numberOfStudentsWithGrade = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numberOfStudentsWithGrade;
     }
@@ -144,25 +166,29 @@ public class DataAccessLayer {
         sqlString += "address = '" + studentData[5] + "'";
         sqlString += "postcode = '" + studentData[6] + "'";
         sqlString += "city = '" + studentData[7] + "'";
+        
         executeUpdate(sqlString);
+        
     }
 // ska ta in en selectad student som inparameter också när den metoden finns
 
     void deleteStudent(String personNbr) {
-        String sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
+        String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
     }
 
     void registerNewCourse(String[] courseData) {
-        String sqlString = "INSERT INTO course ('" + courseData[0] + "','"
-                + courseData[1] + "','" + courseData[2] + "')";
+        
+        String sqlString = "INSERT INTO Course VALUES ('" + courseData[0] + "', '"
+                + courseData[1] + "', " + courseData[2] + ")";
+        
         executeUpdate(sqlString);
     }
 
     //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
 
-        String sqlString = "UPDATE course SET";
+        String sqlString = "UPDATE Course SET";
         sqlString += "ccode = '" + courseData[0] + "'";
         sqlString += "cname = '" + courseData[1] + "'";
         sqlString += "points = '" + courseData[2] + "'";
@@ -253,6 +279,28 @@ public class DataAccessLayer {
     DefaultTableModel getAllStudents() {
 
         String sqlString = "SELECT * FROM Student";
+
+        ResultSet rs = this.executeQuery(sqlString);
+
+        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+
+        return dtm;
+
+
+
+    }
+
+    protected DefaultTableModel findStudents(String searchString) {
+
+        String sqlString = "SELECT * FROM Student "
+                + "WHERE pnr LIKE '%" + searchString + "%' "
+                + "OR firstname LIKE '%" + searchString + "%' "
+                + "OR lastname LIKE '%" + searchString + "%' "
+                + "OR phonenr LIKE '%" + searchString + "%' "
+                + "OR email LIKE '%" + searchString + "%' "
+                + "OR adress LIKE '%" + searchString + "%' "
+                + "OR postcode LIKE '%" + searchString + "%' "
+                + "OR city LIKE '%" + searchString + "%'";
 
         ResultSet rs = this.executeQuery(sqlString);
 
