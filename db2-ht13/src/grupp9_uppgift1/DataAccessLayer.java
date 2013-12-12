@@ -24,12 +24,16 @@ public class DataAccessLayer {
     }
 
     private void executeUpdate(String sqlString) {
+        
         try {
+            
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
-            connection.close();
+            
         } catch (SQLException ex) {
+            
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
@@ -149,20 +153,22 @@ public class DataAccessLayer {
 // ska ta in en selectad student som inparameter också när den metoden finns
 
     void deleteStudent(String personNbr) {
-        String sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
+        String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
     }
 
     void registerNewCourse(String[] courseData) {
-        String sqlString = "INSERT INTO course ('" + courseData[0] + "','"
-                + courseData[1] + "','" + courseData[2] + "')";
+        
+        String sqlString = "INSERT INTO Course VALUES ('" + courseData[0] + "', '"
+                + courseData[1] + "', " + courseData[2] + ")";
+        
         executeUpdate(sqlString);
     }
 
     //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
 
-        String sqlString = "UPDATE course SET";
+        String sqlString = "UPDATE Course SET";
         sqlString += "ccode = '" + courseData[0] + "'";
         sqlString += "cname = '" + courseData[1] + "'";
         sqlString += "points = '" + courseData[2] + "'";
