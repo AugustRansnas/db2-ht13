@@ -6,6 +6,11 @@
 package grupp9_uppgift1;
 
 import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -71,6 +76,23 @@ public class Controller {
     boolean checkIfCourseExists(String string) {
  
         return true;
+        
+    }
+
+    protected DefaultTableModel getCourseTableModel() {
+        
+        DefaultTableModel dtm = null;
+        
+        try {
+            
+            dtm = this.dataAccessLayer.getAllCourses();
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return dtm;
         
     }
 }
