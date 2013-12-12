@@ -91,24 +91,32 @@ public class DataAccessLayer {
         return courseExists;
     }
 
-    public int getNumberOfStudents(String courseCode) throws SQLException {
+    public int getNumberOfStudents(String courseCode){
 
         int numberOfStudents = 0;
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
         ResultSet rs = executeQuery(sqlString);
-        while (rs.next()) {
-            numberOfStudents = rs.getInt(1);
+        try {
+            while (rs.next()) {
+                numberOfStudents = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numberOfStudents;
     }
 
-    public int getNumberOfStudentsWithGrade(String courseCode, String grade) throws SQLException {
+    public int getNumberOfStudentsWithGrade(String courseCode, String grade){
 
         int numberOfStudentsWithGrade = 0;
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
         ResultSet rs = executeQuery(sqlString);
-        while (rs.next()) {
-            numberOfStudentsWithGrade = rs.getInt(1);
+        try {
+            while (rs.next()) {
+                numberOfStudentsWithGrade = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return numberOfStudentsWithGrade;
     }
