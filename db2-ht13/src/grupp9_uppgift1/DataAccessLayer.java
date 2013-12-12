@@ -91,7 +91,6 @@ public class DataAccessLayer {
         sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
         ResultSet rset = executeQuery(sqlString);
         numberOfStudents = rset.getInt(1);
-
         return numberOfStudents;
     }
 
@@ -102,8 +101,6 @@ public class DataAccessLayer {
         numberOfStudentsWithGrade = rset.getInt(1);
         return numberOfStudentsWithGrade;
     }
-    
-            
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     void updateStudent(String[] studentData) throws SQLException {
         sqlString = "UPDATE student SET";
