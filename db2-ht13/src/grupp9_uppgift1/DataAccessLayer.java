@@ -106,13 +106,9 @@ public class DataAccessLayer {
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "'";
 
         ResultSet rs = executeQuery(sqlString);
-
         while (rs.next()) {
-
             numberOfStudents = rs.getInt(1);
-
         }
-
         return numberOfStudents;
     }
 
@@ -123,15 +119,30 @@ public class DataAccessLayer {
         String sqlString = "SELECT count(*) FROM Hasstudied WHERE ccode = '" + courseCode + "' AND grade = '" + grade + "'";
 
         ResultSet rs = executeQuery(sqlString);
-
         while (rs.next()) {
-
             numberOfStudentsWithGrade = rs.getInt(1);
-
         }
-
         return numberOfStudentsWithGrade;
+    }
+       public String getStudentGradeAtCourse(String pnr, String courseCode) {
+        String grade = null;
+        String sqlString = "SELECT h.grade ";
+        sqlString += "FROM student c, hasstudied h ";
+        sqlString += "WHERE c.pnr = h.pnr ";
+        sqlString += "AND h.pnr = '" + pnr + "' ";
+        sqlString += "AND h.ccode = '" + courseCode + "'";
 
+        try {
+            ResultSet rset = executeQuery(sqlString);
+
+            while (rset.next()) {
+                grade = rset.getString(1);
+            }
+            return grade;
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
 
     }
     // se över namnkonventioner i db. Vet ej om dessa stämmer överallt
@@ -148,7 +159,7 @@ public class DataAccessLayer {
         sqlString += "city = '" + studentData[7] + "'";
         executeUpdate(sqlString);
     }
-
+// ska ta in en selectad student som inparameter också när den metoden finns
     void deleteStudent(String personNbr) {
         String sqlString = "DELETE student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
@@ -160,13 +171,18 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
+    //ska ta in en selectad kurs
     void updateCourse(String[] courseData) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        sqlString = "UPDATE course SET";
+        sqlString += "ccode = '" + courseData[0] + "'";
+        sqlString += "cname = '" + courseData[1] + "'";
+        sqlString += "points = '" + courseData[2] + "'";
+        executeUpdate(sqlString);
     }
-
+// ska ta in en selectad kurs
     void deleteCourse(String courseCode) {
-
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        executeUpdate(sqlString);
 
     }
     
