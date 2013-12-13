@@ -23,6 +23,7 @@ public class View extends javax.swing.JFrame {
         this.initComponents();
         this.populateStudentTable();
         this.populateCourseTable();
+        this.populateCourseFlowTable();
     }
 
  
@@ -32,7 +33,7 @@ public class View extends javax.swing.JFrame {
 
         tm = controller.getAllCourses();
 
-        System.out.println(tm.getColumnCount());
+        System.out.println("kolumner i CourseTable: " + tm.getColumnCount());
 
         this.tableFindCourse.setModel(tm);
 
@@ -40,15 +41,21 @@ public class View extends javax.swing.JFrame {
 
     private void populateStudentTable() {
 
-        TableModel dtm;
+        TableModel tm;
 
-        dtm = controller.getAllStudents();
+        tm = controller.getAllStudents();
 
-        System.out.println(dtm.getColumnCount());
+        System.out.println("kolumner i StudentTable: " + tm.getColumnCount());
 
-        this.tblFindStudent.setModel(dtm);
+        this.tblFindStudent.setModel(tm);
         
     
+    }
+    private void populateCourseFlowTable(){
+        TableModel tm;
+        tm = controller.getCourseFlow();
+        System.out.println("kolumner i CourseFlowTable: " + tm.getColumnCount());
+        this.tblCourseFlow.setModel(tm);
     }
 
     
