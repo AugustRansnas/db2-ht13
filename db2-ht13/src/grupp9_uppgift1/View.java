@@ -149,6 +149,11 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFindStudentMouseClicked(evt);
+            }
+        });
         scrollPaneFindStudent.setViewportView(tblFindStudent);
 
         javax.swing.GroupLayout pnlFinsStudentsLayout = new javax.swing.GroupLayout(pnlFinsStudents);
@@ -736,7 +741,7 @@ public class View extends javax.swing.JFrame {
 
         String[] studentData = new String[8];
 
-        studentData[0] = this.txtViewStudentFirstName.getText();
+        studentData[0] = this.txtViewStudentPersonNbr.getText();
         studentData[1] = this.txtViewStudentFirstName.getText();
         studentData[2] = this.txtViewStudentLastName.getText();
         studentData[3] = this.txtViewStudentPhoneNbr.getText();
@@ -762,19 +767,13 @@ public class View extends javax.swing.JFrame {
     private void btnViewStudentDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentDeleteStudentActionPerformed
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
-
-        if (controller.checkIfStudentExists(personNbr) == true) {
-
-            this.controller.deleteStudent(personNbr);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
-                "Kan inte radera student.",
+        this.controller.deleteStudent(personNbr);
+        
+         JOptionPane.showMessageDialog(this,
+                "Student med " + personNbr + " är nu borttagen ur systemet.",
+                "Kan inte ta bort student",
                 JOptionPane.ERROR_MESSAGE);
-
-        }
+                this.populateStudentTable();
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
     private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
@@ -846,6 +845,27 @@ public class View extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
+
+    private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
+        // TODO add your handling code here:
+        int row = tblFindStudent.getSelectedRow();
+        String pnr =(tblFindStudent.getModel().getValueAt(row, 0).toString());
+        String firstname =(tblFindStudent.getModel().getValueAt(row, 1).toString());
+        String lastname =(tblFindStudent.getModel().getValueAt(row, 2).toString());
+        String phonenbr =(tblFindStudent.getModel().getValueAt(row, 3).toString());
+        String email =(tblFindStudent.getModel().getValueAt(row, 4).toString());
+        String address =(tblFindStudent.getModel().getValueAt(row, 5).toString());
+        String postcode =(tblFindStudent.getModel().getValueAt(row, 6).toString());
+        String city =(tblFindStudent.getModel().getValueAt(row, 7).toString());
+        txtViewStudentPersonNbr.setText(pnr);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city);
+    }//GEN-LAST:event_tblFindStudentMouseClicked
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
