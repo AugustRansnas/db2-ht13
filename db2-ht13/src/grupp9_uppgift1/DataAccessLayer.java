@@ -498,8 +498,8 @@ public class DataAccessLayer {
             
 
             DefaultTableModel returnTable = new DefaultTableModel();
-            returnTable.addColumn("CourseCode");
-            returnTable.addColumn("Flow");
+            returnTable.addColumn("Kurskod");
+            returnTable.addColumn("Andel godkända studenter");
             returnTable.setRowCount(courseCount);
             ResultSet rset = executeQuery(sqlQuery);
 
@@ -513,13 +513,19 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
-                returnTable.setValueAt(courseFlow, i, 1);  
+                String percent = Float.toString(courseFlow);
+                percent += "%";
+                if (percent.contentEquals("NaN%")){
+                    percent = "-";
+                }
+                returnTable.setValueAt(percent, i, 1);  
                         
             }
-            System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
-            for (int i = 0; i < courseCount; i++){
-            System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
-            }
+            /*System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+            *for (int i = 0; i < courseCount; i++){
+            *System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+            *}
+            */
             return returnTable;
 
         } catch (SQLException ex) {
