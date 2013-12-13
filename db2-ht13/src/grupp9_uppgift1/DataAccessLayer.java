@@ -6,10 +6,12 @@
 package grupp9_uppgift1;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -58,7 +60,11 @@ public class DataAccessLayer {
     //</editor-fold>
 
     //<editor-fold desc="Private helper methods" defaultstate="collapsed">
-    private DefaultTableModel getResultSetAsDefaultTableModel(ResultSet rs) {
+    /*
+     * This method takes a ResultSet and returns TableModel.
+     */
+    
+    private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
 
@@ -73,6 +79,8 @@ public class DataAccessLayer {
             for (int i = 1; i <= columnCount; i++) {
 
                 String columnName = md.getColumnName(i);
+
+                columnName = stringTranslator(columnName);
 
                 columnNames.addElement(columnName);
 
@@ -120,6 +128,64 @@ public class DataAccessLayer {
         }
 
     }
+
+    private String stringTranslator(String stringIn) {
+
+        String stringOut;
+
+        if (stringIn.equals("ccode")) {
+
+            stringOut = "Kurskod";
+
+        } else if (stringIn.equals("cname")) {
+
+            stringOut = "Kursnamn";
+
+        } else if (stringIn.equals("points")) {
+
+            stringOut = "Högskolepoäng";
+
+        } else if (stringIn.equals("pnr")) {
+
+            stringOut = "Personnummer";
+
+        } else if (stringIn.equals("firstnamne")) {
+
+            stringOut = "Förnamn";
+
+        } else if (stringIn.equals("lastname")) {
+
+            stringOut = "Efternamn";
+
+        } else if (stringIn.equals("phonenr")) {
+
+            stringOut = "Telefonnummer";
+
+        } else if (stringIn.equals("email")) {
+
+            stringOut = "E-post";
+
+        } else if (stringIn.equals("adress")) {
+
+            stringOut = "Adress";
+
+        } else if (stringIn.equals("postcode")) {
+
+            stringOut = "Postnummer";
+
+        } else if (stringIn.equals("city")) {
+
+            stringOut = "Ort";
+
+        } else {
+
+            stringOut = stringIn;
+
+        }
+
+
+        return stringOut;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student queries" defaultstate="collapsed">
@@ -154,7 +220,7 @@ public class DataAccessLayer {
         return studentExists;
     }
 
-    protected DefaultTableModel findStudents(String searchString) {
+    protected TableModel findStudents(String searchString) {
 
         String sqlString = "SELECT * FROM Student "
                 + "WHERE pnr LIKE '%" + searchString + "%' "
@@ -168,9 +234,9 @@ public class DataAccessLayer {
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
 
@@ -211,16 +277,31 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    protected DefaultTableModel getAllStudents() {
+    protected TableModel getAllStudents() {
 
         String sqlString = "SELECT * FROM Student";
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
+    }
+    protected int getNumberOfStudents(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Student";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int studentCount = Integer.parseInt(rs.getString(1));
+            return studentCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     //</editor-fold>
@@ -259,7 +340,7 @@ public class DataAccessLayer {
 
     }
 
-    protected DefaultTableModel findCourses(String searchString) {
+    protected TableModel findCourses(String searchString) {
 
         String sqlString = "SELECT * FROM Course "
                 + "WHERE ccode LIKE '%" + searchString + "%' "
@@ -267,22 +348,37 @@ public class DataAccessLayer {
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
 
-    protected DefaultTableModel getAllCourses() {
+    protected TableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
         return dtm;
 
+    }
+    protected int getNumberOfCourses(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Course";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int courseCount = Integer.parseInt(rs.getString(1));
+            return courseCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
     //</editor-fold>
 
@@ -308,6 +404,70 @@ public class DataAccessLayer {
         return null;
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
+    }
+    protected float percentagePassingCourse(String courseCode) {
+        
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
+        int nbrOfStudents = getNumberOfStudents(courseCode);
+        int nbrOfFails = getNumberOfStudents("U");
+        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
+        
+        //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
+        return percentagePassingCourse;
+    }
+    
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
+        
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
+        
+        int numberOfStudents = getNumberOfStudents(courseCode);
+        int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
+        float percentageOfStudentsWithGrade;
+        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
+        
+        //System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        return percentageOfStudentsWithGrade;
+    }
+    
+    protected DefaultTableModel getCourseFlow() {
+        try {
+
+            String sqlQuery = "SELECT ccode FROM course";
+            ArrayList<String> courseNames = new ArrayList<String>(); 
+            
+            int courseCount = getNumberOfCourses();
+            
+
+            DefaultTableModel returnTable = new DefaultTableModel();
+            returnTable.addColumn("CourseCode");
+            returnTable.addColumn("Flow");
+            returnTable.setRowCount(courseCount);
+            ResultSet rset = executeQuery(sqlQuery);
+
+            for (int i = 0; i < courseCount; i++) {
+                rset.next();
+                String courseCode = rset.getString(1);
+                courseNames.add(courseCode);
+                returnTable.setValueAt(courseCode, i, 0);              
+            }
+            for (int i = 0; i < courseCount; i++){
+                rset.next();
+                String courseCode = courseNames.get(i);
+                float courseFlow = percentagePassingCourse(courseCode);
+                returnTable.setValueAt(courseFlow, i, 1);  
+                        
+            }
+            System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+            for (int i = 0; i < courseCount; i++){
+            System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+            }
+            return returnTable;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     //</editor-fold>
 }

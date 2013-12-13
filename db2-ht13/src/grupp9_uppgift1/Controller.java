@@ -5,7 +5,7 @@
  */
 package grupp9_uppgift1;
 
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -72,37 +72,35 @@ public class Controller {
         }
         
     }
-    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
-        int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
-        float percentageOfStudentsWithGrade;
-        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
-        System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
-        return percentageOfStudentsWithGrade;
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
+        float percentageWithGrade = this.dataAccessLayer.percentageOfStudentsWithGrade(courseCode, grade);
+        return percentageWithGrade;
                 
     }
-    public float percentagePassingCourse(String courseCode){
-        int nbrOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int nbrOfFails = dataAccessLayer.getNumberOfStudents("U");
-        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
-        float percentagePassingCourse = (float)nbrOfSuccesses/(float)nbrOfStudents * (float)100;
+    protected float percentagePassingCourse(String courseCode){
+        float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
+    }
+    protected TableModel getCourseFlow() {
+        TableModel dtm;
+        dtm = this.dataAccessLayer.getCourseFlow();
+        return dtm;
     }
     
 
-    DefaultTableModel getAllCourses() {
+    protected TableModel getAllCourses() {
         
-       DefaultTableModel dtm;
+       TableModel tm;
        
-       dtm = this.dataAccessLayer.getAllCourses();
+       tm = this.dataAccessLayer.getAllCourses();
        
-       return dtm;
+       return tm;
                
     }
     
-    DefaultTableModel getAllStudents() {
+    protected TableModel getAllStudents() {
         
-       DefaultTableModel dtm;
+       TableModel dtm;
        
        dtm = this.dataAccessLayer.getAllStudents();
        
@@ -110,18 +108,18 @@ public class Controller {
                
     }
     
-    protected DefaultTableModel findCourses(String searchString){
+    protected TableModel findCourses(String searchString){
         
-        DefaultTableModel dtm = this.dataAccessLayer.findCourses(searchString);
+        TableModel tm = this.dataAccessLayer.findCourses(searchString);
         
-        return dtm;
+        return tm;
     }
 
-    protected DefaultTableModel findStudents(String searchString) {
+    protected TableModel findStudents(String searchString) {
 
-        DefaultTableModel dtm = this.dataAccessLayer.findStudents(searchString);
+        TableModel tm = this.dataAccessLayer.findStudents(searchString);
         
-        return dtm;
+        return tm;
     }
             
             
