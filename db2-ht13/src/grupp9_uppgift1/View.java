@@ -140,6 +140,11 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFindStudentMouseClicked(evt);
+            }
+        });
         scrollPaneFindStudent.setViewportView(tblFindStudent);
 
         lblViewStudentPersonNbr.setText("Personnummer:");
@@ -477,7 +482,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(lblViewCourseCredits)
                     .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pnlCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnViewCourseDeleteCourse)
                     .addComponent(btnRegisterCourseSave))
                 .addGap(21, 21, 21)
@@ -645,6 +650,27 @@ public class View extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
+
+    private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
+        // TODO add your handling code here:
+        int row = tblFindStudent.getSelectedRow();
+        String pnr =(tblFindStudent.getModel().getValueAt(row, 0).toString());
+        String firstname =(tblFindStudent.getModel().getValueAt(row, 1).toString());
+        String lastname =(tblFindStudent.getModel().getValueAt(row, 2).toString());
+        String phonenbr =(tblFindStudent.getModel().getValueAt(row, 3).toString());
+        String email =(tblFindStudent.getModel().getValueAt(row, 4).toString());
+        String address =(tblFindStudent.getModel().getValueAt(row, 5).toString());
+        String postcode =(tblFindStudent.getModel().getValueAt(row, 6).toString());
+        String city =(tblFindStudent.getModel().getValueAt(row, 7).toString());
+        txtViewStudentPersonNbr.setText(pnr);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city); 
+    }//GEN-LAST:event_tblFindStudentMouseClicked
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
