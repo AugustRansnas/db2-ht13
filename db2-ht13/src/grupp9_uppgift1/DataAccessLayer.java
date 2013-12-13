@@ -403,6 +403,24 @@ public class DataAccessLayer {
         }
         return 0;
     }
+    protected TableModel getPastStudentsOnCourse(String courseCode){
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
+                           " FROM Student s, Hasstudied h" +
+                           " WHERE h.ccode = '" + courseCode + "'" +
+                           " AND s.pnr = h.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
+    protected TableModel getCurrentStudentsOnCourse(String courseCode){
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
+                           " FROM Student s, Studies s2" +
+                           " WHERE s2.ccode = '" + courseCode + "'" +
+                           " AND s.pnr = s2.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
