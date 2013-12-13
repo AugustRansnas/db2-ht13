@@ -652,7 +652,7 @@
                       <Component id="separatorFindCourse" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="scrollPaneFindCourse" min="-2" pref="165" max="-2" attributes="0"/>
-                      <EmptySpace pref="516" max="32767" attributes="0"/>
+                      <EmptySpace pref="519" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -10,6 +10,7 @@ import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -58,7 +59,11 @@ public class DataAccessLayer {
     //</editor-fold>
 
     //<editor-fold desc="Private helper methods" defaultstate="collapsed">
-    private DefaultTableModel getResultSetAsDefaultTableModel(ResultSet rs) {
+    /*
+     * This method takes a ResultSet and returns TableModel.
+     */
+    
+    private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
 
@@ -73,6 +78,8 @@ public class DataAccessLayer {
             for (int i = 1; i <= columnCount; i++) {
 
                 String columnName = md.getColumnName(i);
+
+                columnName = stringTranslator(columnName);
 
                 columnNames.addElement(columnName);
 
@@ -120,6 +127,64 @@ public class DataAccessLayer {
         }
 
     }
+
+    private String stringTranslator(String stringIn) {
+
+        String stringOut;
+
+        if (stringIn.equals("ccode")) {
+
+            stringOut = "Kurskod";
+
+        } else if (stringIn.equals("cname")) {
+
+            stringOut = "Kursnamn";
+
+        } else if (stringIn.equals("points")) {
+
+            stringOut = "Högskolepoäng";
+
+        } else if (stringIn.equals("pnr")) {
+
+            stringOut = "Personnummer";
+
+        } else if (stringIn.equals("firstnamne")) {
+
+            stringOut = "Förnamn";
+
+        } else if (stringIn.equals("lastname")) {
+
+            stringOut = "Efternamn";
+
+        } else if (stringIn.equals("phonenr")) {
+
+            stringOut = "Telefonnummer";
+
+        } else if (stringIn.equals("email")) {
+
+            stringOut = "E-post";
+
+        } else if (stringIn.equals("adress")) {
+
+            stringOut = "Adress";
+
+        } else if (stringIn.equals("postcode")) {
+
+            stringOut = "Postnummer";
+
+        } else if (stringIn.equals("city")) {
+
+            stringOut = "Ort";
+
+        } else {
+
+            stringOut = stringIn;
+
+        }
+
+
+        return stringOut;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student queries" defaultstate="collapsed">
@@ -154,7 +219,7 @@ public class DataAccessLayer {
         return studentExists;
     }
 
-    protected DefaultTableModel findStudents(String searchString) {
+    protected TableModel findStudents(String searchString) {
 
         String sqlString = "SELECT * FROM Student "
                 + "WHERE pnr LIKE '%" + searchString + "%' "
@@ -168,9 +233,9 @@ public class DataAccessLayer {
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
 
@@ -226,15 +291,15 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    protected DefaultTableModel getAllStudents() {
+    protected TableModel getAllStudents() {
 
         String sqlString = "SELECT * FROM Student";
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
 
@@ -283,7 +348,7 @@ public class DataAccessLayer {
 
     }
 
-    protected DefaultTableModel findCourses(String searchString) {
+    protected TableModel findCourses(String searchString) {
 
         String sqlString = "SELECT * FROM Course "
                 + "WHERE ccode LIKE '%" + searchString + "%' "
@@ -291,19 +356,19 @@ public class DataAccessLayer {
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
 
-    protected DefaultTableModel getAllCourses() {
+    protected TableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        DefaultTableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel dtm = this.getResultSetAsDefaultTableModel(rs);
 
         return dtm;
 

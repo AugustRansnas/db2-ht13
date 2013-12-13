@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -761,7 +761,7 @@ public class MainView extends javax.swing.JFrame {
 
         String searchString = this.txtFindCourseInput.getText();
 
-        DefaultTableModel dtm = controller.findCourses(searchString);
+        TableModel dtm = controller.findCourses(searchString);
 
         this.tableFindCourse.setModel(dtm);
 
@@ -931,7 +931,7 @@ public class MainView extends javax.swing.JFrame {
 
         String searchString = this.txtFindStudentQuery.getText();
 
-        DefaultTableModel dtm = controller.findStudents(searchString);
+        TableModel dtm = controller.findStudents(searchString);
 
         this.tblFindStudent.setModel(dtm);
         // TODO add your handling code here:
@@ -1054,19 +1054,19 @@ public class MainView extends javax.swing.JFrame {
 
     private void populateCourseTable() {
 
-        DefaultTableModel dtm;
+        TableModel tm;
 
-        dtm = controller.getAllCourses();
+        tm = controller.getAllCourses();
 
-        System.out.println(dtm.getColumnCount());
+        System.out.println(tm.getColumnCount());
 
-        this.tableFindCourse.setModel(dtm);
+        this.tableFindCourse.setModel(tm);
 
     }
 
     private void populateStudentTable() {
 
-        DefaultTableModel dtm;
+        TableModel dtm;
 
         dtm = controller.getAllStudents();
 
