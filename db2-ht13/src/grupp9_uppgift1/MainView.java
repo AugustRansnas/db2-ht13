@@ -325,6 +325,7 @@ public class MainView extends javax.swing.JFrame {
         tabMain.addTab("Student", panelFindStudent);
 
         lblFindCourseInput.setText("Kursnamn/Kurskod:");
+        lblFindCourseInput.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         txtFindCourseInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -409,7 +410,7 @@ public class MainView extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblViewCourseHighestPassedCourses)
-                            .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+                            .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(panelFindCourseLayout.createSequentialGroup()
                                 .addComponent(lblFindCourseInput)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -423,23 +424,23 @@ public class MainView extends javax.swing.JFrame {
                                     .addComponent(lblViewCourseCourseName))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtViewCourseName)
+                                    .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                     .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFindCourseLayout.createSequentialGroup()
                                         .addComponent(btnRegisterCourseSave)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnViewCourseDeleteCourse))))
-                            .addComponent(scrollPaneViewCoursePassedStudents)
+                            .addComponent(scrollPaneViewCoursePassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addComponent(lblViewCoursePassedStudents)
                             .addComponent(lblViewCourseNonPassedStudents)
-                            .addComponent(scrollPaneViewCourseNonPassedStudents)
+                            .addComponent(scrollPaneViewCourseNonPassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                             .addGroup(panelFindCourseLayout.createSequentialGroup()
                                 .addComponent(lblViewCourseStudentsWithA)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(scrollPaneViewCourseHighestPassedCourses))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                            .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addContainerGap(669, Short.MAX_VALUE))
         );
         panelFindCourseLayout.setVerticalGroup(
             panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -453,39 +454,7 @@ public class MainView extends javax.swing.JFrame {
                 .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblViewCourseCourseCode))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblViewCourseCourseName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblViewCourseCredits))
-                .addGap(18, 18, 18)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnViewCourseDeleteCourse)
-                    .addComponent(btnRegisterCourseSave))
-                .addGap(18, 18, 18)
-                .addComponent(lblViewCoursePassedStudents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneViewCoursePassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblViewCourseNonPassedStudents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneViewCourseNonPassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblViewCourseStudentsWithA)
-                    .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblViewCourseHighestPassedCourses)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                .addGap(59, 59, 59))
+                .addContainerGap(767, Short.MAX_VALUE))
         );
 
         tabMain.addTab("Kurs", panelFindCourse);
@@ -515,19 +484,6 @@ public class MainView extends javax.swing.JFrame {
     private void txtViewStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewStudentFirstNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtViewStudentFirstNameActionPerformed
-
-    private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
-
-        String searchString = this.txtFindCourseInput.getText();
-
-        TableModel dtm = controller.findCourses(searchString);
-
-        this.tableFindCourse.setModel(dtm);
-
-
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFindCourseActionPerformed
 
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
 
@@ -561,51 +517,6 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
 
-    private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
-
-        String[] courseData = new String[3];
-
-        courseData[0] = this.txtViewCourseCode.getText();
-        courseData[1] = this.txtViewCourseName.getText();
-        courseData[2] = this.txtViewCourseCredits.getText();
-
-        if (controller.checkIfCourseExists(courseData[0]) == false) {
-
-            this.controller.registerNewCourse(courseData);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                    "Kan inte skapa kurs.",
-                    JOptionPane.ERROR_MESSAGE);
-
-
-
-        }
-
-
-    }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
-
-    private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
-
-        String courseCode = this.txtViewCourseCode.getText();
-
-        if (controller.checkIfCourseExists(courseCode) == true) {
-
-            this.controller.deleteCourse(courseCode);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                    "Kan inte radera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
-
-        }
-
-    }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
-
     private void btnViewStudentDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentDeleteStudentActionPerformed
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
@@ -625,10 +536,6 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
-    private void txtFindCourseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindCourseInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindCourseInputActionPerformed
-
     private void btnFindStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindStudentActionPerformed
 
         String searchString = this.txtFindStudentQuery.getText();
@@ -639,6 +546,47 @@ public class MainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
+    private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
+
+        String[] courseData = new String[3];
+
+        courseData[0] = this.txtViewCourseCode.getText();
+        courseData[1] = this.txtViewCourseName.getText();
+        courseData[2] = this.txtViewCourseCredits.getText();
+
+        if (controller.checkIfCourseExists(courseData[0]) == false) {
+
+            this.controller.registerNewCourse(courseData);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                "Kan inte skapa kurs.",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
+
+    private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
+
+        String courseCode = this.txtViewCourseCode.getText();
+
+        if (controller.checkIfCourseExists(courseCode) == true) {
+
+            this.controller.deleteCourse(courseCode);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                "Kan inte radera kurs.",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
+
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
         // TODO add your handling code here:
         int row = tableFindCourse.getSelectedRow();
@@ -648,8 +596,23 @@ public class MainView extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
-        
+
     }//GEN-LAST:event_tableFindCourseMouseClicked
+
+    private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
+
+        String searchString = this.txtFindCourseInput.getText();
+
+        TableModel dtm = controller.findCourses(searchString);
+
+        this.tableFindCourse.setModel(dtm);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFindCourseActionPerformed
+
+    private void txtFindCourseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindCourseInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindCourseInputActionPerformed
     /**
      * @param args the command line arguments
      */

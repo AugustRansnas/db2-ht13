@@ -43,7 +43,7 @@ public class Main {
         
         Controller controller = new Controller(dataAccessLayer);
 
-        MainView mainView = new MainView(controller);
+        View mainView = new View(controller);
 
         mainView.setVisible(true);
  
