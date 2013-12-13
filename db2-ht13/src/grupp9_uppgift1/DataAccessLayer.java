@@ -84,7 +84,7 @@ public class DataAccessLayer {
 
                 columnNames.addElement(columnName);
 
-                System.out.println("Adding column name: " + columnName);
+                //System.out.println("Adding column name: " + columnName);
 
             }
 
@@ -186,6 +186,19 @@ public class DataAccessLayer {
 
         return stringOut;
     }
+    private void systemOutPrintTableModel(TableModel tm) {
+        int columnCount = tm.getColumnCount();
+        int rowCount = tm.getRowCount();
+        System.out.println("\n dataAccessLayer.systemOutPrintTableModel:  \n");
+        for (int i2 = 0; i2 < rowCount; i2++) {
+            for (int i = 0; i < columnCount; i++) {
+                System.out.print(" " + tm.getValueAt(i2, i));
+            }
+            System.out.println("");
+        }
+    }
+    
+    
     //</editor-fold>
 
     //<editor-fold desc="Student queries" defaultstate="collapsed">
@@ -312,6 +325,7 @@ public class DataAccessLayer {
                            " WHERE s.pnr = '" + pnr + "')";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
     protected TableModel getStudentsFinnishedCourses(String pnr){
@@ -323,6 +337,7 @@ public class DataAccessLayer {
         
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
 
@@ -410,6 +425,7 @@ public class DataAccessLayer {
                            " AND s.pnr = h.pnr";
         ResultSet rs = this.executeQuery(SQLString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
     protected TableModel getCurrentStudentsOnCourse(String courseCode){
@@ -419,6 +435,7 @@ public class DataAccessLayer {
                            " AND s.pnr = s2.pnr";
         ResultSet rs = this.executeQuery(SQLString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
     //</editor-fold>
