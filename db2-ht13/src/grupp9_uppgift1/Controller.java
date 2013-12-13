@@ -90,6 +90,16 @@ public class Controller {
 
         return tm;
     }
+    protected TableModel getStudentsCurrentCourses(String pnr){
+        
+        TableModel tm = this.dataAccessLayer.getStudentsCurrentCourses(pnr);
+        return tm;
+    }
+    protected TableModel getStudentsFinnishedCourses(String pnr){
+        
+        TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(pnr);
+        return tm;
+    }
 
     //</editor-fold>
     
