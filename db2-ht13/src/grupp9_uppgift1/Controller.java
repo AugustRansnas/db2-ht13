@@ -34,11 +34,7 @@ public class Controller {
 
     }
 
-    void updateStudent(String[] studentData) {
-        
-        this.dataAccessLayer.updateStudent(studentData);
-        
-    }
+
 
     void deleteStudent(String personNbr) {
         
@@ -51,11 +47,7 @@ public class Controller {
         this.dataAccessLayer.registerNewCourse(courseData);
     }
 
-    void updateCourse(String[] courseData) {
-        
-        this.dataAccessLayer.updateCourse(courseData);
-        
-    }
+
 
     void deleteCourse(String courseCode) {
         
@@ -80,21 +72,19 @@ public class Controller {
         }
         
     }
-    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
-        int numberOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int numberOfStudentsWithGrade = dataAccessLayer.getNumberOfStudentsWithGrade(courseCode, grade);
-        float percentageOfStudentsWithGrade;
-        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
-        System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
-        return percentageOfStudentsWithGrade;
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
+        float percentageWithGrade = this.dataAccessLayer.percentageOfStudentsWithGrade(courseCode, grade);
+        return percentageWithGrade;
                 
     }
-    public float percentagePassingCourse(String courseCode){
-        int nbrOfStudents = dataAccessLayer.getNumberOfStudents(courseCode);
-        int nbrOfFails = dataAccessLayer.getNumberOfStudents("U");
-        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
-        float percentagePassingCourse = (float)nbrOfSuccesses/(float)nbrOfStudents * (float)100;
+    protected float percentagePassingCourse(String courseCode){
+        float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
+    }
+    protected DefaultTableModel getCourseFlow() {
+        DefaultTableModel dtm;
+        dtm = this.dataAccessLayer.getCourseFlow();
+        return dtm;
     }
     
 

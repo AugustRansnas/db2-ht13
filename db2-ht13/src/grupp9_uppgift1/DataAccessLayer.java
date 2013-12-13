@@ -6,6 +6,7 @@
 package grupp9_uppgift1;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -269,22 +270,7 @@ public class DataAccessLayer {
         return numberOfStudentsWithGrade;
     }
 
-    protected void updateStudent(String[] studentData) {
 
-        String sqlString = "UPDATE student SET";
-        sqlString += "pnr = '" + studentData[0] + "'";
-        sqlString += "firstname = '" + studentData[1] + "'";
-        sqlString += "lastname = '" + studentData[2] + "'";
-        sqlString += "phonenr = '" + studentData[3] + "'";
-        sqlString += "email = '" + studentData[4] + "'";
-        sqlString += "address = '" + studentData[5] + "'";
-        sqlString += "postcode = '" + studentData[6] + "'";
-        sqlString += "city = '" + studentData[7] + "'";
-
-        executeUpdate(sqlString);
-
-        // TODO: ska ta in en selectad student som inparameter också när den metoden finns
-    }
 
     protected void deleteStudent(String personNbr) {
         String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
@@ -301,6 +287,21 @@ public class DataAccessLayer {
 
         return tm;
 
+    }
+    protected int getNumberOfStudents(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Student";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int studentCount = Integer.parseInt(rs.getString(1));
+            return studentCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 
     //</editor-fold>
@@ -331,16 +332,7 @@ public class DataAccessLayer {
         // TODO: ska ta in en selectad kurs
     }
 
-    protected void updateCourse(String[] courseData) {
 
-        String sqlString = "UPDATE Course SET";
-        sqlString += "ccode = '" + courseData[0] + "'";
-        sqlString += "cname = '" + courseData[1] + "'";
-        sqlString += "points = '" + courseData[2] + "'";
-        executeUpdate(sqlString);
-
-        // TODO: ska ta in en selectad kurs
-    }
 
     protected void deleteCourse(String courseCode) {
         String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
@@ -373,6 +365,21 @@ public class DataAccessLayer {
         return dtm;
 
     }
+    protected int getNumberOfCourses(){
+        
+        try {
+            
+            String sqlString = "SELECT COUNT(*) FROM Course";
+            ResultSet rs = this.executeQuery(sqlString);
+            rs.next();
+            int courseCount = Integer.parseInt(rs.getString(1));
+            return courseCount;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
@@ -397,6 +404,70 @@ public class DataAccessLayer {
         return null;
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
+    }
+    protected float percentagePassingCourse(String courseCode) {
+        
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
+        int nbrOfStudents = getNumberOfStudents(courseCode);
+        int nbrOfFails = getNumberOfStudents("U");
+        int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
+        
+        //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
+        return percentagePassingCourse;
+    }
+    
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
+        
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
+        
+        int numberOfStudents = getNumberOfStudents(courseCode);
+        int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
+        float percentageOfStudentsWithGrade;
+        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
+        
+        //System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        return percentageOfStudentsWithGrade;
+    }
+    
+    protected DefaultTableModel getCourseFlow() {
+        try {
+
+            String sqlQuery = "SELECT ccode FROM course";
+            ArrayList<String> courseNames = new ArrayList<String>(); 
+            
+            int courseCount = getNumberOfCourses();
+            
+
+            DefaultTableModel returnTable = new DefaultTableModel();
+            returnTable.addColumn("CourseCode");
+            returnTable.addColumn("Flow");
+            returnTable.setRowCount(courseCount);
+            ResultSet rset = executeQuery(sqlQuery);
+
+            for (int i = 0; i < courseCount; i++) {
+                rset.next();
+                String courseCode = rset.getString(1);
+                courseNames.add(courseCode);
+                returnTable.setValueAt(courseCode, i, 0);              
+            }
+            for (int i = 0; i < courseCount; i++){
+                rset.next();
+                String courseCode = courseNames.get(i);
+                float courseFlow = percentagePassingCourse(courseCode);
+                returnTable.setValueAt(courseFlow, i, 1);  
+                        
+            }
+            System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+            for (int i = 0; i < courseCount; i++){
+            System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+            }
+            return returnTable;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     //</editor-fold>
 }

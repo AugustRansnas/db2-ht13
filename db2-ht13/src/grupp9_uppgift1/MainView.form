@@ -175,11 +175,7 @@
                                       <Component id="txtViewStudentLastName" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="btnViewStudentUpdateStudent" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="btnViewStudentDeleteStudent" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="btnViewStudentDeleteStudent" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" attributes="0">
@@ -250,10 +246,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnViewStudentUpdateStudent" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnViewStudentDeleteStudent" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="btnViewStudentDeleteStudent" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="txtViewStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblViewStudentEmail" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -277,7 +270,7 @@
                       <Component id="comboBoxViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="229" max="32767" attributes="0"/>
+                      <EmptySpace pref="228" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -344,14 +337,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ort:"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnViewStudentUpdateStudent">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Uppdatera"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewStudentUpdateStudentActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewStudentDeleteStudent">
               <Properties>
@@ -736,16 +721,12 @@
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="btnViewCourseUpdateCourse" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="btnViewCourseDeleteCourse" min="-2" max="-2" attributes="0"/>
-                                          </Group>
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txtViewCourseName" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtViewCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txtViewCourseCode" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="btnViewCourseDeleteCourse" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="lblViewCoursePassedStudents" min="-2" max="-2" attributes="0"/>
@@ -788,10 +769,7 @@
                           <Component id="lblViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnViewCourseUpdateCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnViewCourseDeleteCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btnViewCourseDeleteCourse" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="separatorViewCourse1" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -813,7 +791,7 @@
                       <Component id="lblViewCourseHighestPassedCourses" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="scrollPaneViewCourseHighestPassedCourses" min="-2" pref="66" max="-2" attributes="0"/>
-                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <EmptySpace pref="199" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -825,9 +803,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtViewCourseCodeActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtViewCourseCredits">
             </Component>
@@ -845,14 +820,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="HP"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnViewCourseUpdateCourse">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Uppdatera"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewCourseUpdateCourseActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnViewCourseDeleteCourse">
               <Properties>
