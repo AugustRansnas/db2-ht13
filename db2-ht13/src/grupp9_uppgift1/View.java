@@ -149,11 +149,6 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblFindStudentMouseClicked(evt);
-            }
-        });
         scrollPaneFindStudent.setViewportView(tblFindStudent);
 
         javax.swing.GroupLayout pnlFinsStudentsLayout = new javax.swing.GroupLayout(pnlFinsStudents);
@@ -398,7 +393,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(pnlStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlFinsStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 104, Short.MAX_VALUE))
+                .addGap(0, 293, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Studenter", pnlStudents);
@@ -546,9 +541,8 @@ public class View extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -699,7 +693,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(pnlFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlHighestPassedCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Kurser", pnlCourse);
@@ -717,7 +711,7 @@ public class View extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(tabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
+                .addComponent(tabbedPane)
                 .addContainerGap())
         );
 
@@ -805,26 +799,53 @@ public class View extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
 
-    private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
+    private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
         // TODO add your handling code here:
-        int row = tblFindStudent.getSelectedRow();
-        String pnr =(tblFindStudent.getModel().getValueAt(row, 0).toString());
-        String firstname =(tblFindStudent.getModel().getValueAt(row, 1).toString());
-        String lastname =(tblFindStudent.getModel().getValueAt(row, 2).toString());
-        String phonenbr =(tblFindStudent.getModel().getValueAt(row, 3).toString());
-        String email =(tblFindStudent.getModel().getValueAt(row, 4).toString());
-        String address =(tblFindStudent.getModel().getValueAt(row, 5).toString());
-        String postcode =(tblFindStudent.getModel().getValueAt(row, 6).toString());
-        String city =(tblFindStudent.getModel().getValueAt(row, 7).toString());
-        txtViewStudentPersonNbr.setText(pnr);
-        txtViewStudentFirstName.setText(firstname);
-        txtViewStudentLastName.setText(lastname);
-        txtViewStudentPhoneNbr.setText(phonenbr);
-        txtViewStudentEmail.setText(email);
-        txtViewStudentAdress.setText(address);
-        txtViewStudentPostCode.setText(postcode);
-        txtViewStudentCity.setText(city); 
-    }//GEN-LAST:event_tblFindStudentMouseClicked
+        int row = tableFindCourse.getSelectedRow();
+        String ccode =(tableFindCourse.getModel().getValueAt(row, 0).toString());
+        String cname =(tableFindCourse.getModel().getValueAt(row, 1).toString());
+        String points =(tableFindCourse.getModel().getValueAt(row, 2).toString());
+        txtViewCourseCode.setText(ccode);
+        txtViewCourseName.setText(cname);
+        txtViewCourseCredits.setText(points);
+    }//GEN-LAST:event_tableFindCourseMouseClicked
+
+    private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
+
+        String searchString = this.txtFindCourseInput.getText();
+
+        TableModel dtm = controller.findCourses(searchString);
+
+        this.tableFindCourse.setModel(dtm);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFindCourseActionPerformed
+
+    private void txtFindCourseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindCourseInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFindCourseInputActionPerformed
+
+    private void txtViewCourseStudentsWithAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewCourseStudentsWithAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtViewCourseStudentsWithAActionPerformed
+
+    private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
+
+        String courseCode = this.txtViewCourseCode.getText();
+
+        if (controller.checkIfCourseExists(courseCode) == true) {
+
+            this.controller.deleteCourse(courseCode);
+
+        } else {
+
+            JOptionPane.showMessageDialog(this,
+                "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                "Kan inte radera kurs.",
+                JOptionPane.ERROR_MESSAGE);
+
+        }
+    }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
