@@ -365,7 +365,7 @@ public class DataAccessLayer {
         return percentageOfStudentsWithGrade;
     }
     
-    protected DefaultTableModel courseFlow() {
+    protected DefaultTableModel getCourseFlow() {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";

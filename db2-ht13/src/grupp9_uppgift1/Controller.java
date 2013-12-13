@@ -72,14 +72,19 @@ public class Controller {
         }
         
     }
-    public float percentageOfStudentsWithGrade(String courseCode, String grade) {
+    protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
         float percentageWithGrade = this.dataAccessLayer.percentageOfStudentsWithGrade(courseCode, grade);
         return percentageWithGrade;
                 
     }
-    public float percentagePassingCourse(String courseCode){
+    protected float percentagePassingCourse(String courseCode){
         float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
+    }
+    protected DefaultTableModel getCourseFlow() {
+        DefaultTableModel dtm;
+        dtm = this.dataAccessLayer.getCourseFlow();
+        return dtm;
     }
     
 
