@@ -81,8 +81,8 @@ public class Controller {
         float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
     }
-    protected DefaultTableModel getCourseFlow() {
-        DefaultTableModel dtm;
+    protected TableModel getCourseFlow() {
+        TableModel dtm;
         dtm = this.dataAccessLayer.getCourseFlow();
         return dtm;
     }
