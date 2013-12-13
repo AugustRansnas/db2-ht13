@@ -57,6 +57,14 @@ public class View extends javax.swing.JFrame {
         System.out.println("kolumner i CourseFlowTable: " + tm.getColumnCount());
         this.tblCourseFlow.setModel(tm);
     }
+    private void populateCurrentAndPastCourses(String pnr){
+        TableModel tm1;
+        TableModel tm2;
+        tm1 = this.controller.getStudentsCurrentCourses(pnr);
+        tm2 = this.controller.getStudentsFinnishedCourses(pnr);
+        this.tblPassedCourses.setModel(tm2);
+        this.tblNotFinishedCourses.setModel(tm1);
+    }
 
     
     
@@ -99,7 +107,7 @@ public class View extends javax.swing.JFrame {
         scrollPanePassedCourses = new javax.swing.JScrollPane();
         tblPassedCourses = new javax.swing.JTable();
         scrollPanesFinishedCourses = new javax.swing.JScrollPane();
-        tblFinishedCourses = new javax.swing.JTable();
+        tblNotFinishedCourses = new javax.swing.JTable();
         pnlCourse = new javax.swing.JPanel();
         pnlFindCourse = new javax.swing.JPanel();
         txtFindCourseInput = new javax.swing.JTextField();
@@ -262,7 +270,7 @@ public class View extends javax.swing.JFrame {
         ));
         scrollPanePassedCourses.setViewportView(tblPassedCourses);
 
-        tblFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
+        tblNotFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -273,7 +281,7 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPanesFinishedCourses.setViewportView(tblFinishedCourses);
+        scrollPanesFinishedCourses.setViewportView(tblNotFinishedCourses);
 
         javax.swing.GroupLayout pnlViewStudentLayout = new javax.swing.GroupLayout(pnlViewStudent);
         pnlViewStudent.setLayout(pnlViewStudentLayout);
@@ -872,6 +880,7 @@ public class View extends javax.swing.JFrame {
         txtViewStudentAdress.setText(address);
         txtViewStudentPostCode.setText(postcode);
         txtViewStudentCity.setText(city);
+        this.populateCurrentAndPastCourses(pnr);
     }//GEN-LAST:event_tblFindStudentMouseClicked
 
  
@@ -926,8 +935,8 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable tblCourseFlow;
     private javax.swing.JTable tblFindStudent;
     private javax.swing.JTable tblFinishedCourse;
-    private javax.swing.JTable tblFinishedCourses;
     private javax.swing.JTable tblNotFinishedCourse;
+    private javax.swing.JTable tblNotFinishedCourses;
     private javax.swing.JTable tblPassedCourses;
     private javax.swing.JTextField txtFindCourseInput;
     private javax.swing.JTextField txtFindStudentQuery;
