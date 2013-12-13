@@ -145,7 +145,7 @@
                               <Component id="separatorFindStudent" min="-2" pref="639" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="8885" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -423,80 +423,7 @@
             </Constraint>
           </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                              <Component id="separatorFindCourse" min="-2" pref="577" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblViewCourseHighestPassedCourses" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollPaneFindCourse" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="lblFindCourseInput" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtFindCourseInput" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnFindCourse" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lblViewCourseCourseCode" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblViewCourseCredits" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblViewCourseCourseName" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtViewCourseName" alignment="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="txtViewCourseCredits" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewCourseCode" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="btnRegisterCourseSave" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btnViewCourseDeleteCourse" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="scrollPaneViewCoursePassedStudents" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="lblViewCoursePassedStudents" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblViewCourseNonPassedStudents" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="scrollPaneViewCourseNonPassedStudents" alignment="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblViewCourseStudentsWithA" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtViewCourseStudentsWithA" min="-2" pref="35" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="scrollPaneViewCourseHighestPassedCourses" alignment="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="669" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtFindCourseInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFindCourseInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnFindCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="separatorFindCourse" min="-2" pref="10" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="scrollPaneFindCourse" min="-2" pref="165" max="-2" attributes="0"/>
-                      <EmptySpace pref="767" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblFindCourseInput">
               <Properties>

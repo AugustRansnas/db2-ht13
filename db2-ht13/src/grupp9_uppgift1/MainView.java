@@ -253,7 +253,7 @@ public class MainView extends javax.swing.JFrame {
                     .addGroup(panelFindStudentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(separatorFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(8885, Short.MAX_VALUE))
         );
         panelFindStudentLayout.setVerticalGroup(
             panelFindStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,12 +326,14 @@ public class MainView extends javax.swing.JFrame {
 
         lblFindCourseInput.setText("Kursnamn/Kurskod:");
         lblFindCourseInput.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        panelFindCourse.add(lblFindCourseInput);
 
         txtFindCourseInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFindCourseInputActionPerformed(evt);
             }
         });
+        panelFindCourse.add(txtFindCourseInput);
 
         btnFindCourse.setText("Sök");
         btnFindCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -339,6 +341,8 @@ public class MainView extends javax.swing.JFrame {
                 btnFindCourseActionPerformed(evt);
             }
         });
+        panelFindCourse.add(btnFindCourse);
+        panelFindCourse.add(separatorFindCourse);
 
         tableFindCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -355,13 +359,21 @@ public class MainView extends javax.swing.JFrame {
         });
         scrollPaneFindCourse.setViewportView(tableFindCourse);
 
+        panelFindCourse.add(scrollPaneFindCourse);
+
         lblViewCourseCourseCode.setText("Kurskod");
+        panelFindCourse.add(lblViewCourseCourseCode);
 
         txtViewCourseCode.setEditable(false);
+        panelFindCourse.add(txtViewCourseCode);
 
         lblViewCourseCourseName.setText("Benämning");
+        panelFindCourse.add(lblViewCourseCourseName);
+        panelFindCourse.add(txtViewCourseName);
 
         lblViewCourseCredits.setText("HP");
+        panelFindCourse.add(lblViewCourseCredits);
+        panelFindCourse.add(txtViewCourseCredits);
 
         btnViewCourseDeleteCourse.setText("Radera");
         btnViewCourseDeleteCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -369,26 +381,38 @@ public class MainView extends javax.swing.JFrame {
                 btnViewCourseDeleteCourseActionPerformed(evt);
             }
         });
+        panelFindCourse.add(btnViewCourseDeleteCourse);
 
         lblViewCoursePassedStudents.setText("Studenter med avslutad kurs");
+        panelFindCourse.add(lblViewCoursePassedStudents);
 
         txtAreaViewCoursePassedStudents.setColumns(20);
         txtAreaViewCoursePassedStudents.setRows(5);
         scrollPaneViewCoursePassedStudents.setViewportView(txtAreaViewCoursePassedStudents);
 
+        panelFindCourse.add(scrollPaneViewCoursePassedStudents);
+
         lblViewCourseNonPassedStudents.setText("Studenter med ej avslutad kurs");
+        panelFindCourse.add(lblViewCourseNonPassedStudents);
 
         txtAreaViewCourseNonPassedStudents.setColumns(20);
         txtAreaViewCourseNonPassedStudents.setRows(5);
         scrollPaneViewCourseNonPassedStudents.setViewportView(txtAreaViewCourseNonPassedStudents);
 
+        panelFindCourse.add(scrollPaneViewCourseNonPassedStudents);
+
         lblViewCourseStudentsWithA.setText("Andel studenter med betyg A (kan behöva döpa om variabel namnet här en aning):");
+        panelFindCourse.add(lblViewCourseStudentsWithA);
+        panelFindCourse.add(txtViewCourseStudentsWithA);
 
         lblViewCourseHighestPassedCourses.setText("Kurser med högst genomströmning");
+        panelFindCourse.add(lblViewCourseHighestPassedCourses);
 
         txtViewCourseHighestPassedCourses.setColumns(20);
         txtViewCourseHighestPassedCourses.setRows(5);
         scrollPaneViewCourseHighestPassedCourses.setViewportView(txtViewCourseHighestPassedCourses);
+
+        panelFindCourse.add(scrollPaneViewCourseHighestPassedCourses);
 
         btnRegisterCourseSave.setText("Spara");
         btnRegisterCourseSave.addActionListener(new java.awt.event.ActionListener() {
@@ -396,66 +420,7 @@ public class MainView extends javax.swing.JFrame {
                 btnRegisterCourseSaveActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelFindCourseLayout = new javax.swing.GroupLayout(panelFindCourse);
-        panelFindCourse.setLayout(panelFindCourseLayout);
-        panelFindCourseLayout.setHorizontalGroup(
-            panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFindCourseLayout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 577, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelFindCourseLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblViewCourseHighestPassedCourses)
-                            .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                                .addComponent(lblFindCourseInput)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnFindCourse))
-                            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblViewCourseCourseCode)
-                                    .addComponent(lblViewCourseCredits)
-                                    .addComponent(lblViewCourseCourseName))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFindCourseLayout.createSequentialGroup()
-                                        .addComponent(btnRegisterCourseSave)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnViewCourseDeleteCourse))))
-                            .addComponent(scrollPaneViewCoursePassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(lblViewCoursePassedStudents)
-                            .addComponent(lblViewCourseNonPassedStudents)
-                            .addComponent(scrollPaneViewCourseNonPassedStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                                .addComponent(lblViewCourseStudentsWithA)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(scrollPaneViewCourseHighestPassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(669, Short.MAX_VALUE))
-        );
-        panelFindCourseLayout.setVerticalGroup(
-            panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFindCourseLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(panelFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFindCourseInput)
-                    .addComponent(btnFindCourse))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(separatorFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(767, Short.MAX_VALUE))
-        );
+        panelFindCourse.add(btnRegisterCourseSave);
 
         tabMain.addTab("Kurs", panelFindCourse);
 
