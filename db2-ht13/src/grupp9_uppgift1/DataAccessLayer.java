@@ -342,24 +342,30 @@ public class DataAccessLayer {
     }
     protected float percentagePassingCourse(String courseCode) {
         
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
         int nbrOfStudents = getNumberOfStudents(courseCode);
         int nbrOfFails = getNumberOfStudents("U");
         int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
         float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
-        System.out.println("dataAccessLayer: " + percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
+        
+        //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
         return percentagePassingCourse;
     }
     
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
         
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
+        
         int numberOfStudents = getNumberOfStudents(courseCode);
         int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
         float percentageOfStudentsWithGrade;
         percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
-        System.out.println("dataAccessLayer: " + percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        
+        //System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
         return percentageOfStudentsWithGrade;
     }
-    public DefaultTableModel courseFlow() {
+    
+    protected DefaultTableModel courseFlow() {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";
@@ -378,18 +384,19 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = rset.getString(1);
                 courseNames.add(courseCode);
-                returnTable.setValueAt(courseCode, i, 0);
-                System.out.println(courseCode + " inlagt i returnTable på row: " + i + " och kolumn: 0");               
+                returnTable.setValueAt(courseCode, i, 0);              
             }
             for (int i = 0; i < courseCount; i++){
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
-                returnTable.setValueAt(courseFlow, i, 1);
-                System.out.println(courseFlow + "% inlagt i returnTable på row: " + i + " och kolumn: 1");  
+                returnTable.setValueAt(courseFlow, i, 1);  
                         
             }
-
+            System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+            for (int i = 0; i < courseCount; i++){
+            System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+            }
             return returnTable;
 
         } catch (SQLException ex) {
