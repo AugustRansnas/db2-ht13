@@ -305,6 +305,7 @@ public class DataAccessLayer {
     }
 
     //</editor-fold>
+    
     //<editor-fold desc="Course queries" defaultstate="collapsed">
     public boolean checkIfCourseExists(String courseCode) {
 

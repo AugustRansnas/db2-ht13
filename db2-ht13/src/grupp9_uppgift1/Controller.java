@@ -8,12 +8,12 @@ package grupp9_uppgift1;
 import javax.swing.table.TableModel;
 
 /**
+ * This class handles communication between the GUI and the data access layer.
  *
  * @author Viktor Voigt
  * @author Jonas Ahrne
  * @author Joel Pennegård
  * @author August Ransnäs
- *
  */
 public class Controller {
 
@@ -25,6 +25,10 @@ public class Controller {
 
     }
 
+    //<editor-fold desc="Student operations" defaultstate="collapsed">
+    /**
+     * Calls the data access layer to register a new student.
+     */
     protected void registerNewStudent(String[] studentData) {
 
         System.out.println("Creating student: " + studentData[0] + " " + studentData[1] + " "
@@ -34,94 +38,164 @@ public class Controller {
 
     }
 
+    /**
+     * Calls the data access layer to delete a student.
+     */
+    protected void deleteStudent(String personNbr) {
 
-
-    void deleteStudent(String personNbr) {
-        
         this.dataAccessLayer.deleteStudent(personNbr);
-        
+
     }
 
-    void registerNewCourse(String[] courseData) {     
-        
-        this.dataAccessLayer.registerNewCourse(courseData);
-    }
+    /**
+     * Calls the data access layer to check if the personal number of the
+     * student already exists in the database.
+     *
+     * @return true if student exists
+     */
+    protected boolean checkIfStudentExists(String string) {
 
-
-
-    void deleteCourse(String courseCode) {
-        
-        this.dataAccessLayer.deleteCourse(courseCode);
-    }
-
-    boolean checkIfStudentExists(String string) {
-        
         if (this.dataAccessLayer.checkIfStudentExists(string)) {
             return true;
         } else {
             return false;
-        }        
+        }
     }
 
-    boolean checkIfCourseExists(String courseCode) {
- 
-        if (this.dataAccessLayer.checkIfCourseExists(courseCode)){
+    /**
+     * Calls data access layer to get a table model with all student
+     *
+     * @return contains all students
+     */
+    protected TableModel getAllStudents() {
+
+        TableModel dtm;
+
+        dtm = this.dataAccessLayer.getAllStudents();
+
+        return dtm;
+
+    }
+
+    /**
+     * Calls data access layer to get a table model with all students with data 
+     * partially matching the search string.
+     * 
+     * @param searchString string used in query to find students
+     * @return contains all found students
+     */
+    protected TableModel findStudents(String searchString) {
+
+        TableModel tm = this.dataAccessLayer.findStudents(searchString);
+
+        return tm;
+    }
+
+    //</editor-fold>
+    
+    //<editor-fold desc="Course operations" defaultstate="collapsed"> 
+    /**
+     * Calls the data access layer to find courses with fields matching the
+     * parameter.
+     *
+     * @return TableModel with the courses from an SQL query
+     */
+    protected TableModel findCourses(String searchString) {
+
+        TableModel tm = this.dataAccessLayer.findCourses(searchString);
+
+        return tm;
+    }
+
+    /**
+     * Calls the data access layer to register a new course.
+     */
+    protected void registerNewCourse(String[] courseData) {
+
+        this.dataAccessLayer.registerNewCourse(courseData);
+    }
+
+    /**
+     * Calls the data access layer to delete a course
+     *
+     * @param courseCode course code of course to delete
+     */
+    protected void deleteCourse(String courseCode) {
+
+        this.dataAccessLayer.deleteCourse(courseCode);
+    }
+
+    /**
+     * Calls data access layer to see if course exists.
+     *
+     * @param courseCode course code of course to check
+     * @return true if course exists
+     */
+    protected boolean checkIfCourseExists(String courseCode) {
+
+        if (this.dataAccessLayer.checkIfCourseExists(courseCode)) {
             return true;
         } else {
             return false;
         }
-        
     }
+
+    /**
+     * Calls data access layer to get percentage of students with a specific
+     * grade on a specific course.
+     *
+     * @param courseCode code of course to check
+     * @param grade can be strings "A", "B", "C", "D", "E", "U"
+     * @return percentage with grade
+     */
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
+
         float percentageWithGrade = this.dataAccessLayer.percentageOfStudentsWithGrade(courseCode, grade);
         return percentageWithGrade;
-                
+
     }
-    protected float percentagePassingCourse(String courseCode){
+
+    /**
+     * Calls data access layer to get percentage of students passing the course.
+     *
+     * @param courseCode code of course to check
+     * @return percentage of students passing the course
+     */
+    protected float percentagePassingCourse(String courseCode) {
+
         float percentagePassingCourse = this.dataAccessLayer.percentagePassingCourse(courseCode);
         return percentagePassingCourse;
+
     }
+
+    /**
+     * Calls data access layer to get a table model showing how many students
+     * flowing through each course.
+     *
+     * @return table model of course flow
+     */
     protected TableModel getCourseFlow() {
+
         TableModel dtm;
         dtm = this.dataAccessLayer.getCourseFlow();
         return dtm;
-    }
-    
 
+    }
+
+    /**
+     * Calls data access layer to get a table model with all courses
+     *
+     * @return table model with all courses
+     */
     protected TableModel getAllCourses() {
-        
-       TableModel tm;
-       
-       tm = this.dataAccessLayer.getAllCourses();
-       
-       return tm;
-               
-    }
-    
-    protected TableModel getAllStudents() {
-        
-       TableModel dtm;
-       
-       dtm = this.dataAccessLayer.getAllStudents();
-       
-       return dtm;
-               
-    }
-    
-    protected TableModel findCourses(String searchString){
-        
-        TableModel tm = this.dataAccessLayer.findCourses(searchString);
-        
-        return tm;
-    }
 
-    protected TableModel findStudents(String searchString) {
+        TableModel tm;
 
-        TableModel tm = this.dataAccessLayer.findStudents(searchString);
-        
+        tm = this.dataAccessLayer.getAllCourses();
+
         return tm;
+
     }
-            
-            
-            
 }
+//</editor-fold>
+
