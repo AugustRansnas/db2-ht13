@@ -539,7 +539,16 @@ public class View extends javax.swing.JFrame {
     private void txtViewStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewStudentFirstNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtViewStudentFirstNameActionPerformed
-
+    private void displayStudentCourses(String pnr){
+        
+        /*TODO Not implemented yet
+        
+         *TableModel finnishedCourses = this.controller.getStudentsFinnishedCourses(pnr);
+         *TableModel currentCourses = this.controller.getStudentsCurrentCourses(pnr);
+         *this.tbl"finns inte ännu".setModel(finnishedCourses);
+         *this.tbl"finns inte ännu".setModel(currentCourses);       
+        */
+    }
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
 
         String[] studentData = new String[8];
