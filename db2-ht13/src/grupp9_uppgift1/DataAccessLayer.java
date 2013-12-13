@@ -303,6 +303,28 @@ public class DataAccessLayer {
         }
         return 0;
     }
+    protected TableModel getStudentsCurrentCourses(String pnr){
+        TableModel tm;
+        String sqlString = "SELECT c.cname, c.ccode, c.points" +
+                           " FROM course c" +
+                           " WHERE c.ccode IN (SELECT s.ccode " +
+                           " FROM studies s" +
+                           " WHERE s.pnr = '" + pnr + "')";
+        ResultSet rs = this.executeQuery(sqlString);
+        tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
+    protected TableModel getStudentsFinnishedCourses(String pnr){
+        TableModel tm;
+        String sqlString = "SELECT c.cname, h.ccode, c.points, h.grade" +
+                           " FROM hasstudied h, course c" +
+                           " WHERE h.pnr = '" + pnr + "'" +
+                           " AND h.ccode = c.ccode";
+        
+        ResultSet rs = this.executeQuery(sqlString);
+        tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
 
     //</editor-fold>
     
@@ -431,7 +453,7 @@ public class DataAccessLayer {
         return percentageOfStudentsWithGrade;
     }
     
-    protected DefaultTableModel getCourseFlow() {
+    protected TableModel getCourseFlow() {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";
