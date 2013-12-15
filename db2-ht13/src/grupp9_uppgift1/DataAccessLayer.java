@@ -466,8 +466,8 @@ public class DataAccessLayer {
     protected float percentagePassingCourse(String courseCode) {
         
         //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
-        int nbrOfStudents = getNumberOfStudents(courseCode);
-        int nbrOfFails = getNumberOfStudents("U");
+        int nbrOfStudents = this.getNumberOfStudents(courseCode);
+        int nbrOfFails = this.getNumberOfStudentsWithGrade(courseCode, "U");
         int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
         float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
         
