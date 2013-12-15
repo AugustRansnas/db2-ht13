@@ -206,6 +206,28 @@ public class Controller {
         return tm;
 
     }
+    /**
+     * Calls data access layer to get a table model with all students that have
+     * finnished a specific course
+     * 
+     * @return table model with all students that have finnished the course
+     */
+    protected TableModel getPastStudentsOnCourse(String courseCode){
+        TableModel tm;
+        tm = this.dataAccessLayer.getPastStudentsOnCourse(courseCode);
+        return tm;
+    }
+    /**
+     * Calls data access layer to get a table model with all students that are 
+     * currently enlisted on a specific course
+     * 
+     * @return table model with all current students on the course
+     */
+    protected TableModel getCurrentStudentsOnCourse(String courseCode){
+        TableModel tm;
+        tm = this.dataAccessLayer.getCurrentStudentsOnCourse(courseCode);
+        return tm;
+    }
 }
 //</editor-fold>
 

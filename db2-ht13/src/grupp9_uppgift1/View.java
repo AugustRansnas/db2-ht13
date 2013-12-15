@@ -23,6 +23,7 @@ public class View extends javax.swing.JFrame {
         this.initComponents();
         this.populateStudentTable();
         this.populateCourseTable();
+        this.populateCourseFlowTable();
     }
 
  
@@ -32,7 +33,7 @@ public class View extends javax.swing.JFrame {
 
         tm = controller.getAllCourses();
 
-        System.out.println(tm.getColumnCount());
+        System.out.println("kolumner i CourseTable: " + tm.getColumnCount());
 
         this.tableFindCourse.setModel(tm);
 
@@ -40,15 +41,38 @@ public class View extends javax.swing.JFrame {
 
     private void populateStudentTable() {
 
-        TableModel dtm;
+        TableModel tm;
 
-        dtm = controller.getAllStudents();
+        tm = controller.getAllStudents();
 
-        System.out.println(dtm.getColumnCount());
+        System.out.println("kolumner i StudentTable: " + tm.getColumnCount());
 
-        this.tblFindStudent.setModel(dtm);
+        this.tblFindStudent.setModel(tm);
         
     
+    }
+    private void populateCourseFlowTable(){
+        TableModel tm;
+        tm = controller.getCourseFlow();
+        System.out.println("kolumner i CourseFlowTable: " + tm.getColumnCount());
+        this.tblCourseFlow.setModel(tm);
+    }
+    private void populateStudentsCurrentAndPastCourses(String pnr){
+        TableModel tm1;
+        TableModel tm2;
+        tm1 = this.controller.getStudentsCurrentCourses(pnr);
+        tm2 = this.controller.getStudentsFinnishedCourses(pnr);
+        this.tblStudentsNotFinishedCourses.setModel(tm1);
+        this.tblStudentsFinishedCourses.setModel(tm2);
+        
+    }
+    private void populateCoursesPastAndCurrentStudents(String ccode){
+        TableModel tm1;
+        TableModel tm2;
+        tm1 = this.controller.getPastStudentsOnCourse(ccode);
+        tm2 = this.controller.getCurrentStudentsOnCourse(ccode);
+        this.tblFinishedStudentsOnCourse.setModel(tm1);
+        this.tblNotFinishedStudentsOnCourse.setModel(tm2);
     }
 
     
@@ -90,9 +114,9 @@ public class View extends javax.swing.JFrame {
         comboBoxViewStudentAddCourse = new javax.swing.JComboBox();
         btnViewStudentAddCourse = new javax.swing.JButton();
         scrollPanePassedCourses = new javax.swing.JScrollPane();
-        tblPassedCourses = new javax.swing.JTable();
+        tblStudentsFinishedCourses = new javax.swing.JTable();
         scrollPanesFinishedCourses = new javax.swing.JScrollPane();
-        tblFinishedCourses = new javax.swing.JTable();
+        tblStudentsNotFinishedCourses = new javax.swing.JTable();
         pnlCourse = new javax.swing.JPanel();
         pnlFindCourse = new javax.swing.JPanel();
         txtFindCourseInput = new javax.swing.JTextField();
@@ -115,9 +139,9 @@ public class View extends javax.swing.JFrame {
         lblViewCourseNonPassedStudents = new javax.swing.JLabel();
         txtViewCourseStudentsWithA = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tblFinishedCourse = new javax.swing.JTable();
+        tblFinishedStudentsOnCourse = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblNotFinishedCourse = new javax.swing.JTable();
+        tblNotFinishedStudentsOnCourse = new javax.swing.JTable();
         jRadioButton1 = new javax.swing.JRadioButton();
         rbtnDeleteCourse = new javax.swing.JRadioButton();
         btnDeleteRegisterCourse = new javax.swing.JButton();
@@ -149,6 +173,11 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFindStudentMouseClicked(evt);
+            }
+        });
         scrollPaneFindStudent.setViewportView(tblFindStudent);
 
         javax.swing.GroupLayout pnlFinsStudentsLayout = new javax.swing.GroupLayout(pnlFinsStudents);
@@ -237,7 +266,7 @@ public class View extends javax.swing.JFrame {
 
         btnViewStudentAddCourse.setText("Lägg till");
 
-        tblPassedCourses.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudentsFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -248,9 +277,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPanePassedCourses.setViewportView(tblPassedCourses);
+        scrollPanePassedCourses.setViewportView(tblStudentsFinishedCourses);
 
-        tblFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
+        tblStudentsNotFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -261,7 +290,7 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        scrollPanesFinishedCourses.setViewportView(tblFinishedCourses);
+        scrollPanesFinishedCourses.setViewportView(tblStudentsNotFinishedCourses);
 
         javax.swing.GroupLayout pnlViewStudentLayout = new javax.swing.GroupLayout(pnlViewStudent);
         pnlViewStudent.setLayout(pnlViewStudentLayout);
@@ -500,7 +529,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
-        tblFinishedCourse.setModel(new javax.swing.table.DefaultTableModel(
+        tblFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -511,9 +540,9 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tblFinishedCourse);
+        jScrollPane2.setViewportView(tblFinishedStudentsOnCourse);
 
-        tblNotFinishedCourse.setModel(new javax.swing.table.DefaultTableModel(
+        tblNotFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -524,7 +553,7 @@ public class View extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tblNotFinishedCourse);
+        jScrollPane3.setViewportView(tblNotFinishedStudentsOnCourse);
 
         javax.swing.GroupLayout pnlCourseResultsLayout = new javax.swing.GroupLayout(pnlCourseResults);
         pnlCourseResults.setLayout(pnlCourseResultsLayout);
@@ -745,7 +774,7 @@ public class View extends javax.swing.JFrame {
 
         String[] studentData = new String[8];
 
-        studentData[0] = this.txtViewStudentFirstName.getText();
+        studentData[0] = this.txtViewStudentPersonNbr.getText();
         studentData[1] = this.txtViewStudentFirstName.getText();
         studentData[2] = this.txtViewStudentLastName.getText();
         studentData[3] = this.txtViewStudentPhoneNbr.getText();
@@ -771,19 +800,13 @@ public class View extends javax.swing.JFrame {
     private void btnViewStudentDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentDeleteStudentActionPerformed
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
-
-        if (controller.checkIfStudentExists(personNbr) == true) {
-
-            this.controller.deleteStudent(personNbr);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                "Kan inte radera student. Personnummer " + personNbr + " finns inte i databasen.",
-                "Kan inte radera student.",
+        this.controller.deleteStudent(personNbr);
+        
+         JOptionPane.showMessageDialog(this,
+                "Student med " + personNbr + " är nu borttagen ur systemet.",
+                "Kan inte ta bort student",
                 JOptionPane.ERROR_MESSAGE);
-
-        }
+                this.populateStudentTable();
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
     private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
@@ -817,6 +840,7 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
+        this.populateCoursesPastAndCurrentStudents(ccode);
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
@@ -855,6 +879,28 @@ public class View extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
+
+    private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
+        // TODO add your handling code here:
+        int row = tblFindStudent.getSelectedRow();
+        String pnr =(tblFindStudent.getModel().getValueAt(row, 0).toString());
+        String firstname =(tblFindStudent.getModel().getValueAt(row, 1).toString());
+        String lastname =(tblFindStudent.getModel().getValueAt(row, 2).toString());
+        String phonenbr =(tblFindStudent.getModel().getValueAt(row, 3).toString());
+        String email =(tblFindStudent.getModel().getValueAt(row, 4).toString());
+        String address =(tblFindStudent.getModel().getValueAt(row, 5).toString());
+        String postcode =(tblFindStudent.getModel().getValueAt(row, 6).toString());
+        String city =(tblFindStudent.getModel().getValueAt(row, 7).toString());
+        txtViewStudentPersonNbr.setText(pnr);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city);
+        this.populateStudentsCurrentAndPastCourses(pnr);
+    }//GEN-LAST:event_tblFindStudentMouseClicked
 
  
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -907,10 +953,10 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTable tableFindCourse;
     private javax.swing.JTable tblCourseFlow;
     private javax.swing.JTable tblFindStudent;
-    private javax.swing.JTable tblFinishedCourse;
-    private javax.swing.JTable tblFinishedCourses;
-    private javax.swing.JTable tblNotFinishedCourse;
-    private javax.swing.JTable tblPassedCourses;
+    private javax.swing.JTable tblFinishedStudentsOnCourse;
+    private javax.swing.JTable tblNotFinishedStudentsOnCourse;
+    private javax.swing.JTable tblStudentsFinishedCourses;
+    private javax.swing.JTable tblStudentsNotFinishedCourses;
     private javax.swing.JTextField txtFindCourseInput;
     private javax.swing.JTextField txtFindStudentQuery;
     private javax.swing.JTextField txtViewCourseCode;

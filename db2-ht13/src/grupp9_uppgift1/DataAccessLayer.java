@@ -84,7 +84,7 @@ public class DataAccessLayer {
 
                 columnNames.addElement(columnName);
 
-                System.out.println("Adding column name: " + columnName);
+                //System.out.println("Adding column name: " + columnName);
 
             }
 
@@ -186,6 +186,19 @@ public class DataAccessLayer {
 
         return stringOut;
     }
+    private void systemOutPrintTableModel(TableModel tm) {
+        int columnCount = tm.getColumnCount();
+        int rowCount = tm.getRowCount();
+        System.out.println("\n dataAccessLayer.systemOutPrintTableModel:  \n");
+        for (int i2 = 0; i2 < rowCount; i2++) {
+            for (int i = 0; i < columnCount; i++) {
+                System.out.print(" " + tm.getValueAt(i2, i));
+            }
+            System.out.println("");
+        }
+    }
+    
+    
     //</editor-fold>
 
     //<editor-fold desc="Student queries" defaultstate="collapsed">
@@ -312,6 +325,7 @@ public class DataAccessLayer {
                            " WHERE s.pnr = '" + pnr + "')";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
     protected TableModel getStudentsFinnishedCourses(String pnr){
@@ -323,6 +337,7 @@ public class DataAccessLayer {
         
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
         return tm;
     }
 
@@ -403,6 +418,26 @@ public class DataAccessLayer {
         }
         return 0;
     }
+    protected TableModel getPastStudentsOnCourse(String courseCode){
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
+                           " FROM Student s, Hasstudied h" +
+                           " WHERE h.ccode = '" + courseCode + "'" +
+                           " AND s.pnr = h.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
+        return tm;
+    }
+    protected TableModel getCurrentStudentsOnCourse(String courseCode){
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
+                           " FROM Student s, Studies s2" +
+                           " WHERE s2.ccode = '" + courseCode + "'" +
+                           " AND s.pnr = s2.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
+        return tm;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
@@ -463,8 +498,8 @@ public class DataAccessLayer {
             
 
             DefaultTableModel returnTable = new DefaultTableModel();
-            returnTable.addColumn("CourseCode");
-            returnTable.addColumn("Flow");
+            returnTable.addColumn("Kurskod");
+            returnTable.addColumn("Andel godkända studenter");
             returnTable.setRowCount(courseCount);
             ResultSet rset = executeQuery(sqlQuery);
 
@@ -478,13 +513,19 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
-                returnTable.setValueAt(courseFlow, i, 1);  
+                String percent = Float.toString(courseFlow);
+                percent += "%";
+                if (percent.contentEquals("NaN%")){
+                    percent = "-";
+                }
+                returnTable.setValueAt(percent, i, 1);  
                         
             }
-            System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
-            for (int i = 0; i < courseCount; i++){
-            System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
-            }
+            /*System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+            *for (int i = 0; i < courseCount; i++){
+            *System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+            *}
+            */
             return returnTable;
 
         } catch (SQLException ex) {
