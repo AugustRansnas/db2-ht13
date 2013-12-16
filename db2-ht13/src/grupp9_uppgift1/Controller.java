@@ -151,10 +151,7 @@ public class Controller {
             return false;
         }
     }
-    protected String getStudentGradeAtCourse(String pnr, String courseCode){
-        String grade = this.dataAccessLayer.getStudentGradeAtCourse(pnr, courseCode);
-        return grade;
-    }
+
 
     /**
      * Calls data access layer to get percentage of students with a specific
