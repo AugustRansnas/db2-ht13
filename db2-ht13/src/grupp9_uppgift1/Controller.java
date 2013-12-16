@@ -211,9 +211,9 @@ public class Controller {
 
     /**
      * Calls data access layer to get a table model with all students that have
-     * finnished a specific course
+     * finished a specific course
      *
-     * @return table model with all students that have finnished the course
+     * @return table model with all students that have finished the course
      */
     protected TableModel getPastStudentsOnCourse(String courseCode) {
         TableModel tm;
@@ -250,6 +250,12 @@ public class Controller {
     void registerStudentOnCourse(String selectedStudent, String courseId) {
 
         this.dataAccessLayer.registerStudentOnCourse(selectedStudent, courseId);
+        
+    }
+    
+    protected int getStudentsRegisteredPointsTotal(String pNr){
+        
+        return this.dataAccessLayer.getStudentsRegisteredPointTotal(pNr);
         
     }
 

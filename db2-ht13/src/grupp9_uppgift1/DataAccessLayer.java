@@ -38,7 +38,6 @@ public class DataAccessLayer {
 
         try {
             DatabaseMetaData md = connection.getMetaData();
-
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
         } catch (SQLException ex) {
@@ -56,7 +55,8 @@ public class DataAccessLayer {
         ResultSet rst = null;
 
         try {
-            Statement stmt = connection.createStatement();
+            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
             rst = stmt.executeQuery(sqlString);
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,9 +80,9 @@ public class DataAccessLayer {
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = md.getColumnName(i);              
+                String columnName = md.getColumnName(i);
                 columnName = stringTranslator(columnName);
-                columnHeadings = Arrays.copyOf(columnHeadings, columnHeadings.length + 1);         
+                columnHeadings = Arrays.copyOf(columnHeadings, columnHeadings.length + 1);
                 columnHeadings[i - 1] = columnName;
             }
 
@@ -97,13 +97,13 @@ public class DataAccessLayer {
 
                 dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
                 dataArray[r] = row;
-                
+
                 r++;
             }
 
             DefaultTableModel dtm = new DefaultTableModel(dataArray, columnHeadings) {
                 public boolean isCellEditable(int row, int column) {
-                    
+
                     return false;
                 }
             };
@@ -148,13 +148,24 @@ public class DataAccessLayer {
 
     private boolean checkIfResultSetHasContent(ResultSet rset) {
 
-        try {
-            return rset.next();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
-            return false;
+        boolean hasContent = false;
+        {
+            try {
+                hasContent = rset.isBeforeFirst();
+            } catch (SQLException ex) {
+                Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
+        if (hasContent) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
     }
 
     private String stringTranslator(String stringIn) {
@@ -234,6 +245,26 @@ public class DataAccessLayer {
             }
             System.out.println("");
         }
+
+    }
+
+    private int getFirstCellInResultSetAsInt(ResultSet rset) {
+
+        boolean hasContents = this.checkIfResultSetHasContent(rset);
+
+        if (hasContents) {
+            try {
+
+                rset.next();
+                return rset.getInt(1);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        return 0;
 
     }
 
@@ -598,9 +629,8 @@ public class DataAccessLayer {
         return stringArray;
 
     }
-    //</editor-fold>
 
-    void registerStudentOnCourse(String selectedStudent, String courseId) {
+    protected void registerStudentOnCourse(String selectedStudent, String courseId) {
 
         String sqlString = "INSERT INTO Studies VALUES ('" + selectedStudent + "', '" + courseId + "')";
 
@@ -608,4 +638,14 @@ public class DataAccessLayer {
 
     }
 
+    protected int getStudentsRegisteredPointTotal(String pNr) {
+
+        String sqlString = "Select SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + pNr + "' GROUP BY s.pnr";
+        ResultSet rset = this.executeQuery(sqlString);
+        int intToReturn = this.getFirstCellInResultSetAsInt(rset);
+        return intToReturn;
+
+    }
+
+    //</editor-fold>
 }

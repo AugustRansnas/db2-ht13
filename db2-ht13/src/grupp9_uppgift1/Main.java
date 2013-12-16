@@ -54,6 +54,9 @@ public class Main {
 
         mainView.setVisible(true);
         
+        System.out.println(controller.getStudentsRegisteredPointsTotal("8888888888"));
+        System.out.println(controller.getStudentsRegisteredPointsTotal("8903109174"));
+     
         
 
 

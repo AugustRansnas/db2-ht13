@@ -31,6 +31,7 @@ public class View extends javax.swing.JFrame {
 
         this.populateStudentTable();
         this.populateCourseTable();
+
         this.populateCourseFlowTable();
 
     }
