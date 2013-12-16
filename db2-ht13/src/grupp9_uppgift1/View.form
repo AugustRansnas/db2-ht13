@@ -433,19 +433,18 @@
                 <Component class="javax.swing.JComboBox" name="comboBoxViewStudentAddCourse">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
-                      </StringArray>
+                      <StringArray count="0"/>
                     </Property>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnViewStudentAddCourse">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="L&#xe4;gg till"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnViewStudentAddCourseActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="scrollPanePassedCourses">
                   <AuxValues>
@@ -464,9 +463,6 @@
                           <JTableSelectionModel selectionMode="1"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblStudentsFinishedCoursesFocusLost"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -489,7 +485,6 @@
                       </Properties>
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblSelectedStudentsUnfinishedCoursesMouseClicked"/>
-                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="tblSelectedStudentsUnfinishedCoursesFocusLost"/>
                       </Events>
                     </Component>
                   </SubComponents>
