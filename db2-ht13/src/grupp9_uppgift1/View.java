@@ -209,6 +209,7 @@ public class View extends javax.swing.JFrame {
             }
         ));
         tblFindStudent.setName("Studenter"); // NOI18N
+        tblFindStudent.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tblFindStudent.getTableHeader().setReorderingAllowed(false);
         tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -290,6 +291,7 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblStudentsFinishedCourses.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tblStudentsFinishedCourses.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tblStudentsFinishedCoursesFocusLost(evt);
@@ -306,6 +308,7 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblSelectedStudentsUnfinishedCourses.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSelectedStudentsUnfinishedCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSelectedStudentsUnfinishedCoursesMouseClicked(evt);
@@ -532,6 +535,7 @@ public class View extends javax.swing.JFrame {
             }
         ));
         tableFindCourse.setName(""); // NOI18N
+        tableFindCourse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tableFindCourse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableFindCourseMouseClicked(evt);
@@ -591,6 +595,7 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblFinishedStudentsOnCourse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         scrollPaneStudentsOnCourse.setViewportView(tblFinishedStudentsOnCourse);
 
         tblNotFinishedStudentsOnCourse.setAutoCreateRowSorter(true);
@@ -602,6 +607,7 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblNotFinishedStudentsOnCourse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         scrollPaneNotFInishedStudentsOnCourse.setViewportView(tblNotFinishedStudentsOnCourse);
 
         javax.swing.GroupLayout pnlCourseResultsLayout = new javax.swing.GroupLayout(pnlCourseResults);
@@ -732,6 +738,7 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblCourseFlow.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         scrollPaneCourseFlow.setViewportView(tblCourseFlow);
 
         javax.swing.GroupLayout pnlHighestPassedCourseLayout = new javax.swing.GroupLayout(pnlHighestPassedCourse);
@@ -1014,15 +1021,11 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
 
     private void tblSelectedStudentsUnfinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
-    
-        this.tblSelectedStudentsUnfinishedCourses.clearSelection();
 
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
 
     private void tblStudentsFinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblStudentsFinishedCoursesFocusLost
-        
-        this.tblSelectedStudentsUnfinishedCourses.clearSelection();
-        
+
     }//GEN-LAST:event_tblStudentsFinishedCoursesFocusLost
 // </editor-fold>
 
