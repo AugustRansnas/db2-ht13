@@ -520,7 +520,9 @@ public class DataAccessLayer {
         //int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
         float percentageWithGradeAOnCourse = (float) nbrOfA / (float) nbrOfStudents * (float) 100;
 
-        System.out.println(percentageWithGradeAOnCourse + "% av studenterna klarade kursen " + courseCode);
+        System.out.println(percentageWithGradeAOnCourse + "% av fick betyget A på kursen " + courseCode);
+  
+        
         return percentageWithGradeAOnCourse;
     }
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {

@@ -822,13 +822,9 @@ public class View extends javax.swing.JFrame {
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
         this.setSelectedCourse(ccode);
-        controller.percentageWithGradeAOnCourse(ccode);
+        float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
+        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse)+ "%");
         
-        
-     
-        
-
-
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
