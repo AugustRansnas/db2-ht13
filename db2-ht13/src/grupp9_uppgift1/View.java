@@ -179,6 +179,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        tblFindStudent.setAutoCreateRowSorter(true);
         tblFindStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -187,6 +188,8 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblFindStudent.setName("Studenter"); // NOI18N
+        tblFindStudent.getTableHeader().setReorderingAllowed(false);
         tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblFindStudentMouseClicked(evt);
@@ -258,6 +261,7 @@ public class View extends javax.swing.JFrame {
 
         btnViewStudentAddCourse.setText("Lägg till");
 
+        tblStudentsFinishedCourses.setAutoCreateRowSorter(true);
         tblStudentsFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -268,6 +272,7 @@ public class View extends javax.swing.JFrame {
         ));
         scrollPanePassedCourses.setViewportView(tblStudentsFinishedCourses);
 
+        tblStudentsNotFinishedCourses.setAutoCreateRowSorter(true);
         tblStudentsNotFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -456,6 +461,7 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        tableFindCourse.setAutoCreateRowSorter(true);
         tableFindCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -515,6 +521,7 @@ public class View extends javax.swing.JFrame {
 
         lblViewCourseNonPassedStudents.setText("Studenter med ej avslutad kurs");
 
+        tblFinishedStudentsOnCourse.setAutoCreateRowSorter(true);
         tblFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -525,6 +532,7 @@ public class View extends javax.swing.JFrame {
         ));
         scrollPaneStudentsOnCourse.setViewportView(tblFinishedStudentsOnCourse);
 
+        tblNotFinishedStudentsOnCourse.setAutoCreateRowSorter(true);
         tblNotFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -624,9 +632,8 @@ public class View extends javax.swing.JFrame {
                             .addComponent(rbtnDeleteCourse)
                             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addComponent(btnDeleteRegisterCourse)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(459, 459, 459))
+                                .addComponent(btnDeleteRegisterCourse)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -655,6 +662,7 @@ public class View extends javax.swing.JFrame {
 
         pnlHighestPassedCourse.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurser med höst genomströmning"));
 
+        tblCourseFlow.setAutoCreateRowSorter(true);
         tblCourseFlow.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

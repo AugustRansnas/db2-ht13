@@ -151,8 +151,13 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblFindStudent">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="Studenter" noResource="true"/>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -430,6 +435,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblStudentsFinishedCourses">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
                         </Property>
@@ -446,6 +452,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblStudentsNotFinishedCourses">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
                         </Property>
@@ -600,6 +607,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tableFindCourse">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
                         </Property>
@@ -662,10 +670,9 @@
                                           <Component id="btnDeleteRegisterCourse" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="459" max="-2" attributes="0"/>
+                          <EmptySpace min="459" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="pnlCourseResults" min="-2" max="-2" attributes="0"/>
@@ -806,6 +813,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tblFinishedStudentsOnCourse">
                           <Properties>
+                            <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="0" rowCount="0"/>
                             </Property>
@@ -822,6 +830,7 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tblNotFinishedStudentsOnCourse">
                           <Properties>
+                            <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="0" rowCount="0"/>
                             </Property>
@@ -898,6 +907,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblCourseFlow">
                       <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="0" rowCount="0"/>
                         </Property>
