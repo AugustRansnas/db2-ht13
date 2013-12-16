@@ -822,10 +822,10 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
-
         this.setSelectedCourse(ccode);
-
-
+        float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
+        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 4)+ "%");
+        
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
@@ -894,6 +894,8 @@ public class View extends javax.swing.JFrame {
             if (controller.checkIfCourseExists(courseData[0]) == false) {
 
                 this.controller.registerNewCourse(courseData);
+                this.populateCourseTable();
+                this.populateCourseFlowTable();
 
             } else {
 
@@ -914,6 +916,7 @@ public class View extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
 
             this.populateCourseTable();
+            this.populateCourseFlowTable();
 
         }
 
@@ -950,6 +953,7 @@ public class View extends javax.swing.JFrame {
             if (controller.checkIfStudentExists(studentData[0]) == false) {
 
                 this.controller.registerNewStudent(studentData);
+                this.populateStudentTable();
 
             } else {
 
