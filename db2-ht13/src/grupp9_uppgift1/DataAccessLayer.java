@@ -33,7 +33,11 @@ public class DataAccessLayer {
      */
     private void executeUpdate(String sqlString) {
 
+        System.out.println("executeUpdate(" + sqlString + ")");
+        
         try {
+            DatabaseMetaData md = connection.getMetaData();
+            
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
         } catch (SQLException ex) {
@@ -46,6 +50,8 @@ public class DataAccessLayer {
      */
     private ResultSet executeQuery(String sqlString) {
 
+        System.out.println("executeQuery(" + sqlString + ")");
+        
         ResultSet rst = null;
 
         try {

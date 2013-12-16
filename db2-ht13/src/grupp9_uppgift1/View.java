@@ -785,7 +785,7 @@ public class View extends javax.swing.JFrame {
         txtViewStudentCity.setText(city);
 
         this.populateStudentsCurrentAndPastCourses(pnr);
-        
+
         this.rbtnDeleteStudent.doClick();
 
     }//GEN-LAST:event_tblFindStudentMouseClicked
@@ -795,7 +795,7 @@ public class View extends javax.swing.JFrame {
         this.txtViewCourseCode.setEditable(true);
         this.txtViewCourseName.setEditable(true);
         this.txtViewCourseCredits.setEditable(true);
-        
+
         this.txtViewCourseCode.setText("");
         this.txtViewCourseName.setText("");
         this.txtViewCourseCredits.setText("");
@@ -834,19 +834,14 @@ public class View extends javax.swing.JFrame {
         } else if (this.rbtnDeleteCourse.isSelected()) {
 
             String courseCode = this.txtViewCourseCode.getText();
+            this.controller.deleteCourse(courseCode);
 
-            if (controller.checkIfCourseExists(courseCode) == true) {
-
-                this.controller.deleteCourse(courseCode);
-
-            } else {
-
-                JOptionPane.showMessageDialog(this,
-                        "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                        "Kan inte radera kurs.",
-                        JOptionPane.ERROR_MESSAGE);
-
-            }
+            JOptionPane.showMessageDialog(this,
+                    "Kurs " + courseCode + " är nu borttagen ur systemet.",
+                    "Kurs raderad",
+                    JOptionPane.INFORMATION_MESSAGE);
+            
+            this.populateCourseTable();
 
         }
 
@@ -899,8 +894,8 @@ public class View extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this,
                     "Student med " + personNbr + " är nu borttagen ur systemet.",
-                    "Kan inte ta bort student",
-                    JOptionPane.ERROR_MESSAGE);
+                    "Student raderad",
+                    JOptionPane.INFORMATION_MESSAGE);
             this.populateStudentTable();
         }
 
@@ -916,7 +911,7 @@ public class View extends javax.swing.JFrame {
         txtViewStudentAdress.setText("");
         txtViewStudentPostCode.setText("");
         txtViewStudentCity.setText("");
-        
+
         txtViewStudentPersonNbr.setEditable(true);
         txtViewStudentFirstName.setEditable(true);
         txtViewStudentLastName.setEditable(true);
