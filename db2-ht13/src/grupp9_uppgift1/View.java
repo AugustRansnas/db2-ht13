@@ -40,6 +40,7 @@ public class View extends javax.swing.JFrame {
         this.selectedStudent = selectedStudent;
 
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateCourseFlowTable();
 
         this.rbtnDeleteStudent.setEnabled(true);
 
@@ -975,10 +976,12 @@ public class View extends javax.swing.JFrame {
         } else if (this.rbtnDeleteStudent.isSelected()) {
 
             String personNbr = this.txtViewStudentPersonNbr.getText();
+            String firstName = this.txtViewStudentFirstName.getText();
+            String lastName = this.txtViewStudentLastName.getText();
             this.controller.deleteStudent(personNbr);
 
             JOptionPane.showMessageDialog(this,
-                    "Student med " + personNbr + " är nu borttagen ur systemet.",
+                    "Studenten " + firstName + " " + lastName + " med personnummer " + personNbr + " är nu borttagen ur systemet.",
                     "Student raderad",
                     JOptionPane.INFORMATION_MESSAGE);
             this.populateStudentTable();
@@ -1015,6 +1018,7 @@ public class View extends javax.swing.JFrame {
         controller.registerCourseResult(this.selectedCourse, this.selectedStudent, grade);
 
         this.setSelectedStudent(selectedStudent);
+        
 
     }//GEN-LAST:event_btnRegisterCourseResultActionPerformed
 
