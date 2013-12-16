@@ -12,7 +12,7 @@ import javax.swing.table.TableModel;
  * @author svalan
  */
 public class View extends javax.swing.JFrame {
-    
+
     Controller controller;
 
     /**
@@ -26,8 +26,7 @@ public class View extends javax.swing.JFrame {
         this.populateCourseFlowTable();
     }
 
- 
-   private void populateCourseTable() {
+    private void populateCourseTable() {
 
         TableModel tm;
 
@@ -48,35 +47,51 @@ public class View extends javax.swing.JFrame {
         System.out.println("kolumner i StudentTable: " + tm.getColumnCount());
 
         this.tblFindStudent.setModel(tm);
-        
-    
+
     }
-    private void populateCourseFlowTable(){
+
+    private void populateCourseFlowTable() {
+
         TableModel tm;
         tm = controller.getCourseFlow();
         System.out.println("kolumner i CourseFlowTable: " + tm.getColumnCount());
         this.tblCourseFlow.setModel(tm);
+
     }
-    private void populateStudentsCurrentAndPastCourses(String pnr){
+
+    private void populateStudentsCurrentAndPastCourses(String pnr) {
+
         TableModel tm1;
         TableModel tm2;
         tm1 = this.controller.getStudentsCurrentCourses(pnr);
         tm2 = this.controller.getStudentsFinnishedCourses(pnr);
         this.tblStudentsNotFinishedCourses.setModel(tm1);
         this.tblStudentsFinishedCourses.setModel(tm2);
-        
+
     }
-    private void populateCoursesPastAndCurrentStudents(String ccode){
+
+    private void populateCoursesPastAndCurrentStudents(String ccode) {
+
         TableModel tm1;
         TableModel tm2;
         tm1 = this.controller.getPastStudentsOnCourse(ccode);
         tm2 = this.controller.getCurrentStudentsOnCourse(ccode);
         this.tblFinishedStudentsOnCourse.setModel(tm1);
         this.tblNotFinishedStudentsOnCourse.setModel(tm2);
+
     }
 
-    
-    
+    private void displayStudentCourses(String pnr) {
+
+        /*TODO Not implemented yet
+        
+         *TableModel finnishedCourses = this.controller.getStudentsFinnishedCourses(pnr);
+         *TableModel currentCourses = this.controller.getStudentsCurrentCourses(pnr);
+         *this.tbl"finns inte ännu".setModel(finnishedCourses);
+         *this.tbl"finns inte ännu".setModel(currentCourses);       
+         */
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,6 +165,7 @@ public class View extends javax.swing.JFrame {
         tblCourseFlow = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Studentsystem");
 
         pnlFinsStudents.setBorder(javax.swing.BorderFactory.createTitledBorder("Sök studenter"));
 
@@ -204,7 +220,7 @@ public class View extends javax.swing.JFrame {
                     .addComponent(txtFindStudentQuery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFindStudent))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneFindStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addComponent(scrollPaneFindStudent)
                 .addContainerGap())
         );
 
@@ -217,12 +233,6 @@ public class View extends javax.swing.JFrame {
         lblViewStudentLastName.setText("Efternamn:");
 
         txtViewStudentPersonNbr.setEditable(false);
-
-        txtViewStudentFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtViewStudentFirstNameActionPerformed(evt);
-            }
-        });
 
         lblViewStudentEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblViewStudentEmail.setText("E-post:");
@@ -394,8 +404,8 @@ public class View extends javax.swing.JFrame {
                     .addComponent(lblViewStudentNonPassedCourses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
-                    .addComponent(scrollPanesFinishedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                    .addComponent(scrollPanesFinishedCourses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxViewStudentAddCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,9 +430,10 @@ public class View extends javax.swing.JFrame {
             .addGroup(pnlStudentsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlFinsStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 293, Short.MAX_VALUE))
+                    .addComponent(pnlFinsStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlStudentsLayout.createSequentialGroup()
+                        .addComponent(pnlViewStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         tabbedPane.addTab("Studenter", pnlStudents);
@@ -431,12 +442,6 @@ public class View extends javax.swing.JFrame {
 
         pnlFindCourse.setBorder(javax.swing.BorderFactory.createTitledBorder("Sök kurs"));
         pnlFindCourse.setToolTipText("");
-
-        txtFindCourseInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFindCourseInputActionPerformed(evt);
-            }
-        });
 
         lblFindCourseInput.setText("Kursnamn/Kurskod:");
         lblFindCourseInput.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -522,12 +527,6 @@ public class View extends javax.swing.JFrame {
         lblViewCourseStudentsWithA.setText("Andel studenter med betyg A:");
 
         lblViewCourseNonPassedStudents.setText("Studenter med ej avslutad kurs");
-
-        txtViewCourseStudentsWithA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtViewCourseStudentsWithAActionPerformed(evt);
-            }
-        });
 
         tblFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -722,7 +721,7 @@ public class View extends javax.swing.JFrame {
                         .addComponent(pnlFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlHighestPassedCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tabbedPane.addTab("Kurser", pnlCourse);
@@ -745,8 +744,10 @@ public class View extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="GUI event handling auto generated methods">
     private void btnFindStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindStudentActionPerformed
 
         String searchString = this.txtFindStudentQuery.getText();
@@ -757,19 +758,6 @@ public class View extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
-    private void txtViewStudentFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewStudentFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtViewStudentFirstNameActionPerformed
-    private void displayStudentCourses(String pnr){
-        
-        /*TODO Not implemented yet
-        
-         *TableModel finnishedCourses = this.controller.getStudentsFinnishedCourses(pnr);
-         *TableModel currentCourses = this.controller.getStudentsCurrentCourses(pnr);
-         *this.tbl"finns inte ännu".setModel(finnishedCourses);
-         *this.tbl"finns inte ännu".setModel(currentCourses);       
-        */
-    }
     private void btnRegisterStudentSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterStudentSaveActionPerformed
 
         String[] studentData = new String[8];
@@ -790,9 +778,9 @@ public class View extends javax.swing.JFrame {
         } else {
 
             JOptionPane.showMessageDialog(this,
-                "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
-                "Kan inte registrera student",
-                JOptionPane.ERROR_MESSAGE);
+                    "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                    "Kan inte registrera student",
+                    JOptionPane.ERROR_MESSAGE);
 
         }
     }//GEN-LAST:event_btnRegisterStudentSaveActionPerformed
@@ -801,12 +789,12 @@ public class View extends javax.swing.JFrame {
 
         String personNbr = this.txtViewStudentPersonNbr.getText();
         this.controller.deleteStudent(personNbr);
-        
-         JOptionPane.showMessageDialog(this,
+
+        JOptionPane.showMessageDialog(this,
                 "Student med " + personNbr + " är nu borttagen ur systemet.",
                 "Kan inte ta bort student",
                 JOptionPane.ERROR_MESSAGE);
-                this.populateStudentTable();
+        this.populateStudentTable();
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
     private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
@@ -824,23 +812,24 @@ public class View extends javax.swing.JFrame {
         } else {
 
             JOptionPane.showMessageDialog(this,
-                "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                "Kan inte skapa kurs.",
-                JOptionPane.ERROR_MESSAGE);
+                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                    "Kan inte skapa kurs.",
+                    JOptionPane.ERROR_MESSAGE);
 
         }
     }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
-        // TODO add your handling code here:
+
         int row = tableFindCourse.getSelectedRow();
-        String ccode =(tableFindCourse.getModel().getValueAt(row, 0).toString());
-        String cname =(tableFindCourse.getModel().getValueAt(row, 1).toString());
-        String points =(tableFindCourse.getModel().getValueAt(row, 2).toString());
+        String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
+        String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
+        String points = (tableFindCourse.getModel().getValueAt(row, 2).toString());
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
         this.populateCoursesPastAndCurrentStudents(ccode);
+
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
@@ -851,16 +840,7 @@ public class View extends javax.swing.JFrame {
 
         this.tableFindCourse.setModel(dtm);
 
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnFindCourseActionPerformed
-
-    private void txtFindCourseInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindCourseInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFindCourseInputActionPerformed
-
-    private void txtViewCourseStudentsWithAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtViewCourseStudentsWithAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtViewCourseStudentsWithAActionPerformed
 
     private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
 
@@ -873,9 +853,9 @@ public class View extends javax.swing.JFrame {
         } else {
 
             JOptionPane.showMessageDialog(this,
-                "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                "Kan inte radera kurs.",
-                JOptionPane.ERROR_MESSAGE);
+                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                    "Kan inte radera kurs.",
+                    JOptionPane.ERROR_MESSAGE);
 
         }
     }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
@@ -883,14 +863,14 @@ public class View extends javax.swing.JFrame {
     private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
         // TODO add your handling code here:
         int row = tblFindStudent.getSelectedRow();
-        String pnr =(tblFindStudent.getModel().getValueAt(row, 0).toString());
-        String firstname =(tblFindStudent.getModel().getValueAt(row, 1).toString());
-        String lastname =(tblFindStudent.getModel().getValueAt(row, 2).toString());
-        String phonenbr =(tblFindStudent.getModel().getValueAt(row, 3).toString());
-        String email =(tblFindStudent.getModel().getValueAt(row, 4).toString());
-        String address =(tblFindStudent.getModel().getValueAt(row, 5).toString());
-        String postcode =(tblFindStudent.getModel().getValueAt(row, 6).toString());
-        String city =(tblFindStudent.getModel().getValueAt(row, 7).toString());
+        String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
+        String firstname = (tblFindStudent.getModel().getValueAt(row, 1).toString());
+        String lastname = (tblFindStudent.getModel().getValueAt(row, 2).toString());
+        String phonenbr = (tblFindStudent.getModel().getValueAt(row, 3).toString());
+        String email = (tblFindStudent.getModel().getValueAt(row, 4).toString());
+        String address = (tblFindStudent.getModel().getValueAt(row, 5).toString());
+        String postcode = (tblFindStudent.getModel().getValueAt(row, 6).toString());
+        String city = (tblFindStudent.getModel().getValueAt(row, 7).toString());
         txtViewStudentPersonNbr.setText(pnr);
         txtViewStudentFirstName.setText(firstname);
         txtViewStudentLastName.setText(lastname);
@@ -901,8 +881,9 @@ public class View extends javax.swing.JFrame {
         txtViewStudentCity.setText(city);
         this.populateStudentsCurrentAndPastCourses(pnr);
     }//GEN-LAST:event_tblFindStudentMouseClicked
+// </editor-fold>
 
- 
+    // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteRegisterCourse;
     private javax.swing.JButton btnFindCourse;
@@ -972,4 +953,5 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField txtViewStudentPhoneNbr;
     private javax.swing.JTextField txtViewStudentPostCode;
     // End of variables declaration//GEN-END:variables
+// </editor-fold>
 }

@@ -3,10 +3,11 @@
 <Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Studentsystem"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -71,10 +72,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlFinsStudents" min="-2" max="-2" attributes="0"/>
-                          <Component id="pnlViewStudent" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="pnlFinsStudents" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="pnlViewStudent" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="293" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -116,7 +119,7 @@
                               <Component id="btnFindStudent" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPaneFindStudent" pref="576" max="32767" attributes="0"/>
+                          <Component id="scrollPaneFindStudent" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -300,8 +303,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="scrollPanePassedCourses" pref="418" max="32767" attributes="0"/>
-                              <Component id="scrollPanesFinishedCourses" pref="0" max="32767" attributes="0"/>
+                              <Component id="scrollPanePassedCourses" pref="523" max="32767" attributes="0"/>
+                              <Component id="scrollPanesFinishedCourses" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -333,9 +336,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtViewStudentFirstName">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtViewStudentFirstNameActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtViewStudentAdress">
                 </Component>
@@ -519,7 +519,7 @@
                               <Component id="pnlHighestPassedCourse" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="189" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -567,9 +567,6 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="txtFindCourseInput">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtFindCourseInputActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblFindCourseInput">
                   <Properties>
@@ -832,9 +829,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtViewCourseStudentsWithA">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtViewCourseStudentsWithAActionPerformed"/>
-                      </Events>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                       <AuxValues>
