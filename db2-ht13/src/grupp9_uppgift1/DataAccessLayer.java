@@ -34,10 +34,10 @@ public class DataAccessLayer {
     private void executeUpdate(String sqlString) {
 
         System.out.println("executeUpdate(" + sqlString + ")");
-        
+
         try {
             DatabaseMetaData md = connection.getMetaData();
-            
+
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
         } catch (SQLException ex) {
@@ -51,7 +51,7 @@ public class DataAccessLayer {
     private ResultSet executeQuery(String sqlString) {
 
         System.out.println("executeQuery(" + sqlString + ")");
-        
+
         ResultSet rst = null;
 
         try {
@@ -64,12 +64,10 @@ public class DataAccessLayer {
         return rst;
     }
     //</editor-fold>
-
     //<editor-fold desc="Private helper methods" defaultstate="collapsed">
-    /*
+    /**
      * This method takes a ResultSet and returns TableModel.
      */
-    
     private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
@@ -91,7 +89,6 @@ public class DataAccessLayer {
                 columnNames.addElement(columnName);
 
                 //System.out.println("Adding column name: " + columnName);
-
             }
 
             while (rs.next()) {
@@ -122,6 +119,33 @@ public class DataAccessLayer {
 
         return null;
 
+    }
+
+    private Object[] getResultSetAsStringList(ResultSet rs) {
+
+        ArrayList<String> stringList = new ArrayList<>();
+
+        try {
+
+            ResultSetMetaData md = rs.getMetaData();
+            int columnCount = md.getColumnCount();
+
+            while (rs.next()) {
+                String newString = "";
+                for (int i = 1; i <= columnCount; i++) {
+                    newString += rs.getObject(i).toString();
+                    
+                    newString += " ";
+                }
+                System.out.println(newString);
+                stringList.add(newString);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return stringList.toArray();
     }
 
     private boolean checkIfResultSetHasContent(ResultSet rset) {
@@ -193,14 +217,16 @@ public class DataAccessLayer {
 
         }
 
-
         return stringOut;
     }
-    
+
+    /**
+     * Printing out a table model. Used for debugging.
+     *
+     * @param tm
+     */
     private void systemOutPrintTableModel(TableModel tm) {
-        
-        /*
-        
+
         int columnCount = tm.getColumnCount();
         int rowCount = tm.getRowCount();
         System.out.println("\n dataAccessLayer.systemOutPrintTableModel:  \n");
@@ -210,14 +236,10 @@ public class DataAccessLayer {
             }
             System.out.println("");
         }
-        
-        */
-        
-    }
-    
-    
-    //</editor-fold>
 
+    }
+
+    //</editor-fold>
     //<editor-fold desc="Student queries" defaultstate="collapsed">
     protected void registerNewStudent(String[] studentData) {
 
@@ -239,7 +261,6 @@ public class DataAccessLayer {
         ResultSet rset = executeQuery(sqlString);
 
         boolean studentExists = this.checkIfResultSetHasContent(rset);
-
 
         if (studentExists) {
             System.out.println("studenten " + pnr + " är redan registrerad i databasen");
@@ -300,8 +321,6 @@ public class DataAccessLayer {
         return numberOfStudentsWithGrade;
     }
 
-
-
     protected void deleteStudent(String personNbr) {
         String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
@@ -318,40 +337,43 @@ public class DataAccessLayer {
         return tm;
 
     }
-    protected int getNumberOfStudents(){
-        
+
+    protected int getNumberOfStudents() {
+
         try {
-            
+
             String sqlString = "SELECT COUNT(*) FROM Student";
             ResultSet rs = this.executeQuery(sqlString);
             rs.next();
             int studentCount = Integer.parseInt(rs.getString(1));
             return studentCount;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
-    protected TableModel getStudentsCurrentCourses(String pnr){
+
+    protected TableModel getStudentsCurrentCourses(String pnr) {
         TableModel tm;
-        String sqlString = "SELECT c.cname, c.ccode, c.points" +
-                           " FROM course c" +
-                           " WHERE c.ccode IN (SELECT s.ccode " +
-                           " FROM studies s" +
-                           " WHERE s.pnr = '" + pnr + "')";
+        String sqlString = "SELECT c.cname, c.ccode, c.points"
+                + " FROM course c"
+                + " WHERE c.ccode IN (SELECT s.ccode "
+                + " FROM studies s"
+                + " WHERE s.pnr = '" + pnr + "')";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
         this.systemOutPrintTableModel(tm);
         return tm;
     }
-    protected TableModel getStudentsFinnishedCourses(String pnr){
+
+    protected TableModel getStudentsFinnishedCourses(String pnr) {
         TableModel tm;
-        String sqlString = "SELECT c.cname, h.ccode, c.points, h.grade" +
-                           " FROM hasstudied h, course c" +
-                           " WHERE h.pnr = '" + pnr + "'" +
-                           " AND h.ccode = c.ccode";
-        
+        String sqlString = "SELECT c.cname, h.ccode, c.points, h.grade"
+                + " FROM hasstudied h, course c"
+                + " WHERE h.pnr = '" + pnr + "'"
+                + " AND h.ccode = c.ccode";
+
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
         this.systemOutPrintTableModel(tm);
@@ -359,7 +381,6 @@ public class DataAccessLayer {
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Course queries" defaultstate="collapsed">
     public boolean checkIfCourseExists(String courseCode) {
 
@@ -386,8 +407,6 @@ public class DataAccessLayer {
 
         // TODO: ska ta in en selectad kurs
     }
-
-
 
     protected void deleteCourse(String courseCode) {
         String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
@@ -420,43 +439,46 @@ public class DataAccessLayer {
         return dtm;
 
     }
-    protected int getNumberOfCourses(){
-        
+
+    protected int getNumberOfCourses() {
+
         try {
-            
+
             String sqlString = "SELECT COUNT(*) FROM Course";
             ResultSet rs = this.executeQuery(sqlString);
             rs.next();
             int courseCount = Integer.parseInt(rs.getString(1));
             return courseCount;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
-    protected TableModel getPastStudentsOnCourse(String courseCode){
-        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
-                           " FROM Student s, Hasstudied h" +
-                           " WHERE h.ccode = '" + courseCode + "'" +
-                           " AND s.pnr = h.pnr";
-        ResultSet rs = this.executeQuery(SQLString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        this.systemOutPrintTableModel(tm);
-        return tm;
-    }
-    protected TableModel getCurrentStudentsOnCourse(String courseCode){
-        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email" +
-                           " FROM Student s, Studies s2" +
-                           " WHERE s2.ccode = '" + courseCode + "'" +
-                           " AND s.pnr = s2.pnr";
-        ResultSet rs = this.executeQuery(SQLString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        this.systemOutPrintTableModel(tm);
-        return tm;
-    }
-    //</editor-fold>
 
+    protected TableModel getPastStudentsOnCourse(String courseCode) {
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email"
+                + " FROM Student s, Hasstudied h"
+                + " WHERE h.ccode = '" + courseCode + "'"
+                + " AND s.pnr = h.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
+        return tm;
+    }
+
+    protected TableModel getCurrentStudentsOnCourse(String courseCode) {
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email"
+                + " FROM Student s, Studies s2"
+                + " WHERE s2.ccode = '" + courseCode + "'"
+                + " AND s.pnr = s2.pnr";
+        ResultSet rs = this.executeQuery(SQLString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        this.systemOutPrintTableModel(tm);
+        return tm;
+    }
+
+    //</editor-fold>
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
     protected String getStudentGradeAtCourse(String pnr, String courseCode) {
 
@@ -480,39 +502,38 @@ public class DataAccessLayer {
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
+
     protected float percentagePassingCourse(String courseCode) {
-        
+
         //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
         int nbrOfStudents = this.getNumberOfStudents(courseCode);
         int nbrOfFails = this.getNumberOfStudentsWithGrade(courseCode, "U");
         int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
         float percentagePassingCourse = (float) nbrOfSuccesses / (float) nbrOfStudents * (float) 100;
-        
+
         //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
         return percentagePassingCourse;
     }
-    
+
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
-        
+
         //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
-        
         int numberOfStudents = getNumberOfStudents(courseCode);
         int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
         float percentageOfStudentsWithGrade;
-        percentageOfStudentsWithGrade = ((float)numberOfStudentsWithGrade/(float)numberOfStudents) * (float)100;
-        
+        percentageOfStudentsWithGrade = ((float) numberOfStudentsWithGrade / (float) numberOfStudents) * (float) 100;
+
         //System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
         return percentageOfStudentsWithGrade;
     }
-    
+
     protected TableModel getCourseFlow() {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";
-            ArrayList<String> courseNames = new ArrayList<String>(); 
-            
+            ArrayList<String> courseNames = new ArrayList<String>();
+
             int courseCount = getNumberOfCourses();
-            
 
             DefaultTableModel returnTable = new DefaultTableModel();
             returnTable.addColumn("Kurskod");
@@ -524,25 +545,26 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = rset.getString(1);
                 courseNames.add(courseCode);
-                returnTable.setValueAt(courseCode, i, 0);              
+                returnTable.setValueAt(courseCode, i, 0);
             }
-            for (int i = 0; i < courseCount; i++){
+            for (int i = 0; i < courseCount; i++) {
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
                 String percent = Float.toString(courseFlow);
                 percent += "%";
-                if (percent.contentEquals("NaN%")){
+                if (percent.contentEquals("NaN%")) {
                     percent = "-";
                 }
-                returnTable.setValueAt(percent, i, 1);  
-                        
+                returnTable.setValueAt(percent, i, 1);
+
             }
-            /*System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
-            *for (int i = 0; i < courseCount; i++){
-            *System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
-            *}
-            */
+            /*
+             *System.out.println("dataAccessLayer.courseFlow:         kurser och eventuellt genomflöde i % ");
+             *for (int i = 0; i < courseCount; i++){
+             *System.out.println("dataAccessLayer.courseFlow:         " + returnTable.getValueAt(i, 0) + "    " + returnTable.getValueAt(i, 1));
+             *}
+             */
             return returnTable;
 
         } catch (SQLException ex) {
@@ -550,20 +572,37 @@ public class DataAccessLayer {
         }
         return null;
     }
-     
-    void registerCourseResult(String courseCode, String pNr, String grade) {
-        
-        String sqlString = "DELETE FROM Studies WHERE pnr = '"+pNr+"' AND ccode = '"+courseCode+"'";
-        
+
+    protected void registerCourseResult(String courseCode, String pNr, String grade) {
+
+        String sqlString = "DELETE FROM Studies WHERE pnr = '" + pNr + "' AND ccode = '" + courseCode + "'";
+
+        this.executeUpdate(sqlString);
+
+        sqlString = "INSERT INTO Hasstudied VALUES ('" + pNr + "', '" + courseCode + "', '" + grade + "')";
+
         this.executeUpdate(sqlString);
         
-        sqlString = "INSERT INTO Hasstudied VALUES ('"+pNr+"', '"+courseCode+"', '"+grade+"')";
+    }
+
+    protected Object[] getCoursesThatCanBeAddedToStudent(String pNr) {
+
+        ResultSet rs = this.executeQuery("SELECT * FROM Course c "
+                + "WHERE c.ccode NOT IN "
+                + "(SELECT h.ccode FROM Hasstudied h "
+                + "WHERE h.pnr = '"+pNr+"') "
+                + "AND c.ccode NOT IN "
+                + "(Select s.ccode FROM Studies s "
+                + "WHERE s.pnr = '"+pNr+"')");
         
-        this.executeUpdate(sqlString);
+        Object[] stringArray = this.getResultSetAsStringList(rs);
         
-       
-        
+        return stringArray;
+
     }
     //</editor-fold>
 
 }
+
+
+

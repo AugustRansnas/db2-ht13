@@ -5,6 +5,7 @@
  */
 package grupp9_uppgift1;
 
+import java.util.ArrayList;
 import javax.swing.table.TableModel;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.table.TableModel;
  */
 public class Controller {
 
-    DataAccessLayer dataAccessLayer;
+    private DataAccessLayer dataAccessLayer;
 
     Controller(DataAccessLayer dataAccessLayer) {
 
@@ -235,11 +236,18 @@ public class Controller {
     //</editor-fold>
     
     //<editor-fold desc="Course + Student operations" defaultstate="collapsed">
-    void registerCourseResult(String courseCode, String pNr, String grade) {
+    protected void registerCourseResult(String courseCode, String pNr, String grade) {
 
         this.dataAccessLayer.registerCourseResult(courseCode, pNr, grade);
 
     }
+    
+    protected Object[] getCoursesThatCanBeAddedToStudent (String pNr) {
+        
+        return this.dataAccessLayer.getCoursesThatCanBeAddedToStudent(pNr);
+        
+    }
+    
 //</editor-fold>
 
 }

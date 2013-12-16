@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 /**/
 
@@ -48,10 +49,13 @@ public class Main {
         DataAccessLayer dataAccessLayer = new DataAccessLayer(connection);
 
         Controller controller = new Controller(dataAccessLayer);
-
+     
         View mainView = new View(controller);
 
         mainView.setVisible(true);
+        
+        
+
 
     }
 

@@ -4,6 +4,10 @@
  */
 package grupp9_uppgift1;
 
+import java.util.ArrayList;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -13,53 +17,56 @@ import javax.swing.table.TableModel;
  */
 public class View extends javax.swing.JFrame {
 
-    private Controller controller;
+    private final Controller controller;
     private String selectedStudent;
     private String selectedCourse;
 
     /**
-     * Creates new form View
+     * Creates new form View.
+     * @param controller Handles communication with database.
      */
     public View(Controller controller) {
-        
+
         this.controller = controller;
-        
-        this.initComponents();     
-        
+
+        this.initComponents();
+
         this.populateStudentTable();
         this.populateCourseTable();
         this.populateCourseFlowTable();
-        
+
     }
-    
+
     private void setSelectedStudent(String selectedStudent) {
-        
+
         System.out.println(selectedStudent);
-        
+
         this.selectedStudent = selectedStudent;
-        
+
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
-        
+
         this.rbtnDeleteStudent.setEnabled(true);
-        
+
         this.btnRegisterCourseResult.setEnabled(false);
         
+        Object[] comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
+        this.comboBoxViewStudentAddCourse.setModel(new DefaultComboBoxModel(comboBoxList));
+
     }
-    
+
     private void setSelectedCourse(String selectedCourse) {
-        
+
         System.out.println(selectedCourse);
-        
+
         this.selectedCourse = selectedCourse;
-        
+
         this.populateCoursesPastAndCurrentStudents(selectedCourse);
-        
+
         this.rbtnDeleteCourse.setSelected(true);
         this.txtViewCourseCode.setEditable(false);
         this.txtViewCourseName.setEditable(false);
         this.txtViewCourseCredits.setEditable(false);
-        
-        
+
     }
 
     private void populateCourseTable() {
@@ -82,7 +89,6 @@ public class View extends javax.swing.JFrame {
 
         TableModel tm;
         tm = controller.getCourseFlow();
-        System.out.println("kolumner i CourseFlowTable: " + tm.getColumnCount());
         this.tblCourseFlow.setModel(tm);
 
     }
@@ -806,11 +812,9 @@ public class View extends javax.swing.JFrame {
     private void btnFindStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindStudentActionPerformed
 
         String searchString = this.txtFindStudentQuery.getText();
-
         TableModel dtm = controller.findStudents(searchString);
-
         this.tblFindStudent.setModel(dtm);
- 
+
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
@@ -822,19 +826,16 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
-        
+
         this.setSelectedCourse(ccode);
-        
-        
+
 
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
 
         String searchString = this.txtFindCourseInput.getText();
-
         TableModel dtm = controller.findCourses(searchString);
-
         this.tableFindCourse.setModel(dtm);
 
     }//GEN-LAST:event_btnFindCourseActionPerformed
@@ -882,8 +883,7 @@ public class View extends javax.swing.JFrame {
 
     private void rbtnDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteCourseActionPerformed
 
-        
-        
+
     }//GEN-LAST:event_rbtnDeleteCourseActionPerformed
 
     private void btnDeleteRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterCourseActionPerformed
@@ -1001,13 +1001,12 @@ public class View extends javax.swing.JFrame {
 
     private void btnRegisterCourseResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseResultActionPerformed
 
-        
-        String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString(); 
-        
+        String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString();
+
         controller.registerCourseResult(this.selectedCourse, this.selectedStudent, grade);
-        
+
         this.setSelectedStudent(selectedStudent);
-        
+
     }//GEN-LAST:event_btnRegisterCourseResultActionPerformed
 
     private void tblSelectedStudentsUnfinishedCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
@@ -1015,7 +1014,7 @@ public class View extends javax.swing.JFrame {
         int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
         String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
         this.setSelectedCourse(courseCode);
-        
+
         this.btnRegisterCourseResult.setEnabled(true);
 
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
