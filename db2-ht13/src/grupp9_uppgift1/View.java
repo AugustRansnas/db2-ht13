@@ -24,7 +24,8 @@ public class View extends javax.swing.JFrame {
         
         this.controller = controller;
         
-        this.initComponents();
+        this.initComponents();     
+        
         this.populateStudentTable();
         this.populateCourseTable();
         this.populateCourseFlowTable();
@@ -33,13 +34,30 @@ public class View extends javax.swing.JFrame {
     
     private void setSelectedStudent(String selectedStudent) {
         
+        System.out.println(selectedStudent);
+        
         this.selectedStudent = selectedStudent;
+        
+        this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        
+        this.rbtnDeleteStudent.setEnabled(true);
+        
+        this.btnRegisterCourseResult.setEnabled(false);
         
     }
     
     private void setSelectedCourse(String selectedCourse) {
         
+        System.out.println(selectedCourse);
+        
         this.selectedCourse = selectedCourse;
+        
+        this.populateCoursesPastAndCurrentStudents(selectedCourse);
+        
+        this.rbtnDeleteCourse.setSelected(true);
+        this.txtViewCourseCode.setEditable(false);
+        this.txtViewCourseName.setEditable(false);
+        this.txtViewCourseCredits.setEditable(false);
         
         
     }
@@ -69,37 +87,26 @@ public class View extends javax.swing.JFrame {
 
     }
 
-    private void populateStudentsCurrentAndPastCourses(String pnr) {
+    private void populateStudentsCurrentAndPastCourses(String selectedStudent) {
 
         TableModel tm1;
         TableModel tm2;
-        tm1 = this.controller.getStudentsCurrentCourses(pnr);
-        tm2 = this.controller.getStudentsFinnishedCourses(pnr);
+        tm1 = this.controller.getStudentsCurrentCourses(selectedStudent);
+        tm2 = this.controller.getStudentsFinnishedCourses(selectedStudent);
         this.tblSelectedStudentsUnfinishedCourses.setModel(tm1);
         this.tblStudentsFinishedCourses.setModel(tm2);
 
     }
 
-    private void populateCoursesPastAndCurrentStudents(String ccode) {
+    private void populateCoursesPastAndCurrentStudents(String selectedCourse) {
 
         TableModel tm1;
         TableModel tm2;
-        tm1 = this.controller.getPastStudentsOnCourse(ccode);
-        tm2 = this.controller.getCurrentStudentsOnCourse(ccode);
+        tm1 = this.controller.getPastStudentsOnCourse(selectedCourse);
+        tm2 = this.controller.getCurrentStudentsOnCourse(selectedCourse);
         this.tblFinishedStudentsOnCourse.setModel(tm1);
         this.tblNotFinishedStudentsOnCourse.setModel(tm2);
 
-    }
-
-    private void displayStudentCourses(String pnr) {
-
-        /*TODO Not implemented yet
-        
-         *TableModel finnishedCourses = this.controller.getStudentsFinnishedCourses(pnr);
-         *TableModel currentCourses = this.controller.getStudentsCurrentCourses(pnr);
-         *this.tbl"finns inte ännu".setModel(finnishedCourses);
-         *this.tbl"finns inte ännu".setModel(currentCourses);       
-         */
     }
 
     @SuppressWarnings("unchecked")
@@ -283,6 +290,11 @@ public class View extends javax.swing.JFrame {
 
             }
         ));
+        tblStudentsFinishedCourses.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tblStudentsFinishedCoursesFocusLost(evt);
+            }
+        });
         scrollPanePassedCourses.setViewportView(tblStudentsFinishedCourses);
 
         tblSelectedStudentsUnfinishedCourses.setAutoCreateRowSorter(true);
@@ -297,6 +309,11 @@ public class View extends javax.swing.JFrame {
         tblSelectedStudentsUnfinishedCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSelectedStudentsUnfinishedCoursesMouseClicked(evt);
+            }
+        });
+        tblSelectedStudentsUnfinishedCourses.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tblSelectedStudentsUnfinishedCoursesFocusLost(evt);
             }
         });
         scrollPanesFinishedCourses.setViewportView(tblSelectedStudentsUnfinishedCourses);
@@ -786,7 +803,7 @@ public class View extends javax.swing.JFrame {
         TableModel dtm = controller.findStudents(searchString);
 
         this.tblFindStudent.setModel(dtm);
-        // TODO add your handling code here:
+ 
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
@@ -798,8 +815,10 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
-        this.populateCoursesPastAndCurrentStudents(ccode);
-        this.rbtnDeleteCourse.doClick();
+        
+        this.setSelectedCourse(ccode);
+        
+        
 
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
@@ -836,7 +855,7 @@ public class View extends javax.swing.JFrame {
         txtViewStudentPostCode.setText(postcode);
         txtViewStudentCity.setText(city);
 
-        this.populateStudentsCurrentAndPastCourses(pnr);
+        this.setSelectedStudent(pnr);
 
         this.rbtnDeleteStudent.doClick();
 
@@ -856,10 +875,8 @@ public class View extends javax.swing.JFrame {
 
     private void rbtnDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteCourseActionPerformed
 
-        this.txtViewCourseCode.setEditable(false);
-        this.txtViewCourseName.setEditable(false);
-        this.txtViewCourseCredits.setEditable(false);
-
+        
+        
     }//GEN-LAST:event_rbtnDeleteCourseActionPerformed
 
     private void btnDeleteRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterCourseActionPerformed
@@ -977,19 +994,36 @@ public class View extends javax.swing.JFrame {
 
     private void btnRegisterCourseResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseResultActionPerformed
 
-        int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
-        String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
-        String pNr = this.txtViewStudentPersonNbr.getText();
-        String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString();
         
-        controller.registerCourseResult(courseCode, pNr, grade);
+        String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString(); 
+        
+        controller.registerCourseResult(this.selectedCourse, this.selectedStudent, grade);
+        
+        this.setSelectedStudent(selectedStudent);
+        
     }//GEN-LAST:event_btnRegisterCourseResultActionPerformed
 
     private void tblSelectedStudentsUnfinishedCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
 
+        int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
+        String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
+        this.setSelectedCourse(courseCode);
+        
         this.btnRegisterCourseResult.setEnabled(true);
 
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
+
+    private void tblSelectedStudentsUnfinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
+    
+        this.tblSelectedStudentsUnfinishedCourses.clearSelection();
+
+    }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
+
+    private void tblStudentsFinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblStudentsFinishedCoursesFocusLost
+        
+        this.tblSelectedStudentsUnfinishedCourses.clearSelection();
+        
+    }//GEN-LAST:event_tblStudentsFinishedCoursesFocusLost
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">

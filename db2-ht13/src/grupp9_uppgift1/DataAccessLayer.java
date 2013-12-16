@@ -196,7 +196,11 @@ public class DataAccessLayer {
 
         return stringOut;
     }
+    
     private void systemOutPrintTableModel(TableModel tm) {
+        
+        /*
+        
         int columnCount = tm.getColumnCount();
         int rowCount = tm.getRowCount();
         System.out.println("\n dataAccessLayer.systemOutPrintTableModel:  \n");
@@ -206,6 +210,9 @@ public class DataAccessLayer {
             }
             System.out.println("");
         }
+        
+        */
+        
     }
     
     
