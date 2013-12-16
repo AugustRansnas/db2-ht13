@@ -239,20 +239,24 @@ public class Controller {
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Course + Student operations" defaultstate="collapsed">
     protected void registerCourseResult(String courseCode, String pNr, String grade) {
 
         this.dataAccessLayer.registerCourseResult(courseCode, pNr, grade);
 
     }
-    
-    protected Object[] getCoursesThatCanBeAddedToStudent (String pNr) {
-        
+
+    protected Object[] getCoursesThatCanBeAddedToStudent(String pNr) {
+
         return this.dataAccessLayer.getCoursesThatCanBeAddedToStudent(pNr);
+
+    }
+
+    void registerStudentOnCourse(String selectedStudent, String courseId) {
+
+        this.dataAccessLayer.registerStudentOnCourse(selectedStudent, courseId);
         
     }
-    
-//</editor-fold>
 
+//</editor-fold>
 }

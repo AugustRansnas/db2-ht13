@@ -4,10 +4,7 @@
  */
 package grupp9_uppgift1;
 
-import java.util.ArrayList;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.TableModel;
 
@@ -23,6 +20,7 @@ public class View extends javax.swing.JFrame {
 
     /**
      * Creates new form View.
+     *
      * @param controller Handles communication with database.
      */
     public View(Controller controller) {
@@ -39,19 +37,22 @@ public class View extends javax.swing.JFrame {
 
     private void setSelectedStudent(String selectedStudent) {
 
-        System.out.println(selectedStudent);
-
         this.selectedStudent = selectedStudent;
 
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
 
         this.rbtnDeleteStudent.setEnabled(true);
 
-        this.btnRegisterCourseResult.setEnabled(false);
-        
+        this.btnRegisterCourseResult.setEnabled(true);
+
         Object[] comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
         this.comboBoxViewStudentAddCourse.setModel(new DefaultComboBoxModel(comboBoxList));
 
+        if (comboBoxList.length > 0) {
+            this.btnViewStudentAddCourse.setEnabled(true);
+        } else {
+            this.btnViewStudentAddCourse.setEnabled(false);
+        }
     }
 
     private void setSelectedCourse(String selectedCourse) {
@@ -284,9 +285,13 @@ public class View extends javax.swing.JFrame {
 
         lblViewStudentAddCourse.setText("Lägg till kurs");
 
-        comboBoxViewStudentAddCourse.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnViewStudentAddCourse.setText("Lägg till");
+        btnViewStudentAddCourse.setEnabled(false);
+        btnViewStudentAddCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewStudentAddCourseActionPerformed(evt);
+            }
+        });
 
         tblStudentsFinishedCourses.setAutoCreateRowSorter(true);
         tblStudentsFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
@@ -298,11 +303,6 @@ public class View extends javax.swing.JFrame {
             }
         ));
         tblStudentsFinishedCourses.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        tblStudentsFinishedCourses.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tblStudentsFinishedCoursesFocusLost(evt);
-            }
-        });
         scrollPanePassedCourses.setViewportView(tblStudentsFinishedCourses);
 
         tblSelectedStudentsUnfinishedCourses.setAutoCreateRowSorter(true);
@@ -318,11 +318,6 @@ public class View extends javax.swing.JFrame {
         tblSelectedStudentsUnfinishedCourses.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSelectedStudentsUnfinishedCoursesMouseClicked(evt);
-            }
-        });
-        tblSelectedStudentsUnfinishedCourses.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tblSelectedStudentsUnfinishedCoursesFocusLost(evt);
             }
         });
         scrollPanesFinishedCourses.setViewportView(tblSelectedStudentsUnfinishedCourses);
@@ -1023,13 +1018,17 @@ public class View extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
 
-    private void tblSelectedStudentsUnfinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
+    private void btnViewStudentAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentAddCourseActionPerformed
 
-    }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesFocusLost
+        String courseId = this.comboBoxViewStudentAddCourse.getSelectedItem().toString();
 
-    private void tblStudentsFinishedCoursesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tblStudentsFinishedCoursesFocusLost
+        courseId = courseId.substring(0, 6);
 
-    }//GEN-LAST:event_tblStudentsFinishedCoursesFocusLost
+        controller.registerStudentOnCourse(selectedStudent, courseId);
+
+        this.setSelectedStudent(selectedStudent);
+
+    }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">

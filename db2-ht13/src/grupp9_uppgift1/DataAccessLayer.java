@@ -7,6 +7,7 @@ package grupp9_uppgift1;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,40 +73,37 @@ public class DataAccessLayer {
 
         try {
 
-            Vector columnNames = new Vector();
-
-            Vector data = new Vector();
+            String[] columnHeadings = new String[0];
+            Object[][] dataArray = new Object[0][0];
 
             ResultSetMetaData md = rs.getMetaData();
-
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
-
-                String columnName = md.getColumnName(i);
-
+                String columnName = md.getColumnName(i);              
                 columnName = stringTranslator(columnName);
-
-                columnNames.addElement(columnName);
-
-                //System.out.println("Adding column name: " + columnName);
+                columnHeadings = Arrays.copyOf(columnHeadings, columnHeadings.length + 1);         
+                columnHeadings[i - 1] = columnName;
             }
+
+            int r = 0;
 
             while (rs.next()) {
 
-                Vector row = new Vector(columnCount);
-
+                Object[] row = new Object[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-
-                    row.addElement(rs.getObject(i));
-
+                    row[i - 1] = rs.getObject(i);
                 }
 
-                data.addElement(row);
+                dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
+                dataArray[r] = row;
+                
+                r++;
             }
 
-            DefaultTableModel dtm = new DefaultTableModel(data, columnNames) {
+            DefaultTableModel dtm = new DefaultTableModel(dataArray, columnHeadings) {
                 public boolean isCellEditable(int row, int column) {
+                    
                     return false;
                 }
             };
@@ -134,7 +132,7 @@ public class DataAccessLayer {
                 String newString = "";
                 for (int i = 1; i <= columnCount; i++) {
                     newString += rs.getObject(i).toString();
-                    
+
                     newString += " ";
                 }
                 System.out.println(newString);
@@ -592,7 +590,7 @@ public class DataAccessLayer {
         sqlString = "INSERT INTO Hasstudied VALUES ('" + pNr + "', '" + courseCode + "', '" + grade + "')";
 
         this.executeUpdate(sqlString);
-        
+
     }
 
     protected Object[] getCoursesThatCanBeAddedToStudent(String pNr) {
@@ -600,19 +598,24 @@ public class DataAccessLayer {
         ResultSet rs = this.executeQuery("SELECT * FROM Course c "
                 + "WHERE c.ccode NOT IN "
                 + "(SELECT h.ccode FROM Hasstudied h "
-                + "WHERE h.pnr = '"+pNr+"') "
+                + "WHERE h.pnr = '" + pNr + "') "
                 + "AND c.ccode NOT IN "
                 + "(Select s.ccode FROM Studies s "
-                + "WHERE s.pnr = '"+pNr+"')");
-        
+                + "WHERE s.pnr = '" + pNr + "')");
+
         Object[] stringArray = this.getResultSetAsStringList(rs);
-        
+
         return stringArray;
 
     }
     //</editor-fold>
 
+    void registerStudentOnCourse(String selectedStudent, String courseId) {
+
+        String sqlString = "INSERT INTO Studies VALUES ('" + selectedStudent + "', '" + courseId + "')";
+
+        this.executeUpdate(sqlString);
+
+    }
+
 }
-
-
-
