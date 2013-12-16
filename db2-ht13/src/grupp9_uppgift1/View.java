@@ -813,7 +813,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
-
+        txtViewCourseStudentsWithA.setText("0,00 %");
         int row = tableFindCourse.getSelectedRow();
         String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
         String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
@@ -823,10 +823,16 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCredits.setText(points);
         this.setSelectedCourse(ccode);
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
-        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 4)+ "%");
+        TableModel tm = controller.getCurrentStudentsOnCourse(ccode);
+  
+        if( tm.getRowCount()==0){
+         txtViewCourseStudentsWithA.setText("0,00 %");
+        }else{      
+            txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 5)+ "%");
+        }
         
     }//GEN-LAST:event_tableFindCourseMouseClicked
-
+    
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
 
         String searchString = this.txtFindCourseInput.getText();
