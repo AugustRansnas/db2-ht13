@@ -20,6 +20,7 @@ public class View extends javax.swing.JFrame {
 
     /**
      * Creates new form View.
+     *
      * @param controller Handles communication with database.
      */
     public View(Controller controller) {
@@ -36,21 +37,22 @@ public class View extends javax.swing.JFrame {
 
     private void setSelectedStudent(String selectedStudent) {
 
-        System.out.println(selectedStudent);
-
         this.selectedStudent = selectedStudent;
 
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
 
         this.rbtnDeleteStudent.setEnabled(true);
 
-        this.btnViewStudentAddCourse.setEnabled(true);
-        
         this.btnRegisterCourseResult.setEnabled(true);
-        
+
         Object[] comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
         this.comboBoxViewStudentAddCourse.setModel(new DefaultComboBoxModel(comboBoxList));
 
+        if (comboBoxList.length > 0) {
+            this.btnViewStudentAddCourse.setEnabled(true);
+        } else {
+            this.btnViewStudentAddCourse.setEnabled(false);
+        }
     }
 
     private void setSelectedCourse(String selectedCourse) {
@@ -1015,11 +1017,11 @@ public class View extends javax.swing.JFrame {
     private void btnViewStudentAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentAddCourseActionPerformed
 
         String courseId = this.comboBoxViewStudentAddCourse.getSelectedItem().toString();
-        
+
         courseId = courseId.substring(0, 6);
-        
+
         controller.registerStudentOnCourse(selectedStudent, courseId);
-        
+
         this.setSelectedStudent(selectedStudent);
 
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
