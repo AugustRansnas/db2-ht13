@@ -155,7 +155,7 @@ public class DataAccessLayer {
 
             stringOut = "Personnummer";
 
-        } else if (stringIn.equals("firstnamne")) {
+        } else if (stringIn.equals("firstname")) {
 
             stringOut = "Förnamn";
 
@@ -182,6 +182,10 @@ public class DataAccessLayer {
         } else if (stringIn.equals("city")) {
 
             stringOut = "Ort";
+
+        } else if (stringIn.equals("grade")) {
+
+            stringOut = "Betyg";
 
         } else {
 

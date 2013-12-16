@@ -228,6 +228,10 @@ public class Controller {
         tm = this.dataAccessLayer.getCurrentStudentsOnCourse(courseCode);
         return tm;
     }
+
+    void registerCourseResult(String courseCode, String pNr, String grade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 //</editor-fold>
 
