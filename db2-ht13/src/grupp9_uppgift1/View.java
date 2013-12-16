@@ -823,7 +823,7 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCredits.setText(points);
         this.setSelectedCourse(ccode);
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
-        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse)+ "%");
+        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 4)+ "%");
         
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
