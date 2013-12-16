@@ -96,9 +96,10 @@ public class View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupCourse = new javax.swing.ButtonGroup();
         tabbedPane = new javax.swing.JTabbedPane();
         pnlStudents = new javax.swing.JPanel();
-        pnlFinsStudents = new javax.swing.JPanel();
+        pnlFindStudents = new javax.swing.JPanel();
         txtFindStudentQuery = new javax.swing.JTextField();
         lblFindStudent = new javax.swing.JLabel();
         btnFindStudent = new javax.swing.JButton();
@@ -146,28 +147,26 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCredits = new javax.swing.JTextField();
         lblViewCourseCourseName = new javax.swing.JLabel();
         lblViewCourseCredits = new javax.swing.JLabel();
-        btnViewCourseDeleteCourse = new javax.swing.JButton();
-        btnRegisterCourseSave = new javax.swing.JButton();
         pnlCourseResults = new javax.swing.JPanel();
         lblViewCoursePassedStudents = new javax.swing.JLabel();
         lblViewCourseStudentsWithA = new javax.swing.JLabel();
         lblViewCourseNonPassedStudents = new javax.swing.JLabel();
         txtViewCourseStudentsWithA = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollPaneStudentsOnCourse = new javax.swing.JScrollPane();
         tblFinishedStudentsOnCourse = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        scrollPaneNotFInishedStudentsOnCourse = new javax.swing.JScrollPane();
         tblNotFinishedStudentsOnCourse = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rbtnRegisterCourse = new javax.swing.JRadioButton();
         rbtnDeleteCourse = new javax.swing.JRadioButton();
         btnDeleteRegisterCourse = new javax.swing.JButton();
         pnlHighestPassedCourse = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPaneCourseFlow = new javax.swing.JScrollPane();
         tblCourseFlow = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Studentsystem");
 
-        pnlFinsStudents.setBorder(javax.swing.BorderFactory.createTitledBorder("Sök studenter"));
+        pnlFindStudents.setBorder(javax.swing.BorderFactory.createTitledBorder("Sök studenter"));
 
         lblFindStudent.setText("Sökterm:");
 
@@ -180,13 +179,10 @@ public class View extends javax.swing.JFrame {
 
         tblFindStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tblFindStudent.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,11 +192,11 @@ public class View extends javax.swing.JFrame {
         });
         scrollPaneFindStudent.setViewportView(tblFindStudent);
 
-        javax.swing.GroupLayout pnlFinsStudentsLayout = new javax.swing.GroupLayout(pnlFinsStudents);
-        pnlFinsStudents.setLayout(pnlFinsStudentsLayout);
-        pnlFinsStudentsLayout.setHorizontalGroup(
-            pnlFinsStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFinsStudentsLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlFindStudentsLayout = new javax.swing.GroupLayout(pnlFindStudents);
+        pnlFindStudents.setLayout(pnlFindStudentsLayout);
+        pnlFindStudentsLayout.setHorizontalGroup(
+            pnlFindStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFindStudentsLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addComponent(lblFindStudent)
                 .addGap(6, 6, 6)
@@ -208,14 +204,14 @@ public class View extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addComponent(btnFindStudent)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFinsStudentsLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFindStudentsLayout.createSequentialGroup()
                 .addComponent(scrollPaneFindStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        pnlFinsStudentsLayout.setVerticalGroup(
-            pnlFinsStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFinsStudentsLayout.createSequentialGroup()
-                .addGroup(pnlFinsStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        pnlFindStudentsLayout.setVerticalGroup(
+            pnlFindStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFindStudentsLayout.createSequentialGroup()
+                .addGroup(pnlFindStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFindStudent)
                     .addComponent(txtFindStudentQuery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFindStudent))
@@ -278,26 +274,20 @@ public class View extends javax.swing.JFrame {
 
         tblStudentsFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         scrollPanePassedCourses.setViewportView(tblStudentsFinishedCourses);
 
         tblStudentsNotFinishedCourses.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         scrollPanesFinishedCourses.setViewportView(tblStudentsNotFinishedCourses);
@@ -322,45 +312,44 @@ public class View extends javax.swing.JFrame {
                         .addGap(178, 178, 178)
                         .addComponent(lblViewStudentNonPassedCourses)
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlViewStudentLayout.createSequentialGroup()
+                        .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(scrollPanesFinishedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))
                     .addGroup(pnlViewStudentLayout.createSequentialGroup()
-                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlViewStudentLayout.createSequentialGroup()
-                                .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                                .addComponent(scrollPanesFinishedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(121, 121, 121))
+                        .addGap(11, 11, 11)
+                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblViewStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pnlViewStudentLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblViewStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(pnlViewStudentLayout.createSequentialGroup()
-                                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtViewStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblViewStudentAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblViewStudentPostCode, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                                            .addComponent(lblViewStudentCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(15, 15, 15)
-                                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtViewStudentAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtViewStudentPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtViewStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtViewStudentFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtViewStudentPersonNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblViewStudentAdress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblViewStudentPostCode, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                                    .addComponent(lblViewStudentCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(15, 15, 15)
+                                .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtViewStudentAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtViewStudentPostCode, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtViewStudentCity, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(pnlViewStudentLayout.createSequentialGroup()
+                                .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(pnlViewStudentLayout.createSequentialGroup()
-                                        .addGap(228, 228, 228)
-                                        .addComponent(btnRegisterStudentSave)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnViewStudentDeleteStudent)))))
+                                    .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(69, 69, 69)
+                                .addComponent(btnRegisterStudentSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnViewStudentDeleteStudent)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         pnlViewStudentLayout.setVerticalGroup(
@@ -382,17 +371,7 @@ public class View extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtViewStudentLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblViewStudentLastName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblViewStudentPhoneNbr)
-                            .addComponent(txtViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblViewStudentEmail)
-                            .addComponent(btnRegisterStudentSave)
-                            .addComponent(btnViewStudentDeleteStudent)))
+                            .addComponent(lblViewStudentLastName)))
                     .addGroup(pnlViewStudentLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -400,11 +379,25 @@ public class View extends javax.swing.JFrame {
                             .addComponent(lblViewStudentCity))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlViewStudentLayout.createSequentialGroup()
+                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblViewStudentPhoneNbr)
+                            .addComponent(txtViewStudentPhoneNbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtViewStudentEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblViewStudentEmail)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlViewStudentLayout.createSequentialGroup()
+                        .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnRegisterStudentSave)
+                            .addComponent(btnViewStudentDeleteStudent))
+                        .addGap(16, 16, 16)))
+                .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblViewStudentPassedCourses)
                     .addComponent(lblViewStudentNonPassedCourses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                    .addComponent(scrollPanePassedCourses, javax.swing.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
                     .addComponent(scrollPanesFinishedCourses))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -420,9 +413,9 @@ public class View extends javax.swing.JFrame {
             pnlStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlStudentsLayout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(pnlFinsStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(pnlViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlFindStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 562, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlStudentsLayout.setVerticalGroup(
@@ -430,7 +423,7 @@ public class View extends javax.swing.JFrame {
             .addGroup(pnlStudentsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlFinsStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlFindStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlStudentsLayout.createSequentialGroup()
                         .addComponent(pnlViewStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -499,25 +492,9 @@ public class View extends javax.swing.JFrame {
 
         lblViewCourseCourseCode.setText("Kurskod");
 
-        txtViewCourseCode.setEditable(false);
-
         lblViewCourseCourseName.setText("Benämning");
 
         lblViewCourseCredits.setText("HP");
-
-        btnViewCourseDeleteCourse.setText("Radera");
-        btnViewCourseDeleteCourse.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewCourseDeleteCourseActionPerformed(evt);
-            }
-        });
-
-        btnRegisterCourseSave.setText("Registrera");
-        btnRegisterCourseSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterCourseSaveActionPerformed(evt);
-            }
-        });
 
         pnlCourseResults.setBorder(javax.swing.BorderFactory.createTitledBorder("Kursresultat"));
 
@@ -530,49 +507,43 @@ public class View extends javax.swing.JFrame {
 
         tblFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane2.setViewportView(tblFinishedStudentsOnCourse);
+        scrollPaneStudentsOnCourse.setViewportView(tblFinishedStudentsOnCourse);
 
         tblNotFinishedStudentsOnCourse.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane3.setViewportView(tblNotFinishedStudentsOnCourse);
+        scrollPaneNotFInishedStudentsOnCourse.setViewportView(tblNotFinishedStudentsOnCourse);
 
         javax.swing.GroupLayout pnlCourseResultsLayout = new javax.swing.GroupLayout(pnlCourseResults);
         pnlCourseResults.setLayout(pnlCourseResultsLayout);
         pnlCourseResultsLayout.setHorizontalGroup(
             pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
-                .addComponent(lblViewCoursePassedStudents)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblViewCourseNonPassedStudents)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlCourseResultsLayout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlCourseResultsLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlCourseResultsLayout.createSequentialGroup()
+                .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(scrollPaneStudentsOnCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                    .addGroup(pnlCourseResultsLayout.createSequentialGroup()
+                        .addComponent(lblViewCoursePassedStudents)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblViewCourseNonPassedStudents)
+                    .addComponent(scrollPaneNotFInishedStudentsOnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         pnlCourseResultsLayout.setVerticalGroup(
             pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -582,20 +553,37 @@ public class View extends javax.swing.JFrame {
                     .addComponent(lblViewCourseNonPassedStudents))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(scrollPaneNotFInishedStudentsOnCourse)
+                    .addComponent(scrollPaneStudentsOnCourse))
+                .addGap(11, 11, 11)
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblViewCourseStudentsWithA)
-                    .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseStudentsWithA)))
         );
 
-        jRadioButton1.setText("Registrera kurs");
+        buttonGroupCourse.add(rbtnRegisterCourse);
+        rbtnRegisterCourse.setSelected(true);
+        rbtnRegisterCourse.setText("Registrera kurs");
+        rbtnRegisterCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnRegisterCourseActionPerformed(evt);
+            }
+        });
 
+        buttonGroupCourse.add(rbtnDeleteCourse);
         rbtnDeleteCourse.setText("Radera kurs");
+        rbtnDeleteCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnDeleteCourseActionPerformed(evt);
+            }
+        });
 
-        btnDeleteRegisterCourse.setText("jButton1");
+        btnDeleteRegisterCourse.setText("OK");
+        btnDeleteRegisterCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRegisterCourseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlShowCourseLayout = new javax.swing.GroupLayout(pnlShowCourse);
         pnlShowCourse.setLayout(pnlShowCourseLayout);
@@ -615,58 +603,42 @@ public class View extends javax.swing.JFrame {
                         .addComponent(lblViewCourseCredits)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                        .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnDeleteCourse, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jRadioButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnlShowCourseLayout.createSequentialGroup()
                         .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rbtnRegisterCourse)
+                            .addComponent(rbtnDeleteCourse)
                             .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                                .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(21, 21, 21)
                                 .addComponent(btnDeleteRegisterCourse)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnViewCourseDeleteCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegisterCourseSave))
-                .addGap(29, 29, 29))
+                .addGap(459, 459, 459))
             .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                .addComponent(pnlCourseResults, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnlCourseResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlShowCourseLayout.setVerticalGroup(
             pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                 .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblViewCourseCourseCode)
-                            .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblViewCourseCourseName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblViewCourseCredits)))
-                    .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                                .addComponent(btnViewCourseDeleteCourse)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRegisterCourseSave))
-                            .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(rbtnDeleteCourse)
-                                    .addComponent(btnDeleteRegisterCourse))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton1)))))
+                    .addComponent(lblViewCourseCourseCode)
+                    .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rbtnDeleteCourse)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseCourseName)
+                    .addComponent(rbtnRegisterCourse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblViewCourseCredits)
+                    .addComponent(btnDeleteRegisterCourse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -675,27 +647,24 @@ public class View extends javax.swing.JFrame {
 
         tblCourseFlow.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(tblCourseFlow);
+        scrollPaneCourseFlow.setViewportView(tblCourseFlow);
 
         javax.swing.GroupLayout pnlHighestPassedCourseLayout = new javax.swing.GroupLayout(pnlHighestPassedCourse);
         pnlHighestPassedCourse.setLayout(pnlHighestPassedCourseLayout);
         pnlHighestPassedCourseLayout.setHorizontalGroup(
             pnlHighestPassedCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(scrollPaneCourseFlow, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         pnlHighestPassedCourseLayout.setVerticalGroup(
             pnlHighestPassedCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlHighestPassedCourseLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollPaneCourseFlow, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -708,8 +677,8 @@ public class View extends javax.swing.JFrame {
                     .addComponent(pnlFindCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlHighestPassedCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlShowCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 92, Short.MAX_VALUE))
+                .addComponent(pnlShowCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pnlCourseLayout.setVerticalGroup(
             pnlCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -797,28 +766,6 @@ public class View extends javax.swing.JFrame {
         this.populateStudentTable();
     }//GEN-LAST:event_btnViewStudentDeleteStudentActionPerformed
 
-    private void btnRegisterCourseSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseSaveActionPerformed
-
-        String[] courseData = new String[3];
-
-        courseData[0] = this.txtViewCourseCode.getText();
-        courseData[1] = this.txtViewCourseName.getText();
-        courseData[2] = this.txtViewCourseCredits.getText();
-
-        if (controller.checkIfCourseExists(courseData[0]) == false) {
-
-            this.controller.registerNewCourse(courseData);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                    "Kan inte skapa kurs.",
-                    JOptionPane.ERROR_MESSAGE);
-
-        }
-    }//GEN-LAST:event_btnRegisterCourseSaveActionPerformed
-
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
 
         int row = tableFindCourse.getSelectedRow();
@@ -829,6 +776,7 @@ public class View extends javax.swing.JFrame {
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
         this.populateCoursesPastAndCurrentStudents(ccode);
+        this.rbtnDeleteCourse.doClick();
 
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
@@ -842,27 +790,11 @@ public class View extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
-    private void btnViewCourseDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCourseDeleteCourseActionPerformed
-
-        String courseCode = this.txtViewCourseCode.getText();
-
-        if (controller.checkIfCourseExists(courseCode) == true) {
-
-            this.controller.deleteCourse(courseCode);
-
-        } else {
-
-            JOptionPane.showMessageDialog(this,
-                    "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
-                    "Kan inte radera kurs.",
-                    JOptionPane.ERROR_MESSAGE);
-
-        }
-    }//GEN-LAST:event_btnViewCourseDeleteCourseActionPerformed
-
     private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
         // TODO add your handling code here:
+
         int row = tblFindStudent.getSelectedRow();
+
         String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
         String firstname = (tblFindStudent.getModel().getValueAt(row, 1).toString());
         String lastname = (tblFindStudent.getModel().getValueAt(row, 2).toString());
@@ -871,6 +803,7 @@ public class View extends javax.swing.JFrame {
         String address = (tblFindStudent.getModel().getValueAt(row, 5).toString());
         String postcode = (tblFindStudent.getModel().getValueAt(row, 6).toString());
         String city = (tblFindStudent.getModel().getValueAt(row, 7).toString());
+
         txtViewStudentPersonNbr.setText(pnr);
         txtViewStudentFirstName.setText(firstname);
         txtViewStudentLastName.setText(lastname);
@@ -879,8 +812,69 @@ public class View extends javax.swing.JFrame {
         txtViewStudentAdress.setText(address);
         txtViewStudentPostCode.setText(postcode);
         txtViewStudentCity.setText(city);
+
         this.populateStudentsCurrentAndPastCourses(pnr);
+
     }//GEN-LAST:event_tblFindStudentMouseClicked
+
+    private void rbtnRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRegisterCourseActionPerformed
+
+        this.txtViewCourseCode.setEditable(true);
+        this.txtViewCourseName.setEditable(true);
+        this.txtViewCourseCredits.setEditable(true);
+
+    }//GEN-LAST:event_rbtnRegisterCourseActionPerformed
+
+    private void rbtnDeleteCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteCourseActionPerformed
+
+        this.txtViewCourseCode.setEditable(false);
+        this.txtViewCourseName.setEditable(false);
+        this.txtViewCourseCredits.setEditable(false);
+
+    }//GEN-LAST:event_rbtnDeleteCourseActionPerformed
+
+    private void btnDeleteRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterCourseActionPerformed
+
+        if (this.rbtnRegisterCourse.isSelected()) {
+            String[] courseData = new String[3];
+
+            courseData[0] = this.txtViewCourseCode.getText();
+            courseData[1] = this.txtViewCourseName.getText();
+            courseData[2] = this.txtViewCourseCredits.getText();
+
+            if (controller.checkIfCourseExists(courseData[0]) == false) {
+
+                this.controller.registerNewCourse(courseData);
+
+            } else {
+
+                JOptionPane.showMessageDialog(this,
+                        "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                        "Kan inte skapa kurs.",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+        } else if (this.rbtnDeleteCourse.isSelected()) {
+
+            String courseCode = this.txtViewCourseCode.getText();
+
+            if (controller.checkIfCourseExists(courseCode) == true) {
+
+                this.controller.deleteCourse(courseCode);
+
+            } else {
+
+                JOptionPane.showMessageDialog(this,
+                        "Kan inte radera kurs. Kurskod " + courseCode + " finns inte i databasen.",
+                        "Kan inte radera kurs.",
+                        JOptionPane.ERROR_MESSAGE);
+
+            }
+
+        }
+
+
+    }//GEN-LAST:event_btnDeleteRegisterCourseActionPerformed
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">
@@ -888,16 +882,11 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteRegisterCourse;
     private javax.swing.JButton btnFindCourse;
     private javax.swing.JButton btnFindStudent;
-    private javax.swing.JButton btnRegisterCourseSave;
     private javax.swing.JButton btnRegisterStudentSave;
-    private javax.swing.JButton btnViewCourseDeleteCourse;
     private javax.swing.JButton btnViewStudentAddCourse;
     private javax.swing.JButton btnViewStudentDeleteStudent;
+    private javax.swing.ButtonGroup buttonGroupCourse;
     private javax.swing.JComboBox comboBoxViewStudentAddCourse;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblFindCourseInput;
     private javax.swing.JLabel lblFindStudent;
     private javax.swing.JLabel lblViewCourseCourseCode;
@@ -920,15 +909,19 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel pnlCourse;
     private javax.swing.JPanel pnlCourseResults;
     private javax.swing.JPanel pnlFindCourse;
-    private javax.swing.JPanel pnlFinsStudents;
+    private javax.swing.JPanel pnlFindStudents;
     private javax.swing.JPanel pnlHighestPassedCourse;
     private javax.swing.JPanel pnlShowCourse;
     private javax.swing.JPanel pnlStudents;
     private javax.swing.JPanel pnlViewStudent;
     private javax.swing.JRadioButton rbtnDeleteCourse;
+    private javax.swing.JRadioButton rbtnRegisterCourse;
+    private javax.swing.JScrollPane scrollPaneCourseFlow;
     private javax.swing.JScrollPane scrollPaneFindCourse;
     private javax.swing.JScrollPane scrollPaneFindStudent;
+    private javax.swing.JScrollPane scrollPaneNotFInishedStudentsOnCourse;
     private javax.swing.JScrollPane scrollPanePassedCourses;
+    private javax.swing.JScrollPane scrollPaneStudentsOnCourse;
     private javax.swing.JScrollPane scrollPanesFinishedCourses;
     private javax.swing.JTabbedPane tabbedPane;
     private javax.swing.JTable tableFindCourse;
