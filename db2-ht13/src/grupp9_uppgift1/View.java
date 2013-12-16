@@ -893,6 +893,8 @@ public class View extends javax.swing.JFrame {
             if (controller.checkIfCourseExists(courseData[0]) == false) {
 
                 this.controller.registerNewCourse(courseData);
+                this.populateCourseTable();
+                this.populateCourseFlowTable();
 
             } else {
 
@@ -913,6 +915,7 @@ public class View extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
 
             this.populateCourseTable();
+            this.populateCourseFlowTable();
 
         }
 
@@ -949,6 +952,7 @@ public class View extends javax.swing.JFrame {
             if (controller.checkIfStudentExists(studentData[0]) == false) {
 
                 this.controller.registerNewStudent(studentData);
+                this.populateStudentTable();
 
             } else {
 
