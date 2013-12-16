@@ -1019,6 +1019,8 @@ public class View extends javax.swing.JFrame {
         courseId = courseId.substring(0, 6);
         
         controller.registerStudentOnCourse(selectedStudent, courseId);
+        
+        this.setSelectedStudent(selectedStudent);
 
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 // </editor-fold>

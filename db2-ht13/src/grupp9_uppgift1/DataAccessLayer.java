@@ -602,6 +602,14 @@ public class DataAccessLayer {
     }
     //</editor-fold>
 
+    void registerStudentOnCourse(String selectedStudent, String courseId) {
+       
+        String sqlString = "INSERT INTO Studies VALUES ('"+selectedStudent+"', '"+courseId+"')";
+        
+        this.executeUpdate(sqlString);
+        
+    }
+
 }
 
 
