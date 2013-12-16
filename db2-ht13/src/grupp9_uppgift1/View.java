@@ -825,9 +825,12 @@ public class View extends javax.swing.JFrame {
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
         String percent = Float.toString(percentageWithGradeAOnCourse);
         
+        
         if(percent.length()>=5){
             txtViewCourseStudentsWithA.setText(percent.substring(0, 5)+ "%");
-        }else{
+        }else if(percent.length()>=4){
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 4)+ "%");
+        }else {
             txtViewCourseStudentsWithA.setText("0,00 %");
         }
       
