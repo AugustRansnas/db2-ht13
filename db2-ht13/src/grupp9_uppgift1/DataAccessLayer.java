@@ -514,7 +514,17 @@ public class DataAccessLayer {
         //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
         return percentagePassingCourse;
     }
+        protected float percentageWithGradeAOnCourse(String courseCode) {
 
+        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
+        int nbrOfStudents = this.getNumberOfStudents(courseCode);
+        int nbrOfA = this.getNumberOfStudentsWithGrade(courseCode, "A");
+        //int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
+        float percentageWithGradeAOnCourse = (float) nbrOfA / (float) nbrOfStudents * (float) 100;
+
+        System.out.println(percentageWithGradeAOnCourse + "% av studenterna klarade kursen " + courseCode);
+        return percentageWithGradeAOnCourse;
+    }
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
 
         //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
@@ -522,8 +532,8 @@ public class DataAccessLayer {
         int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
         float percentageOfStudentsWithGrade;
         percentageOfStudentsWithGrade = ((float) numberOfStudentsWithGrade / (float) numberOfStudents) * (float) 100;
-
-        //System.out.println(percentageOfStudentsWithGrade + "% av studenterna på " + courseCode + " har betyg " + grade);
+        
+        
         return percentageOfStudentsWithGrade;
     }
 

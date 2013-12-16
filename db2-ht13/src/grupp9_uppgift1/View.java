@@ -826,8 +826,12 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
-
         this.setSelectedCourse(ccode);
+        controller.percentageWithGradeAOnCourse(ccode);
+        
+        
+     
+        
 
 
     }//GEN-LAST:event_tableFindCourseMouseClicked

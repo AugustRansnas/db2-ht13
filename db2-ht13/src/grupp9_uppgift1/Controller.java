@@ -179,6 +179,11 @@ public class Controller {
         return percentagePassingCourse;
 
     }
+    protected float percentageWithGradeAOnCourse(String courseCode){
+        
+        float percentageWithGradeAOnCourse = this.dataAccessLayer.percentageWithGradeAOnCourse(courseCode);
+        return percentageWithGradeAOnCourse;
+    }
 
     /**
      * Calls data access layer to get a table model showing how many students
