@@ -78,9 +78,9 @@ public class Controller {
     }
 
     /**
-     * Calls data access layer to get a table model with all students with data 
+     * Calls data access layer to get a table model with all students with data
      * partially matching the search string.
-     * 
+     *
      * @param searchString string used in query to find students
      * @return contains all found students
      */
@@ -90,19 +90,20 @@ public class Controller {
 
         return tm;
     }
-    protected TableModel getStudentsCurrentCourses(String pnr){
-        
+
+    protected TableModel getStudentsCurrentCourses(String pnr) {
+
         TableModel tm = this.dataAccessLayer.getStudentsCurrentCourses(pnr);
         return tm;
     }
-    protected TableModel getStudentsFinnishedCourses(String pnr){
-        
+
+    protected TableModel getStudentsFinnishedCourses(String pnr) {
+
         TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(pnr);
         return tm;
     }
 
     //</editor-fold>
-    
     //<editor-fold desc="Course operations" defaultstate="collapsed"> 
     /**
      * Calls the data access layer to find courses with fields matching the
@@ -206,32 +207,39 @@ public class Controller {
         return tm;
 
     }
+
     /**
      * Calls data access layer to get a table model with all students that have
      * finnished a specific course
-     * 
+     *
      * @return table model with all students that have finnished the course
      */
-    protected TableModel getPastStudentsOnCourse(String courseCode){
+    protected TableModel getPastStudentsOnCourse(String courseCode) {
         TableModel tm;
         tm = this.dataAccessLayer.getPastStudentsOnCourse(courseCode);
         return tm;
     }
+
     /**
-     * Calls data access layer to get a table model with all students that are 
+     * Calls data access layer to get a table model with all students that are
      * currently enlisted on a specific course
-     * 
+     *
      * @return table model with all current students on the course
      */
-    protected TableModel getCurrentStudentsOnCourse(String courseCode){
+    protected TableModel getCurrentStudentsOnCourse(String courseCode) {
         TableModel tm;
         tm = this.dataAccessLayer.getCurrentStudentsOnCourse(courseCode);
         return tm;
     }
 
+    //</editor-fold>
+    
+    //<editor-fold desc="Course + Student operations" defaultstate="collapsed">
     void registerCourseResult(String courseCode, String pNr, String grade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        this.dataAccessLayer.registerCourseResult(courseCode, pNr, grade);
+
     }
-}
 //</editor-fold>
 
+}

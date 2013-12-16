@@ -13,27 +13,41 @@ import javax.swing.table.TableModel;
  */
 public class View extends javax.swing.JFrame {
 
-    Controller controller;
+    private Controller controller;
+    private String selectedStudent;
+    private String selectedCourse;
 
     /**
      * Creates new form View
      */
     public View(Controller controller) {
+        
         this.controller = controller;
+        
         this.initComponents();
         this.populateStudentTable();
         this.populateCourseTable();
         this.populateCourseFlowTable();
+        
+    }
+    
+    private void setSelectedStudent(String selectedStudent) {
+        
+        this.selectedStudent = selectedStudent;
+        
+    }
+    
+    private void setSelectedCourse(String selectedCourse) {
+        
+        this.selectedCourse = selectedCourse;
+        
+        
     }
 
     private void populateCourseTable() {
 
         TableModel tm;
-
         tm = controller.getAllCourses();
-
-        System.out.println("kolumner i CourseTable: " + tm.getColumnCount());
-
         this.tableFindCourse.setModel(tm);
 
     }
@@ -41,11 +55,7 @@ public class View extends javax.swing.JFrame {
     private void populateStudentTable() {
 
         TableModel tm;
-
         tm = controller.getAllStudents();
-
-        System.out.println("kolumner i StudentTable: " + tm.getColumnCount());
-
         this.tblFindStudent.setModel(tm);
 
     }
@@ -968,7 +978,7 @@ public class View extends javax.swing.JFrame {
     private void btnRegisterCourseResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseResultActionPerformed
 
         int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
-        String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 0).toString());
+        String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
         String pNr = this.txtViewStudentPersonNbr.getText();
         String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString();
         

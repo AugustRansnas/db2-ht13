@@ -543,5 +543,20 @@ public class DataAccessLayer {
         }
         return null;
     }
+     
+    void registerCourseResult(String courseCode, String pNr, String grade) {
+        
+        String sqlString = "DELETE FROM Studies WHERE pnr = '"+pNr+"' AND ccode = '"+courseCode+"'";
+        
+        this.executeUpdate(sqlString);
+        
+        sqlString = "INSERT INTO Hasstudied VALUES ('"+pNr+"', '"+courseCode+"', '"+grade+"')";
+        
+        this.executeUpdate(sqlString);
+        
+       
+        
+    }
     //</editor-fold>
+
 }
