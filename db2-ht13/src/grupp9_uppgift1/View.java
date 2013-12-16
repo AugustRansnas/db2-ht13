@@ -618,8 +618,8 @@ public class View extends javax.swing.JFrame {
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                 .addGap(0, 601, Short.MAX_VALUE)
                 .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneNotFInishedStudentsOnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -813,7 +813,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
-        txtViewCourseStudentsWithA.setText("0,00 %");
+        
         int row = tableFindCourse.getSelectedRow();
         String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
         String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
@@ -823,13 +823,14 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCredits.setText(points);
         this.setSelectedCourse(ccode);
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
-        TableModel tm = controller.getCurrentStudentsOnCourse(ccode);
-  
-        if( tm.getRowCount()==0){
-         txtViewCourseStudentsWithA.setText("0,00 %");
-        }else{      
-            txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 5)+ "%");
+        String percent = Float.toString(percentageWithGradeAOnCourse);
+        
+        if(percent.length()>=5){
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 5)+ "%");
+        }else{
+            txtViewCourseStudentsWithA.setText("0,00 %");
         }
+      
         
     }//GEN-LAST:event_tableFindCourseMouseClicked
     
