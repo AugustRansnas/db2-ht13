@@ -6,6 +6,7 @@ package grupp9_uppgift1;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -29,10 +30,9 @@ public class View extends javax.swing.JFrame {
 
         this.initComponents();
 
-        this.populateStudentTable();
-        this.populateCourseTable();
+        this.setSelectedStudent(null);
 
-        this.populateCourseFlowTable();
+        this.setSelectedCourse(null);
 
     }
 
@@ -41,34 +41,88 @@ public class View extends javax.swing.JFrame {
         this.selectedStudent = selectedStudent;
 
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
-        this.populateCourseFlowTable();
 
-        this.rbtnDeleteStudent.setEnabled(true);
+        this.populateComboBoxAddCourse(selectedStudent);
+        
+        this.btnRegisterCourseResult.setEnabled(false);
 
-        this.btnRegisterCourseResult.setEnabled(true);
+        if (selectedStudent != null) {
 
-        Object[] comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
-        this.comboBoxViewStudentAddCourse.setModel(new DefaultComboBoxModel(comboBoxList));
+            this.populateCourseFlowTable();
 
-        if (comboBoxList.length > 0) {
-            this.btnViewStudentAddCourse.setEnabled(true);
-        } else {
-            this.btnViewStudentAddCourse.setEnabled(false);
+            this.rbtnDeleteStudent.setEnabled(true);
+
+            int row = tblFindStudent.getSelectedRow();
+            String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
+            String firstname = (tblFindStudent.getModel().getValueAt(row, 1).toString());
+            String lastname = (tblFindStudent.getModel().getValueAt(row, 2).toString());
+            String phonenbr = (tblFindStudent.getModel().getValueAt(row, 3).toString());
+            String email = (tblFindStudent.getModel().getValueAt(row, 4).toString());
+            String address = (tblFindStudent.getModel().getValueAt(row, 5).toString());
+            String postcode = (tblFindStudent.getModel().getValueAt(row, 6).toString());
+            String city = (tblFindStudent.getModel().getValueAt(row, 7).toString());
+
+            txtViewStudentPersonNbr.setText(pnr);
+            txtViewStudentFirstName.setText(firstname);
+            txtViewStudentLastName.setText(lastname);
+            txtViewStudentPhoneNbr.setText(phonenbr);
+            txtViewStudentEmail.setText(email);
+            txtViewStudentAdress.setText(address);
+            txtViewStudentPostCode.setText(postcode);
+            txtViewStudentCity.setText(city);
+
+            this.rbtnDeleteStudent.setSelected(true);
+
+        } else if (selectedStudent == null) {
+
+            this.populateStudentTable();
+
+            txtViewStudentPersonNbr.setText("");
+            txtViewStudentFirstName.setText("");
+            txtViewStudentLastName.setText("");
+            txtViewStudentPhoneNbr.setText("");
+            txtViewStudentEmail.setText("");
+            txtViewStudentAdress.setText("");
+            txtViewStudentPostCode.setText("");
+            txtViewStudentCity.setText("");
+
+            txtViewStudentPersonNbr.setEditable(true);
+            txtViewStudentFirstName.setEditable(true);
+            txtViewStudentLastName.setEditable(true);
+            txtViewStudentPhoneNbr.setEditable(true);
+            txtViewStudentEmail.setEditable(true);
+            txtViewStudentAdress.setEditable(true);
+            txtViewStudentPostCode.setEditable(true);
+            txtViewStudentCity.setEditable(true);
+
+            this.rbtnRegisterStudent.setSelected(true);
+
+            this.rbtnDeleteStudent.setEnabled(false);
         }
     }
 
     private void setSelectedCourse(String selectedCourse) {
 
-        System.out.println(selectedCourse);
+        if (selectedCourse != null) {
 
-        this.selectedCourse = selectedCourse;
+            System.out.println(selectedCourse);
 
-        this.populateCoursesPastAndCurrentStudents(selectedCourse);
+            this.selectedCourse = selectedCourse;
 
-        this.rbtnDeleteCourse.setSelected(true);
-        this.txtViewCourseCode.setEditable(false);
-        this.txtViewCourseName.setEditable(false);
-        this.txtViewCourseCredits.setEditable(false);
+            this.populateCoursesPastAndCurrentStudents(selectedCourse);
+
+            this.rbtnDeleteCourse.setSelected(true);
+            this.txtViewCourseCode.setEditable(false);
+            this.txtViewCourseName.setEditable(false);
+            this.txtViewCourseCredits.setEditable(false);
+
+        } else if (selectedCourse == null) {
+
+            this.populateCourseTable();
+
+            this.populateCourseFlowTable();
+
+        }
 
     }
 
@@ -98,12 +152,21 @@ public class View extends javax.swing.JFrame {
 
     private void populateStudentsCurrentAndPastCourses(String selectedStudent) {
 
-        TableModel tm1;
-        TableModel tm2;
-        tm1 = this.controller.getStudentsCurrentCourses(selectedStudent);
-        tm2 = this.controller.getStudentsFinnishedCourses(selectedStudent);
-        this.tblSelectedStudentsUnfinishedCourses.setModel(tm1);
-        this.tblStudentsFinishedCourses.setModel(tm2);
+        if (selectedStudent != null) {
+
+            TableModel tm1;
+            TableModel tm2;
+            tm1 = this.controller.getStudentsCurrentCourses(selectedStudent);
+            tm2 = this.controller.getStudentsFinnishedCourses(selectedStudent);
+            this.tblSelectedStudentsUnfinishedCourses.setModel(tm1);
+            this.tblStudentsFinishedCourses.setModel(tm2);
+
+        } else if (selectedStudent == null) {
+
+            this.tblSelectedStudentsUnfinishedCourses.setModel(new DefaultTableModel());
+            this.tblStudentsFinishedCourses.setModel(new DefaultTableModel());
+
+        }
 
     }
 
@@ -116,6 +179,25 @@ public class View extends javax.swing.JFrame {
         this.tblFinishedStudentsOnCourse.setModel(tm1);
         this.tblNotFinishedStudentsOnCourse.setModel(tm2);
 
+    }
+
+    private void populateComboBoxAddCourse(String selectedStudent) {
+
+        Object[] comboBoxList = new Object[0];
+
+        if (selectedStudent != null) {
+            
+            comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
+
+        }
+
+        this.comboBoxViewStudentAddCourse.setModel(new DefaultComboBoxModel(comboBoxList));
+
+        if (comboBoxList.length > 0) {
+            this.btnViewStudentAddCourse.setEnabled(true);
+        } else {
+            this.btnViewStudentAddCourse.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -815,30 +897,32 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
-        
+
         int row = tableFindCourse.getSelectedRow();
+
         String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
         String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
         String points = (tableFindCourse.getModel().getValueAt(row, 2).toString());
+
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
+
         this.setSelectedCourse(ccode);
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
         String percent = Float.toString(percentageWithGradeAOnCourse);
-        
-        
-        if(percent.length()>=5){
-            txtViewCourseStudentsWithA.setText(percent.substring(0, 5)+ "%");
-        }else if(percent.length()>=4){
-            txtViewCourseStudentsWithA.setText(percent.substring(0, 4)+ "%");
-        }else {
+
+        if (percent.length() >= 5) {
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 5) + "%");
+        } else if (percent.length() >= 4) {
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 4) + "%");
+        } else {
             txtViewCourseStudentsWithA.setText("0,00 %");
         }
-      
-        
+
+
     }//GEN-LAST:event_tableFindCourseMouseClicked
-    
+
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
 
         String searchString = this.txtFindCourseInput.getText();
@@ -848,35 +932,15 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
     private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
-        // TODO add your handling code here:
 
         int row = tblFindStudent.getSelectedRow();
-
         String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
-        String firstname = (tblFindStudent.getModel().getValueAt(row, 1).toString());
-        String lastname = (tblFindStudent.getModel().getValueAt(row, 2).toString());
-        String phonenbr = (tblFindStudent.getModel().getValueAt(row, 3).toString());
-        String email = (tblFindStudent.getModel().getValueAt(row, 4).toString());
-        String address = (tblFindStudent.getModel().getValueAt(row, 5).toString());
-        String postcode = (tblFindStudent.getModel().getValueAt(row, 6).toString());
-        String city = (tblFindStudent.getModel().getValueAt(row, 7).toString());
-
-        txtViewStudentPersonNbr.setText(pnr);
-        txtViewStudentFirstName.setText(firstname);
-        txtViewStudentLastName.setText(lastname);
-        txtViewStudentPhoneNbr.setText(phonenbr);
-        txtViewStudentEmail.setText(email);
-        txtViewStudentAdress.setText(address);
-        txtViewStudentPostCode.setText(postcode);
-        txtViewStudentCity.setText(city);
-
         this.setSelectedStudent(pnr);
-
-        this.rbtnDeleteStudent.doClick();
 
     }//GEN-LAST:event_tblFindStudentMouseClicked
 
     private void rbtnRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRegisterCourseActionPerformed
+
 
         this.txtViewCourseCode.setEditable(true);
         this.txtViewCourseName.setEditable(true);
@@ -936,20 +1000,13 @@ public class View extends javax.swing.JFrame {
 
     private void rbtnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteStudentActionPerformed
 
-        txtViewStudentPersonNbr.setEditable(false);
-        txtViewStudentFirstName.setEditable(false);
-        txtViewStudentLastName.setEditable(false);
-        txtViewStudentPhoneNbr.setEditable(false);
-        txtViewStudentEmail.setEditable(false);
-        txtViewStudentAdress.setEditable(false);
-        txtViewStudentPostCode.setEditable(false);
-        txtViewStudentCity.setEditable(false);
 
     }//GEN-LAST:event_rbtnDeleteStudentActionPerformed
 
     private void btnDeleteRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterStudentActionPerformed
 
         if (this.rbtnRegisterStudent.isSelected()) {
+
             String[] studentData = new String[8];
 
             studentData[0] = this.txtViewStudentPersonNbr.getText();
@@ -985,49 +1042,32 @@ public class View extends javax.swing.JFrame {
                     "Studenten " + firstName + " " + lastName + " med personnummer " + personNbr + " är nu borttagen ur systemet.",
                     "Student raderad",
                     JOptionPane.INFORMATION_MESSAGE);
-            this.populateStudentTable();
+
+            this.setSelectedStudent(null);
         }
 
     }//GEN-LAST:event_btnDeleteRegisterStudentActionPerformed
 
     private void rbtnRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRegisterStudentActionPerformed
 
-        txtViewStudentPersonNbr.setText("");
-        txtViewStudentFirstName.setText("");
-        txtViewStudentLastName.setText("");
-        txtViewStudentPhoneNbr.setText("");
-        txtViewStudentEmail.setText("");
-        txtViewStudentAdress.setText("");
-        txtViewStudentPostCode.setText("");
-        txtViewStudentCity.setText("");
-
-        txtViewStudentPersonNbr.setEditable(true);
-        txtViewStudentFirstName.setEditable(true);
-        txtViewStudentLastName.setEditable(true);
-        txtViewStudentPhoneNbr.setEditable(true);
-        txtViewStudentEmail.setEditable(true);
-        txtViewStudentAdress.setEditable(true);
-        txtViewStudentPostCode.setEditable(true);
-        txtViewStudentCity.setEditable(true);
+        this.setSelectedStudent(null);
 
     }//GEN-LAST:event_rbtnRegisterStudentActionPerformed
 
     private void btnRegisterCourseResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterCourseResultActionPerformed
 
         String grade = this.comboBoxRegisterCourseResult.getSelectedItem().toString();
+        int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
+        String courseToGrade = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
 
-        controller.registerCourseResult(this.selectedCourse, this.selectedStudent, grade);
+        controller.registerCourseResult(courseToGrade, this.selectedStudent, grade);
 
         this.setSelectedStudent(selectedStudent);
-        
+
 
     }//GEN-LAST:event_btnRegisterCourseResultActionPerformed
 
     private void tblSelectedStudentsUnfinishedCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
-
-        int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
-        String courseCode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());
-        this.setSelectedCourse(courseCode);
 
         this.btnRegisterCourseResult.setEnabled(true);
 
@@ -1121,4 +1161,5 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JTextField txtViewStudentPostCode;
     // End of variables declaration//GEN-END:variables
 // </editor-fold>
+
 }
