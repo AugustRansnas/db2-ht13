@@ -41,6 +41,7 @@ public class View extends javax.swing.JFrame {
         this.selectedStudent = selectedStudent;
 
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateCourseFlowTable();
 
         this.rbtnDeleteStudent.setEnabled(true);
 
@@ -619,8 +620,8 @@ public class View extends javax.swing.JFrame {
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                 .addGap(0, 601, Short.MAX_VALUE)
                 .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneNotFInishedStudentsOnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -814,7 +815,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
-
+        
         int row = tableFindCourse.getSelectedRow();
         String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
         String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
@@ -824,10 +825,20 @@ public class View extends javax.swing.JFrame {
         txtViewCourseCredits.setText(points);
         this.setSelectedCourse(ccode);
         float percentageWithGradeAOnCourse = controller.percentageWithGradeAOnCourse(ccode);
-        txtViewCourseStudentsWithA.setText(Float.toString(percentageWithGradeAOnCourse).substring(0, 4)+ "%");
+        String percent = Float.toString(percentageWithGradeAOnCourse);
+        
+        
+        if(percent.length()>=5){
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 5)+ "%");
+        }else if(percent.length()>=4){
+            txtViewCourseStudentsWithA.setText(percent.substring(0, 4)+ "%");
+        }else {
+            txtViewCourseStudentsWithA.setText("0,00 %");
+        }
+      
         
     }//GEN-LAST:event_tableFindCourseMouseClicked
-
+    
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
 
         String searchString = this.txtFindCourseInput.getText();
@@ -966,10 +977,12 @@ public class View extends javax.swing.JFrame {
         } else if (this.rbtnDeleteStudent.isSelected()) {
 
             String personNbr = this.txtViewStudentPersonNbr.getText();
+            String firstName = this.txtViewStudentFirstName.getText();
+            String lastName = this.txtViewStudentLastName.getText();
             this.controller.deleteStudent(personNbr);
 
             JOptionPane.showMessageDialog(this,
-                    "Student med " + personNbr + " är nu borttagen ur systemet.",
+                    "Studenten " + firstName + " " + lastName + " med personnummer " + personNbr + " är nu borttagen ur systemet.",
                     "Student raderad",
                     JOptionPane.INFORMATION_MESSAGE);
             this.populateStudentTable();
@@ -1006,6 +1019,7 @@ public class View extends javax.swing.JFrame {
         controller.registerCourseResult(this.selectedCourse, this.selectedStudent, grade);
 
         this.setSelectedStudent(selectedStudent);
+        
 
     }//GEN-LAST:event_btnRegisterCourseResultActionPerformed
 
