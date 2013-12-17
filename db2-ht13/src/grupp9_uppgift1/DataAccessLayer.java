@@ -572,7 +572,7 @@ public class DataAccessLayer {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";
-            ArrayList<String> courseNames = new ArrayList<String>();
+            ArrayList<String> courseNames = new ArrayList<>();
 
             int courseCount = getNumberOfCourses();
 
@@ -592,7 +592,7 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
-                String percent = Float.toString(courseFlow);
+                String percent = String.format("%.1f", courseFlow);
                 percent += "%";
                 if (percent.contentEquals("NaN%")) {
                     percent = "-";
