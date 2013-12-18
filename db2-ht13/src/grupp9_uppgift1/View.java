@@ -1054,24 +1054,23 @@ public class View extends javax.swing.JFrame {
             studentData[5] = this.txtViewStudentAdress.getText();
             studentData[6] = this.txtViewStudentPostCode.getText();
             studentData[7] = this.txtViewStudentCity.getText();
-
-            if (controller.checkIfStudentExists(studentData[0]) == false) {
-                if(studentData[0].contains("[0-9]+") && studentData[0].length() == 10){
-                    this.controller.registerNewStudent(studentData);
-                    this.populateStudentTable();
-                }else{
-                    this.lblResponsStudentInformation.setText("Personnummer måste anges med 10 siffror");
+            
+            int length = studentData[0].length();
+            if (studentData[0].matches("[0-9]+") && length == 10) {
+                if (!controller.checkIfStudentExists(studentData[0])) {
+                    {
+                        this.controller.registerNewStudent(studentData);
+                        this.populateStudentTable();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                            "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                            "Kan inte registrera student",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-                
-
             } else {
-
-                JOptionPane.showMessageDialog(this,
-                        "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
-                        "Kan inte registrera student",
-                        JOptionPane.ERROR_MESSAGE);
+                this.lblResponsStudentInformation.setText("Personnummer måste anges med 10 siffror");
             }
-
         } else if (this.rbtnDeleteStudent.isSelected()) {
 
             String personNbr = this.txtViewStudentPersonNbr.getText();
