@@ -6,6 +6,7 @@
 
 package grupp9_uppgift2;
 
+
 /**
  *
  * @author Joel
@@ -16,6 +17,7 @@ public class MainView extends javax.swing.JFrame {
     /**
      * Creates new form MainView
      */
+    
     public MainView(Controller controller) {
         this.controller = controller;
         initComponents();
@@ -30,21 +32,108 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblList = new javax.swing.JTable();
+        btnUpdateTable = new javax.swing.JButton();
+        comboList = new javax.swing.JComboBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblList);
+
+        btnUpdateTable.setText("Updatera");
+        btnUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTableActionPerformed(evt);
+            }
+        });
+
+        comboList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees", "CRONUS Employee MetaData", "CRONUS Employee Columns", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(comboList, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnUpdateTable)
+                    .addComponent(comboList, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
+        int comboIndex = this.comboList.getSelectedIndex();
+        
+        //Inget valt
+        if(comboIndex == -1){
+            
+        }else if (comboIndex == 0){
+            //CRONUS Employees
+            TableModel tm = controller.getCronusEmployees();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 1){
+            //CRONUS Employee MetaData
+            TableModel tm = controller.getCronusEmployeeMetaData();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 2){
+            //CRONUS Employee Columns
+            TableModel tm = controller.getCronusEmployeeColumns();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 3){
+            //CRONUS Keys
+            TableModel tm = controller.getCronusKeys();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 4){
+            //CRONUS Indexes
+            TableModel tm = controller.getCronusIndexes();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 5){
+            //CRONUS Constraints
+            TableModel tm = controller.getCronusConstraints();
+            this.tblList.setModel(tm);
+            
+        }else if (comboIndex == 6){
+            //CRONUS Tables
+            TableModel tm = controller.getCronusTables();
+            this.tblList.setModel(tm);
+            
+        }
+            
+    }//GEN-LAST:event_btnUpdateTableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -52,5 +141,9 @@ public class MainView extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUpdateTable;
+    private javax.swing.JComboBox comboList;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblList;
     // End of variables declaration//GEN-END:variables
 }
