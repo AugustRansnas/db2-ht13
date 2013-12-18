@@ -68,7 +68,7 @@
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="pnlFindStudents" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlViewStudent" max="32767" attributes="0"/>
+                      <Component id="pnlViewStudent" pref="562" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -77,9 +77,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pnlFindStudents" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="pnlViewStudent" max="32767" attributes="0"/>
+                          <Component id="pnlFindStudents" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
-                  <Component id="pnlViewStudent" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -97,17 +99,24 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
+                          <Component id="scrollPaneFindStudent" pref="675" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="lblFindStudent" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="txtFindStudentQuery" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                          <Component id="btnFindStudent" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="scrollPaneFindStudent" pref="675" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="checkShowAllAttributes" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtFindStudentQuery" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Component id="btnFindStudent" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                  <Component id="lblResponsFindStudent" min="-2" pref="229" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace pref="161" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -118,9 +127,12 @@
                               <Component id="lblFindStudent" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtFindStudentQuery" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnFindStudent" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblResponsFindStudent" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="scrollPaneFindStudent" pref="692" max="32767" attributes="0"/>
+                          <Component id="checkShowAllAttributes" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="scrollPaneFindStudent" min="-2" pref="671" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -169,6 +181,19 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JCheckBox" name="checkShowAllAttributes">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="visa fullst&#xe4;ndig information i s&#xf6;kresultatet"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblResponsFindStudent">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="pnlViewStudent">
@@ -183,11 +208,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="lblViewStudentPersonNbr" min="-2" pref="85" max="-2" attributes="0"/>
                                       <Component id="lblViewStudentFirstName" min="-2" pref="85" max="-2" attributes="0"/>
@@ -195,75 +219,71 @@
                                       <Component id="lblViewStudentPhoneNbr" min="-2" pref="85" max="-2" attributes="0"/>
                                       <Component id="lblViewStudentEmail" min="-2" pref="85" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Component id="lblViewStudentAddCourse" alignment="1" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="comboBoxViewStudentAddCourse" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtViewStudentFirstName" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewStudentPersonNbr" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewStudentLastName" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtViewStudentFirstName" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtViewStudentPersonNbr" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtViewStudentLastName" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="lblViewStudentAdress" max="32767" attributes="0"/>
+                                              <Component id="lblViewStudentPostCode" pref="76" max="32767" attributes="0"/>
+                                              <Component id="lblViewStudentCity" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtViewStudentAdress" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtViewStudentPostCode" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtViewStudentCity" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="lblViewStudentAdress" max="32767" attributes="0"/>
-                                          <Component id="lblViewStudentPostCode" pref="76" max="32767" attributes="0"/>
-                                          <Component id="lblViewStudentCity" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="txtViewStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="txtViewStudentPhoneNbr" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="rbtnDeleteStudent" min="-2" max="-2" attributes="0"/>
+                                              <Component id="rbtnRegisterStudent" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="btnDeleteRegisterStudent" min="-2" pref="51" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtViewStudentAdress" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewStudentPostCode" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewStudentCity" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="lblResponsStudentInformation" min="-2" pref="391" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtViewStudentEmail" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <Component id="txtViewStudentPhoneNbr" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="rbtnDeleteStudent" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rbtnRegisterStudent" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="btnDeleteRegisterStudent" min="-2" pref="51" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="49" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="lblRegisterCourseResult" min="-2" pref="134" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="comboBoxRegisterCourseResult" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnRegisterCourseResult" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="lblViewStudentNonPassedCourses" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="scrollPanePassedCourses" max="32767" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                              <Component id="lblViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="comboBoxViewStudentAddCourse" max="32767" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="lblRegisterCourseResult" min="-2" pref="134" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="comboBoxRegisterCourseResult" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnRegisterCourseResult" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="scrollPanesFinishedCourses" alignment="0" min="-2" pref="544" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="lblViewStudentNonPassedCourses" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblViewStudentPassedCourses" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Component id="scrollPanesFinishedCourses" alignment="1" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblViewStudentPassedCourses" min="-2" max="-2" attributes="0"/>
-                              <Component id="scrollPanePassedCourses" min="-2" pref="276" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -321,30 +341,28 @@
                                   <Component id="btnDeleteRegisterStudent" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lblResponsStudentInformation" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblViewStudentAddCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="comboBoxViewStudentAddCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnViewStudentAddCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="lblViewStudentNonPassedCourses" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblViewStudentPassedCourses" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblViewStudentNonPassedCourses" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="scrollPanesFinishedCourses" max="32767" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="btnRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="comboBoxRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="scrollPanePassedCourses" max="32767" attributes="0"/>
+                          <Component id="scrollPanesFinishedCourses" min="-2" pref="96" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="comboBoxRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblViewStudentPassedCourses" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="scrollPanePassedCourses" min="-2" pref="305" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -417,12 +435,12 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblViewStudentPassedCourses">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Godk&#xe4;nda kurser:"/>
+                    <Property name="text" type="java.lang.String" value="Avslutade kurser:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblViewStudentNonPassedCourses">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Ej avslutade kurser:"/>
+                    <Property name="text" type="java.lang.String" value="Nuvarande kurser"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblViewStudentAddCourse">
@@ -548,6 +566,14 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegisterCourseResultActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblResponsStudentInformation">
+                  <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

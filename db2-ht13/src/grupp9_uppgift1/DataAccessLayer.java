@@ -300,23 +300,27 @@ public class DataAccessLayer {
         return studentExists;
     }
 
-    protected TableModel findStudents(String searchString) {
+    protected TableModel findStudents(boolean showAllAttributes, String searchString) {
+        String sqlString;
+        if (showAllAttributes) {
+            sqlString = "SELECT * FROM Student ";
+        } else {
+            sqlString = "SELECT pnr, firstname, lastname FROM Student ";
+        }
+            sqlString += "WHERE pnr LIKE '%" + searchString + "%' "
+                    + "OR firstname LIKE '%" + searchString + "%' "
+                    + "OR lastname LIKE '%" + searchString + "%' "
+                    + "OR phonenr LIKE '%" + searchString + "%' "
+                    + "OR email LIKE '%" + searchString + "%' "
+                    + "OR adress LIKE '%" + searchString + "%' "
+                    + "OR postcode LIKE '%" + searchString + "%' "
+                    + "OR city LIKE '%" + searchString + "%'";
 
-        String sqlString = "SELECT * FROM Student "
-                + "WHERE pnr LIKE '%" + searchString + "%' "
-                + "OR firstname LIKE '%" + searchString + "%' "
-                + "OR lastname LIKE '%" + searchString + "%' "
-                + "OR phonenr LIKE '%" + searchString + "%' "
-                + "OR email LIKE '%" + searchString + "%' "
-                + "OR adress LIKE '%" + searchString + "%' "
-                + "OR postcode LIKE '%" + searchString + "%' "
-                + "OR city LIKE '%" + searchString + "%'";
+            ResultSet rs = this.executeQuery(sqlString);
 
-        ResultSet rs = this.executeQuery(sqlString);
+            TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-
-        return tm;
+            return tm;
 
     }
 
@@ -356,17 +360,15 @@ public class DataAccessLayer {
     }
 
     protected TableModel getAllStudents() {
-
-        String sqlString = "SELECT * FROM Student";
-
+        String sqlString = "SELECT pnr, firstname, lastname FROM Student";
         ResultSet rs = this.executeQuery(sqlString);
 
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
         return tm;
-
+        
     }
-
+        
     protected int getNumberOfStudents() {
 
         try {
@@ -531,6 +533,17 @@ public class DataAccessLayer {
 
         // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
+    protected TableModel getSingleStudent(String pnr){
+        TableModel tm = new DefaultTableModel();
+        String sqlString = "SELECT * ";
+        sqlString += "FROM Student ";
+        sqlString += "WHERE pnr = '" + pnr + "'" ;
+        ResultSet rs = this.executeQuery(sqlString);
+        tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+        
+        
+    }
 
     protected float percentagePassingCourse(String courseCode) {
 
@@ -572,7 +585,7 @@ public class DataAccessLayer {
         try {
 
             String sqlQuery = "SELECT ccode FROM course";
-            ArrayList<String> courseNames = new ArrayList<String>();
+            ArrayList<String> courseNames = new ArrayList<>();
 
             int courseCount = getNumberOfCourses();
 
@@ -592,7 +605,7 @@ public class DataAccessLayer {
                 rset.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
-                String percent = Float.toString(courseFlow);
+                String percent = String.format("%.1f", courseFlow);
                 percent += "%";
                 if (percent.contentEquals("NaN%")) {
                     percent = "-";

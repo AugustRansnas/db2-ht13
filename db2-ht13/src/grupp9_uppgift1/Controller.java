@@ -85,9 +85,9 @@ public class Controller {
      * @param searchString string used in query to find students
      * @return contains all found students
      */
-    protected TableModel findStudents(String searchString) {
+    protected TableModel findStudents(boolean showAllAttributes, String searchString) {
 
-        TableModel tm = this.dataAccessLayer.findStudents(searchString);
+        TableModel tm = this.dataAccessLayer.findStudents(showAllAttributes, searchString);
 
         return tm;
     }
@@ -101,6 +101,10 @@ public class Controller {
     protected TableModel getStudentsFinnishedCourses(String pnr) {
 
         TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(pnr);
+        return tm;
+    }
+    protected TableModel getSingleStudent(String pnr){
+        TableModel tm = this.dataAccessLayer.getSingleStudent(pnr);
         return tm;
     }
 
