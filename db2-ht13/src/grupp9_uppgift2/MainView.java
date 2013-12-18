@@ -6,6 +6,8 @@
 
 package grupp9_uppgift2;
 
+import javax.swing.table.TableModel;
+
 
 /**
  *
