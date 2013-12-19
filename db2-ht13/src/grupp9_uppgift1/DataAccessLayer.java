@@ -74,7 +74,7 @@ public class DataAccessLayer {
         try {
 
             String[] columnHeadings = new String[0];
-            Object[][] dataArray = new Object[0][0];
+            String[][] dataArray = new String[0][0];
 
             ResultSetMetaData md = rs.getMetaData();
             int columnCount = md.getColumnCount();
@@ -90,9 +90,9 @@ public class DataAccessLayer {
 
             while (rs.next()) {
 
-                Object[] row = new Object[columnCount];
+                String[] row = new String[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-                    row[i - 1] = rs.getObject(i);
+                    row[i - 1] = rs.getString(i);
                 }
 
                 dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
