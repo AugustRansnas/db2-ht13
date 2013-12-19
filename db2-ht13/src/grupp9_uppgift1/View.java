@@ -72,7 +72,14 @@ public class View extends javax.swing.JFrame {
             txtViewStudentPostCode.setText(postcode);
             txtViewStudentCity.setText(city);
 
-            this.rbtnDeleteStudent.setSelected(true);
+            this.txtViewStudentPersonNbr.setEditable(false);
+            this.txtViewStudentFirstName.setEditable(false);
+            this.txtViewStudentLastName.setEditable(false);
+            this.txtViewStudentPhoneNbr.setEditable(false);
+            this.txtViewStudentEmail.setEditable(false);
+            this.txtViewStudentAdress.setEditable(false);
+            this.txtViewStudentPostCode.setEditable(false);
+            this.txtViewStudentCity.setEditable(false);
 
         } else if (selectedStudent == null) {
 
