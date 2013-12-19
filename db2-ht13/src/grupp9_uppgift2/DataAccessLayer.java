@@ -46,17 +46,6 @@ public class DataAccessLayer {
 
     }
 
-    /*private String[][] getResultSetAsString(ResultSet rs){
-     try {
-     ResultSetMetaData rsMetaData = rs.getMetaData();
-     int columnCount = rsMetaData.getColumnCount();
-     rs.last();
-     int rowCount = rs.getRow();
-     } catch (SQLException ex) {
-     Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
-     }
-        
-     } */
     private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
@@ -108,7 +97,7 @@ public class DataAccessLayer {
 
     protected TableModel getCronusEmployees() {
 
-        String sqlString = "";
+        String sqlString = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_name LIKE '%AB$Employee%' ";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
@@ -117,7 +106,11 @@ public class DataAccessLayer {
 
     protected TableModel getCronusEmployeeMetaData() {
 
-        String sqlString = "";
+        String sqlString = "select TABLE_SCHEMA AS 'schema', COLUMN_NAME AS 'kolumn namn', "
+                + "ORDINAL_POSITION AS 'position', DATA_TYPE AS 'data typ', "
+                + "CHARACTER_MAXIMUM_LENGTH AS 'max length', CHARACTER_SET_NAME AS 'Set name', "
+                + "COLLATION_NAME AS 'kollationsnamn' from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME "
+                + "= 'CRONUS Sverige AB$Employee'";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;

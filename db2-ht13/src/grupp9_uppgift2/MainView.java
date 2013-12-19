@@ -92,50 +92,50 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
         int comboIndex = this.comboList.getSelectedIndex();
-
+        TableModel tm;
         //Inget valt
-        if (comboIndex == -1) {
-
-        } else if (comboIndex == 0) {
-            //CRONUS Employees
-            TableModel tm = controller.getCronusEmployees();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 1) {
-            //CRONUS Employee MetaData
-            TableModel tm = controller.getCronusEmployeeMetaData();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 2) {
-            //CRONUS Employee Columns
-            TableModel tm = controller.getCronusEmployeeColumns();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 3) {
-            //CRONUS Keys
-            TableModel tm = controller.getCronusKeys();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 4) {
-            //CRONUS Indexes
-            TableModel tm = controller.getCronusIndexes();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 5) {
-            //CRONUS Constraints
-            TableModel tm = controller.getCronusConstraints();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 6) {
-            //CRONUS Tables
-            TableModel tm = controller.getCronusTables();
-            this.tblList.setModel(tm);
-
-        } else if (comboIndex == 7) {
-            //CRONUS Tables
-            TableModel tm = controller.getCronusTableWithMostRows();
-            this.tblList.setModel(tm);
-
+        
+        switch (comboIndex) {
+            case 0:
+                //CRONUS Employees and related tables
+                tm = controller.getCronusEmployees();
+                this.tblList.setModel(tm);
+                break;
+            case 1:
+                //CRONUS Employee MetaData
+                tm = controller.getCronusEmployeeMetaData();
+                this.tblList.setModel(tm);
+                break;
+            case 2:
+                //CRONUS Employee Columns
+                tm = controller.getCronusEmployeeColumns();
+                this.tblList.setModel(tm);
+                break;
+            case 3:
+                //CRONUS Keys
+                tm = controller.getCronusKeys();
+                this.tblList.setModel(tm);
+                break;
+            case 4:
+                //CRONUS Indexes
+                tm = controller.getCronusIndexes();
+                this.tblList.setModel(tm);
+                break;
+            case 5:
+                //CRONUS Constraints
+                tm = controller.getCronusConstraints();
+                this.tblList.setModel(tm);
+                break;
+            case 6:
+                //CRONUS Tables
+                tm = controller.getCronusTables();
+                this.tblList.setModel(tm);
+                break;
+            case 7:
+                //CRONUS Tables
+                tm = controller.getCronusTableWithMostRows();
+                this.tblList.setModel(tm);
+                break;
         }
 
     }//GEN-LAST:event_btnUpdateTableActionPerformed
