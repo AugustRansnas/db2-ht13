@@ -73,7 +73,14 @@ public class View extends javax.swing.JFrame {
             txtViewStudentPostCode.setText(postcode);
             txtViewStudentCity.setText(city);
 
-            this.rbtnDeleteStudent.setSelected(true);
+            this.txtViewStudentPersonNbr.setEditable(false);
+            this.txtViewStudentFirstName.setEditable(false);
+            this.txtViewStudentLastName.setEditable(false);
+            this.txtViewStudentPhoneNbr.setEditable(false);
+            this.txtViewStudentEmail.setEditable(false);
+            this.txtViewStudentAdress.setEditable(false);
+            this.txtViewStudentPostCode.setEditable(false);
+            this.txtViewStudentCity.setEditable(false);
 
         } else if (selectedStudent == null) {
 
@@ -133,6 +140,8 @@ public class View extends javax.swing.JFrame {
             this.populateCourseTable();
 
             this.populateCourseFlowTable();
+            this.lblResponsFindCourse.setText("");
+            this.lblResponsRegisterCourse.setText("");
 
         }
 
@@ -268,6 +277,7 @@ public class View extends javax.swing.JFrame {
         btnFindCourse = new javax.swing.JButton();
         scrollPaneFindCourse = new javax.swing.JScrollPane();
         tableFindCourse = new javax.swing.JTable();
+        lblResponsFindCourse = new javax.swing.JLabel();
         pnlShowCourse = new javax.swing.JPanel();
         lblViewCourseCourseCode = new javax.swing.JLabel();
         txtViewCourseCode = new javax.swing.JTextField();
@@ -287,6 +297,7 @@ public class View extends javax.swing.JFrame {
         rbtnRegisterCourse = new javax.swing.JRadioButton();
         rbtnDeleteCourse = new javax.swing.JRadioButton();
         btnDeleteRegisterCourse = new javax.swing.JButton();
+        lblResponsRegisterCourse = new javax.swing.JLabel();
         pnlHighestPassedCourse = new javax.swing.JPanel();
         scrollPaneCourseFlow = new javax.swing.JScrollPane();
         tblCourseFlow = new javax.swing.JTable();
@@ -658,19 +669,27 @@ public class View extends javax.swing.JFrame {
         });
         scrollPaneFindCourse.setViewportView(tableFindCourse);
 
+        lblResponsFindCourse.setForeground(new java.awt.Color(255, 0, 0));
+        lblResponsFindCourse.setText("jLabel1");
+
         javax.swing.GroupLayout pnlFindCourseLayout = new javax.swing.GroupLayout(pnlFindCourse);
         pnlFindCourse.setLayout(pnlFindCourseLayout);
         pnlFindCourseLayout.setHorizontalGroup(
             pnlFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlFindCourseLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(lblFindCourseInput)
-                .addGap(6, 6, 6)
-                .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(btnFindCourse)
-                .addGap(113, 142, Short.MAX_VALUE))
             .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(pnlFindCourseLayout.createSequentialGroup()
+                .addGroup(pnlFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlFindCourseLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblResponsFindCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlFindCourseLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(lblFindCourseInput)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(6, 6, 6)
+                        .addComponent(btnFindCourse)))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         pnlFindCourseLayout.setVerticalGroup(
             pnlFindCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -679,9 +698,11 @@ public class View extends javax.swing.JFrame {
                     .addComponent(txtFindCourseInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFindCourse)
                     .addComponent(lblFindCourseInput))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+                .addGap(4, 4, 4)
+                .addComponent(lblResponsFindCourse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pnlShowCourse.setBorder(javax.swing.BorderFactory.createTitledBorder("Visa/registrera kurs"));
@@ -790,6 +811,9 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        lblResponsRegisterCourse.setForeground(new java.awt.Color(255, 0, 0));
+        lblResponsRegisterCourse.setText("jLabel1");
+
         javax.swing.GroupLayout pnlShowCourseLayout = new javax.swing.GroupLayout(pnlShowCourse);
         pnlShowCourse.setLayout(pnlShowCourseLayout);
         pnlShowCourseLayout.setHorizontalGroup(
@@ -816,7 +840,10 @@ public class View extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbtnRegisterCourse)
-                            .addComponent(rbtnDeleteCourse)
+                            .addGroup(pnlShowCourseLayout.createSequentialGroup()
+                                .addComponent(rbtnDeleteCourse)
+                                .addGap(35, 35, 35)
+                                .addComponent(lblResponsRegisterCourse))
                             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                                 .addGap(21, 21, 21)
                                 .addComponent(btnDeleteRegisterCourse)))))
@@ -832,7 +859,8 @@ public class View extends javax.swing.JFrame {
                     .addComponent(lblViewCourseCourseCode)
                     .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtViewCourseCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rbtnDeleteCourse)))
+                        .addComponent(rbtnDeleteCourse)
+                        .addComponent(lblResponsRegisterCourse)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtViewCourseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -893,7 +921,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(pnlCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlShowCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlCourseLayout.createSequentialGroup()
-                        .addComponent(pnlFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlFindCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pnlHighestPassedCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -965,11 +993,17 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
-
+        
+        this.lblResponsRegisterCourse.setText("");
+        this.lblResponsFindCourse.setText("");
+        
         String searchString = this.txtFindCourseInput.getText();
-        TableModel dtm = controller.findCourses(searchString);
-        this.tableFindCourse.setModel(dtm);
-
+        if (searchString.contains("'")) {
+            this.lblResponsFindCourse.setText("tecknet [ ' ] ej tillåtet");
+        } else {
+            TableModel dtm = controller.findCourses(searchString);
+            this.tableFindCourse.setModel(dtm);
+        }
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
     private void tblFindStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFindStudentMouseClicked
@@ -1000,27 +1034,37 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnDeleteCourseActionPerformed
 
     private void btnDeleteRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterCourseActionPerformed
-
+        
+        this.lblResponsRegisterCourse.setText("");
+        this.lblResponsFindCourse.setText("");
+        
         if (this.rbtnRegisterCourse.isSelected()) {
             String[] courseData = new String[3];
 
             courseData[0] = this.txtViewCourseCode.getText();
             courseData[1] = this.txtViewCourseName.getText();
             courseData[2] = this.txtViewCourseCredits.getText();
+            
+            String checkString = "";
+            checkString += courseData[0] + courseData[1] + courseData[2];
+            if (!checkString.contains("'")) {
+                if (controller.checkIfCourseExists(courseData[0]) == false) {
 
-            if (controller.checkIfCourseExists(courseData[0]) == false) {
+                    this.controller.registerNewCourse(courseData);
+                    this.populateCourseTable();
+                    this.populateCourseFlowTable();
 
-                this.controller.registerNewCourse(courseData);
-                this.populateCourseTable();
-                this.populateCourseFlowTable();
+                } else {
+
+                    JOptionPane.showMessageDialog(this,
+                            "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                            "Kan inte skapa kurs.",
+                            JOptionPane.ERROR_MESSAGE);
+
+                }
 
             } else {
-
-                JOptionPane.showMessageDialog(this,
-                        "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                        "Kan inte skapa kurs.",
-                        JOptionPane.ERROR_MESSAGE);
-
+                this.lblResponsRegisterCourse.setText("[ ' ] är inte ett tillåtet tecken");
             }
         } else if (this.rbtnDeleteCourse.isSelected()) {
 
@@ -1048,8 +1092,9 @@ public class View extends javax.swing.JFrame {
     private void btnDeleteRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterStudentActionPerformed
 
         if (this.rbtnRegisterStudent.isSelected()) {
-            
+
             this.lblResponsStudentInformation.setText("");
+            this.lblResponsFindStudent.setText("");
             String[] studentData = new String[8];
 
             studentData[0] = this.txtViewStudentPersonNbr.getText();
@@ -1060,22 +1105,32 @@ public class View extends javax.swing.JFrame {
             studentData[5] = this.txtViewStudentAdress.getText();
             studentData[6] = this.txtViewStudentPostCode.getText();
             studentData[7] = this.txtViewStudentCity.getText();
-            
+
             int length = studentData[0].length();
+            String checkString = "";
+            checkString += studentData[1] + studentData[2] + studentData[3] + studentData[4] + studentData[5] + studentData[6] + studentData[7];
+            System.out.println(checkString);
+
             if (studentData[0].matches("[0-9]+") && length == 10) {
-                if (!controller.checkIfStudentExists(studentData[0])) {
-                    {
-                        this.controller.registerNewStudent(studentData);
-                        this.populateStudentTable();
+                                
+                if (!checkString.contains("'")) {
+                    if (!controller.checkIfStudentExists(studentData[0])) {
+                        {
+                            this.controller.registerNewStudent(studentData);
+                            this.populateStudentTable();
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                                "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
+                                "Kan inte registrera student",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this,
-                            "Student existerar redan. Personummer " + studentData[0] + " är inte unikt.",
-                            "Kan inte registrera student",
-                            JOptionPane.ERROR_MESSAGE);
+                    this.lblResponsStudentInformation.setText("Följande tecken får inte användas [ ' ]");
                 }
+
             } else {
-                this.lblResponsStudentInformation.setText("Personnummer måste anges med 10 siffror");
+                this.lblResponsStudentInformation.setText("Personnummer anges med 10 siffror");
             }
         } else if (this.rbtnDeleteStudent.isSelected()) {
 
@@ -1159,7 +1214,9 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel lblFindCourseInput;
     private javax.swing.JLabel lblFindStudent;
     private javax.swing.JLabel lblRegisterCourseResult;
+    private javax.swing.JLabel lblResponsFindCourse;
     private javax.swing.JLabel lblResponsFindStudent;
+    private javax.swing.JLabel lblResponsRegisterCourse;
     private javax.swing.JLabel lblResponsStudentInformation;
     private javax.swing.JLabel lblViewCourseCourseCode;
     private javax.swing.JLabel lblViewCourseCourseName;
