@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package grupp9_uppgift2;
 
 import javax.swing.table.TableModel;
-
 
 /**
  *
  * @author Joel
  */
 public class MainView extends javax.swing.JFrame {
+
     Controller controller;
 
     /**
      * Creates new form MainView
      */
-    
     public MainView(Controller controller) {
         this.controller = controller;
         initComponents();
@@ -61,7 +59,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        comboList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees", "CRONUS Employee MetaData", "CRONUS Employee Columns", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables" }));
+        comboList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees and related", "CRONUS Employee and related  MetaData", "CRONUS Employee Columns", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables", "CRONUS Table with most rows" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,53 +92,57 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
         int comboIndex = this.comboList.getSelectedIndex();
-        
+
         //Inget valt
-        if(comboIndex == -1){
-            
-        }else if (comboIndex == 0){
+        if (comboIndex == -1) {
+
+        } else if (comboIndex == 0) {
             //CRONUS Employees
             TableModel tm = controller.getCronusEmployees();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 1){
+
+        } else if (comboIndex == 1) {
             //CRONUS Employee MetaData
             TableModel tm = controller.getCronusEmployeeMetaData();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 2){
+
+        } else if (comboIndex == 2) {
             //CRONUS Employee Columns
             TableModel tm = controller.getCronusEmployeeColumns();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 3){
+
+        } else if (comboIndex == 3) {
             //CRONUS Keys
             TableModel tm = controller.getCronusKeys();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 4){
+
+        } else if (comboIndex == 4) {
             //CRONUS Indexes
             TableModel tm = controller.getCronusIndexes();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 5){
+
+        } else if (comboIndex == 5) {
             //CRONUS Constraints
             TableModel tm = controller.getCronusConstraints();
             this.tblList.setModel(tm);
-            
-        }else if (comboIndex == 6){
+
+        } else if (comboIndex == 6) {
             //CRONUS Tables
             TableModel tm = controller.getCronusTables();
             this.tblList.setModel(tm);
-            
+
+        } else if (comboIndex == 7) {
+            //CRONUS Tables
+            TableModel tm = controller.getCronusTableWithMostRows();
+            this.tblList.setModel(tm);
+
         }
-            
+
     }//GEN-LAST:event_btnUpdateTableActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdateTable;

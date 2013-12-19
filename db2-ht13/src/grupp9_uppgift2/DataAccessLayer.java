@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package grupp9_uppgift2;
 
 import java.sql.Connection;
@@ -17,119 +16,59 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
-
-
 /**
  *
  * @author Joel
  */
 public class DataAccessLayer {
+
     Connection connection;
-    
-    protected DataAccessLayer(Connection connection){
+
+    protected DataAccessLayer(Connection connection) {
         this.connection = connection;
     }
-    private ResultSet excecuteQuery(String sqlString){
+
+    private ResultSet excecuteQuery(String sqlString) {
+
         System.out.println("executeQuery(" + sqlString + ")");
 
         ResultSet rst = null;
 
         try {
-            Statement stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
-                    ResultSet.CONCUR_READ_ONLY);
+            Statement stmt = connection.createStatement();
+
             rst = stmt.executeQuery(sqlString);
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rst;
-        
+
     }
-    
+
     /*private String[][] getResultSetAsString(ResultSet rs){
-        try {
-            ResultSetMetaData rsMetaData = rs.getMetaData();
-            int columnCount = rsMetaData.getColumnCount();
-            rs.last();
-            int rowCount = rs.getRow();
-        } catch (SQLException ex) {
-            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+     try {
+     ResultSetMetaData rsMetaData = rs.getMetaData();
+     int columnCount = rsMetaData.getColumnCount();
+     rs.last();
+     int rowCount = rs.getRow();
+     } catch (SQLException ex) {
+     Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+     }
         
-    } */
-    private String stringTranslator(String stringIn) {
-
-        String stringOut;
-
-        if (stringIn.equals("ccode")) {
-
-            stringOut = "Kurskod";
-
-        } else if (stringIn.equals("cname")) {
-
-            stringOut = "Kursnamn";
-
-        } else if (stringIn.equals("points")) {
-
-            stringOut = "Högskolepoäng";
-
-        } else if (stringIn.equals("pnr")) {
-
-            stringOut = "Personnummer";
-
-        } else if (stringIn.equals("firstname")) {
-
-            stringOut = "Förnamn";
-
-        } else if (stringIn.equals("lastname")) {
-
-            stringOut = "Efternamn";
-
-        } else if (stringIn.equals("phonenr")) {
-
-            stringOut = "Telefonnummer";
-
-        } else if (stringIn.equals("email")) {
-
-            stringOut = "E-post";
-
-        } else if (stringIn.equals("adress")) {
-
-            stringOut = "Adress";
-
-        } else if (stringIn.equals("postcode")) {
-
-            stringOut = "Postnummer";
-
-        } else if (stringIn.equals("city")) {
-
-            stringOut = "Ort";
-
-        } else if (stringIn.equals("grade")) {
-
-            stringOut = "Betyg";
-
-        } else {
-
-            stringOut = stringIn;
-
-        }
-
-        return stringOut;
-    }
+     } */
     private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
 
             String[] columnHeadings = new String[0];
-            Object[][] dataArray = new Object[0][0];
+            String[][] dataArray = new String[0][0];
 
             ResultSetMetaData md = rs.getMetaData();
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = md.getColumnName(i);
-                columnName = stringTranslator(columnName);
                 columnHeadings = Arrays.copyOf(columnHeadings, columnHeadings.length + 1);
                 columnHeadings[i - 1] = columnName;
             }
@@ -138,9 +77,9 @@ public class DataAccessLayer {
 
             while (rs.next()) {
 
-                Object[] row = new Object[columnCount];
+                String[] row = new String[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-                    row[i - 1] = rs.getObject(i);
+                    row[i - 1] = rs.getString(i);
                 }
 
                 dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
@@ -165,54 +104,94 @@ public class DataAccessLayer {
 
         return null;
 
-    }protected TableModel getCronusEmployees(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusEmployeeMetaData(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusEmployeeColumns(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusKeys(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusIndexes(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusConstraints(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
-    }protected TableModel getCronusTables(){
-        String sqlString = "";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-        
     }
-    protected TableModel getAllKeys(){
+
+    protected TableModel getCronusEmployees() {
+
         String sqlString = "";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
-        
+
     }
+
+    protected TableModel getCronusEmployeeMetaData() {
+
+        String sqlString = "";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusEmployeeColumns() {
+
+        String sqlString = "SELECT name AS 'Samtliga kolumner' \n"
+                + "FROM sys.columns \n"
+                + "WHERE OBJECT_ID = OBJECT_ID('dbo.[CRONUS Sverige AB$Employee]')\n"
+                + "ORDER BY name";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusKeys() {
+        String sqlString = "SELECT name, type_desc FROM sys.foreign_keys\n"
+                + "UNION\n"
+                + "SELECT name, type_desc FROM sys.key_constraints";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusIndexes() {
+        String sqlString = "SELECT * FROM sys.indexes";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusConstraints() {
+        String sqlString = "SELECT name AS NameOfConstraint,\n"
+                + "type_desc AS ConstraintType\n"
+                + "FROM sys.objects\n"
+                + "WHERE type_desc LIKE '%CONSTRAINT'";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusTables() {
+        String sqlString = "SELECT * FROM sys.tables";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getAllKeys() {
+        String sqlString = "SELECT name FROM sys.foreign_keys\n"
+                + "UNION\n"
+                + "SELECT name FROM sys.key_constraints";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusTableWithMostRows() {
+        String sqlString = "SELECT TOP (1) so.name, MAX(si.rows) \n"
+                + "FROM sysobjects so, sysindexes si \n"
+                + "WHERE so.xtype = 'U' AND si.id = OBJECT_ID(so.name) \n"
+                + "GROUP BY so.name \n"
+                + "ORDER BY 2 DESC";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
+
 }
