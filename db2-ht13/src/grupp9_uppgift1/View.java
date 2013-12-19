@@ -132,6 +132,8 @@ public class View extends javax.swing.JFrame {
             this.populateCourseTable();
 
             this.populateCourseFlowTable();
+            this.lblResponsFindCourse.setText("");
+            this.lblResponsRegisterCourse.setText("");
 
         }
 
