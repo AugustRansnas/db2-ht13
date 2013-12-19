@@ -488,7 +488,7 @@ public class DataAccessLayer {
     }
 
     protected TableModel getPastStudentsOnCourse(String courseCode) {
-        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email"
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, h.grade"
                 + " FROM Student s, Hasstudied h"
                 + " WHERE h.ccode = '" + courseCode + "'"
                 + " AND s.pnr = h.pnr";
@@ -499,7 +499,7 @@ public class DataAccessLayer {
     }
 
     protected TableModel getCurrentStudentsOnCourse(String courseCode) {
-        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.phonenr, s.email"
+        String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.email"
                 + " FROM Student s, Studies s2"
                 + " WHERE s2.ccode = '" + courseCode + "'"
                 + " AND s.pnr = s2.pnr";
