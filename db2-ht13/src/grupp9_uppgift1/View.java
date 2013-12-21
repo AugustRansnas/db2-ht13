@@ -6,6 +6,7 @@ package grupp9_uppgift1;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -732,6 +733,11 @@ public class View extends javax.swing.JFrame {
             }
         ));
         tblFinishedStudentsOnCourse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblFinishedStudentsOnCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblFinishedStudentsOnCourseMouseClicked(evt);
+            }
+        });
         scrollPaneStudentsOnCourse.setViewportView(tblFinishedStudentsOnCourse);
 
         tblNotFinishedStudentsOnCourse.setAutoCreateRowSorter(true);
@@ -1180,6 +1186,17 @@ public class View extends javax.swing.JFrame {
         this.setSelectedStudent(selectedStudent);
 
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
+
+    private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked
+        // TODO add your handling code here:
+        int row = tblFinishedStudentsOnCourse.getSelectedRow();
+        String pnr = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        this.tabbedPane.setSelectedIndex(0);
+        this.clearStudentInformation();
+        this.setSelectedStudent(pnr);
+  
+        
+    }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">
