@@ -51,6 +51,7 @@ public class View extends javax.swing.JFrame {
             this.populateCourseFlowTable();
 
             this.rbtnDeleteStudent.setEnabled(true);
+            this.rbtnDeleteStudent.setSelected(true);
 
             int row = tblFindStudent.getSelectedRow();
             String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
