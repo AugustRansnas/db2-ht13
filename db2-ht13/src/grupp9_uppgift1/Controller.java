@@ -5,7 +5,6 @@
  */
 package grupp9_uppgift1;
 
-import java.util.ArrayList;
 import javax.swing.table.TableModel;
 
 /**
@@ -18,7 +17,7 @@ import javax.swing.table.TableModel;
  */
 public class Controller {
 
-    private DataAccessLayer dataAccessLayer;
+    private final DataAccessLayer dataAccessLayer;
 
     Controller(DataAccessLayer dataAccessLayer) {
 
