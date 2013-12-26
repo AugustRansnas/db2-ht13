@@ -68,14 +68,14 @@ public class DataAccessLayer {
     /**
      * This method takes a ResultSet and returns TableModel.
      */
-    private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
+    private TableModel getResultSetAsDefaultTableModel(ResultSet rset) {
 
         try {
 
             String[] columnHeadings = new String[0];
             String[][] dataArray = new String[0][0];
 
-            ResultSetMetaData md = rs.getMetaData();
+            ResultSetMetaData md = rset.getMetaData();
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
@@ -87,11 +87,11 @@ public class DataAccessLayer {
 
             int r = 0;
 
-            while (rs.next()) {
+            while (rset.next()) {
 
                 String[] row = new String[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-                    row[i - 1] = rs.getString(i);
+                    row[i - 1] = rset.getString(i);
                 }
 
                 dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
@@ -119,9 +119,9 @@ public class DataAccessLayer {
 
     }
 
-    private Object[] getResultSetAsStringList(ResultSet rs) {
+    private String[] getResultSetAsStringArray(ResultSet rs) {
 
-        ArrayList<String> stringList = new ArrayList<>();
+        String[] stringArray = new String[0];
 
         try {
 
@@ -131,19 +131,44 @@ public class DataAccessLayer {
             while (rs.next()) {
                 String newString = "";
                 for (int i = 1; i <= columnCount; i++) {
-                    newString += rs.getObject(i).toString();
+                    newString += rs.getString(i);
 
                     newString += " ";
                 }
-                System.out.println(newString);
-                stringList.add(newString);
+                
+                stringArray = Arrays.copyOf(stringArray, stringArray.length + 1);
+                stringArray [stringArray.length - 1] = newString;
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return stringList.toArray();
+        return stringArray;
+    }
+
+    private String[] getRowAsStringArray(ResultSet rset, int rowNr) {
+        
+        String[] rowArray = null;
+        
+        try {
+            
+            ResultSetMetaData md = rset.getMetaData();
+            int columnCount = md.getColumnCount();
+            rset.absolute(rowNr);
+            
+            rowArray = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                rowArray[i - 1] = rset.getString(i);
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rowArray;
+        
     }
 
     private boolean checkIfResultSetHasContent(ResultSet rset) {
@@ -271,7 +296,7 @@ public class DataAccessLayer {
         ResultSet rset = executeQuery(sqlString);
 
         return this.getFirstCellInResultSetAsInt(rset) != 0;
- 
+
     }
 
     protected TableModel findStudents(boolean showAllAttributes, String searchString) {
@@ -401,6 +426,18 @@ public class DataAccessLayer {
         }
 
         return courseExists;
+    }
+
+    protected String[] getCourseData(String courseCode) {
+
+        String sqlQuery = "SELECT * FROM Course WHERE ccode = '" + courseCode + "'";
+
+        ResultSet rset = this.executeQuery(sqlQuery);
+
+        String[] stringsToReturn = this.getRowAsStringArray(rset, 1);
+        
+        return stringsToReturn;
+
     }
 
     protected void registerNewCourse(String[] courseData) {
@@ -613,9 +650,9 @@ public class DataAccessLayer {
 
     }
 
-    protected Object[] getCoursesThatCanBeAddedToStudent(String pNr) {
+    protected String[] getCoursesThatCanBeAddedToStudent(String pNr) {
 
-        ResultSet rs = this.executeQuery("SELECT * FROM Course c "
+        ResultSet rset = this.executeQuery("SELECT * FROM Course c "
                 + "WHERE c.ccode NOT IN "
                 + "(SELECT h.ccode FROM Hasstudied h "
                 + "WHERE h.pnr = '" + pNr + "') "
@@ -623,7 +660,7 @@ public class DataAccessLayer {
                 + "(Select s.ccode FROM Studies s "
                 + "WHERE s.pnr = '" + pNr + "')");
 
-        Object[] stringArray = this.getResultSetAsStringList(rs);
+        String[] stringArray = this.getResultSetAsStringArray(rset);
 
         return stringArray;
 

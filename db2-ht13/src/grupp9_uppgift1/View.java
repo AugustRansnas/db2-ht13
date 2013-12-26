@@ -123,14 +123,11 @@ public class View extends javax.swing.JFrame {
 
     private void setSelectedCourse(String selectedCourse) {
 
-        
         this.populateCoursesPastAndCurrentStudents(selectedCourse);
-        
+
         if (selectedCourse != null) {
 
             this.selectedCourse = selectedCourse;
-
-            
 
             this.rbtnDeleteCourse.setSelected(true);
             this.rbtnDeleteCourse.setEnabled(true);
@@ -154,7 +151,7 @@ public class View extends javax.swing.JFrame {
             this.txtViewCourseCode.setText("");
             this.txtViewCourseName.setText("");
             this.txtViewCourseCredits.setText("");
-            
+
             this.populateCourseTable();
             this.populateCourseFlowTable();
 
@@ -219,7 +216,7 @@ public class View extends javax.swing.JFrame {
 
     private void populateComboBoxAddCourse(String selectedStudent) {
 
-        Object[] comboBoxList = new Object[0];
+        String[] comboBoxList = new String[0];
 
         if (selectedStudent != null) {
 
@@ -1185,12 +1182,19 @@ public class View extends javax.swing.JFrame {
     private void btnViewStudentAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentAddCourseActionPerformed
 
         String courseId = this.comboBoxViewStudentAddCourse.getSelectedItem().toString();
-
         courseId = courseId.substring(0, 6);
 
-        controller.registerStudentOnCourse(selectedStudent, courseId);
+        if (controller.checkIfCourseCanBeAddedToStudent(courseId, this.selectedStudent)) {
 
-        this.setSelectedStudent(selectedStudent);
+            controller.registerStudentOnCourse(selectedStudent, courseId);
+            this.setSelectedStudent(selectedStudent);
+
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Studententen kan inte registreras på fler kurser. Max 45 poäng per student.",
+                    "Registrering misslyckades.",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 

@@ -102,7 +102,8 @@ public class Controller {
         TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(pnr);
         return tm;
     }
-    protected TableModel getSingleStudent(String pnr){
+
+    protected TableModel getSingleStudent(String pnr) {
         TableModel tm = this.dataAccessLayer.getSingleStudent(pnr);
         return tm;
     }
@@ -122,8 +123,17 @@ public class Controller {
         return tm;
     }
 
+    protected String[] getCourseData(String courseCode) {
+
+        return this.dataAccessLayer.getCourseData(courseCode);
+
+    }
+
     /**
      * Calls the data access layer to register a new course.
+     *
+     * @param courseData contains the data that will fill the fields in the
+     * table row
      */
     protected void registerNewCourse(String[] courseData) {
 
@@ -148,13 +158,8 @@ public class Controller {
      */
     protected boolean checkIfCourseExists(String courseCode) {
 
-        if (this.dataAccessLayer.checkIfCourseExists(courseCode)) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.dataAccessLayer.checkIfCourseExists(courseCode);
     }
-
 
     /**
      * Calls data access layer to get percentage of students with a specific
@@ -183,10 +188,18 @@ public class Controller {
         return percentagePassingCourse;
 
     }
-    protected float percentageWithGradeAOnCourse(String courseCode){
-        
+
+    /**
+     * Returns a String with the percentage of student who got A on a course
+     *
+     * @param courseCode code of the course
+     * @return the percentage of students who got A
+     */
+    protected float percentageWithGradeAOnCourse(String courseCode) {
+
         float percentageWithGradeAOnCourse = this.dataAccessLayer.percentageWithGradeAOnCourse(courseCode);
-        return percentageWithGradeAOnCourse;
+
+        return percentageWithGradeAOnCourse; //Autocast float -> String
     }
 
     /**
@@ -250,7 +263,7 @@ public class Controller {
 
     }
 
-    protected Object[] getCoursesThatCanBeAddedToStudent(String pNr) {
+    protected String[] getCoursesThatCanBeAddedToStudent(String pNr) {
 
         return this.dataAccessLayer.getCoursesThatCanBeAddedToStudent(pNr);
 
@@ -259,13 +272,28 @@ public class Controller {
     void registerStudentOnCourse(String selectedStudent, String courseId) {
 
         this.dataAccessLayer.registerStudentOnCourse(selectedStudent, courseId);
-        
+
     }
-    
-    protected int getStudentsRegisteredPointsTotal(String pNr){
-        
+
+    protected int getStudentsRegisteredPointsTotal(String pNr) {
+
         return this.dataAccessLayer.getStudentsRegisteredPointTotal(pNr);
-        
+
+    }
+
+    protected boolean checkIfCourseCanBeAddedToStudent(String courseCode, String pNr) {
+
+        int oldTotalCredits = this.getStudentsRegisteredPointsTotal(pNr);
+
+        String[] courseData = this.getCourseData(courseCode);
+
+        String creditsToAddString = courseData[2];
+
+        int creditsToAdd = Integer.parseInt(creditsToAddString);
+
+        return oldTotalCredits + creditsToAdd <= 45;
+   
+
     }
 
 //</editor-fold>
