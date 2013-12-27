@@ -1201,11 +1201,43 @@ public class View extends javax.swing.JFrame {
     private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked
         // TODO add your handling code here:
         int row = tblFinishedStudentsOnCourse.getSelectedRow();
-        String pnr = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        String selectedStudent = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
         this.tabbedPane.setSelectedIndex(0);
         this.clearStudentInformation();
-        this.setSelectedStudent(pnr);
+        this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateComboBoxAddCourse(selectedStudent);
+        this.populateCourseFlowTable();
 
+        this.rbtnDeleteStudent.setEnabled(true);
+        this.rbtnDeleteStudent.setSelected(true);
+
+        TableModel tm = controller.getSingleStudent(selectedStudent);
+        String firstname = (tm.getValueAt(0, 1).toString());
+        String lastname = (tm.getValueAt(0, 2).toString());
+        String phonenbr = (tm.getValueAt(0, 3).toString());
+        String email = (tm.getValueAt(0, 4).toString());
+        String address = (tm.getValueAt(0, 5).toString());
+        String postcode = (tm.getValueAt(0, 6).toString());
+        String city = (tm.getValueAt(0, 7).toString());
+
+        txtViewStudentPersonNbr.setText(selectedStudent);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city);
+        this.txtViewStudentPersonNbr.setEditable(false);
+        this.txtViewStudentFirstName.setEditable(false);
+        this.txtViewStudentLastName.setEditable(false);
+        this.txtViewStudentPhoneNbr.setEditable(false);
+        this.txtViewStudentEmail.setEditable(false);
+        this.txtViewStudentAdress.setEditable(false);
+        this.txtViewStudentPostCode.setEditable(false);
+        this.txtViewStudentCity.setEditable(false);
+
+        this.populateStudentTable();
 
     }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
 // </editor-fold>
