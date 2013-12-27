@@ -459,11 +459,6 @@ public class View extends javax.swing.JFrame {
 
         buttonGroupStudent.add(rbtnDeleteStudent);
         rbtnDeleteStudent.setText("Radera student");
-        rbtnDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnDeleteStudentActionPerformed(evt);
-            }
-        });
 
         buttonGroupStudent.add(rbtnRegisterStudent);
         rbtnRegisterStudent.setSelected(true);
@@ -974,6 +969,7 @@ public class View extends javax.swing.JFrame {
             this.tblFindStudent.setModel(dtm);
 
         }
+        
 
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
@@ -1052,26 +1048,30 @@ public class View extends javax.swing.JFrame {
 
             String checkString = "";
             checkString += courseData[0] + courseData[1] + courseData[2];
+            Boolean courseExists = controller.checkIfCourseExists(courseData[0]);
             if (!checkString.contains("'")) {
-                if (controller.checkIfCourseExists(courseData[0]) == false) {
+                if (courseExists == false && txtViewCourseCode.getText().length() < 6) {
 
                     this.controller.registerNewCourse(courseData);
                     this.populateCourseTable();
                     this.populateCourseFlowTable();
 
-                } else {
+                } else if (txtViewCourseCode.getText().length() > 6) {
+                    JOptionPane.showMessageDialog(this,
+                            "Kurskod måste bestå av 6 tecken",
+                            "Kan inte skapa kurs.",
+                            JOptionPane.ERROR_MESSAGE);
+                } else if (courseExists == true) {
 
                     JOptionPane.showMessageDialog(this,
                             "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
                             "Kan inte skapa kurs.",
                             JOptionPane.ERROR_MESSAGE);
-
-                }
-
-            } else {
+                } else {
                 this.lblResponsRegisterCourse.setText("[ ' ] är inte ett tillåtet tecken");
-            }
-        } else if (this.rbtnDeleteCourse.isSelected()) {
+                }}
+       
+            if (this.rbtnDeleteCourse.isSelected()) {
 
             String courseCode = this.txtViewCourseCode.getText();
             this.controller.deleteCourse(courseCode);
@@ -1085,14 +1085,8 @@ public class View extends javax.swing.JFrame {
             this.setSelectedStudent(null);
 
         }
-
-
+        }
     }//GEN-LAST:event_btnDeleteRegisterCourseActionPerformed
-
-    private void rbtnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteStudentActionPerformed
-
-
-    }//GEN-LAST:event_rbtnDeleteStudentActionPerformed
 
     private void btnDeleteRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterStudentActionPerformed
 
@@ -1130,11 +1124,11 @@ public class View extends javax.swing.JFrame {
                                 "Kan inte registrera student",
                                 JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
+                    } else {
                     this.lblResponsStudentInformation.setText("Följande tecken får inte användas [ ' ]");
-                }
+                    }
 
-            } else {
+                    } else {
                 this.lblResponsStudentInformation.setText("Personnummer anges med 10 siffror");
             }
         } else if (this.rbtnDeleteStudent.isSelected()) {
@@ -1189,13 +1183,12 @@ public class View extends javax.swing.JFrame {
             controller.registerStudentOnCourse(selectedStudent, courseId);
             this.setSelectedStudent(selectedStudent);
 
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this,
                     "Studententen kan inte registreras på fler kurser. Max 45 poäng per student.",
                     "Registrering misslyckades.",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 
     private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked

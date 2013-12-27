@@ -514,9 +514,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Radera student"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnDeleteStudentActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="rbtnRegisterStudent">
                   <Properties>
