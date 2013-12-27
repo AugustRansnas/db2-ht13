@@ -7,7 +7,6 @@ package grupp9_uppgift1;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -41,11 +40,11 @@ public class View extends javax.swing.JFrame {
     private void setSelectedStudent(String selectedStudent) {
 
         this.selectedStudent = selectedStudent;
-        
+
         this.btnRegisterCourseResult.setEnabled(false);
 
         if (selectedStudent != null) {
-            
+
             this.populateStudentsCurrentAndPastCourses(selectedStudent);
 
             this.populateComboBoxAddCourse(selectedStudent);
@@ -65,7 +64,7 @@ public class View extends javax.swing.JFrame {
             String address = (tm.getValueAt(0, 5).toString());
             String postcode = (tm.getValueAt(0, 6).toString());
             String city = (tm.getValueAt(0, 7).toString());
-                    
+
             txtViewStudentPersonNbr.setText(pnr);
             txtViewStudentFirstName.setText(firstname);
             txtViewStudentLastName.setText(lastname);
@@ -89,10 +88,11 @@ public class View extends javax.swing.JFrame {
             this.populateStudentTable();
 
             this.clearStudentInformation();
-            
+
         }
     }
-        private void clearStudentInformation(){
+
+    private void clearStudentInformation() {
         txtViewStudentPersonNbr.setText("");
         txtViewStudentFirstName.setText("");
         txtViewStudentLastName.setText("");
@@ -115,35 +115,46 @@ public class View extends javax.swing.JFrame {
         DefaultTableModel tm = new DefaultTableModel();
         this.tblSelectedStudentsUnfinishedCourses.setModel(tm);
         this.tblStudentsFinishedCourses.setModel(tm);
-        
+
         this.rbtnDeleteStudent.setEnabled(false);
         this.lblResponsFindStudent.setText("");
         this.lblResponsStudentInformation.setText("");
-        
+
     }
 
     private void setSelectedCourse(String selectedCourse) {
 
-        if (selectedCourse != null) {
+        this.populateCoursesPastAndCurrentStudents(selectedCourse);
 
-            System.out.println(selectedCourse);
+        if (selectedCourse != null) {
 
             this.selectedCourse = selectedCourse;
 
-            this.populateCoursesPastAndCurrentStudents(selectedCourse);
-
             this.rbtnDeleteCourse.setSelected(true);
+            this.rbtnDeleteCourse.setEnabled(true);
+
             this.txtViewCourseCode.setEditable(false);
             this.txtViewCourseName.setEditable(false);
             this.txtViewCourseCredits.setEditable(false);
 
         } else if (selectedCourse == null) {
 
-            this.populateCourseTable();
+            this.rbtnDeleteCourse.setEnabled(false);
+            this.rbtnRegisterCourse.setSelected(true);
 
-            this.populateCourseFlowTable();
             this.lblResponsFindCourse.setText("");
             this.lblResponsRegisterCourse.setText("");
+
+            this.txtViewCourseCode.setEditable(true);
+            this.txtViewCourseName.setEditable(true);
+            this.txtViewCourseCredits.setEditable(true);
+
+            this.txtViewCourseCode.setText("");
+            this.txtViewCourseName.setText("");
+            this.txtViewCourseCredits.setText("");
+
+            this.populateCourseTable();
+            this.populateCourseFlowTable();
 
         }
 
@@ -206,10 +217,10 @@ public class View extends javax.swing.JFrame {
 
     private void populateComboBoxAddCourse(String selectedStudent) {
 
-        Object[] comboBoxList = new Object[0];
+        String[] comboBoxList = new String[0];
 
         if (selectedStudent != null) {
-            
+
             comboBoxList = controller.getCoursesThatCanBeAddedToStudent(selectedStudent);
 
         }
@@ -957,16 +968,19 @@ public class View extends javax.swing.JFrame {
         boolean showAllAttributes = this.checkShowAllAttributes.isSelected();
         String searchString = this.txtFindStudentQuery.getText();
         this.clearStudentInformation();
+
         if(searchString.contains("'")){
             this.lblResponsFindStudent.setForeground(Color.red);
             this.lblResponsFindStudent.setText("Söktermen får inte innehålla: [ ' ]");
         } else {
+
         TableModel dtm = controller.findStudents(showAllAttributes, searchString);
         this.tblFindStudent.setModel(dtm);
         this.lblResponsFindStudent.setForeground(Color.black);
         this.lblResponsFindStudent.setText("Följande studenters information matchade söktermen: ");
+     
         }
-        
+
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
     private void tableFindCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableFindCourseMouseClicked
@@ -997,10 +1011,10 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_tableFindCourseMouseClicked
 
     private void btnFindCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFindCourseActionPerformed
-        
+
         this.lblResponsRegisterCourse.setText("");
         this.lblResponsFindCourse.setText("");
-        
+
         String searchString = this.txtFindCourseInput.getText();
         if (searchString.contains("'")) {
             this.lblResponsFindCourse.setText("Söktermen får inte innehålla: [ ' ]");
@@ -1021,14 +1035,7 @@ public class View extends javax.swing.JFrame {
 
     private void rbtnRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnRegisterCourseActionPerformed
 
-
-        this.txtViewCourseCode.setEditable(true);
-        this.txtViewCourseName.setEditable(true);
-        this.txtViewCourseCredits.setEditable(true);
-
-        this.txtViewCourseCode.setText("");
-        this.txtViewCourseName.setText("");
-        this.txtViewCourseCredits.setText("");
+        this.setSelectedCourse(null);
 
     }//GEN-LAST:event_rbtnRegisterCourseActionPerformed
 
@@ -1038,35 +1045,38 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnDeleteCourseActionPerformed
 
     private void btnDeleteRegisterCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterCourseActionPerformed
-        
+
         this.lblResponsRegisterCourse.setText("");
         this.lblResponsFindCourse.setText("");
-        
+
         if (this.rbtnRegisterCourse.isSelected()) {
             String[] courseData = new String[3];
 
             courseData[0] = this.txtViewCourseCode.getText();
             courseData[1] = this.txtViewCourseName.getText();
             courseData[2] = this.txtViewCourseCredits.getText();
-            
+
             String checkString = "";
             checkString += courseData[0] + courseData[1] + courseData[2];
             if (!checkString.contains("'")) {
-                if (controller.checkIfCourseExists(courseData[0]) == false) {
+                if (courseData[2].matches("[0-9]+")) {
+                    if (controller.checkIfCourseExists(courseData[0]) == false) {
 
-                    this.controller.registerNewCourse(courseData);
-                    this.populateCourseTable();
-                    this.populateCourseFlowTable();
+                        this.controller.registerNewCourse(courseData);
+                        this.populateCourseTable();
+                        this.populateCourseFlowTable();
 
+                    } else {
+
+                        JOptionPane.showMessageDialog(this,
+                                "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                                "Kan inte skapa kurs.",
+                                JOptionPane.ERROR_MESSAGE);
+
+                    }
                 } else {
-
-                    JOptionPane.showMessageDialog(this,
-                            "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                            "Kan inte skapa kurs.",
-                            JOptionPane.ERROR_MESSAGE);
-
+                    this.lblResponsRegisterCourse.setText("Poäng anges endast med siffror");
                 }
-
             } else {
                 this.lblResponsRegisterCourse.setText("Följande tecken får inte användas [ ' ]");
             }
@@ -1080,8 +1090,8 @@ public class View extends javax.swing.JFrame {
                     "Kurs raderad",
                     JOptionPane.INFORMATION_MESSAGE);
 
-            this.populateCourseTable();
-            this.populateCourseFlowTable();
+            this.setSelectedCourse(null);
+            this.setSelectedStudent(null);
 
         }
 
@@ -1117,7 +1127,7 @@ public class View extends javax.swing.JFrame {
             System.out.println(checkString);
 
             if (studentData[0].matches("[0-9]+") && length == 10) {
-                                
+
                 if (!checkString.contains("'")) {
                     if (!controller.checkIfStudentExists(studentData[0])) {
                         {
@@ -1186,12 +1196,19 @@ public class View extends javax.swing.JFrame {
     private void btnViewStudentAddCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewStudentAddCourseActionPerformed
 
         String courseId = this.comboBoxViewStudentAddCourse.getSelectedItem().toString();
-
         courseId = courseId.substring(0, 6);
 
-        controller.registerStudentOnCourse(selectedStudent, courseId);
+        if (controller.checkIfCourseCanBeAddedToStudent(courseId, this.selectedStudent)) {
 
-        this.setSelectedStudent(selectedStudent);
+            controller.registerStudentOnCourse(selectedStudent, courseId);
+            this.setSelectedStudent(selectedStudent);
+
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Studententen kan inte registreras på fler kurser. Max 45 poäng per student.",
+                    "Registrering misslyckades.",
+                    JOptionPane.ERROR_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 
@@ -1202,8 +1219,8 @@ public class View extends javax.swing.JFrame {
         this.tabbedPane.setSelectedIndex(0);
         this.clearStudentInformation();
         this.setSelectedStudent(pnr);
-  
-        
+
+
     }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
 // </editor-fold>
 
