@@ -4,6 +4,7 @@
  */
 package grupp9_uppgift1;
 
+import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
@@ -358,9 +359,9 @@ public class View extends javax.swing.JFrame {
                         .addComponent(txtFindStudentQuery, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(btnFindStudent)
-                        .addGap(35, 35, 35)
-                        .addComponent(lblResponsFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(lblResponsFindStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         pnlFindStudentsLayout.setVerticalGroup(
             pnlFindStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -957,11 +958,13 @@ public class View extends javax.swing.JFrame {
         String searchString = this.txtFindStudentQuery.getText();
         this.clearStudentInformation();
         if(searchString.contains("'")){
+            this.lblResponsFindStudent.setForeground(Color.red);
             this.lblResponsFindStudent.setText("Söktermen får inte innehålla: [ ' ]");
         } else {
         TableModel dtm = controller.findStudents(showAllAttributes, searchString);
         this.tblFindStudent.setModel(dtm);
-        
+        this.lblResponsFindStudent.setForeground(Color.black);
+        this.lblResponsFindStudent.setText("Följande studenters information matchade söktermen: ");
         }
         
     }//GEN-LAST:event_btnFindStudentActionPerformed
@@ -972,8 +975,8 @@ public class View extends javax.swing.JFrame {
 
         String ccode = (tableFindCourse.getModel().getValueAt(row, 0).toString());
         String cname = (tableFindCourse.getModel().getValueAt(row, 1).toString());
-        String points = (tableFindCourse.getModel().getValueAt(row, 2).toString());
-
+        String points = (tableFindCourse.getModel().getValueAt(row, 2).toString());      
+        
         txtViewCourseCode.setText(ccode);
         txtViewCourseName.setText(cname);
         txtViewCourseCredits.setText(points);
@@ -1000,7 +1003,7 @@ public class View extends javax.swing.JFrame {
         
         String searchString = this.txtFindCourseInput.getText();
         if (searchString.contains("'")) {
-            this.lblResponsFindCourse.setText("tecknet [ ' ] ej tillåtet");
+            this.lblResponsFindCourse.setText("Söktermen får inte innehålla: [ ' ]");
         } else {
             TableModel dtm = controller.findCourses(searchString);
             this.tableFindCourse.setModel(dtm);
@@ -1065,7 +1068,7 @@ public class View extends javax.swing.JFrame {
                 }
 
             } else {
-                this.lblResponsRegisterCourse.setText("[ ' ] är inte ett tillåtet tecken");
+                this.lblResponsRegisterCourse.setText("Följande tecken får inte användas [ ' ]");
             }
         } else if (this.rbtnDeleteCourse.isSelected()) {
 
@@ -1096,6 +1099,7 @@ public class View extends javax.swing.JFrame {
 
             this.lblResponsStudentInformation.setText("");
             this.lblResponsFindStudent.setText("");
+            
             String[] studentData = new String[8];
 
             studentData[0] = this.txtViewStudentPersonNbr.getText();
@@ -1119,6 +1123,8 @@ public class View extends javax.swing.JFrame {
                         {
                             this.controller.registerNewStudent(studentData);
                             this.populateStudentTable();
+                            this.lblResponsStudentInformation.setForeground(Color.black);
+                            this.lblResponsStudentInformation.setText("Student med personnummer: " + studentData[0] + " är registrerad");
                         }
                     } else {
                         JOptionPane.showMessageDialog(this,
@@ -1127,10 +1133,12 @@ public class View extends javax.swing.JFrame {
                                 JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
+                    this.lblResponsStudentInformation.setForeground(Color.red);
                     this.lblResponsStudentInformation.setText("Följande tecken får inte användas [ ' ]");
                 }
 
             } else {
+                this.lblResponsStudentInformation.setForeground(Color.red);
                 this.lblResponsStudentInformation.setText("Personnummer anges med 10 siffror");
             }
         } else if (this.rbtnDeleteStudent.isSelected()) {
