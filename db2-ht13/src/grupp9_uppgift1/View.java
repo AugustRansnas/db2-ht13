@@ -1054,30 +1054,42 @@ public class View extends javax.swing.JFrame {
 
             String checkString = "";
             checkString += courseData[0] + courseData[1] + courseData[2];
-            Boolean courseExists = controller.checkIfCourseExists(courseData[0]);
+            
             if (!checkString.contains("'")) {
-                if (courseExists == false && txtViewCourseCode.getText().length() < 6) {
+                
+                Boolean courseExists = controller.checkIfCourseExists(courseData[0]);
+                
+                if (!courseExists) {
+                    if (courseData[0].length() < 7) {
+                        {
+                            if (courseData[2].matches("[0-9]+")) {
 
-                        this.controller.registerNewCourse(courseData);
-                        this.populateCourseTable();
-                        this.populateCourseFlowTable();
-
-                } else if (txtViewCourseCode.getText().length() > 6) {
-                    JOptionPane.showMessageDialog(this,
-                            "Kurskod måste bestå av 6 tecken",
+                                this.controller.registerNewCourse(courseData);
+                                this.populateCourseTable();
+                                this.populateCourseFlowTable();
+                            } else {
+                                this.lblResponsRegisterCourse.setText("Poäng anges med siffror");
+                            }
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this,
+                            "Kurskod får inte bestå av fler än 6 tecken",
                             "Kan inte skapa kurs.",
                             JOptionPane.ERROR_MESSAGE);
-                } else if (courseExists == true) {
+                    }
+                } else {
 
                     JOptionPane.showMessageDialog(this,
                             "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
                             "Kan inte skapa kurs.",
                             JOptionPane.ERROR_MESSAGE);
-                } else {
+                }
+            } else {
                 this.lblResponsRegisterCourse.setText("[ ' ] är inte ett tillåtet tecken");
-                }}
-       
-            if (this.rbtnDeleteCourse.isSelected()) {
+            }
+        }
+
+        if (this.rbtnDeleteCourse.isSelected()) {
 
             String courseCode = this.txtViewCourseCode.getText();
             this.controller.deleteCourse(courseCode);
@@ -1091,7 +1103,7 @@ public class View extends javax.swing.JFrame {
             this.setSelectedStudent(null);
 
         }
-        }
+
     }//GEN-LAST:event_btnDeleteRegisterCourseActionPerformed
 
     private void btnDeleteRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterStudentActionPerformed
