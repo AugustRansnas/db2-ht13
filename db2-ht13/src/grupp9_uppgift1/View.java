@@ -460,11 +460,6 @@ public class View extends javax.swing.JFrame {
 
         buttonGroupStudent.add(rbtnDeleteStudent);
         rbtnDeleteStudent.setText("Radera student");
-        rbtnDeleteStudent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnDeleteStudentActionPerformed(evt);
-            }
-        });
 
         buttonGroupStudent.add(rbtnRegisterStudent);
         rbtnRegisterStudent.setSelected(true);
@@ -980,6 +975,7 @@ public class View extends javax.swing.JFrame {
         this.lblResponsFindStudent.setText("Följande studenters information matchade söktermen: ");
      
         }
+        
 
     }//GEN-LAST:event_btnFindStudentActionPerformed
 
@@ -1058,29 +1054,30 @@ public class View extends javax.swing.JFrame {
 
             String checkString = "";
             checkString += courseData[0] + courseData[1] + courseData[2];
+            Boolean courseExists = controller.checkIfCourseExists(courseData[0]);
             if (!checkString.contains("'")) {
-                if (courseData[2].matches("[0-9]+")) {
-                    if (controller.checkIfCourseExists(courseData[0]) == false) {
+                if (courseExists == false && txtViewCourseCode.getText().length() < 6) {
 
                         this.controller.registerNewCourse(courseData);
                         this.populateCourseTable();
                         this.populateCourseFlowTable();
 
-                    } else {
+                } else if (txtViewCourseCode.getText().length() > 6) {
+                    JOptionPane.showMessageDialog(this,
+                            "Kurskod måste bestå av 6 tecken",
+                            "Kan inte skapa kurs.",
+                            JOptionPane.ERROR_MESSAGE);
+                } else if (courseExists == true) {
 
-                        JOptionPane.showMessageDialog(this,
-                                "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
-                                "Kan inte skapa kurs.",
-                                JOptionPane.ERROR_MESSAGE);
-
-                    }
+                    JOptionPane.showMessageDialog(this,
+                            "Kurs existerar redan. Kurskod " + courseData[0] + " finns redan i databasen.",
+                            "Kan inte skapa kurs.",
+                            JOptionPane.ERROR_MESSAGE);
                 } else {
-                    this.lblResponsRegisterCourse.setText("Poäng anges endast med siffror");
-                }
-            } else {
-                this.lblResponsRegisterCourse.setText("Följande tecken får inte användas [ ' ]");
-            }
-        } else if (this.rbtnDeleteCourse.isSelected()) {
+                this.lblResponsRegisterCourse.setText("[ ' ] är inte ett tillåtet tecken");
+                }}
+       
+            if (this.rbtnDeleteCourse.isSelected()) {
 
             String courseCode = this.txtViewCourseCode.getText();
             this.controller.deleteCourse(courseCode);
@@ -1094,14 +1091,8 @@ public class View extends javax.swing.JFrame {
             this.setSelectedStudent(null);
 
         }
-
-
+        }
     }//GEN-LAST:event_btnDeleteRegisterCourseActionPerformed
-
-    private void rbtnDeleteStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnDeleteStudentActionPerformed
-
-
-    }//GEN-LAST:event_rbtnDeleteStudentActionPerformed
 
     private void btnDeleteRegisterStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRegisterStudentActionPerformed
 
@@ -1145,7 +1136,7 @@ public class View extends javax.swing.JFrame {
                 } else {
                     this.lblResponsStudentInformation.setForeground(Color.red);
                     this.lblResponsStudentInformation.setText("Följande tecken får inte användas [ ' ]");
-                }
+                    }
 
             } else {
                 this.lblResponsStudentInformation.setForeground(Color.red);
@@ -1203,23 +1194,54 @@ public class View extends javax.swing.JFrame {
             controller.registerStudentOnCourse(selectedStudent, courseId);
             this.setSelectedStudent(selectedStudent);
 
-        } else {
+        }else {
             JOptionPane.showMessageDialog(this,
                     "Studententen kan inte registreras på fler kurser. Max 45 poäng per student.",
                     "Registrering misslyckades.",
                     JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 
     private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked
         // TODO add your handling code here:
         int row = tblFinishedStudentsOnCourse.getSelectedRow();
-        String pnr = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        String selectedStudent = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
         this.tabbedPane.setSelectedIndex(0);
         this.clearStudentInformation();
-        this.setSelectedStudent(pnr);
+        this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateComboBoxAddCourse(selectedStudent);
+        this.populateCourseFlowTable();
 
+        this.rbtnDeleteStudent.setEnabled(true);
+        this.rbtnDeleteStudent.setSelected(true);
+
+        TableModel tm = controller.getSingleStudent(selectedStudent);
+        String firstname = (tm.getValueAt(0, 1).toString());
+        String lastname = (tm.getValueAt(0, 2).toString());
+        String phonenbr = (tm.getValueAt(0, 3).toString());
+        String email = (tm.getValueAt(0, 4).toString());
+        String address = (tm.getValueAt(0, 5).toString());
+        String postcode = (tm.getValueAt(0, 6).toString());
+        String city = (tm.getValueAt(0, 7).toString());
+
+        txtViewStudentPersonNbr.setText(selectedStudent);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city);
+        this.txtViewStudentPersonNbr.setEditable(false);
+        this.txtViewStudentFirstName.setEditable(false);
+        this.txtViewStudentLastName.setEditable(false);
+        this.txtViewStudentPhoneNbr.setEditable(false);
+        this.txtViewStudentEmail.setEditable(false);
+        this.txtViewStudentAdress.setEditable(false);
+        this.txtViewStudentPostCode.setEditable(false);
+        this.txtViewStudentCity.setEditable(false);
+
+        this.populateStudentTable();
 
     }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
 // </editor-fold>
