@@ -11,15 +11,15 @@ package grupp9_uppgift3;
 public class MainView extends javax.swing.JFrame {
 
     
-    private OfficeExtractor officeExtractor;
+
     
-    public MainView(OfficeExtractor officeExtractor) {
+    public MainView() {
         
-        this.officeExtractor = officeExtractor;
+
         
         initComponents();
         
-        this.jTextArea1.setText(this.officeExtractor.getWordString());
+
                 
     }
     
