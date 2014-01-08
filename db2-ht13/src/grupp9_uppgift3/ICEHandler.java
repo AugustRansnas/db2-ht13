@@ -5,7 +5,6 @@
  */
 package grupp9_uppgift3;
 
-import java.io.File;
 import java.util.ResourceBundle;
 import javax.swing.JPanel;
 import org.icepdf.ri.common.SwingController;
@@ -25,11 +24,13 @@ public class ICEHandler {
 
         swingController = new SwingController(); //Starts the built in controller of icePDF  
         
+        //Build in ICEproperties manager
         PropertiesManager properties = new PropertiesManager(System.getProperties(), ResourceBundle.getBundle(PropertiesManager.DEFAULT_MESSAGE_BUNDLE));
         
         properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, false);
         properties.setBoolean(PropertiesManager.PROPERTY_SHOW_TOOLBAR_UTILITY, false);
         
+        //Built in API that builds swing components
         swingViewBuilder = new SwingViewBuilder(swingController, properties);
 
     }
@@ -54,7 +55,7 @@ public class ICEHandler {
 
         String workingDirectory = System.getProperty("user.dir");
 
-        String packageFolder = "/src/grupp9_uppgift3/";
+        String packageFolder = "/src/grupp9_uppgift3/"; //Path to our package
 
         String fullPath = workingDirectory + packageFolder + fileName;
 
