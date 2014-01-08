@@ -300,9 +300,7 @@ public class View extends javax.swing.JFrame {
         lblViewCourseCredits = new javax.swing.JLabel();
         pnlCourseResults = new javax.swing.JPanel();
         lblViewCoursePassedStudents = new javax.swing.JLabel();
-        lblViewCourseStudentsWithA = new javax.swing.JLabel();
         lblViewCourseNonPassedStudents = new javax.swing.JLabel();
-        txtViewCourseStudentsWithA = new javax.swing.JTextField();
         scrollPaneStudentsOnCourse = new javax.swing.JScrollPane();
         tblFinishedStudentsOnCourse = new javax.swing.JTable();
         scrollPaneNotFInishedStudentsOnCourse = new javax.swing.JScrollPane();
@@ -311,6 +309,8 @@ public class View extends javax.swing.JFrame {
         rbtnDeleteCourse = new javax.swing.JRadioButton();
         btnDeleteRegisterCourse = new javax.swing.JButton();
         lblResponsRegisterCourse = new javax.swing.JLabel();
+        lblViewCourseStudentsWithA = new javax.swing.JLabel();
+        txtViewCourseStudentsWithA = new javax.swing.JTextField();
         pnlHighestPassedCourse = new javax.swing.JPanel();
         scrollPaneCourseFlow = new javax.swing.JScrollPane();
         tblCourseFlow = new javax.swing.JTable();
@@ -459,7 +459,7 @@ public class View extends javax.swing.JFrame {
         scrollPanesFinishedCourses.setViewportView(tblSelectedStudentsUnfinishedCourses);
 
         buttonGroupStudent.add(rbtnDeleteStudent);
-        rbtnDeleteStudent.setText("Radera student");
+        rbtnDeleteStudent.setText("Avregistrera student");
 
         buttonGroupStudent.add(rbtnRegisterStudent);
         rbtnRegisterStudent.setSelected(true);
@@ -725,9 +725,6 @@ public class View extends javax.swing.JFrame {
 
         lblViewCoursePassedStudents.setText("Studenter med avslutad kurs");
 
-        lblViewCourseStudentsWithA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblViewCourseStudentsWithA.setText("Andel studenter med betyg A:");
-
         lblViewCourseNonPassedStudents.setText("Studenter med ej avslutad kurs");
 
         tblFinishedStudentsOnCourse.setAutoCreateRowSorter(true);
@@ -764,17 +761,12 @@ public class View extends javax.swing.JFrame {
         pnlCourseResultsLayout.setHorizontalGroup(
             pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCourseResultsLayout.createSequentialGroup()
-                .addGap(0, 601, Short.MAX_VALUE)
-                .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneNotFInishedStudentsOnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblViewCourseNonPassedStudents))
                 .addGap(6, 6, 6)
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneStudentsOnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(scrollPaneStudentsOnCourse, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                     .addGroup(pnlCourseResultsLayout.createSequentialGroup()
                         .addComponent(lblViewCoursePassedStudents)
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -789,10 +781,7 @@ public class View extends javax.swing.JFrame {
                 .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneNotFInishedStudentsOnCourse)
                     .addComponent(scrollPaneStudentsOnCourse))
-                .addGap(11, 11, 11)
-                .addGroup(pnlCourseResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblViewCourseStudentsWithA)))
+                .addGap(31, 31, 31))
         );
 
         buttonGroupCourse.add(rbtnRegisterCourse);
@@ -805,7 +794,7 @@ public class View extends javax.swing.JFrame {
         });
 
         buttonGroupCourse.add(rbtnDeleteCourse);
-        rbtnDeleteCourse.setText("Radera kurs");
+        rbtnDeleteCourse.setText("Ta bort kurs");
         rbtnDeleteCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtnDeleteCourseActionPerformed(evt);
@@ -821,6 +810,9 @@ public class View extends javax.swing.JFrame {
 
         lblResponsRegisterCourse.setForeground(new java.awt.Color(255, 0, 0));
         lblResponsRegisterCourse.setText("jLabel1");
+
+        lblViewCourseStudentsWithA.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblViewCourseStudentsWithA.setText("Andel studenter med betyg A:");
 
         javax.swing.GroupLayout pnlShowCourseLayout = new javax.swing.GroupLayout(pnlShowCourse);
         pnlShowCourse.setLayout(pnlShowCourseLayout);
@@ -847,15 +839,22 @@ public class View extends javax.swing.JFrame {
                             .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36)
                         .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rbtnRegisterCourse)
-                            .addGroup(pnlShowCourseLayout.createSequentialGroup()
-                                .addComponent(rbtnDeleteCourse)
-                                .addGap(35, 35, 35)
-                                .addComponent(lblResponsRegisterCourse))
                             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                                 .addGap(21, 21, 21)
-                                .addComponent(btnDeleteRegisterCourse)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnDeleteRegisterCourse)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(pnlShowCourseLayout.createSequentialGroup()
+                                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbtnRegisterCourse)
+                                    .addGroup(pnlShowCourseLayout.createSequentialGroup()
+                                        .addComponent(rbtnDeleteCourse)
+                                        .addGap(35, 35, 35)
+                                        .addComponent(lblResponsRegisterCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
             .addGroup(pnlShowCourseLayout.createSequentialGroup()
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -878,7 +877,10 @@ public class View extends javax.swing.JFrame {
                 .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblViewCourseCredits)
-                    .addComponent(btnDeleteRegisterCourse))
+                    .addComponent(btnDeleteRegisterCourse)
+                    .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblViewCourseStudentsWithA)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1072,10 +1074,8 @@ public class View extends javax.swing.JFrame {
                             }
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this,
-                            "Kurskod får inte bestå av fler än 6 tecken",
-                            "Kan inte skapa kurs.",
-                            JOptionPane.ERROR_MESSAGE);
+                        this.lblResponsRegisterCourse.setText("Kurskod får inte bestå av fler än 6 tecken");
+                        
                     }
                 } else {
 
@@ -1096,7 +1096,7 @@ public class View extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this,
                     "Kurs " + courseCode + " är nu borttagen ur systemet.",
-                    "Kurs raderad",
+                    "Kurs borttagen",
                     JOptionPane.INFORMATION_MESSAGE);
 
             this.setSelectedCourse(null);
@@ -1163,7 +1163,7 @@ public class View extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this,
                     "Studenten " + firstName + " " + lastName + " med personnummer " + personNbr + " är nu borttagen ur systemet.",
-                    "Student raderad",
+                    "Student avregistrerad",
                     JOptionPane.INFORMATION_MESSAGE);
 
             this.setSelectedStudent(null);
