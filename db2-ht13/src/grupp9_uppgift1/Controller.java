@@ -28,6 +28,7 @@ public class Controller {
     //<editor-fold desc="Student operations" defaultstate="collapsed">
     /**
      * Calls the data access layer to register a new student.
+     * @param studentData array of strings holding the data needed to register a student
      */
     protected void registerNewStudent(String[] studentData) {
 
@@ -40,6 +41,7 @@ public class Controller {
 
     /**
      * Calls the data access layer to delete a student.
+     * @param personNbr the personal number of the student
      */
     protected void deleteStudent(String personNbr) {
 

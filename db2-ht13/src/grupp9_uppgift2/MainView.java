@@ -142,9 +142,6 @@ public class MainView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateTableActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdateTable;
