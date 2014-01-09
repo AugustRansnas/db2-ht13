@@ -15,25 +15,21 @@ import org.icepdf.ri.common.SwingController;
 public class MainView extends javax.swing.JFrame {
 
     private ICEHandler ice1;
-    
     private ICEHandler ice2;
 
     MainView(ICEHandler ice1, ICEHandler ice2) {
         
         initComponents();
         
-        this.ice1 = ice1;
-        
+        this.ice1 = ice1;       
         this.ice2 = ice2;
         
         
-        ice1.loadFile("Wordreport.pdf");
-        
+        this.ice1.loadFile("Wordreport.pdf");     
         this.jTabbedPane1.add(ice1.getViewerPanel(), "Word Report");
         
         
-        ice2.loadFile("Excelreport.pdf");
-        
+        this.ice2.loadFile("Excelreport.pdf");       
         this.jTabbedPane1.add(ice2.getViewerPanel(), "Excel Report");
         
         this.pack();
