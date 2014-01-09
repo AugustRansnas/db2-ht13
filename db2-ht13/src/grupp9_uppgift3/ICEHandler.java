@@ -5,7 +5,6 @@
  */
 package grupp9_uppgift3;
 
-import java.io.File;
 import java.util.ResourceBundle;
 import javax.swing.JPanel;
 import org.icepdf.ri.common.SwingController;

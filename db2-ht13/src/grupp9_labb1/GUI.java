@@ -7,7 +7,6 @@ package grupp9_labb1;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextArea;
 
 /**
  *
@@ -19,6 +18,7 @@ public class GUI extends javax.swing.JFrame {
 
     /**
      * Creates new form GUI
+     * @param controller kommunicerar med databas
      */
     public GUI(Controller controller) {
         

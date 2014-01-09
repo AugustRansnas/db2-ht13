@@ -4,13 +4,6 @@
  */
 package grupp9_uppgift3;
 
-import java.io.File;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import org.icepdf.ri.common.ComponentKeyBinding;
-import org.icepdf.ri.common.SwingController;
-import org.icepdf.ri.common.SwingViewBuilder;
-
 /**
  *
  * @author svalan

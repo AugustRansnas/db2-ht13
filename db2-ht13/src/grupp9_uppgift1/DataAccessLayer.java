@@ -446,8 +446,7 @@ public class DataAccessLayer {
                 + courseData[1] + "', " + courseData[2] + ")";
 
         executeUpdate(sqlString);
-
-        // TODO: ska ta in en selectad kurs
+        
     }
 
     protected void deleteCourse(String courseCode) {
@@ -542,11 +541,10 @@ public class DataAccessLayer {
         }
         return null;
 
-        // TODO: se över namnkonventioner i db. Vet ej om dessa stämmer överallt
     }
 
     protected TableModel getSingleStudent(String pnr) {
-        TableModel tm = new DefaultTableModel();
+        TableModel tm;
         String sqlString = "SELECT * ";
         sqlString += "FROM Student ";
         sqlString += "WHERE pnr = '" + pnr + "'";
@@ -558,7 +556,7 @@ public class DataAccessLayer {
 
     protected float percentagePassingCourse(String courseCode) {
 
-        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
+        //den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
         int nbrOfStudents = this.getNumberOfStudents(courseCode);
         int nbrOfFails = this.getNumberOfStudentsWithGrade(courseCode, "U");
         int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
@@ -570,7 +568,7 @@ public class DataAccessLayer {
 
     protected float percentageWithGradeAOnCourse(String courseCode) {
 
-        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
+        //den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
         int nbrOfStudents = this.getNumberOfStudents(courseCode);
         int nbrOfA = this.getNumberOfStudentsWithGrade(courseCode, "A");
         //int nbrOfSuccesses = nbrOfStudents - nbrOfFails;
@@ -583,7 +581,7 @@ public class DataAccessLayer {
 
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
 
-        //TODO: note to self joel - den här metoden delar potentiellt med noll, men java verkar kunna hantera det
+        //den här metoden delar potentiellt med noll, men java verkar kunna hantera det
         int numberOfStudents = getNumberOfStudents(courseCode);
         int numberOfStudentsWithGrade = getNumberOfStudentsWithGrade(courseCode, grade);
         float percentageOfStudentsWithGrade;

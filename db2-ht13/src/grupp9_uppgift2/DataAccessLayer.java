@@ -78,6 +78,8 @@ public class DataAccessLayer {
             }
 
             DefaultTableModel dtm = new DefaultTableModel(dataArray, columnHeadings) {
+                
+                @Override
                 public boolean isCellEditable(int row, int column) {
 
                     return false;

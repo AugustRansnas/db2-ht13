@@ -55,11 +55,8 @@ public class Controller {
      */
     protected boolean checkIfStudentExists(String string) {
 
-        if (this.dataAccessLayer.checkIfStudentExists(string)) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.dataAccessLayer.checkIfStudentExists(string);
+  
     }
 
     /**

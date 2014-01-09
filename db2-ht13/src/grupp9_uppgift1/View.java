@@ -1215,7 +1215,7 @@ public class View extends javax.swing.JFrame {
     }//GEN-LAST:event_btnViewStudentAddCourseActionPerformed
 
     private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked
-        // TODO add your handling code here:
+
         int row = tblFinishedStudentsOnCourse.getSelectedRow();
         String selectedStudent = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
         this.tabbedPane.setSelectedIndex(0);

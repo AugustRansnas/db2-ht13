@@ -17,6 +17,8 @@ public class MainView extends javax.swing.JFrame {
 
     /**
      * Creates new form MainView
+     * 
+     * @param controller Handler communication with DataAccessLayer
      */
     public MainView(Controller controller) {
         this.controller = controller;
