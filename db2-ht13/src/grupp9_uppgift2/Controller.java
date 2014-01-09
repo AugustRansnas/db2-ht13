@@ -1,16 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package grupp9_uppgift2;
 
 import javax.swing.table.TableModel;
 
 /**
- *
- * @author Joel
+ * Handles communication with database
+ * 
+ * @author Jonas Ahrne
+ * @author August Ransnäs
+ * @author Viktor Voigt
+ * @author Joel Pennegård
  */
 public class Controller {
     

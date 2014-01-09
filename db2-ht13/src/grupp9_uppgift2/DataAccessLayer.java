@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package grupp9_uppgift2;
 
 import java.sql.Connection;
@@ -17,15 +13,26 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
- *
- * @author Joel
+ * Handles communication with database
+ * 
+ * @author Jonas Ahrne
+ * @author August Ransnäs
+ * @author Viktor Voigt
+ * @author Joel Pennegård
  */
 public class DataAccessLayer {
 
-    Connection connection;
+    private Connection connection;
 
+    /**
+     * Initializes class with proper connection.
+     * 
+     * @param connection connection to database
+     */
     protected DataAccessLayer(Connection connection) {
+        
         this.connection = connection;
+        
     }
 
     private ResultSet excecuteQuery(String sqlString) {
@@ -38,6 +45,7 @@ public class DataAccessLayer {
             Statement stmt = connection.createStatement();
 
             rst = stmt.executeQuery(sqlString);
+            
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }

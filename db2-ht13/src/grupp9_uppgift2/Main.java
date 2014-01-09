@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 package grupp9_uppgift2;
 
@@ -13,11 +8,23 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
+ * This class initializes connection to database, DataAcessLayer, Controller and
+ * Viewer.
  *
- * @author Joel
+ * @author Jonas Ahrne
+ * @author August Ransnäs
+ * @author Viktor Voigt
+ * @author Joel Pennegård
  */
 public class Main {
-    
+
+    /**
+     * This class initializes connection to database, DataAcessLayer, Controller
+     * and Viewer.
+     *
+     * @param args arguments from system
+     * @throws java.sql.SQLException May throw SQL exception if driver fails to load
+     */
     public static void main(String[] args) throws SQLException {
 
         try {
@@ -43,11 +50,11 @@ public class Main {
         DataAccessLayer dataAccessLayer = new DataAccessLayer(connection);
 
         Controller controller = new Controller(dataAccessLayer);
-     
+
         MainView mainView = new MainView(controller);
 
-        mainView.setVisible(true);       
-                 
+        mainView.setVisible(true);
+
     }
-    
+
 }

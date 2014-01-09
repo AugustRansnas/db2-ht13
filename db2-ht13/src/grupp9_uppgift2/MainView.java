@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package grupp9_uppgift2;
 
 import javax.swing.table.TableModel;
@@ -138,6 +134,8 @@ public class MainView extends javax.swing.JFrame {
                 tm = controller.getCronusTableWithMostRows();
                 this.tblList.setModel(tm);
                 break;
+            default:
+                System.out.println("Combobox inoput out of switch range");
         }
 
     }//GEN-LAST:event_btnUpdateTableActionPerformed
