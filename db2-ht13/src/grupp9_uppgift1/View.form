@@ -269,17 +269,26 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnViewStudentAddCourse" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="scrollPanesFinishedCourses" alignment="0" min="-2" pref="544" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblRegisterCourseResult" min="-2" pref="134" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="comboBoxRegisterCourseResult" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblRegisterCourseResult" min="-2" pref="134" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="comboBoxRegisterCourseResult" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="lblViewStudentPassedCourses" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnRegisterCourseResult" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="lblDeleteStudentFromCourse" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="btnDeleteStudentFromCourse" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="scrollPanesFinishedCourses" alignment="0" min="-2" pref="544" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="lblViewStudentNonPassedCourses" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblViewStudentPassedCourses" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -358,6 +367,8 @@
                               <Component id="btnRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="comboBoxRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lblRegisterCourseResult" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDeleteStudentFromCourse" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnDeleteStudentFromCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblViewStudentPassedCourses" min="-2" max="-2" attributes="0"/>
@@ -570,6 +581,19 @@
                       <Color blue="0" green="0" red="ff" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="jLabel1"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnDeleteStudentFromCourse">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="OK"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteStudentFromCourseActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblDeleteStudentFromCourse">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Avregistrera student fr&#xe5;n kurs"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -813,13 +837,15 @@
                               <Component id="rbtnRegisterCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnDeleteRegisterCourse" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                   <Component id="txtViewCourseStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblViewCourseStudentsWithA" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblViewCourseCredits" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnDeleteRegisterCourse" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -946,6 +972,9 @@
                               <JTableSelectionModel selectionMode="1"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblNotFinishedStudentsOnCourseMouseClicked"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

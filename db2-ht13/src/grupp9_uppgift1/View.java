@@ -11,11 +11,13 @@ import javax.swing.table.TableModel;
  *
  * @author svalan
  */
-public class View extends javax.swing.JFrame {
+public class View extends javax.swing.JFrame  {
  
     private final Controller controller;
     private String selectedStudent;
     private String selectedCourse;
+    
+
 
     /**
      * Creates new form View.
@@ -34,7 +36,7 @@ public class View extends javax.swing.JFrame {
 
     }
 
-    private void setSelectedStudent(String selectedStudent) {
+    protected void setSelectedStudent(String selectedStudent) {
 
         this.selectedStudent = selectedStudent;
 
@@ -280,6 +282,8 @@ public class View extends javax.swing.JFrame {
         comboBoxRegisterCourseResult = new javax.swing.JComboBox();
         btnRegisterCourseResult = new javax.swing.JButton();
         lblResponsStudentInformation = new javax.swing.JLabel();
+        btnDeleteStudentFromCourse = new javax.swing.JButton();
+        lblDeleteStudentFromCourse = new javax.swing.JLabel();
         pnlCourse = new javax.swing.JPanel();
         pnlFindCourse = new javax.swing.JPanel();
         txtFindCourseInput = new javax.swing.JTextField();
@@ -490,6 +494,15 @@ public class View extends javax.swing.JFrame {
         lblResponsStudentInformation.setForeground(new java.awt.Color(255, 0, 0));
         lblResponsStudentInformation.setText("jLabel1");
 
+        btnDeleteStudentFromCourse.setText("OK");
+        btnDeleteStudentFromCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteStudentFromCourseActionPerformed(evt);
+            }
+        });
+
+        lblDeleteStudentFromCourse.setText("Avregistrera student från kurs");
+
         javax.swing.GroupLayout pnlViewStudentLayout = new javax.swing.GroupLayout(pnlViewStudent);
         pnlViewStudent.setLayout(pnlViewStudentLayout);
         pnlViewStudentLayout.setHorizontalGroup(
@@ -544,15 +557,22 @@ public class View extends javax.swing.JFrame {
                                     .addComponent(comboBoxViewStudentAddCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btnViewStudentAddCourse))
+                                .addComponent(scrollPanesFinishedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(pnlViewStudentLayout.createSequentialGroup()
-                                    .addComponent(lblRegisterCourseResult, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlViewStudentLayout.createSequentialGroup()
+                                            .addComponent(lblRegisterCourseResult, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(comboBoxRegisterCourseResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblViewStudentPassedCourses))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(comboBoxRegisterCourseResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnRegisterCourseResult)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblDeleteStudentFromCourse)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnRegisterCourseResult))
-                                .addComponent(scrollPanesFinishedCourses, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblViewStudentNonPassedCourses)
-                            .addComponent(lblViewStudentPassedCourses))))
+                                    .addComponent(btnDeleteStudentFromCourse)
+                                    .addGap(2, 2, 2)))
+                            .addComponent(lblViewStudentNonPassedCourses))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlViewStudentLayout.setVerticalGroup(
@@ -611,7 +631,9 @@ public class View extends javax.swing.JFrame {
                 .addGroup(pnlViewStudentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegisterCourseResult)
                     .addComponent(comboBoxRegisterCourseResult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRegisterCourseResult))
+                    .addComponent(lblRegisterCourseResult)
+                    .addComponent(lblDeleteStudentFromCourse)
+                    .addComponent(btnDeleteStudentFromCourse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblViewStudentPassedCourses)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -751,6 +773,11 @@ public class View extends javax.swing.JFrame {
             }
         ));
         tblNotFinishedStudentsOnCourse.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tblNotFinishedStudentsOnCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblNotFinishedStudentsOnCourseMouseClicked(evt);
+            }
+        });
         scrollPaneNotFInishedStudentsOnCourse.setViewportView(tblNotFinishedStudentsOnCourse);
 
         javax.swing.GroupLayout pnlCourseResultsLayout = new javax.swing.GroupLayout(pnlCourseResults);
@@ -871,13 +898,14 @@ public class View extends javax.swing.JFrame {
                     .addComponent(lblViewCourseCourseName)
                     .addComponent(rbtnRegisterCourse))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblViewCourseCredits)
-                    .addComponent(btnDeleteRegisterCourse)
+                .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtViewCourseStudentsWithA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblViewCourseStudentsWithA)))
+                        .addComponent(lblViewCourseStudentsWithA))
+                    .addGroup(pnlShowCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtViewCourseCredits, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblViewCourseCredits)
+                        .addComponent(btnDeleteRegisterCourse)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -1216,15 +1244,15 @@ public class View extends javax.swing.JFrame {
         int row = tblFinishedStudentsOnCourse.getSelectedRow();
         String selectedStudent = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
         this.tabbedPane.setSelectedIndex(0);
-        this.clearStudentInformation();
         this.populateStudentsCurrentAndPastCourses(selectedStudent);
         this.populateComboBoxAddCourse(selectedStudent);
         this.populateCourseFlowTable();
-
+        this.clearStudentInformation();
+        this.setSelectedStudent(selectedStudent);
         this.rbtnDeleteStudent.setEnabled(true);
         this.rbtnDeleteStudent.setSelected(true);
 
-        TableModel tm = controller.getSingleStudent(selectedStudent);
+        TableModel tm = this.controller.getSingleStudent(selectedStudent);
         String firstname = (tm.getValueAt(0, 1).toString());
         String lastname = (tm.getValueAt(0, 2).toString());
         String phonenbr = (tm.getValueAt(0, 3).toString());
@@ -1241,24 +1269,65 @@ public class View extends javax.swing.JFrame {
         txtViewStudentAdress.setText(address);
         txtViewStudentPostCode.setText(postcode);
         txtViewStudentCity.setText(city);
-        this.txtViewStudentPersonNbr.setEditable(false);
-        this.txtViewStudentFirstName.setEditable(false);
-        this.txtViewStudentLastName.setEditable(false);
-        this.txtViewStudentPhoneNbr.setEditable(false);
-        this.txtViewStudentEmail.setEditable(false);
-        this.txtViewStudentAdress.setEditable(false);
-        this.txtViewStudentPostCode.setEditable(false);
-        this.txtViewStudentCity.setEditable(false);
-
         this.populateStudentTable();
 
     }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
+
+    private void btnDeleteStudentFromCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteStudentFromCourseActionPerformed
+        // TODO add your handling code here:
+    
+        String selectedStudent = this.txtViewStudentPersonNbr.getText();
+        int row = this.tblSelectedStudentsUnfinishedCourses.getSelectedRow();
+        String selectedCcode = (tblSelectedStudentsUnfinishedCourses.getModel().getValueAt(row, 1).toString());  
+        this.controller.deleteStudentFromCourse(selectedStudent,selectedCcode);
+        this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateComboBoxAddCourse(selectedStudent);
+        this.populateCourseFlowTable();
+        
+    }//GEN-LAST:event_btnDeleteStudentFromCourseActionPerformed
+
+    private void tblNotFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNotFinishedStudentsOnCourseMouseClicked
+        // TODO add your handling code here:
+        
+        int row = tblNotFinishedStudentsOnCourse.getSelectedRow();
+        String selectedStudent = (tblNotFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        
+        this.tabbedPane.setSelectedIndex(0);
+        this.populateStudentsCurrentAndPastCourses(selectedStudent);
+        this.populateComboBoxAddCourse(selectedStudent);
+        this.populateCourseFlowTable();
+        this.rbtnDeleteStudent.setEnabled(true);
+        this.rbtnDeleteStudent.setSelected(true);
+        this.clearStudentInformation();
+        this.setSelectedStudent(selectedStudent);
+
+        TableModel tm = this.controller.getSingleStudent(selectedStudent);
+        String firstname = (tm.getValueAt(0, 1).toString());
+        String lastname = (tm.getValueAt(0, 2).toString());
+        String phonenbr = (tm.getValueAt(0, 3).toString());
+        String email = (tm.getValueAt(0, 4).toString());
+        String address = (tm.getValueAt(0, 5).toString());
+        String postcode = (tm.getValueAt(0, 6).toString());
+        String city = (tm.getValueAt(0, 7).toString());
+
+        txtViewStudentPersonNbr.setText(selectedStudent);
+        txtViewStudentFirstName.setText(firstname);
+        txtViewStudentLastName.setText(lastname);
+        txtViewStudentPhoneNbr.setText(phonenbr);
+        txtViewStudentEmail.setText(email);
+        txtViewStudentAdress.setText(address);
+        txtViewStudentPostCode.setText(postcode);
+        txtViewStudentCity.setText(city);
+        this.populateStudentTable();
+        
+    }//GEN-LAST:event_tblNotFinishedStudentsOnCourseMouseClicked
 // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="GUI variable declarations auto generated code">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteRegisterCourse;
     private javax.swing.JButton btnDeleteRegisterStudent;
+    private javax.swing.JButton btnDeleteStudentFromCourse;
     private javax.swing.JButton btnFindCourse;
     private javax.swing.JButton btnFindStudent;
     private javax.swing.JButton btnRegisterCourseResult;
@@ -1268,6 +1337,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkShowAllAttributes;
     private javax.swing.JComboBox comboBoxRegisterCourseResult;
     private javax.swing.JComboBox comboBoxViewStudentAddCourse;
+    private javax.swing.JLabel lblDeleteStudentFromCourse;
     private javax.swing.JLabel lblFindCourseInput;
     private javax.swing.JLabel lblFindStudent;
     private javax.swing.JLabel lblRegisterCourseResult;

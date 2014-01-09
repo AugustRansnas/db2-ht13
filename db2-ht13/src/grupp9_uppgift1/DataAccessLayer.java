@@ -714,11 +714,20 @@ public class DataAccessLayer {
 
     protected int getStudentsRegisteredPointTotal(String pNr) {
 
-        String sqlString = "Select SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + pNr + "' GROUP BY s.pnr";
+        String sqlString = "SELECT SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + pNr + "' GROUP BY s.pnr";
         ResultSet rset = this.executeQuery(sqlString);
         int intToReturn = this.getFirstCellInResultSetAsInt(rset);
         return intToReturn;
 
+    }
+    /**
+     * Deletes a student from a course before examination
+     * 
+     * @param selectedStudent is a selected student from the student list
+     * @param selectedCcode is the selected course from the not finished courses table*/
+    protected void deleteStudentFromCourse(String selectedStudent, String selectedCcode){
+        String sqlString = "DELETE FROM Studies WHERE pnr = '" + selectedStudent + "' AND ccode = '" + selectedCcode +"'";
+        this.executeUpdate(sqlString);
     }
 
     //</editor-fold>

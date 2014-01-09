@@ -357,6 +357,14 @@ public class Controller {
         return oldTotalCredits + creditsToAdd <= 45;
 
     }
+    /**
+     * Deletes a student from a course before examination
+     * 
+     * @param selectedStudent is a selected student from the student list
+     * @param selectedCcode is the selected course from the not finished courses table*/
+    protected void deleteStudentFromCourse(String selectedStudent, String selectedCcode){
+        this.dataAccessLayer.deleteStudentFromCourse(selectedStudent,selectedCcode);
+    }
 
 //</editor-fold>
 }
