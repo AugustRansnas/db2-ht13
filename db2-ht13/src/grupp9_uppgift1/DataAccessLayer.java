@@ -15,12 +15,20 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author Joel
+ * @author Joel Pennegård
+ * @author Viktor Voigt
+ * @author August Ransnäs
+ * @author Jonas Ahrne
  */
 public class DataAccessLayer {
 
     private final Connection connection;
 
+    /**
+     * Initalizes with the odbc connection we are going to use
+     *
+     * @param connection connection to database
+     */
     protected DataAccessLayer(Connection connection) {
 
         this.connection = connection;
@@ -36,7 +44,6 @@ public class DataAccessLayer {
         System.out.println("executeUpdate(" + sqlString + ")");
 
         try {
-            DatabaseMetaData md = connection.getMetaData();
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(sqlString);
         } catch (SQLException ex) {
@@ -135,9 +142,9 @@ public class DataAccessLayer {
 
                     newString += " ";
                 }
-                
+
                 stringArray = Arrays.copyOf(stringArray, stringArray.length + 1);
-                stringArray [stringArray.length - 1] = newString;
+                stringArray[stringArray.length - 1] = newString;
             }
 
         } catch (SQLException ex) {
@@ -148,27 +155,26 @@ public class DataAccessLayer {
     }
 
     private String[] getRowAsStringArray(ResultSet rset, int rowNr) {
-        
+
         String[] rowArray = null;
-        
+
         try {
-            
+
             ResultSetMetaData md = rset.getMetaData();
             int columnCount = md.getColumnCount();
             rset.absolute(rowNr);
-            
+
             rowArray = new String[columnCount];
             for (int i = 1; i <= columnCount; i++) {
                 rowArray[i - 1] = rset.getString(i);
             }
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rowArray;
-        
+
     }
 
     private boolean checkIfResultSetHasContent(ResultSet rset) {
@@ -276,6 +282,11 @@ public class DataAccessLayer {
 
     //</editor-fold>
     //<editor-fold desc="Student queries" defaultstate="collapsed">
+    /**
+     * Registers a new student
+     *
+     * @param studentData holds data of student
+     */
     protected void registerNewStudent(String[] studentData) {
 
         String sqlString = "INSERT INTO Student VALUES (" + "'" + studentData[0] + "'";
@@ -289,9 +300,15 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    protected boolean checkIfStudentExists(String pnr) {
+    /**
+     * Checks if a student exists
+     *
+     * @param personNbr personal number of student
+     * @return true if student exists
+     */
+    protected boolean checkIfStudentExists(String personNbr) {
 
-        String sqlString = "SELECT COUNT(*) FROM Student WHERE pnr = '" + pnr + "';";
+        String sqlString = "SELECT COUNT(*) FROM Student WHERE pnr = '" + personNbr + "';";
 
         ResultSet rset = executeQuery(sqlString);
 
@@ -299,6 +316,14 @@ public class DataAccessLayer {
 
     }
 
+    /**
+     * Method that gets a TableModel filled with student found with a search
+     * string.
+     *
+     * @param showAllAttributes selects if we want many of few attributes returned
+     * @param searchString string to search with
+     * @return found students
+     */
     protected TableModel findStudents(boolean showAllAttributes, String searchString) {
         String sqlString;
         if (showAllAttributes) {
@@ -323,6 +348,12 @@ public class DataAccessLayer {
 
     }
 
+    /**
+     * Counts number of students studying a specific course
+     * 
+     * @param courseCode code of course
+     * @return number of students
+     */
     protected int getNumberOfStudents(String courseCode) {
 
         int numberOfStudents = 0;
@@ -338,6 +369,13 @@ public class DataAccessLayer {
         return numberOfStudents;
     }
 
+    /**
+     * Gets number of students with a specific grade on a specific course
+     * 
+     * @param courseCode code of course
+     * @param grade grade
+     * @return number of students
+     */
     protected int getNumberOfStudentsWithGrade(String courseCode, String grade) {
 
         int numberOfStudentsWithGrade = 0;
@@ -353,11 +391,17 @@ public class DataAccessLayer {
         return numberOfStudentsWithGrade;
     }
 
+    /**
+     * Deletes a student from database.
+     * 
+     * @param personNbr personal number of student
+     */
     protected void deleteStudent(String personNbr) {
         String sqlString = "DELETE Student WHERE pnr = '" + personNbr + "'";
         executeUpdate(sqlString);
     }
 
+    
     protected TableModel getAllStudents() {
         String sqlString = "SELECT pnr, firstname, lastname FROM Student";
         ResultSet rs = this.executeQuery(sqlString);
@@ -435,7 +479,7 @@ public class DataAccessLayer {
         ResultSet rset = this.executeQuery(sqlQuery);
 
         String[] stringsToReturn = this.getRowAsStringArray(rset, 1);
-        
+
         return stringsToReturn;
 
     }
@@ -446,7 +490,7 @@ public class DataAccessLayer {
                 + courseData[1] + "', " + courseData[2] + ")";
 
         executeUpdate(sqlString);
-        
+
     }
 
     protected void deleteCourse(String courseCode) {

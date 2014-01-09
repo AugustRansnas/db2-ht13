@@ -28,7 +28,9 @@ public class Controller {
     //<editor-fold desc="Student operations" defaultstate="collapsed">
     /**
      * Calls the data access layer to register a new student.
-     * @param studentData array of strings holding the data needed to register a student
+     *
+     * @param studentData array of strings holding the data needed to register a
+     * student
      */
     protected void registerNewStudent(String[] studentData) {
 
@@ -41,6 +43,7 @@ public class Controller {
 
     /**
      * Calls the data access layer to delete a student.
+     *
      * @param personNbr the personal number of the student
      */
     protected void deleteStudent(String personNbr) {
@@ -53,12 +56,13 @@ public class Controller {
      * Calls the data access layer to check if the personal number of the
      * student already exists in the database.
      *
+     * @param personNbr number of student used to find it
      * @return true if student exists
      */
-    protected boolean checkIfStudentExists(String string) {
+    protected boolean checkIfStudentExists(String personNbr) {
 
-        return this.dataAccessLayer.checkIfStudentExists(string);
-  
+        return this.dataAccessLayer.checkIfStudentExists(personNbr);
+
     }
 
     /**
@@ -80,6 +84,8 @@ public class Controller {
      * Calls data access layer to get a table model with all students with data
      * partially matching the search string.
      *
+     * @param showAllAttributes sets if the return is a table model with all or
+     * just a few attributes
      * @param searchString string used in query to find students
      * @return contains all found students
      */
@@ -90,21 +96,41 @@ public class Controller {
         return tm;
     }
 
-    protected TableModel getStudentsCurrentCourses(String pnr) {
+    /**
+     * Method that gets a TableModel with all courses a student is currently attending.
+     *
+     * @param personNbr personal number of student
+     * @return all courses a student is currently attending
+     */
+    protected TableModel getStudentsCurrentCourses(String personNbr) {
 
-        TableModel tm = this.dataAccessLayer.getStudentsCurrentCourses(pnr);
+        TableModel tm = this.dataAccessLayer.getStudentsCurrentCourses(personNbr);
         return tm;
     }
 
-    protected TableModel getStudentsFinnishedCourses(String pnr) {
+    /**
+     * Method that gets a TableModel with all courses a student is currently attending.
+     * 
+     * @param personNbr personal number of student
+     * @return all courses a student has finished
+     */
+    protected TableModel getStudentsFinnishedCourses(String personNbr) {
 
-        TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(pnr);
+        TableModel tm = this.dataAccessLayer.getStudentsFinnishedCourses(personNbr);
         return tm;
     }
 
-    protected TableModel getSingleStudent(String pnr) {
-        TableModel tm = this.dataAccessLayer.getSingleStudent(pnr);
+    /**
+     * Method that returns data for a single student
+     * 
+     * @param personNbr personal number of student
+     * @return single student
+     */
+    protected TableModel getSingleStudent(String personNbr) {
+        
+        TableModel tm = this.dataAccessLayer.getSingleStudent(personNbr);
         return tm;
+        
     }
 
     //</editor-fold>
@@ -113,6 +139,7 @@ public class Controller {
      * Calls the data access layer to find courses with fields matching the
      * parameter.
      *
+     * @param searchString string that will be matched with data in database
      * @return TableModel with the courses from an SQL query
      */
     protected TableModel findCourses(String searchString) {
@@ -122,6 +149,12 @@ public class Controller {
         return tm;
     }
 
+    /**
+     * Method that returns data for a specific course.
+     * 
+     * @param courseCode code of a course
+     * @return array containing the data of a course
+     */
     protected String[] getCourseData(String courseCode) {
 
         return this.dataAccessLayer.getCourseData(courseCode);
@@ -197,8 +230,8 @@ public class Controller {
     protected float percentageWithGradeAOnCourse(String courseCode) {
 
         float percentageWithGradeAOnCourse = this.dataAccessLayer.percentageWithGradeAOnCourse(courseCode);
-
         return percentageWithGradeAOnCourse; //Autocast float -> String
+        
     }
 
     /**
@@ -223,9 +256,7 @@ public class Controller {
     protected TableModel getAllCourses() {
 
         TableModel tm;
-
         tm = this.dataAccessLayer.getAllCourses();
-
         return tm;
 
     }
@@ -234,18 +265,22 @@ public class Controller {
      * Calls data access layer to get a table model with all students that have
      * finished a specific course
      *
+     * @param courseCode code of course
      * @return table model with all students that have finished the course
      */
     protected TableModel getPastStudentsOnCourse(String courseCode) {
+        
         TableModel tm;
         tm = this.dataAccessLayer.getPastStudentsOnCourse(courseCode);
         return tm;
+        
     }
 
     /**
      * Calls data access layer to get a table model with all students that are
      * currently enlisted on a specific course
      *
+     * @param courseCode code of course
      * @return table model with all current students on the course
      */
     protected TableModel getCurrentStudentsOnCourse(String courseCode) {
@@ -256,33 +291,66 @@ public class Controller {
 
     //</editor-fold>
     //<editor-fold desc="Course + Student operations" defaultstate="collapsed">
-    protected void registerCourseResult(String courseCode, String pNr, String grade) {
+    
+    /**
+     * Registers a student result on a course.
+     * 
+     * @param courseCode code of course
+     * @param personNbr personal number of student
+     * @param grade the grade to register
+     */
+    protected void registerCourseResult(String courseCode, String personNbr, String grade) {
 
-        this.dataAccessLayer.registerCourseResult(courseCode, pNr, grade);
+        this.dataAccessLayer.registerCourseResult(courseCode, personNbr, grade);
+
+    }
+    
+    /**
+     * Returns array of strings with courses that can be added to a student.
+     * 
+     * @param personNbr personal number of student
+     * @return array of strings with courses that can be added to a student
+     */
+    protected String[] getCoursesThatCanBeAddedToStudent(String personNbr) {
+
+        return this.dataAccessLayer.getCoursesThatCanBeAddedToStudent(personNbr);
 
     }
 
-    protected String[] getCoursesThatCanBeAddedToStudent(String pNr) {
+    /**
+     * Registers a student on a course
+     * 
+     * @param personNbr personal number of the student
+     * @param courseCode code of course
+     */
+    void registerStudentOnCourse(String personNbr, String courseCode) {
 
-        return this.dataAccessLayer.getCoursesThatCanBeAddedToStudent(pNr);
+        this.dataAccessLayer.registerStudentOnCourse(personNbr, courseCode);
+
+    }
+    
+    /**
+     * Get the total amount of course credits a student is registered on.
+     * 
+     * @param personNbr personal number of the student
+     * @return total amount of course credits
+     */
+    protected int getStudentsRegisteredPointsTotal(String personNbr) {
+
+        return this.dataAccessLayer.getStudentsRegisteredPointTotal(personNbr);
 
     }
 
-    void registerStudentOnCourse(String selectedStudent, String courseId) {
+    /**
+     * Checks if a course can be added to the students active courses
+     * 
+     * @param courseCode code of course
+     * @param personNbr personal number of student
+     * @return true if course can be added to student
+     */
+    protected boolean checkIfCourseCanBeAddedToStudent(String courseCode, String personNbr) {
 
-        this.dataAccessLayer.registerStudentOnCourse(selectedStudent, courseId);
-
-    }
-
-    protected int getStudentsRegisteredPointsTotal(String pNr) {
-
-        return this.dataAccessLayer.getStudentsRegisteredPointTotal(pNr);
-
-    }
-
-    protected boolean checkIfCourseCanBeAddedToStudent(String courseCode, String pNr) {
-
-        int oldTotalCredits = this.getStudentsRegisteredPointsTotal(pNr);
+        int oldTotalCredits = this.getStudentsRegisteredPointsTotal(personNbr);
 
         String[] courseData = this.getCourseData(courseCode);
 
@@ -291,7 +359,6 @@ public class Controller {
         int creditsToAdd = Integer.parseInt(creditsToAddString);
 
         return oldTotalCredits + creditsToAdd <= 45;
-   
 
     }
 

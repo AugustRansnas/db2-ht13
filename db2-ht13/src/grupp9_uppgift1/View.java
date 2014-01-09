@@ -15,7 +15,7 @@ import javax.swing.table.TableModel;
  * @author svalan
  */
 public class View extends javax.swing.JFrame {
-
+ 
     private final Controller controller;
     private String selectedStudent;
     private String selectedCourse;
@@ -83,7 +83,7 @@ public class View extends javax.swing.JFrame {
             this.txtViewStudentPostCode.setEditable(false);
             this.txtViewStudentCity.setEditable(false);
 
-        } else if (selectedStudent == null) {
+        } else {
 
             this.populateStudentTable();
 
@@ -137,7 +137,7 @@ public class View extends javax.swing.JFrame {
             this.txtViewCourseName.setEditable(false);
             this.txtViewCourseCredits.setEditable(false);
 
-        } else if (selectedCourse == null) {
+        } else {
 
             this.rbtnDeleteCourse.setEnabled(false);
             this.rbtnRegisterCourse.setSelected(true);
@@ -195,7 +195,7 @@ public class View extends javax.swing.JFrame {
             this.tblSelectedStudentsUnfinishedCourses.setModel(tm1);
             this.tblStudentsFinishedCourses.setModel(tm2);
 
-        } else if (selectedStudent == null) {
+        } else {
 
             this.tblSelectedStudentsUnfinishedCourses.setModel(new DefaultTableModel());
             this.tblStudentsFinishedCourses.setModel(new DefaultTableModel());

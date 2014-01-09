@@ -22,17 +22,23 @@ import java.util.Properties;
  */
 
 public class Main {
+    
 
+    /**
+     * Starts the View, Controller; databasAcessLayer and connects them with each other
+     * 
+     * @param args arguments to the program
+     * @throws SQLException error that may be caused if drive didn't load
+     */
     public static void main(String[] args) throws SQLException {
 
         try {
-
             
             DriverManager.registerDriver(new sun.jdbc.odbc.JdbcOdbcDriver());
 
         } catch (SQLException e) {
 
-            System.out.println("Cant find driver class: " + e);
+            System.out.println("Couldn't load driver: " + e);
 
         }
 
@@ -54,12 +60,6 @@ public class Main {
 
         mainView.setVisible(true);
         
-        System.out.println(controller.getStudentsRegisteredPointsTotal("8888888888"));
-        System.out.println(controller.getStudentsRegisteredPointsTotal("8903109174"));
-     
-        
-
-
     }
 
 }

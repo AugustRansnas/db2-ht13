@@ -4,32 +4,32 @@
  */
 package grupp9_uppgift3;
 
-import java.awt.Color;
-import javax.swing.JPanel;
-import org.icepdf.ri.common.SwingController;
-
 /**
+ * Main viewport that allows user to open and inspect documents
  *
- * @author svalan
+ * @author Jonas Ahrne
+ * @author August Ransnäs
+ * @author Viktor Voigt
+ * @author Joel Pennegård
  */
+
 public class MainView extends javax.swing.JFrame {
 
-    private ICEHandler ice1;
-    private ICEHandler ice2;
-
+    /**
+     * This method takes one ICE handler per PDF viewport
+     * 
+     * @param ice1
+     * @param ice2 
+     */
     MainView(ICEHandler ice1, ICEHandler ice2) {
         
         initComponents();
-        
-        this.ice1 = ice1;       
-        this.ice2 = ice2;
-        
-        
-        this.ice1.loadFile("Wordreport.pdf");     
+ 
+        ice1.loadFile("Wordreport.pdf");     
         this.jTabbedPane1.add(ice1.getViewerPanel(), "Word Report");
         
         
-        this.ice2.loadFile("Excelreport.pdf");       
+        ice2.loadFile("Excelreport.pdf");       
         this.jTabbedPane1.add(ice2.getViewerPanel(), "Excel Report");
         
         this.pack();
