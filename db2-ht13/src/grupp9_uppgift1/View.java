@@ -2,7 +2,11 @@
 package grupp9_uppgift1;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.sql.Timestamp;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -1004,6 +1008,7 @@ public class View extends javax.swing.JFrame  {
         this.lblResponsFindStudent.setForeground(Color.black);
         this.lblResponsFindStudent.setText("Följande studenters information matchade söktermen: ");
      
+        this.getEventResponseTime(evt);     
         }
         
 
@@ -1356,5 +1361,18 @@ public class View extends javax.swing.JFrame  {
     private javax.swing.JTextField txtViewStudentPostCode;
     // End of variables declaration//GEN-END:variables
 // </editor-fold>
+
+    private void getEventResponseTime(ActionEvent evt) {
+        
+        long eventTimeStamp = evt.getWhen();
+        
+        java.util.Date date= new java.util.Date();
+	
+        long currentTimeStamp = new Timestamp(date.getTime()).getTime();
+        
+        Component c = (Component)evt.getSource();
+        
+        System.out.println(currentTimeStamp - eventTimeStamp);
+    }
 
 }
