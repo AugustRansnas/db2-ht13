@@ -340,9 +340,9 @@ public class DataAccessLayer {
 
         String sqlString = "SELECT COUNT(*) FROM Student WHERE pnr = '" + personNbr + "';";
 
-        ResultSet rset = executeQuery(sqlString);
+        ResultSet rs = executeQuery(sqlString);
 
-        return this.getFirstCellInResultSetAsInt(rset) != 0;
+        return this.getFirstCellInResultSetAsInt(rs) != 0;
 
     }
 
@@ -511,9 +511,9 @@ public class DataAccessLayer {
     public boolean checkIfCourseExists(String courseCode) {
 
         String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
-        ResultSet rset = executeQuery(sqlString);
+        ResultSet rs = executeQuery(sqlString);
 
-        boolean courseExists = this.checkIfResultSetHasContent(rset);
+        boolean courseExists = this.checkIfResultSetHasContent(rs);
 
         if (courseExists) {
             System.out.println("Kursen " + courseCode + " existerar redan");
@@ -533,9 +533,9 @@ public class DataAccessLayer {
 
         String sqlQuery = "SELECT * FROM Course WHERE ccode = '" + courseCode + "'";
 
-        ResultSet rset = this.executeQuery(sqlQuery);
+        ResultSet rs = this.executeQuery(sqlQuery);
 
-        String[] stringsToReturn = this.getRowAsStringArray(rset, 1);
+        String[] stringsToReturn = this.getRowAsStringArray(rs, 1);
 
         return stringsToReturn;
 
@@ -671,9 +671,9 @@ public class DataAccessLayer {
         sqlString += "AND h.ccode = '" + courseCode + "'";
 
         try {
-            ResultSet rset = executeQuery(sqlString);
-            while (rset.next()) {
-                grade = rset.getString(1);
+            ResultSet rs = executeQuery(sqlString);
+            while (rs.next()) {
+                grade = rs.getString(1);
             }
             return grade;
         } catch (SQLException ex) {
@@ -766,16 +766,16 @@ public class DataAccessLayer {
             returnTable.addColumn("Kurskod");
             returnTable.addColumn("Andel godkända studenter");
             returnTable.setRowCount(courseCount);
-            ResultSet rset = executeQuery(sqlQuery);
+            ResultSet rs = executeQuery(sqlQuery);
 
             for (int i = 0; i < courseCount; i++) {
-                rset.next();
-                String courseCode = rset.getString(1);
+                rs.next();
+                String courseCode = rs.getString(1);
                 courseNames.add(courseCode);
                 returnTable.setValueAt(courseCode, i, 0);
             }
             for (int i = 0; i < courseCount; i++) {
-                rset.next();
+                rs.next();
                 String courseCode = courseNames.get(i);
                 float courseFlow = percentagePassingCourse(courseCode);
                 String percent = String.format("%.1f", courseFlow);
@@ -825,7 +825,7 @@ public class DataAccessLayer {
      */
     protected String[] getCoursesThatCanBeAddedToStudent(String personNbr) {
 
-        ResultSet rset = this.executeQuery("SELECT * FROM Course c "
+        ResultSet rs = this.executeQuery("SELECT * FROM Course c "
                 + "WHERE c.ccode NOT IN "
                 + "(SELECT h.ccode FROM Hasstudied h "
                 + "WHERE h.pnr = '" + personNbr + "') "
@@ -833,7 +833,7 @@ public class DataAccessLayer {
                 + "(Select s.ccode FROM Studies s "
                 + "WHERE s.pnr = '" + personNbr + "')");
 
-        String[] stringArray = this.getResultSetAsStringArray(rset);
+        String[] stringArray = this.getResultSetAsStringArray(rs);
 
         return stringArray;
 
@@ -860,8 +860,8 @@ public class DataAccessLayer {
     protected int getStudentsRegisteredPointTotal(String personNbr) {
 
         String sqlString = "SELECT SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + personNbr + "' GROUP BY s.pnr";
-        ResultSet rset = this.executeQuery(sqlString);
-        int intToReturn = this.getFirstCellInResultSetAsInt(rset);
+        ResultSet rs = this.executeQuery(sqlString);
+        int intToReturn = this.getFirstCellInResultSetAsInt(rs);
         return intToReturn;
 
     }
