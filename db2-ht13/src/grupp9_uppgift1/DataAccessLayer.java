@@ -532,6 +532,7 @@ public class DataAccessLayer {
      * Gets all courses that matches the searchterm.
      * 
      * @param searchString the specified searchterm.
+     * @return all courses that matches the searchString and their information
      */
     protected TableModel findCourses(String searchString) {
 
@@ -549,7 +550,7 @@ public class DataAccessLayer {
     /**
      * Gets all courses.
      * 
-     * 
+     * @return all courses and their information
      */
     protected TableModel getAllCourses() {
 
@@ -565,6 +566,7 @@ public class DataAccessLayer {
     /**
      * gets the number of courses.
      *    
+     * @return the number of courses that exists or 0 if no courses exists
      */
     protected int getNumberOfCourses() {
 
@@ -586,6 +588,7 @@ public class DataAccessLayer {
      * Gets all the students that has finnished the specified course.
      * 
      * @param courseCode identifying code of a course.
+     * @return inforamtion about a student that has finished a specific course
      */
     protected TableModel getPastStudentsOnCourse(String courseCode) {
         String SQLString = "SELECT s.pnr, s.firstname, s.lastname, h.grade"
@@ -601,6 +604,7 @@ public class DataAccessLayer {
      * Gets all the students that are currently registered on the specified course
      * 
      * @param courseCode identifying code of a course.
+     * @return information about a student that is currently studying a specific course
      */
     protected TableModel getCurrentStudentsOnCourse(String courseCode) {
         String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.email"
@@ -620,6 +624,7 @@ public class DataAccessLayer {
      * 
      * @param personNbr personal number of a student.
      * @param courseCode identifying code of a course.
+     * @return a students grade for a specific course or null if no grade exists
      */
     protected String getStudentGradeAtCourse(String personNbr, String courseCode) {
 
@@ -646,6 +651,7 @@ public class DataAccessLayer {
      * Gets a students.
      * 
      * @param personNbr personal number of a student.
+     * @return a specific students information
      */
     protected TableModel getSingleStudent(String personNbr) {
         TableModel tm;
@@ -661,6 +667,7 @@ public class DataAccessLayer {
      * Calculates the percentage of students that has passed the specified course.
      * 
      * @param courseCode identifying code of a course.
+     * @return the percentage of students that passes a specific course
      */
     protected float percentagePassingCourse(String courseCode) {
 
