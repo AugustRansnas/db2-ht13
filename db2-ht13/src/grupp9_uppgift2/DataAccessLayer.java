@@ -44,18 +44,18 @@ public class DataAccessLayer {
 
         System.out.println("executeQuery(" + sqlString + ")");
 
-        ResultSet rst = null;
+        ResultSet rs = null;
 
         try {
             Statement stmt = connection.createStatement();
 
-            rst = stmt.executeQuery(sqlString);
+            rs = stmt.executeQuery(sqlString);
             
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return rst;
+        return rs;
 
     }
     /**
@@ -95,7 +95,7 @@ public class DataAccessLayer {
                 r++;
             }
 
-            DefaultTableModel dtm = new DefaultTableModel(dataArray, columnHeadings) {
+            DefaultTableModel tm = new DefaultTableModel(dataArray, columnHeadings) {
                 
                 @Override
                 public boolean isCellEditable(int row, int column) {
@@ -104,7 +104,7 @@ public class DataAccessLayer {
                 }
             };
 
-            return dtm;
+            return tm;
 
         } catch (SQLException ex) {
 
