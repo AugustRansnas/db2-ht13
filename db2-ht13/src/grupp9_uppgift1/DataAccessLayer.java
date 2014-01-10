@@ -289,7 +289,6 @@ public class DataAccessLayer {
 
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
-            System.out.println(sqlString);
         }
         sqlString += ")";
 
@@ -397,7 +396,10 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
     }
 
-    
+    /**
+     * Gets pnr, firstname and lastname from all students in the database.
+     * @return all the students
+     */
     protected TableModel getAllStudents() {
         String sqlString = "SELECT pnr, firstname, lastname FROM Student";
         ResultSet rs = this.executeQuery(sqlString);
@@ -407,7 +409,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-
+    /**
+     * Gets number of total students.
+     *  
+     * @return the number of students or 0
+     */
     protected int getNumberOfStudents() {
 
         try {
@@ -423,25 +429,34 @@ public class DataAccessLayer {
         }
         return 0;
     }
-
-    protected TableModel getStudentsCurrentCourses(String pnr) {
+    /**
+     * Gets the code, name and points of all courses that a student is currently registered on. 
+     *  @param personNbr personal number of student
+     *  @return the courses a student currently is studying
+     */
+    protected TableModel getStudentsCurrentCourses(String personNbr) {
         TableModel tm;
         String sqlString = "SELECT c.cname, c.ccode, c.points"
-                + " FROM course c"
+                + " FROM Course c"
                 + " WHERE c.ccode IN (SELECT s.ccode "
-                + " FROM studies s"
-                + " WHERE s.pnr = '" + pnr + "')";
+                + " FROM Studies s"
+                + " WHERE s.pnr = '" + personNbr + "')";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
         this.systemOutPrintTableModel(tm);
         return tm;
     }
-
-    protected TableModel getStudentsFinnishedCourses(String pnr) {
+    /**
+     * Gets the name, code, points and grade of all courses that a student has finnished. 
+     * 
+     * @param personNbr personal number of student
+     * @return a students finished courses
+     */
+    protected TableModel getStudentsFinnishedCourses(String personNbr) {
         TableModel tm;
         String sqlString = "SELECT c.cname, h.ccode, c.points, h.grade"
-                + " FROM hasstudied h, course c"
-                + " WHERE h.pnr = '" + pnr + "'"
+                + " FROM Hasstudied h, Course c"
+                + " WHERE h.pnr = '" + personNbr + "'"
                 + " AND h.ccode = c.ccode";
 
         ResultSet rs = this.executeQuery(sqlString);
@@ -452,6 +467,12 @@ public class DataAccessLayer {
 
     //</editor-fold>
     //<editor-fold desc="Course queries" defaultstate="collapsed">
+    /**
+     * Checks if a course exists.
+     * 
+     * @param courseCode identifying code of a course.
+     * @return true if the course exists and false if the course does not exists
+     */
     public boolean checkIfCourseExists(String courseCode) {
 
         String sqlString = "SELECT c.ccode FROM Course c WHERE (c.ccode = '" + courseCode + "')";
@@ -467,7 +488,12 @@ public class DataAccessLayer {
 
         return courseExists;
     }
-
+    /**
+     * Gets all the the information for a specific course
+     * 
+     * @param courseCode identifying code of a course.
+     * @return information about a selected course
+     */
     protected String[] getCourseData(String courseCode) {
 
         String sqlQuery = "SELECT * FROM Course WHERE ccode = '" + courseCode + "'";
@@ -479,7 +505,11 @@ public class DataAccessLayer {
         return stringsToReturn;
 
     }
-
+    /**
+     * Registers a new Course.
+     * 
+     * @param courseData an array of the specified course information.
+     */
     protected void registerNewCourse(String[] courseData) {
 
         String sqlString = "INSERT INTO Course VALUES ('" + courseData[0] + "', '"
@@ -488,13 +518,21 @@ public class DataAccessLayer {
         executeUpdate(sqlString);
 
     }
-
+    /**
+     * Deletes a specific course.
+     * 
+     * @param courseCode identifying code of a course.
+     */
     protected void deleteCourse(String courseCode) {
-        String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        String sqlString = "DELETE Course WHERE ccode = '" + courseCode + "'";
         executeUpdate(sqlString);
 
     }
-
+    /**
+     * Gets all courses that matches the searchterm.
+     * 
+     * @param searchString the specified searchterm.
+     */
     protected TableModel findCourses(String searchString) {
 
         String sqlString = "SELECT * FROM Course "
@@ -508,7 +546,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-
+    /**
+     * Gets all courses.
+     * 
+     * 
+     */
     protected TableModel getAllCourses() {
 
         String sqlString = "SELECT * FROM Course";
@@ -520,7 +562,10 @@ public class DataAccessLayer {
         return dtm;
 
     }
-
+    /**
+     * gets the number of courses.
+     *    
+     */
     protected int getNumberOfCourses() {
 
         try {
@@ -536,7 +581,12 @@ public class DataAccessLayer {
         }
         return 0;
     }
-
+    
+    /**
+     * Gets all the students that has finnished the specified course.
+     * 
+     * @param courseCode identifying code of a course.
+     */
     protected TableModel getPastStudentsOnCourse(String courseCode) {
         String SQLString = "SELECT s.pnr, s.firstname, s.lastname, h.grade"
                 + " FROM Student s, Hasstudied h"
@@ -547,7 +597,11 @@ public class DataAccessLayer {
         this.systemOutPrintTableModel(tm);
         return tm;
     }
-
+    /**
+     * Gets all the students that are currently registered on the specified course
+     * 
+     * @param courseCode identifying code of a course.
+     */
     protected TableModel getCurrentStudentsOnCourse(String courseCode) {
         String SQLString = "SELECT s.pnr, s.firstname, s.lastname, s.email"
                 + " FROM Student s, Studies s2"
@@ -561,13 +615,19 @@ public class DataAccessLayer {
 
     //</editor-fold>
     //<editor-fold desc="Student + course queries" defaultstate="collapsed">
-    protected String getStudentGradeAtCourse(String pnr, String courseCode) {
+    /**
+     * Gets the grade of a specified students on a specifiec course. 
+     * 
+     * @param personNbr personal number of a student.
+     * @param courseCode identifying code of a course.
+     */
+    protected String getStudentGradeAtCourse(String personNbr, String courseCode) {
 
         String grade = null;
         String sqlString = "SELECT h.grade ";
-        sqlString += "FROM student c, hasstudied h ";
+        sqlString += "FROM Student c, Hasstudied h ";
         sqlString += "WHERE c.pnr = h.pnr ";
-        sqlString += "AND h.pnr = '" + pnr + "' ";
+        sqlString += "AND h.pnr = '" + personNbr + "' ";
         sqlString += "AND h.ccode = '" + courseCode + "'";
 
         try {
@@ -582,18 +642,26 @@ public class DataAccessLayer {
         return null;
 
     }
-
-    protected TableModel getSingleStudent(String pnr) {
+    /**
+     * Gets a students.
+     * 
+     * @param personNbr personal number of a student.
+     */
+    protected TableModel getSingleStudent(String personNbr) {
         TableModel tm;
         String sqlString = "SELECT * ";
         sqlString += "FROM Student ";
-        sqlString += "WHERE pnr = '" + pnr + "'";
+        sqlString += "WHERE pnr = '" + personNbr + "'";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
 
     }
-
+    /**
+     * Calculates the percentage of students that has passed the specified course.
+     * 
+     * @param courseCode identifying code of a course.
+     */
     protected float percentagePassingCourse(String courseCode) {
 
         //den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
@@ -605,7 +673,11 @@ public class DataAccessLayer {
         //System.out.println(percentagePassingCourse + "% av studenterna klarade kursen " + courseCode);
         return percentagePassingCourse;
     }
-
+    /**
+     * Calculates the percentage of finnished students with the grade A on a specified course
+     * 
+     * @param courseCode identifying code of a course.
+     */
     protected float percentageWithGradeAOnCourse(String courseCode) {
 
         //den här metoden delar potentiellt med noll, men java verkar kunna hantera det        
@@ -618,7 +690,12 @@ public class DataAccessLayer {
 
         return percentageWithGradeAOnCourse;
     }
-
+    /**
+     * Calculates the percentage of students with a specified grade on a specified course.
+     * 
+     * @param courseCode identifying code of a course.
+     * @param grade the grade name
+     */
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
 
         //den här metoden delar potentiellt med noll, men java verkar kunna hantera det
@@ -629,11 +706,14 @@ public class DataAccessLayer {
 
         return percentageOfStudentsWithGrade;
     }
-
+    /**
+     * Gets all courses and the percentage of students that has succesfully finnished them.
+     * 
+     */
     protected TableModel getCourseFlow() {
         try {
 
-            String sqlQuery = "SELECT ccode FROM course";
+            String sqlQuery = "SELECT ccode FROM Course";
             ArrayList<String> courseNames = new ArrayList<>();
 
             int courseCount = getNumberOfCourses();
@@ -675,46 +755,65 @@ public class DataAccessLayer {
         }
         return null;
     }
+    /**
+     * Changes the course from studies to hasstudied and registers a grade.
+     * 
+     * @param courseCode identifying code of a course.
+     * @param personNbr personal number of a student.
+     * @param grade the grade name
+     */
+    protected void registerCourseResult(String courseCode, String personNbr, String grade) {
 
-    protected void registerCourseResult(String courseCode, String pNr, String grade) {
-
-        String sqlString = "DELETE FROM Studies WHERE pnr = '" + pNr + "' AND ccode = '" + courseCode + "'";
+        String sqlString = "DELETE FROM Studies WHERE pnr = '" + personNbr + "' AND ccode = '" + courseCode + "'";
 
         this.executeUpdate(sqlString);
 
-        sqlString = "INSERT INTO Hasstudied VALUES ('" + pNr + "', '" + courseCode + "', '" + grade + "')";
+        sqlString = "INSERT INTO Hasstudied VALUES ('" + personNbr + "', '" + courseCode + "', '" + grade + "')";
 
         this.executeUpdate(sqlString);
 
     }
-
-    protected String[] getCoursesThatCanBeAddedToStudent(String pNr) {
+    /**
+     * Gets the courses that the specified student isn't registered on and haven't been registered on. 
+     * 
+     * @param personNbr personal number of a student.
+     */
+    protected String[] getCoursesThatCanBeAddedToStudent(String personNbr) {
 
         ResultSet rset = this.executeQuery("SELECT * FROM Course c "
                 + "WHERE c.ccode NOT IN "
                 + "(SELECT h.ccode FROM Hasstudied h "
-                + "WHERE h.pnr = '" + pNr + "') "
+                + "WHERE h.pnr = '" + personNbr + "') "
                 + "AND c.ccode NOT IN "
                 + "(Select s.ccode FROM Studies s "
-                + "WHERE s.pnr = '" + pNr + "')");
+                + "WHERE s.pnr = '" + personNbr + "')");
 
         String[] stringArray = this.getResultSetAsStringArray(rset);
 
         return stringArray;
 
     }
+    /**
+     * Registers the specified student on the specified course
+     * 
+     * @param personNbr personal number of a student.
+     * @param courseCode identifying code of a course.
+     */
+    protected void registerStudentOnCourse(String personNbr, String courseCode) {
 
-    protected void registerStudentOnCourse(String selectedStudent, String courseId) {
-
-        String sqlString = "INSERT INTO Studies VALUES ('" + selectedStudent + "', '" + courseId + "')";
+        String sqlString = "INSERT INTO Studies VALUES ('" + personNbr + "', '" + courseCode + "')";
 
         this.executeUpdate(sqlString);
 
     }
+    /**
+     * Gets the total sum of points from the courses a specified student is registered on.
+     * 
+     * @param personNbr personal number of a student.
+     */
+    protected int getStudentsRegisteredPointTotal(String personNbr) {
 
-    protected int getStudentsRegisteredPointTotal(String pNr) {
-
-        String sqlString = "SELECT SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + pNr + "' GROUP BY s.pnr";
+        String sqlString = "SELECT SUM(c.points) FROM Course c JOIN Studies s ON c.ccode = s.ccode WHERE s.pnr = '" + personNbr + "' GROUP BY s.pnr";
         ResultSet rset = this.executeQuery(sqlString);
         int intToReturn = this.getFirstCellInResultSetAsInt(rset);
         return intToReturn;
@@ -725,6 +824,7 @@ public class DataAccessLayer {
      * 
      * @param selectedStudent is a selected student from the student list
      * @param selectedCcode is the selected course from the not finished courses table*/
+    
     protected void deleteStudentFromCourse(String selectedStudent, String selectedCcode){
         String sqlString = "DELETE FROM Studies WHERE pnr = '" + selectedStudent + "' AND ccode = '" + selectedCcode +"'";
         this.executeUpdate(sqlString);
