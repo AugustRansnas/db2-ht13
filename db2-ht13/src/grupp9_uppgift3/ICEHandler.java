@@ -1,7 +1,10 @@
 
 package grupp9_uppgift3;
 
+import java.io.IOException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
@@ -17,13 +20,16 @@ import org.icepdf.ri.util.PropertiesManager;
  */
 public class ICEHandler {
 
+    FileHandler fileHandler;
     SwingController swingController;
     SwingViewBuilder swingViewBuilder;
 
     /**
      * Intializes the ICEHandler starting up the needed ICE tools.
      */
-    protected ICEHandler() {
+    protected ICEHandler(FileHandler fileHandler) {
+        
+        this.fileHandler = fileHandler;
 
         swingController = new SwingController(); //Starts the built in controller of icePDF  
 
@@ -59,30 +65,13 @@ public class ICEHandler {
      */
     protected void loadFile(String fileName) {
 
-        String filePath = this.getFullFilePath(fileName);
-
+        String filePath = this.fileHandler.getFullFilePath(fileName);
         swingController.openDocument(filePath);
 
     }
 
-    /**
-     * Returns the full file path of a file in the java package
-     *
-     * @param fileName name of file without path
-     * @return full file path
-     */
-    private String getFullFilePath(String fileName) {
 
-        String workingDirectory = System.getProperty("user.dir");
+    
 
-        String packageFolder = "/src/grupp9_uppgift3/"; //Path to our package
-
-        String fullPath = workingDirectory + packageFolder + fileName;
-
-        System.out.println("Returning path " + fullPath);
-
-        return fullPath;
-
-    }
 
 }
