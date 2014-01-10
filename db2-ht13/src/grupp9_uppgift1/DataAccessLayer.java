@@ -398,7 +398,7 @@ public class DataAccessLayer {
 
     /**
      * Gets pnr, firstname and lastname from all students in the database.
-     * 
+     * @return all the students
      */
     protected TableModel getAllStudents() {
         String sqlString = "SELECT pnr, firstname, lastname FROM Student";
@@ -411,8 +411,8 @@ public class DataAccessLayer {
     }
     /**
      * Gets number of total students.
-     *
-     * 
+     *  
+     * @return the number of students or 0
      */
     protected int getNumberOfStudents() {
 
@@ -431,8 +431,8 @@ public class DataAccessLayer {
     }
     /**
      * Gets the code, name and points of all courses that a student is currently registered on. 
-     * 
-     * @param personNbr personal number of student
+     *  @param personNbr personal number of student
+     *  @return the courses a student currently is studying
      */
     protected TableModel getStudentsCurrentCourses(String personNbr) {
         TableModel tm;
@@ -450,6 +450,7 @@ public class DataAccessLayer {
      * Gets the name, code, points and grade of all courses that a student has finnished. 
      * 
      * @param personNbr personal number of student
+     * @return a students finished courses
      */
     protected TableModel getStudentsFinnishedCourses(String personNbr) {
         TableModel tm;
@@ -470,6 +471,7 @@ public class DataAccessLayer {
      * Checks if a course exists.
      * 
      * @param courseCode identifying code of a course.
+     * @return true if the course exists and false if the course does not exists
      */
     public boolean checkIfCourseExists(String courseCode) {
 
@@ -490,6 +492,7 @@ public class DataAccessLayer {
      * Gets all the the information for a specific course
      * 
      * @param courseCode identifying code of a course.
+     * @return information about a selected course
      */
     protected String[] getCourseData(String courseCode) {
 
