@@ -39,6 +39,7 @@ public class View extends javax.swing.JFrame  {
         this.selectedStudent = selectedStudent;
              
         this.btnRegisterCourseResult.setEnabled(false);
+        this.btnDeleteStudentFromCourse.setEnabled(false);
 
         if (selectedStudent != null) {
             
@@ -1220,6 +1221,7 @@ public class View extends javax.swing.JFrame  {
     private void tblSelectedStudentsUnfinishedCoursesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
 
         this.btnRegisterCourseResult.setEnabled(true);
+        this.btnDeleteStudentFromCourse.setEnabled(true);
 
     }//GEN-LAST:event_tblSelectedStudentsUnfinishedCoursesMouseClicked
 
