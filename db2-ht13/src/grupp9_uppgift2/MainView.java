@@ -30,25 +30,26 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblList = new javax.swing.JTable();
+        jScrollPaneResults = new javax.swing.JScrollPane();
+        tblListResults = new javax.swing.JTable();
         btnUpdateTable = new javax.swing.JButton();
-        comboList = new javax.swing.JComboBox();
+        comboListQuerySelector = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cronus Database Browser");
 
-        tblList.setModel(new javax.swing.table.DefaultTableModel(
+        tblListResults.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
-        jScrollPane1.setViewportView(tblList);
+        jScrollPaneResults.setViewportView(tblListResults);
 
         btnUpdateTable.setText("Updatera");
         btnUpdateTable.addActionListener(new java.awt.event.ActionListener() {
@@ -57,8 +58,8 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        comboList.setMaximumRowCount(10);
-        comboList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees and related", "CRONUS Employee and related  MetaData", "CRONUS Employee Columns 1", "CRONUS Employee Columns 2", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables 1", "CRONUS Tables 2", "CRONUS Table with most rows" }));
+        comboListQuerySelector.setMaximumRowCount(10);
+        comboListQuerySelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees and related", "CRONUS Employee and related  MetaData", "CRONUS Employee Columns 1", "CRONUS Employee Columns 2", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables 1", "CRONUS Tables 2", "CRONUS Table with most rows" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,9 +68,9 @@ public class MainView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(comboList, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboListQuerySelector, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
@@ -80,9 +81,9 @@ public class MainView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdateTable)
-                    .addComponent(comboList, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboListQuerySelector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -90,7 +91,7 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
-        int comboIndex = this.comboList.getSelectedIndex();
+        int comboIndex = this.comboListQuerySelector.getSelectedIndex();
         TableModel tm;
         //Inget valt
         
@@ -98,52 +99,52 @@ public class MainView extends javax.swing.JFrame {
             case 0:
                 //CRONUS Employees and related tables
                 tm = controller.getCronusEmployees();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 1:
                 //CRONUS Employee MetaData
                 tm = controller.getCronusEmployeeMetaData();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 2:
                 //CRONUS Employee Columns1
                 tm = controller.getCronusEmployeeColumns1();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 3:
                 //CRONUS Employee Columns2
                 tm = controller.getCronusEmployeeColumns2();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 4:
                 //CRONUS Keys
                 tm = controller.getCronusKeys();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 5:
                 //CRONUS Indexes
                 tm = controller.getCronusIndexes();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 6:
                 //CRONUS Constraints
                 tm = controller.getCronusConstraints();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 7:
                 //CRONUS Tables1
                 tm = controller.getCronusTables1();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 8:
                 //CRONUS Tables2
                 tm = controller.getCronusTables2();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             case 9:
                 //CRONUS Tables
                 tm = controller.getCronusTableWithMostRows();
-                this.tblList.setModel(tm);
+                this.tblListResults.setModel(tm);
                 break;
             default:
                 System.out.println("Combobox inoput out of switch range");
@@ -154,8 +155,8 @@ public class MainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpdateTable;
-    private javax.swing.JComboBox comboList;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblList;
+    private javax.swing.JComboBox comboListQuerySelector;
+    private javax.swing.JScrollPane jScrollPaneResults;
+    private javax.swing.JTable tblListResults;
     // End of variables declaration//GEN-END:variables
 }

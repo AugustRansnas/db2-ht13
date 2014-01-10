@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Handles comunication with filesystem and operatin system.
+ * Handles communication with filesystem and operating system.
  */
 public class FileHandler {
     
