@@ -999,8 +999,8 @@ public class View extends javax.swing.JFrame  {
             this.lblResponsFindStudent.setText("Söktermen får inte innehålla: [ ' ]");
         } else {
 
-        TableModel dtm = controller.findStudents(showAllAttributes, searchString);
-        this.tblFindStudent.setModel(dtm);
+        TableModel tm = controller.findStudents(showAllAttributes, searchString);
+        this.tblFindStudent.setModel(tm);
         this.lblResponsFindStudent.setForeground(Color.black);
         this.lblResponsFindStudent.setText("Följande studenters information matchade söktermen: ");
      
@@ -1045,8 +1045,8 @@ public class View extends javax.swing.JFrame  {
         if (searchString.contains("'")) {
             this.lblResponsFindCourse.setText("Söktermen får inte innehålla: [ ' ]");
         } else {
-            TableModel dtm = controller.findCourses(searchString);
-            this.tableFindCourse.setModel(dtm);
+            TableModel tm = controller.findCourses(searchString);
+            this.tableFindCourse.setModel(tm);
         }
     }//GEN-LAST:event_btnFindCourseActionPerformed
 
