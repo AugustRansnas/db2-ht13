@@ -111,7 +111,7 @@ public class DataAccessLayer {
                 r++;
             }
 
-            DefaultTableModel dtm = new DefaultTableModel(dataArray, columnHeadings) {
+            DefaultTableModel tm = new DefaultTableModel(dataArray, columnHeadings) {
                 @Override
                 public boolean isCellEditable(int row, int column) {
 
@@ -119,7 +119,7 @@ public class DataAccessLayer {
                 }
             };
 
-            return dtm;
+            return tm;
 
         } catch (SQLException ex) {
 
@@ -593,9 +593,9 @@ public class DataAccessLayer {
 
         ResultSet rs = this.executeQuery(sqlString);
 
-        TableModel dtm = this.getResultSetAsDefaultTableModel(rs);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
 
-        return dtm;
+        return tm;
 
     }
     /**
