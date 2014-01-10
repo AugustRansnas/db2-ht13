@@ -34,6 +34,8 @@ public class DataAccessLayer {
     //<editor-fold desc="Execution of SQL statements" defaultstate="collapsed">
     /**
      * This method takes an SQL string and executes the update.
+     * 
+     * @param sqlString the sql query
      */
     private void executeUpdate(String sqlString) {
 
@@ -49,6 +51,9 @@ public class DataAccessLayer {
 
     /**
      * This method takes an SQL query string and returns a resultset.
+     * 
+     * @param sqlString the SQL query to be executed
+     * @return the resultset of the query
      */
     private ResultSet executeQuery(String sqlString) {
 
@@ -70,15 +75,18 @@ public class DataAccessLayer {
     //<editor-fold desc="Private helper methods" defaultstate="collapsed">
     /**
      * This method takes a ResultSet and returns TableModel.
+     * 
+     * @param rs a query resultSet
+     * @return the resultSet as a TableModel
      */
-    private TableModel getResultSetAsDefaultTableModel(ResultSet rset) {
+    private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
 
             String[] columnHeadings = new String[0];
             String[][] dataArray = new String[0][0];
 
-            ResultSetMetaData md = rset.getMetaData();
+            ResultSetMetaData md = rs.getMetaData();
             int columnCount = md.getColumnCount();
 
             for (int i = 1; i <= columnCount; i++) {
@@ -90,11 +98,11 @@ public class DataAccessLayer {
 
             int r = 0;
 
-            while (rset.next()) {
+            while (rs.next()) {
 
                 String[] row = new String[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-                    row[i - 1] = rset.getString(i);
+                    row[i - 1] = rs.getString(i);
                 }
 
                 dataArray = Arrays.copyOf(dataArray, dataArray.length + 1);
@@ -121,7 +129,13 @@ public class DataAccessLayer {
         return null;
 
     }
-
+    /**
+     * This method takes a ResultSet and converts it to a StringArray
+     * 
+     * @param rs a resultSet
+     * @return an array of Strings 
+     */
+    
     private String[] getResultSetAsStringArray(ResultSet rs) {
 
         String[] stringArray = new String[0];
@@ -149,20 +163,26 @@ public class DataAccessLayer {
 
         return stringArray;
     }
-
-    private String[] getRowAsStringArray(ResultSet rset, int rowNr) {
+    /**
+     * This method takes a ResultSet creates a array of Strings of a specified row
+     * 
+     * @param rs a resultSet
+     * @param rowNr, row number of choice
+     * @return an array of Strings 
+     */
+    private String[] getRowAsStringArray(ResultSet rs, int rowNr) {
 
         String[] rowArray = null;
 
         try {
 
-            ResultSetMetaData md = rset.getMetaData();
+            ResultSetMetaData md = rs.getMetaData();
             int columnCount = md.getColumnCount();
-            rset.absolute(rowNr);
+            rs.absolute(rowNr);
 
             rowArray = new String[columnCount];
             for (int i = 1; i <= columnCount; i++) {
-                rowArray[i - 1] = rset.getString(i);
+                rowArray[i - 1] = rs.getString(i);
             }
 
         } catch (SQLException ex) {
@@ -172,14 +192,19 @@ public class DataAccessLayer {
         return rowArray;
 
     }
-
-    private boolean checkIfResultSetHasContent(ResultSet rset) {
+    /**
+     * This method checks if a resultSet has content
+     * 
+     * @param rs a resultSet
+     * @return boolean concerning if the resultSet has content 
+     */
+    private boolean checkIfResultSetHasContent(ResultSet rs) {
 
         boolean hasContent = false;
 
         {
             try {
-                hasContent = rset.isBeforeFirst();
+                hasContent = rs.isBeforeFirst();
             } catch (SQLException ex) {
                 Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -187,7 +212,12 @@ public class DataAccessLayer {
 
         return hasContent;
     }
-
+    /**
+     * This method translates column names from the raw database version into swedish
+     * 
+     * @param stringIn a name of a column 
+     * @return a string with the translated name 
+     */
     private String stringTranslator(String stringIn) {
 
         String stringOut;
@@ -240,7 +270,7 @@ public class DataAccessLayer {
     /**
      * Printing out a table model. Used for debugging.
      *
-     * @param tm
+     * @param tm any tablemodel
      */
     private void systemOutPrintTableModel(TableModel tm) {
 
@@ -255,16 +285,21 @@ public class DataAccessLayer {
         }
 
     }
+    /**
+     * This method returns an int of a resultSets first cell. 
+     * 
+     * @param rs a resultSet that uses the SQL count operator
+     * @return returns the number  
+     */
+    private int getFirstCellInResultSetAsInt(ResultSet rs) {
 
-    private int getFirstCellInResultSetAsInt(ResultSet rset) {
-
-        boolean hasContents = this.checkIfResultSetHasContent(rset);
+        boolean hasContents = this.checkIfResultSetHasContent(rs);
 
         if (hasContents) {
             try {
 
-                rset.next();
-                return rset.getInt(1);
+                rs.next();
+                return rs.getInt(1);
 
             } catch (SQLException ex) {
                 Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);

@@ -26,6 +26,8 @@ public class ICEHandler {
 
     /**
      * Intializes the ICEHandler starting up the needed ICE tools.
+     * 
+     * @param fileHandler 
      */
     protected ICEHandler(FileHandler fileHandler) {
         

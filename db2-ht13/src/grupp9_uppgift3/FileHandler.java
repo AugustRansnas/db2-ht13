@@ -17,7 +17,7 @@ public class FileHandler {
     /**
      * Opens the file on the specified path with the default program.
      * 
-     * @param the name of the file.
+     * @param fileName name of the file.
      */
     protected void openOfficeFile(String fileName) {
 
