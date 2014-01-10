@@ -18,11 +18,11 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        ICEHandler ice1 = new ICEHandler();
+        
+        
+        ICEHandler[] ice = {new ICEHandler(new FileHandler()), new ICEHandler(new FileHandler())};     
 
-        ICEHandler ice2 = new ICEHandler();
-
-        MainView mainView = new MainView(ice1, ice2);
+        MainView mainView = new MainView(ice, new FileHandler());
 
         mainView.setVisible(true);
 
