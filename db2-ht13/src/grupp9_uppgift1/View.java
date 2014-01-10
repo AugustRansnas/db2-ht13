@@ -16,8 +16,6 @@ public class View extends javax.swing.JFrame  {
     private final Controller controller;
     private String selectedStudent;
     private String selectedCourse;
-    
-
 
     /**
      * Creates new form View.
@@ -36,13 +34,17 @@ public class View extends javax.swing.JFrame  {
 
     }
 
-    protected void setSelectedStudent(String selectedStudent) {
+    private void setSelectedStudent(String selectedStudent) {
 
         this.selectedStudent = selectedStudent;
-
+             
         this.btnRegisterCourseResult.setEnabled(false);
 
         if (selectedStudent != null) {
+            
+            this.setSelectedCourse(null);
+            
+            this.tabbedPane.setSelectedIndex(0);
 
             this.populateStudentsCurrentAndPastCourses(selectedStudent);
 
@@ -52,25 +54,23 @@ public class View extends javax.swing.JFrame  {
 
             this.rbtnDeleteStudent.setEnabled(true);
             this.rbtnDeleteStudent.setSelected(true);
-
-            int row = tblFindStudent.getSelectedRow();
-            String pnr = (tblFindStudent.getModel().getValueAt(row, 0).toString());
-            TableModel tm = controller.getSingleStudent(pnr);
-            String firstname = (tm.getValueAt(0, 1).toString());
-            String lastname = (tm.getValueAt(0, 2).toString());
-            String phonenbr = (tm.getValueAt(0, 3).toString());
+                     
+            TableModel tm = controller.getSingleStudent(selectedStudent);
+            String firstName = (tm.getValueAt(0, 1).toString());
+            String lastName = (tm.getValueAt(0, 2).toString());
+            String phoneNbr = (tm.getValueAt(0, 3).toString());
             String email = (tm.getValueAt(0, 4).toString());
             String address = (tm.getValueAt(0, 5).toString());
-            String postcode = (tm.getValueAt(0, 6).toString());
+            String postCode = (tm.getValueAt(0, 6).toString());
             String city = (tm.getValueAt(0, 7).toString());
 
-            txtViewStudentPersonNbr.setText(pnr);
-            txtViewStudentFirstName.setText(firstname);
-            txtViewStudentLastName.setText(lastname);
-            txtViewStudentPhoneNbr.setText(phonenbr);
+            txtViewStudentPersonNbr.setText(selectedStudent);
+            txtViewStudentFirstName.setText(firstName);
+            txtViewStudentLastName.setText(lastName);
+            txtViewStudentPhoneNbr.setText(phoneNbr);
             txtViewStudentEmail.setText(email);
             txtViewStudentAdress.setText(address);
-            txtViewStudentPostCode.setText(postcode);
+            txtViewStudentPostCode.setText(postCode);
             txtViewStudentCity.setText(city);
 
             this.txtViewStudentPersonNbr.setEditable(false);
@@ -124,8 +124,10 @@ public class View extends javax.swing.JFrame  {
     private void setSelectedCourse(String selectedCourse) {
 
         this.populateCoursesPastAndCurrentStudents(selectedCourse);
-
+              
         if (selectedCourse != null) {
+            
+            this.setSelectedStudent(null);
 
             this.selectedCourse = selectedCourse;
 
@@ -649,7 +651,7 @@ public class View extends javax.swing.JFrame  {
                 .addGap(6, 6, 6)
                 .addComponent(pnlFindStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlViewStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 562, Short.MAX_VALUE)
+                .addComponent(pnlViewStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlStudentsLayout.setVerticalGroup(
@@ -910,7 +912,7 @@ public class View extends javax.swing.JFrame  {
                 .addComponent(pnlCourseResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pnlHighestPassedCourse.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurser med höst genomströmning"));
+        pnlHighestPassedCourse.setBorder(javax.swing.BorderFactory.createTitledBorder("Kurser med högst genomströmning"));
 
         tblCourseFlow.setAutoCreateRowSorter(true);
         tblCourseFlow.setModel(new javax.swing.table.DefaultTableModel(
@@ -1242,34 +1244,8 @@ public class View extends javax.swing.JFrame  {
     private void tblFinishedStudentsOnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFinishedStudentsOnCourseMouseClicked
 
         int row = tblFinishedStudentsOnCourse.getSelectedRow();
-        String selectedStudent = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
-        this.tabbedPane.setSelectedIndex(0);
-        this.populateStudentsCurrentAndPastCourses(selectedStudent);
-        this.populateComboBoxAddCourse(selectedStudent);
-        this.populateCourseFlowTable();
-        this.clearStudentInformation();
-        this.setSelectedStudent(selectedStudent);
-        this.rbtnDeleteStudent.setEnabled(true);
-        this.rbtnDeleteStudent.setSelected(true);
-
-        TableModel tm = this.controller.getSingleStudent(selectedStudent);
-        String firstname = (tm.getValueAt(0, 1).toString());
-        String lastname = (tm.getValueAt(0, 2).toString());
-        String phonenbr = (tm.getValueAt(0, 3).toString());
-        String email = (tm.getValueAt(0, 4).toString());
-        String address = (tm.getValueAt(0, 5).toString());
-        String postcode = (tm.getValueAt(0, 6).toString());
-        String city = (tm.getValueAt(0, 7).toString());
-
-        txtViewStudentPersonNbr.setText(selectedStudent);
-        txtViewStudentFirstName.setText(firstname);
-        txtViewStudentLastName.setText(lastname);
-        txtViewStudentPhoneNbr.setText(phonenbr);
-        txtViewStudentEmail.setText(email);
-        txtViewStudentAdress.setText(address);
-        txtViewStudentPostCode.setText(postcode);
-        txtViewStudentCity.setText(city);
-        this.populateStudentTable();
+        String personNbr = (tblFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        this.setSelectedStudent(personNbr);
 
     }//GEN-LAST:event_tblFinishedStudentsOnCourseMouseClicked
 
@@ -1290,35 +1266,8 @@ public class View extends javax.swing.JFrame  {
         // TODO add your handling code here:
         
         int row = tblNotFinishedStudentsOnCourse.getSelectedRow();
-        String selectedStudent = (tblNotFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
-        
-        this.tabbedPane.setSelectedIndex(0);
-        this.populateStudentsCurrentAndPastCourses(selectedStudent);
-        this.populateComboBoxAddCourse(selectedStudent);
-        this.populateCourseFlowTable();
-        this.rbtnDeleteStudent.setEnabled(true);
-        this.rbtnDeleteStudent.setSelected(true);
-        this.clearStudentInformation();
-        this.setSelectedStudent(selectedStudent);
-
-        TableModel tm = this.controller.getSingleStudent(selectedStudent);
-        String firstname = (tm.getValueAt(0, 1).toString());
-        String lastname = (tm.getValueAt(0, 2).toString());
-        String phonenbr = (tm.getValueAt(0, 3).toString());
-        String email = (tm.getValueAt(0, 4).toString());
-        String address = (tm.getValueAt(0, 5).toString());
-        String postcode = (tm.getValueAt(0, 6).toString());
-        String city = (tm.getValueAt(0, 7).toString());
-
-        txtViewStudentPersonNbr.setText(selectedStudent);
-        txtViewStudentFirstName.setText(firstname);
-        txtViewStudentLastName.setText(lastname);
-        txtViewStudentPhoneNbr.setText(phonenbr);
-        txtViewStudentEmail.setText(email);
-        txtViewStudentAdress.setText(address);
-        txtViewStudentPostCode.setText(postcode);
-        txtViewStudentCity.setText(city);
-        this.populateStudentTable();
+        String personNbr = (tblNotFinishedStudentsOnCourse.getModel().getValueAt(row, 0).toString());
+        this.setSelectedStudent(personNbr);
         
     }//GEN-LAST:event_tblNotFinishedStudentsOnCourseMouseClicked
 // </editor-fold>

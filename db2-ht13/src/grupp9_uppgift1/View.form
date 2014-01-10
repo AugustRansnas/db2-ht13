@@ -1033,7 +1033,7 @@
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Kurser med h&#xf6;st genomstr&#xf6;mning"/>
+                    <TitledBorder title="Kurser med h&#xf6;gst genomstr&#xf6;mning"/>
                   </Border>
                 </Property>
               </Properties>
