@@ -684,6 +684,7 @@ public class DataAccessLayer {
      * Calculates the percentage of finnished students with the grade A on a specified course
      * 
      * @param courseCode identifying code of a course.
+     * @return a percentage of students that has grade A on a specific course
      */
     protected float percentageWithGradeAOnCourse(String courseCode) {
 
@@ -702,6 +703,7 @@ public class DataAccessLayer {
      * 
      * @param courseCode identifying code of a course.
      * @param grade the grade name
+     * @return the percentage of students with a specific grade 
      */
     protected float percentageOfStudentsWithGrade(String courseCode, String grade) {
 
@@ -715,7 +717,7 @@ public class DataAccessLayer {
     }
     /**
      * Gets all courses and the percentage of students that has succesfully finnished them.
-     * 
+     * @return a table which contains all courses and the percentage of passing students for each course
      */
     protected TableModel getCourseFlow() {
         try {
@@ -784,6 +786,7 @@ public class DataAccessLayer {
      * Gets the courses that the specified student isn't registered on and haven't been registered on. 
      * 
      * @param personNbr personal number of a student.
+     * @return a list of courses that is possible to add to a student
      */
     protected String[] getCoursesThatCanBeAddedToStudent(String personNbr) {
 
@@ -817,6 +820,7 @@ public class DataAccessLayer {
      * Gets the total sum of points from the courses a specified student is registered on.
      * 
      * @param personNbr personal number of a student.
+     * @return the total amount of points which a student currently is studying
      */
     protected int getStudentsRegisteredPointTotal(String personNbr) {
 
