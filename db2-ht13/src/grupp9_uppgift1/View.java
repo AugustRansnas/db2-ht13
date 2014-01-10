@@ -1181,8 +1181,8 @@ public class View extends javax.swing.JFrame  {
             } else {
                 this.lblResponsStudentInformation.setForeground(Color.red);
                 this.lblResponsStudentInformation.setText("Personnummer anges med 10 siffror");
-            }
-        } else if (this.rbtnDeleteStudent.isSelected()) {
+            } 
+        } if (this.rbtnDeleteStudent.isSelected()) {
 
             String personNbr = this.txtViewStudentPersonNbr.getText();
             String firstName = this.txtViewStudentFirstName.getText();
