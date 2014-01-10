@@ -13,7 +13,12 @@ import java.util.logging.Logger;
  * Handles comunication with filesystem and operatin system.
  */
 public class FileHandler {
-
+    
+    /**
+     * Opens the file on the specified path with the default program.
+     * 
+     * @param fileName name of the file.
+     */
     protected void openOfficeFile(String fileName) {
 
         String fullPath = this.getFullFilePath(fileName);

@@ -68,11 +68,11 @@ public class Controller {
      */
     protected TableModel getAllStudents() {
 
-        TableModel dtm;
+        TableModel tm;
 
-        dtm = this.dataAccessLayer.getAllStudents();
+        tm = this.dataAccessLayer.getAllStudents();
 
-        return dtm;
+        return tm;
 
     }
 
@@ -238,9 +238,9 @@ public class Controller {
      */
     protected TableModel getCourseFlow() {
 
-        TableModel dtm;
-        dtm = this.dataAccessLayer.getCourseFlow();
-        return dtm;
+        TableModel tm;
+        tm = this.dataAccessLayer.getCourseFlow();
+        return tm;
 
     }
 
