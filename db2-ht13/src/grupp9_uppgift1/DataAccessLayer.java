@@ -437,9 +437,9 @@ public class DataAccessLayer {
     protected TableModel getStudentsCurrentCourses(String personNbr) {
         TableModel tm;
         String sqlString = "SELECT c.cname, c.ccode, c.points"
-                + " FROM course c"
+                + " FROM Course c"
                 + " WHERE c.ccode IN (SELECT s.ccode "
-                + " FROM studies s"
+                + " FROM Studies s"
                 + " WHERE s.pnr = '" + personNbr + "')";
         ResultSet rs = this.executeQuery(sqlString);
         tm = this.getResultSetAsDefaultTableModel(rs);
@@ -454,7 +454,7 @@ public class DataAccessLayer {
     protected TableModel getStudentsFinnishedCourses(String personNbr) {
         TableModel tm;
         String sqlString = "SELECT c.cname, h.ccode, c.points, h.grade"
-                + " FROM hasstudied h, course c"
+                + " FROM Hasstudied h, Course c"
                 + " WHERE h.pnr = '" + personNbr + "'"
                 + " AND h.ccode = c.ccode";
 
@@ -521,7 +521,7 @@ public class DataAccessLayer {
      * @param courseCode identifying code of a course.
      */
     protected void deleteCourse(String courseCode) {
-        String sqlString = "DELETE course WHERE ccode = '" + courseCode + "'";
+        String sqlString = "DELETE Course WHERE ccode = '" + courseCode + "'";
         executeUpdate(sqlString);
 
     }
