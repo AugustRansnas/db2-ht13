@@ -33,9 +33,16 @@ public class Controller {
         
     }
     
-    protected TableModel getCronusEmployeeColumns(){
+    protected TableModel getCronusEmployeeColumns1(){
         
-        TableModel tm = dataAccessLayer.getCronusEmployeeColumns();
+        TableModel tm = dataAccessLayer.getCronusEmployeeColumns1();
+        return tm;
+        
+    }
+    
+    protected TableModel getCronusEmployeeColumns2(){
+        
+        TableModel tm = dataAccessLayer.getCronusEmployeeColumns2();
         return tm;
         
     }
@@ -61,9 +68,15 @@ public class Controller {
         
     }
     
-    protected TableModel getCronusTables(){
+    protected TableModel getCronusTables1(){
         
-        TableModel tm = dataAccessLayer.getCronusTables();
+        TableModel tm = dataAccessLayer.getCronusTables1();
+        return tm;
+        
+    }
+    protected TableModel getCronusTables2(){
+        
+        TableModel tm = dataAccessLayer.getCronusTables2();
         return tm;
         
     }
