@@ -34,7 +34,12 @@ public class DataAccessLayer {
         this.connection = connection;
         
     }
-
+    /**
+     * This method takes an SQL query string and returns a resultset.
+     * 
+     * @param the SQL query 
+     * @return the resultset of the query
+     */
     private ResultSet excecuteQuery(String sqlString) {
 
         System.out.println("executeQuery(" + sqlString + ")");
@@ -53,7 +58,12 @@ public class DataAccessLayer {
         return rst;
 
     }
-
+    /**
+     * This method takes an resultset and returns it as a tableModel.
+     * 
+     * @param a resultset 
+     * @return a tableModel of the resultset
+     */
     private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
 
         try {
@@ -104,6 +114,7 @@ public class DataAccessLayer {
         return null;
 
     }
+    
 //Innehållet i tabellen CRONUS Sverige AB$Employee samt relaterade tabeller
     protected TableModel getCronusEmployees() {
 
@@ -114,6 +125,11 @@ public class DataAccessLayer {
 
     }
 //Metadata för CRONUS Sverige AB$Employee och relaterade tabeller.
+    /**
+     * Gets partial meta data for the Cronus employee table.
+     * 
+     * @return partial meta data 
+     */
     protected TableModel getCronusEmployeeMetaData() {
 
         String sqlString = "select TABLE_SCHEMA AS 'schema', COLUMN_NAME AS 'kolumn namn', "
@@ -126,7 +142,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga kolumner i tabellen Employee lösning 1
+    /**
+     * Gets the columns of the Cronus employee table.
+     * 
+     * @return the column names
+     */
     protected TableModel getCronusEmployeeColumns1() {
 
         String sqlString = "SELECT name AS 'Samtliga kolumner' \n"
@@ -138,7 +158,11 @@ public class DataAccessLayer {
         return tm;
         
     }
-//Samtliga kolumner i tabellen Employee lösning 2
+    /**
+     * Gets the columns of the Cronus employee table.
+     * 
+     * @return the column names
+     */
     protected TableModel getCronusEmployeeColumns2() {
 
         String sqlString = "SELECT COLUMN_NAME AS 'Samtliga kolumner' \n"
@@ -150,7 +174,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga nycklar
+    /**
+     * Gets a system information table containing table names and their Keys from the Cronus database.
+     * 
+     * @return Keys from the Cronus database.
+     */
     protected TableModel getCronusKeys() {
         String sqlString = "SELECT name AS Namn, type_desc AS 'Typ beskrivning' FROM sys.foreign_keys\n"
                 + "UNION\n"
@@ -160,7 +188,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga indexes
+    /**
+     * Gets a system information table containing indexes from the Cronus database
+     * 
+     * @return indexes from the Cronus database
+     */
     protected TableModel getCronusIndexes() {
         String sqlString = "SELECT name AS Namn FROM sys.indexes";
         ResultSet rs = this.excecuteQuery(sqlString);
@@ -168,7 +200,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga table_constraints
+    /**
+     * Gets a system information table containing the table constraints from the Cronus database
+     * 
+     * @return table constraints from the Cronus database.
+     */
     protected TableModel getCronusConstraints() {
         String sqlString = "SELECT name AS 'Namn på constraint',\n"
                 + "type_desc AS ConstraintType\n"
@@ -179,7 +215,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga tabeller i databasen lösning 1
+    /**
+     * Gets a system information table containing the names of the tables in the Cronus database.
+     * 
+     * @return the names of the tables in the Cronus database
+     */
     protected TableModel getCronusTables1() {
         String sqlString = "SELECT name AS Tabellnamn FROM sys.tables";
         ResultSet rs = this.excecuteQuery(sqlString);
@@ -187,7 +227,11 @@ public class DataAccessLayer {
         return tm;
 
     }
- //Samtliga tabeller i databasen lösning 2
+    /**
+     * Gets a system information table containing the names of the tables in the Cronus database.
+     * 
+     * @return the names of the tables in the Cronus database
+     */
     protected TableModel getCronusTables2() {
         String sqlString = "SELECT TABLE_NAME AS Tabellnamn FROM INFORMATION_SCHEMA.TABLES";
         ResultSet rs = this.excecuteQuery(sqlString);
@@ -195,17 +239,11 @@ public class DataAccessLayer {
         return tm;
 
     }
-//Samtliga nycklar i databasen
-    protected TableModel getAllKeys() {
-        String sqlString = "SELECT name AS namn FROM sys.foreign_keys\n"
-                + "UNION\n"
-                + "SELECT name FROM sys.key_constraints";
-        ResultSet rs = this.excecuteQuery(sqlString);
-        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
-        return tm;
-
-    }
-//Namnet på den tabell som innehåller flest rader i CRONUS-databasen
+    /**
+     * Gets the name and number of rows of the table with the most rows in the Cronus database.
+     * 
+     * @return the name of the table with most rows in the database
+     */
     protected TableModel getCronusTableWithMostRows() {
         String sqlString = "SELECT TOP (1) so.name AS Namn, MAX(si.rows) AS 'Antal rader'\n"
                 + "FROM sysobjects so, sysindexes si \n"
