@@ -289,7 +289,6 @@ public class DataAccessLayer {
 
         for (int i = 1; i < studentData.length; i++) {
             sqlString += ",'" + studentData[i] + "'";
-            System.out.println(sqlString);
         }
         sqlString += ")";
 
@@ -623,7 +622,7 @@ public class DataAccessLayer {
 
         String grade = null;
         String sqlString = "SELECT h.grade ";
-        sqlString += "FROM student c, hasstudied h ";
+        sqlString += "FROM Student c, Hasstudied h ";
         sqlString += "WHERE c.pnr = h.pnr ";
         sqlString += "AND h.pnr = '" + personNbr + "' ";
         sqlString += "AND h.ccode = '" + courseCode + "'";
@@ -711,7 +710,7 @@ public class DataAccessLayer {
     protected TableModel getCourseFlow() {
         try {
 
-            String sqlQuery = "SELECT ccode FROM course";
+            String sqlQuery = "SELECT ccode FROM Course";
             ArrayList<String> courseNames = new ArrayList<>();
 
             int courseCount = getNumberOfCourses();

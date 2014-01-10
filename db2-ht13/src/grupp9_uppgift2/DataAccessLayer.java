@@ -104,16 +104,16 @@ public class DataAccessLayer {
         return null;
 
     }
-
+//Innehållet i tabellen CRONUS Sverige AB$Employee samt relaterade tabeller
     protected TableModel getCronusEmployees() {
 
-        String sqlString = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_name LIKE '%AB$Employee%' ";
+        String sqlString = "SELECT table_name AS Tabellnamn FROM INFORMATION_SCHEMA.TABLES WHERE table_name LIKE '%AB$Employee%' ";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
 
     }
-
+//Metadata för CRONUS Sverige AB$Employee och relaterade tabeller.
     protected TableModel getCronusEmployeeMetaData() {
 
         String sqlString = "select TABLE_SCHEMA AS 'schema', COLUMN_NAME AS 'kolumn namn', "
@@ -126,8 +126,8 @@ public class DataAccessLayer {
         return tm;
 
     }
-
-    protected TableModel getCronusEmployeeColumns() {
+//Samtliga kolumner i tabellen Employee lösning 1
+    protected TableModel getCronusEmployeeColumns1() {
 
         String sqlString = "SELECT name AS 'Samtliga kolumner' \n"
                 + "FROM sys.columns \n"
@@ -136,11 +136,23 @@ public class DataAccessLayer {
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
+        
+    }
+//Samtliga kolumner i tabellen Employee lösning 2
+    protected TableModel getCronusEmployeeColumns2() {
+
+        String sqlString = "SELECT COLUMN_NAME AS 'Samtliga kolumner' \n"
+                + "FROM INFORMATION_SCHEMA.COLUMNS \n"
+                + "WHERE TABLE_NAME = 'CRONUS Sverige AB$Employee' \n"
+                + "ORDER BY COLUMN_NAME";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
 
     }
-
+//Samtliga nycklar
     protected TableModel getCronusKeys() {
-        String sqlString = "SELECT name, type_desc FROM sys.foreign_keys\n"
+        String sqlString = "SELECT name AS Namn, type_desc AS 'Typ beskrivning' FROM sys.foreign_keys\n"
                 + "UNION\n"
                 + "SELECT name, type_desc FROM sys.key_constraints";
         ResultSet rs = this.excecuteQuery(sqlString);
@@ -148,17 +160,17 @@ public class DataAccessLayer {
         return tm;
 
     }
-
+//Samtliga indexes
     protected TableModel getCronusIndexes() {
-        String sqlString = "SELECT * FROM sys.indexes";
+        String sqlString = "SELECT name AS Namn FROM sys.indexes";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
 
     }
-
+//Samtliga table_constraints
     protected TableModel getCronusConstraints() {
-        String sqlString = "SELECT name AS NameOfConstraint,\n"
+        String sqlString = "SELECT name AS 'Namn på constraint',\n"
                 + "type_desc AS ConstraintType\n"
                 + "FROM sys.objects\n"
                 + "WHERE type_desc LIKE '%CONSTRAINT'";
@@ -167,17 +179,25 @@ public class DataAccessLayer {
         return tm;
 
     }
-
-    protected TableModel getCronusTables() {
-        String sqlString = "SELECT * FROM sys.tables";
+//Samtliga tabeller i databasen lösning 1
+    protected TableModel getCronusTables1() {
+        String sqlString = "SELECT name AS Tabellnamn FROM sys.tables";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
 
     }
+ //Samtliga tabeller i databasen lösning 2
+    protected TableModel getCronusTables2() {
+        String sqlString = "SELECT TABLE_NAME AS Tabellnamn FROM INFORMATION_SCHEMA.TABLES";
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
 
+    }
+//Samtliga nycklar i databasen
     protected TableModel getAllKeys() {
-        String sqlString = "SELECT name FROM sys.foreign_keys\n"
+        String sqlString = "SELECT name AS namn FROM sys.foreign_keys\n"
                 + "UNION\n"
                 + "SELECT name FROM sys.key_constraints";
         ResultSet rs = this.excecuteQuery(sqlString);
@@ -185,9 +205,9 @@ public class DataAccessLayer {
         return tm;
 
     }
-
+//Namnet på den tabell som innehåller flest rader i CRONUS-databasen
     protected TableModel getCronusTableWithMostRows() {
-        String sqlString = "SELECT TOP (1) so.name, MAX(si.rows) \n"
+        String sqlString = "SELECT TOP (1) so.name AS Namn, MAX(si.rows) AS 'Antal rader'\n"
                 + "FROM sysobjects so, sysindexes si \n"
                 + "WHERE so.xtype = 'U' AND si.id = OBJECT_ID(so.name) \n"
                 + "GROUP BY so.name \n"
