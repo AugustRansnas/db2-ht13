@@ -367,4 +367,20 @@ public class Controller {
     }
 
 //</editor-fold>
+//<editor-fold desc="Input Control" defaultstate="collapsed">
+    
+    protected boolean stringContainsIllegalCharacters(String [] stringsToCheck){
+        
+        for (String stringsToCheck1 : stringsToCheck) {
+            
+            if (stringsToCheck1.contains("'")) {
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
+    
+//</editor-fold>
 }
