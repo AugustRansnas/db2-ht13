@@ -55,8 +55,7 @@ public class Main {
         View mainView = new View(controller);
 
         mainView.setVisible(true);
-        
-        mainView.setResizable(false);
+
         
     }
 
