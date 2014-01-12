@@ -52,8 +52,10 @@ public class Main {
         Controller controller = new Controller(dataAccessLayer);
 
         MainView mainView = new MainView(controller);
+        
+        mainView.setLocationRelativeTo(null); //Centers view
 
-        mainView.setVisible(true);
+        mainView.setVisible(true); // Makes the Main View show up
 
     }
 
