@@ -170,7 +170,7 @@ public class DataAccessLayer {
         String sqlString = "SELECT TABLE_NAME AS 'Namn', COLUMN_NAME AS 'kolumn namn', \n"
                 + "ORDINAL_POSITION AS 'position', DATA_TYPE AS 'data typ', \n"
                 + "CHARACTER_MAXIMUM_LENGTH AS 'max length', CHARACTER_SET_NAME AS 'Set name', \n"
-                + "COLLATION_NAME AS 'kollationsnamn' from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME LIKE '%AB$Employee%'";
+                + "COLLATION_NAME AS 'kollationsnamn' FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE '%AB$Employee%'";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
