@@ -1118,20 +1118,19 @@ public class View extends javax.swing.JFrame {
                 this.populateCourseFlowTable();
             }
 
-            if (this.rbtnDeleteCourse.isSelected()) {
+        }
+        if (this.rbtnDeleteCourse.isSelected()) {
 
-                String courseCode = this.txtViewCourseCode.getText();
-                this.controller.deleteCourse(courseCode);
+            String courseCode = this.selectedCourse;
+            this.controller.deleteCourse(courseCode);
 
-                JOptionPane.showMessageDialog(this,
-                        "Kurs " + courseCode + " är nu borttagen ur systemet.",
-                        "Kurs borttagen",
-                        JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this,
+                    "Kurs " + courseCode + " är nu borttagen ur systemet.",
+                    "Kurs borttagen",
+                    JOptionPane.INFORMATION_MESSAGE);
 
-                this.setSelectedCourse(null);
-                this.setSelectedStudent(null);
-
-            }
+            this.setSelectedCourse(null);
+            this.setSelectedStudent(null);
         }
 
     }//GEN-LAST:event_btnDeleteRegisterCourseActionPerformed
