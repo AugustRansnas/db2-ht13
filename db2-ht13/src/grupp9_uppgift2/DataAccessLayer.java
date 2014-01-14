@@ -159,6 +159,17 @@ public class DataAccessLayer {
         return tm;
 
     }
+    
+    protected TableModel getCronusEmployeeRelative() {
+
+        String sqlString = "SELECT er.[Employee No_] AS Anställningsnumer, er.[Relative Code] AS 'Förhållande Kod', er.[First Name] \n"
+               + "AS Förnamn, er.[Last Name] AS Efternamn, er.[Birth Date] AS Födelsedatum \n" 
+               + "FROM [CRONUS Sverige AB$Employee Relative] er";
+
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+    }
 
     /**
      * Gets partial meta data for the Cronus employee table.
@@ -167,14 +178,13 @@ public class DataAccessLayer {
      */
     protected TableModel getCronusEmployeeMetaData() {
 
-        String sqlString = "SELECT TABLE_NAME AS 'Namn', COLUMN_NAME AS 'kolumn namn', \n"
-                + "ORDINAL_POSITION AS 'position', DATA_TYPE AS 'data typ', \n"
-                + "CHARACTER_MAXIMUM_LENGTH AS 'max length', CHARACTER_SET_NAME AS 'Set name', \n"
-                + "COLLATION_NAME AS 'kollationsnamn' from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME LIKE '%AB$Employee%'";
+        String sqlString = "SELECT TABLE_NAME AS 'Namn', COLUMN_NAME AS 'Kolumn Namn', \n"
+                + "ORDINAL_POSITION AS 'Position', DATA_TYPE AS 'Data typ', \n"
+                + "CHARACTER_MAXIMUM_LENGTH AS 'Max Length', CHARACTER_SET_NAME AS 'Set name', \n"
+                + "COLLATION_NAME AS 'Kollationsnamn' FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME LIKE '%AB$Employee%'";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
-
     }
 
     /**
