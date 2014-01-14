@@ -59,6 +59,11 @@ public class Controller {
         return tm;
         
     }
+    
+    protected TableModel getCronusEmployeeRelative() {
+        TableModel tm = dataAccessLayer.getCronusEmployeeRelative();
+        return tm;
+    }
 
     /**
      * Gets meta data for the Cronus employee table.

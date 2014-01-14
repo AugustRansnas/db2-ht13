@@ -52,7 +52,7 @@ public class MainView extends javax.swing.JFrame {
         });
 
         comboListQuerySelector2A.setMaximumRowCount(10);
-        comboListQuerySelector2A.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anställda", "Frånvaro", "Kvalifikationer", "Metadata för tabellerna" }));
+        comboListQuerySelector2A.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anställda", "Frånvaro", "Kvalifikationer", "Släktingar", "Metadata för tabellerna" }));
 
         tblListResults2A.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -251,6 +251,11 @@ public class MainView extends javax.swing.JFrame {
                 this.tblListResults2A.setModel(tm);
                 break;
             case 3:
+                //CRONUS Employee Relative
+                tm = controller.getCronusEmployeeRelative();
+                this.tblListResults2A.setModel(tm);
+                break;
+            case 4:
                 //CRONUS Metadata
                 tm = controller.getCronusEmployeeMetaData();
                 this.tblListResults2A.setModel(tm);
