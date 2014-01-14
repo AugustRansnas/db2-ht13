@@ -41,7 +41,7 @@ public class DataAccessLayer {
      * @return the resultset of the query
      */
     private ResultSet excecuteQuery(String sqlString) {
-    
+
         System.out.println("executeQuery(" + sqlString + ")");
         System.out.println();
 
@@ -167,11 +167,10 @@ public class DataAccessLayer {
      */
     protected TableModel getCronusEmployeeMetaData() {
 
-        String sqlString = "select TABLE_SCHEMA AS 'schema', COLUMN_NAME AS 'kolumn namn', "
-                + "ORDINAL_POSITION AS 'position', DATA_TYPE AS 'data typ', "
-                + "CHARACTER_MAXIMUM_LENGTH AS 'max length', CHARACTER_SET_NAME AS 'Set name', "
-                + "COLLATION_NAME AS 'kollationsnamn' from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME "
-                + "= 'CRONUS Sverige AB$Employee'";
+        String sqlString = "SELECT TABLE_NAME AS 'Namn', COLUMN_NAME AS 'kolumn namn', \n"
+                + "ORDINAL_POSITION AS 'position', DATA_TYPE AS 'data typ', \n"
+                + "CHARACTER_MAXIMUM_LENGTH AS 'max length', CHARACTER_SET_NAME AS 'Set name', \n"
+                + "COLLATION_NAME AS 'kollationsnamn' from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME LIKE '%AB$Employee%'";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;

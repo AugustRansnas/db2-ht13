@@ -107,10 +107,11 @@
               <Properties>
                 <Property name="maximumRowCount" type="int" value="10"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
+                  <StringArray count="4">
                     <StringItem index="0" value="Anst&#xe4;llda"/>
                     <StringItem index="1" value="Fr&#xe5;nvaro"/>
                     <StringItem index="2" value="Kvalifikationer"/>
+                    <StringItem index="3" value="Metadata f&#xf6;r tabellerna"/>
                   </StringArray>
                 </Property>
               </Properties>

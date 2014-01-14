@@ -52,7 +52,7 @@ public class MainView extends javax.swing.JFrame {
         });
 
         comboListQuerySelector2A.setMaximumRowCount(10);
-        comboListQuerySelector2A.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anställda", "Frånvaro", "Kvalifikationer" }));
+        comboListQuerySelector2A.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anställda", "Frånvaro", "Kvalifikationer", "Metadata för tabellerna" }));
 
         tblListResults2A.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,6 +249,14 @@ public class MainView extends javax.swing.JFrame {
                 //CRONUS Employee Qualifications
                 tm = controller.getCronusEmployeeQualifications();
                 this.tblListResults2A.setModel(tm);
+                break;
+            case 3:
+                //CRONUS Metadata
+                tm = controller.getCronusEmployeeMetaData();
+                this.tblListResults2A.setModel(tm);
+                this.tblListResults2A.getColumnModel().getColumn(0).setPreferredWidth(250);
+                this.tblListResults2A.getColumnModel().getColumn(1).setPreferredWidth(150);
+                this.tblListResults2A.getColumnModel().getColumn(6).setPreferredWidth(150);
                 break;
             default:
                 System.out.println("Combobox inoput out of switch range");
