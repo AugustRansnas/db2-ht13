@@ -1,4 +1,3 @@
-
 package grupp9_uppgift2;
 
 import javax.swing.table.TableModel;
@@ -13,7 +12,7 @@ public class MainView extends javax.swing.JFrame {
 
     /**
      * Creates new form MainView
-     * 
+     *
      * @param controller Handler communication with DataAccessLayer
      */
     public MainView(Controller controller) {
@@ -30,15 +29,32 @@ public class MainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPaneResults = new javax.swing.JScrollPane();
-        tblListResults = new javax.swing.JTable();
-        btnUpdateTable = new javax.swing.JButton();
-        comboListQuerySelector = new javax.swing.JComboBox();
+        jTabbedPane = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        btnUpdateTable2A = new javax.swing.JButton();
+        comboListQuerySelector2A = new javax.swing.JComboBox();
+        jScrollPaneResults2A = new javax.swing.JScrollPane();
+        tblListResults2A = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        comboListQuerySelector2B = new javax.swing.JComboBox();
+        btnUpdateTable2B = new javax.swing.JButton();
+        jScrollPaneResults2B = new javax.swing.JScrollPane();
+        tblListResults2B = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cronus Database Browser");
 
-        tblListResults.setModel(new javax.swing.table.DefaultTableModel(
+        btnUpdateTable2A.setText("Updatera");
+        btnUpdateTable2A.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateTable2AActionPerformed(evt);
+            }
+        });
+
+        comboListQuerySelector2A.setMaximumRowCount(10);
+        comboListQuerySelector2A.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Anställda", "Frånvaro", "Kvalifikationer" }));
+
+        tblListResults2A.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -49,17 +65,92 @@ public class MainView extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPaneResults.setViewportView(tblListResults);
+        jScrollPaneResults2A.setViewportView(tblListResults2A);
 
-        btnUpdateTable.setText("Updatera");
-        btnUpdateTable.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(comboListQuerySelector2A, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUpdateTable2A, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(514, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPaneResults2A, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboListQuerySelector2A, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateTable2A))
+                .addContainerGap(511, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(46, 46, 46)
+                    .addComponent(jScrollPaneResults2A, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        jTabbedPane.addTab("Uppgift 2A", jPanel1);
+
+        comboListQuerySelector2B.setMaximumRowCount(10);
+        comboListQuerySelector2B.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employee Columns 1", "CRONUS Employee Columns 2", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables 1", "CRONUS Tables 2", "CRONUS Table with most rows" }));
+
+        btnUpdateTable2B.setText("Updatera");
+        btnUpdateTable2B.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateTableActionPerformed(evt);
+                btnUpdateTable2BActionPerformed(evt);
             }
         });
 
-        comboListQuerySelector.setMaximumRowCount(10);
-        comboListQuerySelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CRONUS Employees and related tables content", "CRONUS Employee and related tables MetaData", "CRONUS Employee Columns 1", "CRONUS Employee Columns 2", "CRONUS Keys", "CRONUS Indexes", "CRONUS Constraints", "CRONUS Tables 1", "CRONUS Tables 2", "CRONUS Table with most rows" }));
+        tblListResults2B.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPaneResults2B.setViewportView(tblListResults2B);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPaneResults2B, javax.swing.GroupLayout.DEFAULT_SIZE, 947, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(comboListQuerySelector2B, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnUpdateTable2B, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboListQuerySelector2B, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUpdateTable2B))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPaneResults2B, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane.addTab("Uppgift 2B", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,97 +158,115 @@ public class MainView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPaneResults, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(comboListQuerySelector, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnUpdateTable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jTabbedPane)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comboListQuerySelector, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUpdateTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneResults, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUpdateTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTableActionPerformed
-        int comboIndex = this.comboListQuerySelector.getSelectedIndex();
+    private void btnUpdateTable2BActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTable2BActionPerformed
+
+        int comboIndex = this.comboListQuerySelector2B.getSelectedIndex();
         TableModel tm;
         //Inget valt
-        
+
         switch (comboIndex) {
+
             case 0:
-                //CRONUS Employees and related tables
-                tm = controller.getCronusEmployees();
-                this.tblListResults.setModel(tm);
-                break;
-            case 1:
-                //CRONUS Employee MetaData
-                tm = controller.getCronusEmployeeMetaData();
-                this.tblListResults.setModel(tm);
-                break;
-            case 2:
                 //CRONUS Employee Columns1
                 tm = controller.getCronusEmployeeColumns1();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 3:
+            case 1:
                 //CRONUS Employee Columns2
                 tm = controller.getCronusEmployeeColumns2();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 4:
+            case 2:
                 //CRONUS Keys
                 tm = controller.getCronusKeys();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 5:
+            case 3:
                 //CRONUS Indexes
                 tm = controller.getCronusIndexes();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 6:
+            case 4:
                 //CRONUS Constraints
                 tm = controller.getCronusConstraints();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 7:
+            case 5:
                 //CRONUS Tables1
                 tm = controller.getCronusTables1();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 8:
+            case 6:
                 //CRONUS Tables2
                 tm = controller.getCronusTables2();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
-            case 9:
+            case 7:
                 //CRONUS Tables
                 tm = controller.getCronusTableWithMostRows();
-                this.tblListResults.setModel(tm);
+                this.tblListResults2B.setModel(tm);
                 break;
             default:
                 System.out.println("Combobox inoput out of switch range");
         }
 
-    }//GEN-LAST:event_btnUpdateTableActionPerformed
+    }//GEN-LAST:event_btnUpdateTable2BActionPerformed
+
+    private void btnUpdateTable2AActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateTable2AActionPerformed
+
+        int comboIndex = this.comboListQuerySelector2A.getSelectedIndex();
+
+        TableModel tm;
+        //Inget valt
+
+        switch (comboIndex) {
+
+            case 0:
+                //CRONUS Employees
+                tm = controller.getCronusEmployees();
+                this.tblListResults2A.setModel(tm);
+                break;
+            case 1:
+                //CRONUS Absence
+                tm = controller.getCronusEmployeeAbsence();
+                this.tblListResults2A.setModel(tm);
+                break;
+            case 2:
+                //CRONUS Employee Qualifications
+                tm = controller.getCronusEmployeeQualifications();
+                this.tblListResults2A.setModel(tm);
+                break;
+            default:
+                System.out.println("Combobox inoput out of switch range");
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateTable2AActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUpdateTable;
-    private javax.swing.JComboBox comboListQuerySelector;
-    private javax.swing.JScrollPane jScrollPaneResults;
-    private javax.swing.JTable tblListResults;
+    private javax.swing.JButton btnUpdateTable2A;
+    private javax.swing.JButton btnUpdateTable2B;
+    private javax.swing.JComboBox comboListQuerySelector2A;
+    private javax.swing.JComboBox comboListQuerySelector2B;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPaneResults2A;
+    private javax.swing.JScrollPane jScrollPaneResults2B;
+    private javax.swing.JTabbedPane jTabbedPane;
+    private javax.swing.JTable tblListResults2A;
+    private javax.swing.JTable tblListResults2B;
     // End of variables declaration//GEN-END:variables
 }

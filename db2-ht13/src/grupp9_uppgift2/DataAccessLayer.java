@@ -1,4 +1,3 @@
-
 package grupp9_uppgift2;
 
 import java.sql.Connection;
@@ -14,7 +13,7 @@ import javax.swing.table.TableModel;
 
 /**
  * Handles communication with database
- * 
+ *
  * @author Jonas Ahrne
  * @author August Ransnäs
  * @author Viktor Voigt
@@ -26,23 +25,25 @@ public class DataAccessLayer {
 
     /**
      * Initializes class with proper connection.
-     * 
+     *
      * @param connection connection to database
      */
     protected DataAccessLayer(Connection connection) {
-        
+
         this.connection = connection;
-        
+
     }
+
     /**
      * This method takes an SQL query string and returns a resultset.
-     * 
-     * @param the SQL query 
+     *
+     * @param the SQL query
      * @return the resultset of the query
      */
     private ResultSet excecuteQuery(String sqlString) {
-
+    
         System.out.println("executeQuery(" + sqlString + ")");
+        System.out.println();
 
         ResultSet rs = null;
 
@@ -50,7 +51,7 @@ public class DataAccessLayer {
             Statement stmt = connection.createStatement();
 
             rs = stmt.executeQuery(sqlString);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(DataAccessLayer.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,10 +59,11 @@ public class DataAccessLayer {
         return rs;
 
     }
+
     /**
      * This method takes an resultset and returns it as a tableModel.
-     * 
-     * @param a resultset 
+     *
+     * @param a resultset
      * @return a tableModel of the resultset
      */
     private TableModel getResultSetAsDefaultTableModel(ResultSet rs) {
@@ -96,7 +98,7 @@ public class DataAccessLayer {
             }
 
             DefaultTableModel tm = new DefaultTableModel(dataArray, columnHeadings) {
-                
+
                 @Override
                 public boolean isCellEditable(int row, int column) {
 
@@ -114,21 +116,54 @@ public class DataAccessLayer {
         return null;
 
     }
-    
-//Innehållet i tabellen CRONUS Sverige AB$Employee samt relaterade tabeller
+
+    /**
+     * Innehållet i tabellen CRONUS Sverige AB$Employee
+     *
+     * @return innehållet i tabellen CRONUS Sverige AB$Employee
+     */
     protected TableModel getCronusEmployees() {
 
-        String sqlString = "SELECT table_name AS Tabellnamn FROM INFORMATION_SCHEMA.TABLES WHERE table_name LIKE '%AB$Employee%' ";
+        String sqlString = "SELECT e.[First Name] 'Förnamn', e.[Last Name] 'Efternamn', e.[Job Title] 'Titel', e.[Phone No_] 'Telefonnummer', e.[Mobile Phone No_] 'Mobilnummer', e.[E-Mail] 'Mail'\n"
+                + "FROM [CRONUS Sverige AB$Employee] e";
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
 
     }
-//Metadata för CRONUS Sverige AB$Employee och relaterade tabeller.
+
+    /**
+     * Gets table with data from CRONUS Sverige AB$Employee Absence
+     *
+     * @return data from CRONUS Sverige AB$Employee Absence
+     */
+    protected TableModel getCronusEmployeeAbsence() {
+
+        String sqlString = "SELECT ea.[Employee No_] Antällningnummer, ea.[Cause of Absence Code] 'Orsak till frånvaro', SUM(ea.[Qty_ per Unit of Measure]) 'Tid', ea.[Unit of Measure Code] 'Tidsenhet', COUNT(*) 'Antal förekomster' "
+                + "FROM [CRONUS Sverige AB$Employee Absence] ea "
+                + "GROUP BY ea.[Employee No_], ea.[Cause of Absence Code], ea.[Unit of Measure Code]";
+
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
+    protected TableModel getCronusEmployeeQualifications() {
+
+        String sqlString = "SELECT eq.[Employee No_] 'Antällningsnummer', eq.[Qualification Code] 'Kvalifikationskod', eq.Description 'Beskrivning', eq.Institution_Company 'Arbetsplats', eq.Type 'Typ' "
+                + "FROM [CRONUS Sverige AB$Employee Qualification] eq";
+
+        ResultSet rs = this.excecuteQuery(sqlString);
+        TableModel tm = this.getResultSetAsDefaultTableModel(rs);
+        return tm;
+
+    }
+
     /**
      * Gets partial meta data for the Cronus employee table.
-     * 
-     * @return partial meta data 
+     *
+     * @return partial meta data
      */
     protected TableModel getCronusEmployeeMetaData() {
 
@@ -142,9 +177,10 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
      * Gets the columns of the Cronus employee table.
-     * 
+     *
      * @return the column names
      */
     protected TableModel getCronusEmployeeColumns1() {
@@ -156,11 +192,12 @@ public class DataAccessLayer {
         ResultSet rs = this.excecuteQuery(sqlString);
         TableModel tm = this.getResultSetAsDefaultTableModel(rs);
         return tm;
-        
+
     }
+
     /**
      * Gets the columns of the Cronus employee table.
-     * 
+     *
      * @return the column names
      */
     protected TableModel getCronusEmployeeColumns2() {
@@ -174,9 +211,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets a system information table containing table names and their Keys from the Cronus database.
-     * 
+     * Gets a system information table containing table names and their Keys
+     * from the Cronus database.
+     *
      * @return Keys from the Cronus database.
      */
     protected TableModel getCronusKeys() {
@@ -188,9 +227,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets a system information table containing indexes from the Cronus database
-     * 
+     * Gets a system information table containing indexes from the Cronus
+     * database
+     *
      * @return indexes from the Cronus database
      */
     protected TableModel getCronusIndexes() {
@@ -200,9 +241,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets a system information table containing the table constraints from the Cronus database
-     * 
+     * Gets a system information table containing the table constraints from the
+     * Cronus database
+     *
      * @return table constraints from the Cronus database.
      */
     protected TableModel getCronusConstraints() {
@@ -215,9 +258,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets a system information table containing the names of the tables in the Cronus database.
-     * 
+     * Gets a system information table containing the names of the tables in the
+     * Cronus database.
+     *
      * @return the names of the tables in the Cronus database
      */
     protected TableModel getCronusTables1() {
@@ -227,9 +272,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets a system information table containing the names of the tables in the Cronus database.
-     * 
+     * Gets a system information table containing the names of the tables in the
+     * Cronus database.
+     *
      * @return the names of the tables in the Cronus database
      */
     protected TableModel getCronusTables2() {
@@ -239,9 +286,11 @@ public class DataAccessLayer {
         return tm;
 
     }
+
     /**
-     * Gets the name and number of rows of the table with the most rows in the Cronus database.
-     * 
+     * Gets the name and number of rows of the table with the most rows in the
+     * Cronus database.
+     *
      * @return the name of the table with most rows in the database
      */
     protected TableModel getCronusTableWithMostRows() {
