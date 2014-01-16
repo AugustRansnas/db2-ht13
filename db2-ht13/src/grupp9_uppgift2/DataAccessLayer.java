@@ -118,9 +118,9 @@ public class DataAccessLayer {
     }
 
     /**
-     * Innehållet i tabellen CRONUS Sverige AB$Employee
+     * Gets table with data from CRONUS Sverige AB$Employee
      *
-     * @return innehållet i tabellen CRONUS Sverige AB$Employee
+     * @return data from CRONUS Sverige AB$Employee
      */
     protected TableModel getCronusEmployees() {
 
@@ -149,6 +149,11 @@ public class DataAccessLayer {
 
     }
 
+    /**
+     * Gets table with data from CRONUS Sverige AB$Employee Qualifications
+     * 
+     * @return data from CRONUS Sverige AB$Employee Qualifications
+     */
     protected TableModel getCronusEmployeeQualifications() {
 
         String sqlString = "SELECT eq.[Employee No_] 'Antällningsnummer', eq.[Qualification Code] 'Kvalifikationskod', eq.Description 'Beskrivning', eq.Institution_Company 'Arbetsplats', eq.Type 'Typ' "
@@ -160,6 +165,11 @@ public class DataAccessLayer {
 
     }
     
+    /**
+     * Gets table with data from CRONUS Sverige AB$Employee Relative
+     * 
+     * @return data from CRONUS Sverige AB$Employee Relative
+     */
     protected TableModel getCronusEmployeeRelative() {
 
         String sqlString = "SELECT er.[Employee No_] AS Anställningsnumer, er.[Relative Code] AS 'Förhållande Kod', er.[First Name] \n"
