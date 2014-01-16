@@ -804,7 +804,8 @@
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Component id="lblViewCourseStudentsWithA" min="-2" pref="175" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtViewCourseStudentsWithA" min="-2" pref="44" max="-2" attributes="0"/>
+                                          <Component id="txtViewCourseStudentsWithA" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -815,13 +816,15 @@
                                                   <Component id="lblResponsRegisterCourse" min="-2" pref="266" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace min="0" pref="160" max="32767" attributes="0"/>
+                                          <EmptySpace pref="161" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="txtViewCourseName" min="-2" pref="168" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="txtViewCourseName" min="-2" pref="168" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Component id="pnlCourseResults" alignment="0" max="32767" attributes="0"/>
                   </Group>
