@@ -214,7 +214,7 @@ public class MainView extends javax.swing.JFrame {
 
     private void btnCustAccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustAccessActionPerformed
         
-        this.fileHandler.openOfficeFile("Access Employee Report.accdb");
+        this.fileHandler.openOfficeFile("Access Customer Report.accdb");
         
     }//GEN-LAST:event_btnCustAccessActionPerformed
 
