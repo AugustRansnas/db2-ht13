@@ -51,7 +51,7 @@ public class Controller {
     /**
      * Returns table with employees qualifications
      * 
-     * @return 
+     * @return a tablemodel wich contains information about the qualifications of the employees
      */
     protected TableModel getCronusEmployeeQualifications() {
         
