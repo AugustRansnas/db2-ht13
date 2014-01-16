@@ -1105,7 +1105,7 @@ public class View extends javax.swing.JFrame {
 
             } else if (courseData[0].length() != 6) {
 
-                this.lblResponsRegisterCourse.setText("Kurskod måste bestå av exakt sex tacken.");
+                this.lblResponsRegisterCourse.setText("Kurskod måste bestå av exakt sex tecken.");
 
             } else if (!courseData[2].matches("[0-9]+")) {
 
