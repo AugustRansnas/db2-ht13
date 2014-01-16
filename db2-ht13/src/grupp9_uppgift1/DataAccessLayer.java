@@ -830,7 +830,7 @@ public class DataAccessLayer {
                 + "(SELECT h.ccode FROM Hasstudied h "
                 + "WHERE h.pnr = '" + personNbr + "') "
                 + "AND c.ccode NOT IN "
-                + "(Select s.ccode FROM Studies s "
+                + "(SELECT s.ccode FROM Studies s "
                 + "WHERE s.pnr = '" + personNbr + "')");
 
         String[] stringArray = this.getResultSetAsStringArray(rs);
